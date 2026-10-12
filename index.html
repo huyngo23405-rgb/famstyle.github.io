@@ -49,7 +49,7 @@ section{padding:28px 0}
 
 /* sản phẩm */
 .pc{padding:16px 14px 14px;display:flex;flex-direction:column;gap:5px}
-.im{aspect-ratio:1/1.05;display:grid;place-items:center;font-size:80px;overflow:hidden}
+.im{aspect-ratio:3/4;display:grid;place-items:center;font-size:80px;overflow:hidden}
 .im img,.ph img{width:100%;height:100%;object-fit:cover;display:block}
 .nm{font-size:13px;font-weight:400}.st{color:var(--star);font-size:12px;letter-spacing:1px}
 .pr{font-size:13px;font-weight:500}
@@ -102,7 +102,7 @@ aside.on{transform:none;visibility:visible}
 .sz[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
 .back{display:inline-block;margin:20px 0;text-decoration:none;font-weight:500}
 .dg{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:start}
-.dim{aspect-ratio:1/1.1;display:grid;place-items:center;font-size:160px;overflow:hidden}
+.dim{aspect-ratio:3/4;display:grid;place-items:center;font-size:160px;overflow:hidden}
 .dim img{width:100%;height:100%;object-fit:cover}
 .di h1{font-size:26px;font-weight:500;margin:0 0 6px}
 .dpr{font-size:22px;font-weight:600;margin:8px 0 14px}
@@ -439,6 +439,8 @@ body.ov .dd:hover>a,body.ov .dd:focus-within>a,body.ov .nl:hover{color:#fff;text
  .qvg{aspect-ratio:1/1}
  .qvi{padding:22px 20px 20px}
 }
+.li .t,.sl2 .t,.mni .t{overflow:hidden}
+.li .t img,.sl2 .t img,.mni .t img{width:100%;height:100%;object-fit:cover}
 </style>
 </head>
 <body>
@@ -522,6 +524,26 @@ const HERO={title:"Bộ sưu tập Thu Đông 2026",text:"Form rộng, chất li
    colors: các màu có sẵn | r: số sao (0-5) | img: link ảnh thật (bỏ trống thì hiện emoji)
    imgs: (tùy chọn) nhiều ảnh cho preview, ví dụ imgs:["truoc.jpg","sau.jpg","chitiet.jpg"] */
 const P=[
+ /* --- sản phẩm có ảnh thật (thư mục images) --- */
+ {id:23,sub:"ao-len",col:"thu-dong-2026",cat:"ao",desc:"Áo thun tay ngắn dệt kim màu nâu đậm, cổ tròn gọn gàng, bề mặt dệt có họa tiết nhẹ. Dễ phối với quần tây hoặc quần ống rộng.",n:"Áo thun dệt kim nâu",price:359000,tag:"",sizes:["S","M","L","XL"],colors:["#3B2A24"],r:0,bg:"#ECECEE",e:"👕",img:"images/p01.jpg"},
+ {id:24,sub:"vay-midi",col:"xuan-he-2026",cat:"vay",desc:"Váy midi phối hai màu: thân trên đen tay ngắn, chân váy xòe màu xanh rêu có túi. Đứng form, dễ mặc đi làm và dạo phố.",n:"Váy midi phối đen và xanh rêu",price:589000,tag:"",sizes:["S","M","L"],colors:["#9AA58A"],r:0,bg:"#E9ECEF",e:"👕",img:"images/p02.jpg"},
+ {id:25,sub:"vay-midi",col:"ky-niem-4-nam",cat:"vay",desc:"Set gồm áo vest đen sát nách cài một cúc và chân váy xếp tầng bất đối xứng, nhẹ nhàng và thanh lịch.",n:"Set vest đen và chân váy xếp tầng",price:790000,tag:"",sizes:["S","M","L"],colors:["#111"],r:0,bg:"#E9E1D6",e:"👕",img:"images/p03.jpg"},
+ {id:26,sub:"quan-cargo",col:"share-your-color",cat:"quan",desc:"Quần nỉ ống rộng màu xám tro, cạp thun có dây rút, túi hai bên. Thoải mái cho ngày cuối tuần.",n:"Quần nỉ ống rộng xám",price:399000,tag:"",sizes:["S","M","L","XL"],colors:["#8A8F98"],r:0,bg:"#E6E8EA",e:"👕",img:"images/p04.jpg"},
+ {id:27,sub:"quan-cargo",col:"share-your-color",cat:"quan",desc:"Quần ống rộng màu đen, cạp thun có dây rút đầu kim loại, dáng suông đứng. Phối với áo thun hay áo nỉ đều gọn.",n:"Quần ống rộng đen cạp dây rút",price:399000,tag:"",sizes:["S","M","L","XL"],colors:["#111"],r:0,bg:"#E6E8EA",e:"👕",imgs:["images/p05.jpg","images/p16.jpg"]},
+ {id:28,sub:"quan-tay",col:"xuan-he-2026",cat:"quan",desc:"Quần ống rộng màu trắng, lưng cao, túi chéo hai bên. Hợp với áo thun kẻ sọc khi đi dạo phố hay đi làm.",n:"Quần ống rộng trắng",price:459000,tag:"",sizes:["S","M","L"],colors:["#fff"],r:0,bg:"#E9ECEF",e:"👕",img:"images/p06.jpg"},
+ {id:29,sub:"jacket",col:"thu-dong-2026",cat:"ao-khoac",desc:"Áo jacket màu nâu bò, cổ bẻ, khóa kéo giấu và hai túi hông. Dáng ngắn gọn gàng, ấm vừa phải.",n:"Áo jacket da lộn nâu bò",price:759000,tag:"",sizes:["S","M","L","XL"],colors:["#8A5A32"],r:0,bg:"#ECECEE",e:"👕",img:"images/p07.jpg"},
+ {id:30,sub:"jacket",col:"thu-dong-2026",cat:"ao-khoac",desc:"Áo jacket denim xanh đậm với đường chỉ nổi, cài cúc kim loại. Dễ phối và bền theo thời gian.",n:"Áo jacket denim xanh đậm",price:659000,tag:"",sizes:["S","M","L","XL"],colors:["#27324A"],r:0,bg:"#E8E8EA",e:"👕",img:"images/p08.jpg"},
+ {id:31,sub:"jacket",col:"thu-dong-2026",cat:"ao-khoac",desc:"Áo jacket màu be nhạt, cài cúc bấm kín, hai túi hông. Gam màu trung tính dễ phối.",n:"Áo jacket màu be sáng",price:759000,tag:"",sizes:["S","M","L","XL"],colors:["#E4DDD2"],r:0,bg:"#ECECEE",e:"👕",img:"images/p09.jpg"},
+ {id:32,sub:"ao-polo",col:"ky-niem-4-nam",cat:"ao",desc:"Áo polo tay ngắn màu nâu tro, bề mặt dệt nổi, cổ bẻ và hai cúc. Phối với quần trắng rất sang.",n:"Áo polo dệt nâu tro",price:349000,tag:"",sizes:["S","M","L","XL"],colors:["#9C8579"],r:0,bg:"#E6E6E0",e:"👕",img:"images/p10.jpg"},
+ {id:33,sub:"ao-polo",col:"xuan-he-2026",cat:"ao",desc:"Áo polo trắng in họa tiết lá đường nét mảnh, cổ bẻ, tay ngắn. Nhẹ và thoáng cho ngày nắng.",n:"Áo polo trắng họa tiết lá",price:389000,tag:"",sizes:["S","M","L","XL"],colors:["#fff"],r:0,bg:"#C9D3DF",e:"👕",img:"images/p11.jpg"},
+ {id:34,sub:"vay-midi",col:"ky-niem-4-nam",cat:"vay",desc:"Váy xòe màu xám, thân áo cài cúc có cổ phối xanh navy, chân váy xếp ly xòe nhẹ. Phong cách thanh lịch.",n:"Váy xòe xám cổ xanh navy",price:650000,tag:"",sizes:["S","M","L"],colors:["#8A8F98"],r:0,bg:"#EFE4DA",e:"👕",img:"images/p12.jpg"},
+ {id:35,sub:"vay-midi",col:"xuan-he-2026",cat:"vay",desc:"Váy suông màu xanh olive, cổ chữ V có túi ngực và dây rút eo. Phong cách hiện đại, năng động.",n:"Váy suông rút eo xanh olive",price:620000,tag:"",sizes:["S","M","L"],colors:["#8E9A86"],r:0,bg:"#D9DEE0",e:"👕",img:"images/p13.jpg"},
+ {id:36,sub:"vay-dai",col:"xuan-he-2026",cat:"vay",desc:"Set áo voan mỏng buộc phía trước và váy ôm dáng dài in họa tiết lá vàng. Hợp tiệc nhẹ và dịp sum họp.",n:"Set áo voan buộc và váy hoa vàng",price:890000,tag:"",sizes:["S","M","L"],colors:["#E3C67A"],r:0,bg:"#E4D5C2",e:"👕",img:"images/p14.jpg"},
+ {id:37,sub:"vay-ngan",col:"thu-dong-2026",cat:"vay",desc:"Váy sơ mi màu xám, tay lỡ có thể xắn, túi ngực và đai eo. Gọn gàng, dễ mặc hằng ngày.",n:"Váy sơ mi xám tay lỡ",price:590000,tag:"",sizes:["S","M","L"],colors:["#8A8F98"],r:0,bg:"#D9DEE0",e:"👕",img:"images/p15.jpg"},
+ {id:38,sub:"quan-short",col:"share-your-color",cat:"quan",desc:"Quần short bề mặt dệt nổi màu trắng kem, cạp thun có dây rút. Mát và thoải mái.",n:"Quần short dệt trắng kem",price:329000,tag:"",sizes:["S","M","L","XL"],colors:["#E9E4DA"],r:0,bg:"#EEEEEE",e:"👕",img:"images/p17.jpg"},
+ {id:39,sub:"quan-tay",col:"thu-dong-2026",cat:"quan",desc:"Quần ống rộng màu đỏ mận, lưng cao, ống suông dài. Phối với áo sơ mi trắng rất thanh lịch.",n:"Quần ống rộng đỏ mận",price:529000,tag:"",sizes:["S","M","L"],colors:["#4A1E28"],r:0,bg:"#EFE4DA",e:"👕",img:"images/p18.jpg"},
+ {id:40,sub:"quan-tay",col:"ky-niem-4-nam",cat:"quan",desc:"Quần ống loe màu xanh olive, lưng cao, ly nổi phía trước. Hợp phối với áo sơ mi satin.",n:"Quần ống loe xanh olive",price:549000,tag:"",sizes:["S","M","L"],colors:["#8B8546"],r:0,bg:"#EFE4DA",e:"👕",img:"images/p19.jpg"},
+ /* --- sản phẩm mẫu dùng biểu tượng --- */
  {id:1,sub:"ao-baseball",col:"ky-niem-4-nam",cat:"ao",desc:"Áo baseball sọc đỏ trắng, form rộng vừa, cài nút phía trước. Vải cotton dày dặn, mặc thoải mái cả ngày.",n:"Áo baseball sọc đỏ",price:680000,tag:"best",sizes:["S","M","L","XL"],colors:["#C9474B","#1E2430"],r:5,bg:"#F6E9EA",e:"👕",img:""},
  {id:2,sub:"quan-jeans",col:"share-your-color",cat:"quan",desc:"Quần jeans ống suông wash xanh nhạt, lưng cao, dáng boxy dễ phối với áo thun hoặc sơ mi.",n:"Quần jeans boxy wash xanh",price:680000,tag:"best",sizes:["28","30","32"],colors:["#9DB6D4"],r:5,bg:"#E8EEF6",e:"👖",img:""},
  {id:3,sub:"ao-thun",col:"ky-niem-4-nam",cat:"ao",desc:"Áo thun tay raglan phối màu, form regular vừa vặn. Chất cotton mềm, thấm hút tốt.",n:"Áo thun raglan regular",price:450000,tag:"best",sizes:["S","M","L","XL"],colors:["#fff","#C9474B"],r:5,bg:"#F2F2F2",e:"👚",img:""},
@@ -545,6 +567,7 @@ const P=[
  {id:21,sub:"tui",col:"share-your-color",cat:"phu-kien",desc:"Túi tote vải canvas dày, quai dài đeo vai, đựng vừa laptop 14 inch.",n:"Túi tote canvas",price:159000,tag:"",sizes:["Free size"],colors:["#B9A98C","#111"],r:5,bg:"#F0EBE0",e:"👜",img:""},
  {id:22,sub:"that-lung",col:"ky-niem-4-nam",cat:"phu-kien",desc:"Thắt lưng da bản vừa, khóa kim loại mờ, dùng được với cả quần jeans và quần tây.",n:"Thắt lưng da trơn",price:249000,tag:"",sizes:["Free size"],colors:["#111"],r:0,bg:"#E5E5EA",e:"🧵",img:""}
 ];
+P.forEach(p=>{if(!p.img&&p.imgs&&p.imgs[0])p.img=p.imgs[0]});   // ảnh đại diện = ảnh đầu tiên
 
 /* ===== DANH MỤC: slug = đường dẫn, n = tên hiển thị, subs = danh mục con.
    Gán cho sản phẩm bằng hai trường cat (danh mục) và sub (danh mục con) ===== */
@@ -552,7 +575,7 @@ const CATS=[
  {slug:"ao",n:"Áo",bg:"#F2F3F7",e:"👕",img:"",subs:[{slug:"ao-thun",n:"Áo thun"},{slug:"ao-so-mi",n:"Áo sơ mi"},{slug:"ao-polo",n:"Áo polo"},{slug:"ao-len",n:"Áo len"},{slug:"ao-baseball",n:"Áo baseball"}]},
  {slug:"quan",n:"Quần",bg:"#F2F3F7",e:"👖",img:"",subs:[{slug:"quan-jeans",n:"Quần jeans"},{slug:"quan-short",n:"Quần short"},{slug:"quan-tay",n:"Quần tây"},{slug:"quan-cargo",n:"Quần cargo và jogger"}]},
  {slug:"vay",n:"Váy",bg:"#F2F3F7",e:"👗",img:"",subs:[{slug:"vay-ngan",n:"Váy ngắn"},{slug:"vay-midi",n:"Váy midi"},{slug:"vay-dai",n:"Váy dài"}]},
- {slug:"ao-khoac",n:"Áo khoác",bg:"#F2F3F7",e:"🧥",img:"",subs:[{slug:"bomber",n:"Áo bomber"},{slug:"khoac-gio",n:"Áo khoác gió"},{slug:"hoodie",n:"Áo hoodie"},{slug:"cardigan",n:"Áo cardigan"}]},
+ {slug:"ao-khoac",n:"Áo khoác",bg:"#F2F3F7",e:"🧥",img:"",subs:[{slug:"bomber",n:"Áo bomber"},{slug:"khoac-gio",n:"Áo khoác gió"},{slug:"hoodie",n:"Áo hoodie"},{slug:"cardigan",n:"Áo cardigan"},{slug:"jacket",n:"Áo jacket"}]},
  {slug:"phu-kien",n:"Phụ kiện",bg:"#F2F3F7",e:"🧢",img:"",subs:[{slug:"mu",n:"Mũ"},{slug:"khan",n:"Khăn"},{slug:"tui",n:"Túi"},{slug:"that-lung",n:"Thắt lưng"}]}
 ];
 
@@ -561,7 +584,7 @@ const FEATURE={title:"Giấc mơ dịu dàng",text:"Bộ sưu tập mang tinh th
 const COLLS=[{slug:"thu-dong-2026",desc:"Áo khoác, cardigan và khăn len cho những ngày se lạnh. Chất liệu dày dặn, màu trung tính dễ phối.",n:"Bộ sưu tập Thu Đông 2026",bg:"#E7D9D3",e:"🍂",img:""},{slug:"ky-niem-4-nam",desc:"Những thiết kế được yêu thích nhất suốt 4 năm qua, được làm lại với chi tiết mới.",n:"Kỷ niệm 4 năm thành lập",bg:"#EDEAF4",e:"🎉",img:""},{slug:"share-your-color",desc:"Bộ sưu tập về màu sắc và cá tính: mỗi món là một cách để bạn thể hiện mình.",n:"Share your color",bg:"#D9E6F2",e:"🎨",img:""},{slug:"xuan-he-2026",desc:"Váy, sơ mi và quần short nhẹ, thoáng, dành cho những ngày nắng.",n:"Bộ sưu tập Xuân Hè 2026",bg:"#E4F0E3",e:"🌿",img:""}];
 
 /* tên hiển thị của từng mã màu (dùng ở trang chi tiết và giỏ hàng) */
-const COLOR_NAMES={"#C9474B":"Đỏ","#1E2430":"Xanh đen","#fff":"Trắng","#9DB6D4":"Xanh nhạt","#4B5A3C":"Xanh rêu","#111":"Đen","#B9A98C":"Be","#8A8F98":"Xám"};
+const COLOR_NAMES={"#C9474B":"Đỏ","#1E2430":"Xanh đen","#fff":"Trắng","#9DB6D4":"Xanh nhạt","#4B5A3C":"Xanh rêu","#111":"Đen","#B9A98C":"Be","#8A8F98":"Xám","#3B2A24":"Nâu đậm","#9AA58A":"Xanh rêu nhạt","#8A5A32":"Nâu bò","#27324A":"Xanh denim đậm","#E4DDD2":"Be sáng","#9C8579":"Nâu tro","#8E9A86":"Xanh olive xám","#E3C67A":"Vàng hoa","#E9E4DA":"Trắng kem","#4A1E28":"Đỏ mận","#8B8546":"Xanh olive"};
 
 /* ===== 8. LOGIC ===== */
 const $=s=>document.querySelector(s);
@@ -601,7 +624,7 @@ function products(){
 function drawer(){
  const L=lines(),total=L.reduce((t,l)=>t+l.price*l.qty,0);
  $("#cnt").textContent=L.reduce((t,l)=>t+l.qty,0);
- $("#drawer").innerHTML=`<div class="dh"><h2>Giỏ hàng</h2><button class="btn light" data-close>Đóng</button></div><div class="db">${L.length?L.map(l=>`<div class="li"><div class="t" style="background:${l.bg}">${l.e}</div><div class="n">${l.n}<small>Size ${l.size}${l.colors.length>1?" · "+(COLOR_NAMES[l.color]||""):""} · ${fmt(l.price)}</small></div><div class="q"><button data-dec="${l.key}" aria-label="Giảm">−</button>${l.qty}<button data-inc="${l.key}" aria-label="Tăng">+</button></div></div>`).join(""):`<p style="color:var(--muted);padding:20px 0">Giỏ hàng đang trống. Chọn size và thêm sản phẩm để bắt đầu.</p>`}</div>`+(L.length?`<div class="df"><div class="tot"><span>Tạm tính</span><span>${fmt(total)}</span></div><button class="btn" style="width:100%" data-pay>Thanh toán</button></div>`:"");
+ $("#drawer").innerHTML=`<div class="dh"><h2>Giỏ hàng</h2><button class="btn light" data-close>Đóng</button></div><div class="db">${L.length?L.map(l=>`<div class="li"><div class="t" style="background:${l.bg}">${l.img?`<img src="${l.img}" alt="">`:l.e}</div><div class="n">${l.n}<small>Size ${l.size}${l.colors.length>1?" · "+(COLOR_NAMES[l.color]||""):""} · ${fmt(l.price)}</small></div><div class="q"><button data-dec="${l.key}" aria-label="Giảm">−</button>${l.qty}<button data-inc="${l.key}" aria-label="Tăng">+</button></div></div>`).join(""):`<p style="color:var(--muted);padding:20px 0">Giỏ hàng đang trống. Chọn size và thêm sản phẩm để bắt đầu.</p>`}</div>`+(L.length?`<div class="df"><div class="tot"><span>Tạm tính</span><span>${fmt(total)}</span></div><button class="btn" style="width:100%" data-pay>Thanh toán</button></div>`:"");
  miniCart();
 }
 const open=()=>{drawer();$("#drawer").classList.add("on");$("#shade").classList.add("on")};
@@ -883,9 +906,9 @@ const BANK={bank:"Ngân hàng ABC",no:"0123 456 789",owner:"CÔNG TY TNHH FAMSTY
 const OKEY="hem-orders",LKEY="hem-last-order";
 let CK={name:"",phone:"",email:"",prov:"",addr:"",note:"",pay:"cod"},CKE={},lastMem=null;
 const lastOrder=()=>{if(lastMem)return lastMem;try{return JSON.parse(localStorage.getItem(LKEY)||"null")}catch(e){return null}};
-const n1=l=>({n:l.n,e:l.e,bg:l.bg,size:l.size,cn:l.colors.length>1?(COLOR_NAMES[l.color]||""):"",qty:l.qty,price:l.price});
+const n1=l=>({n:l.n,e:l.e,bg:l.bg,img:(l.img&&!l.img.startsWith("data:"))?l.img:"",size:l.size,cn:l.colors.length>1?(COLOR_NAMES[l.color]||""):"",qty:l.qty,price:l.price});
 const sums=()=>{const t=lines().reduce((a,l)=>a+l.price*l.qty,0),sh=t===0||t>=FREE_SHIP?0:SHIP_FEE;return {t,sh,total:t+sh}};
-const itemsHTML=L=>L.map(l=>`<div class="sl2"><div class="t" style="background:${l.bg}">${l.e}</div><div class="n"><span style="font-weight:500">${l.n}</span><small>Size ${l.size}${l.cn?" · "+l.cn:""} · SL ${l.qty}</small></div><div>${fmt(l.price*l.qty)}</div></div>`).join("");
+const itemsHTML=L=>L.map(l=>`<div class="sl2"><div class="t" style="background:${l.bg}">${l.img?`<img src="${l.img}" alt="">`:l.e}</div><div class="n"><span style="font-weight:500">${l.n}</span><small>Size ${l.size}${l.cn?" · "+l.cn:""} · SL ${l.qty}</small></div><div>${fmt(l.price*l.qty)}</div></div>`).join("");
 const totalsHTML=s=>`<div class="sm"><span>Tạm tính</span><span>${fmt(s.t)}</span></div><div class="sm"><span>Phí giao hàng</span><span>${s.sh?fmt(s.sh):"Miễn phí"}</span></div><div class="sm t"><span>Tổng cộng</span><span>${fmt(s.total)}</span></div>`;
 const bankHTML=(code,hide)=>`<div class="bankbox" id="bankbox"${hide?" hidden":""}><div><span>Ngân hàng</span><b>${esc(BANK.bank)}</b></div><div><span>Số tài khoản</span><b>${esc(BANK.no)}</b></div><div><span>Chủ tài khoản</span><b>${esc(BANK.owner)}</b></div><div><span>Nội dung chuyển khoản</span><b>${code?esc(code):"Mã đơn hàng (hiện sau khi đặt)"}</b></div></div>`;
 function checkoutPage(){
@@ -957,7 +980,7 @@ document.addEventListener("change",e=>{
 function miniCart(){
  const L=lines(),n=L.reduce((a,l)=>a+l.qty,0),t=L.reduce((a,l)=>a+l.price*l.qty,0);
  $("#cnt").classList.toggle("z",n===0);
- $("#mini").innerHTML=`<div class="mnh">Giỏ hàng</div>`+(L.length?`<div class="mnl">${L.slice(0,4).map(l=>`<div class="mni"><div class="t" style="background:${l.bg}">${l.e}</div><div class="x"><b>${l.n}</b><small>Size ${l.size} · SL ${l.qty}</small></div><span>${fmt(l.price*l.qty)}</span></div>`).join("")}${L.length>4?`<p class="sub" style="font-size:12px;margin:8px 0">và ${L.length-4} sản phẩm khác</p>`:""}</div><div class="mnt"><span>Tạm tính</span><b>${fmt(t)}</b></div><div class="mnb"><button class="btn light" data-editcart>Xem giỏ hàng</button><button class="btn" data-pay>Thanh toán</button></div>`:`<p class="sub" style="padding:14px 16px;margin:0">Chưa có sản phẩm trong giỏ hàng.</p>`);
+ $("#mini").innerHTML=`<div class="mnh">Giỏ hàng</div>`+(L.length?`<div class="mnl">${L.slice(0,4).map(l=>`<div class="mni"><div class="t" style="background:${l.bg}">${l.img?`<img src="${l.img}" alt="">`:l.e}</div><div class="x"><b>${l.n}</b><small>Size ${l.size} · SL ${l.qty}</small></div><span>${fmt(l.price*l.qty)}</span></div>`).join("")}${L.length>4?`<p class="sub" style="font-size:12px;margin:8px 0">và ${L.length-4} sản phẩm khác</p>`:""}</div><div class="mnt"><span>Tạm tính</span><b>${fmt(t)}</b></div><div class="mnb"><button class="btn light" data-editcart>Xem giỏ hàng</button><button class="btn" data-pay>Thanh toán</button></div>`:`<p class="sub" style="padding:14px 16px;margin:0">Chưa có sản phẩm trong giỏ hàng.</p>`);
 }
 miniCart();
 {const cw=$("#cw");   // bấm xong thì đóng mini-cart cho đến khi rời chuột
