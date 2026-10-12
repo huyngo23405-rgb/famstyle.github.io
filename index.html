@@ -513,6 +513,7 @@ const SHIP_FEE=30000;      // phí giao hàng khi đơn chưa đủ mức miễn
 const HERO={title:"Bộ sưu tập Thu Đông 2026",text:"Form rộng, chất liệu dày dặn, màu trung tính dễ phối.",
   bg:"linear-gradient(120deg,#1E2430,#3B4A63)",
   img:"poster.jpg",       // ảnh banner, ví dụ "images/banner.jpg" (cũng dùng làm ảnh chờ khi có video)
+  anim:"",            // (tùy chọn) ảnh động WebP/GIF dùng thay video ở nơi không cho phát video
   video:"banner.mp4",     // (tùy chọn) video banner ngang chạy tự động, ví dụ "video/tvc.mp4"
   videoMobile:"banner-mobile.mp4"};  // (tùy chọn) video dọc cho điện thoại; để trống thì dùng video ngang
 
@@ -635,7 +636,11 @@ if(HERO.video){
  const src=(matchMedia("(max-width:700px)").matches&&HERO.videoMobile)||HERO.video;
  $("#hero").classList.add("vid");
  $("#hero").insertAdjacentHTML("afterbegin",`<video class="bgimg" src="${src}" ${matchMedia("(prefers-reduced-motion:reduce)").matches?"":"autoplay "}muted loop playsinline preload="auto"${HERO.img?` poster="${HERO.img}"`:""}></video><div class="scrim"></div>`);
-}else if(HERO.img)$("#hero").insertAdjacentHTML("afterbegin",`<img class="bgimg" src="${HERO.img}" alt="">`);
+}else if(HERO.anim||HERO.img){
+ const still=matchMedia("(prefers-reduced-motion:reduce)").matches||!HERO.anim;   // giảm chuyển động thì chỉ hiện ảnh tĩnh
+ $("#hero").classList.add("vid");
+ $("#hero").insertAdjacentHTML("afterbegin",`<img class="bgimg" src="${still?(HERO.img||HERO.anim):HERO.anim}" alt=""><div class="scrim"></div>`);
+}
 $("#featM").style.background=FEATURE.bg;$("#featM").innerHTML=media(FEATURE);$("#featT").textContent=FEATURE.title;$("#featP").textContent=FEATURE.text;
 $("#colls").innerHTML=COLLS.map(c=>`<a class="cc" href="#/bo-suu-tap/${c.slug}"><div class="ph" style="background:${c.bg}">${media(c)}</div><div class="cap">${c.n}</div><small class="sub">${P.filter(p=>p.col===c.slug).length} sản phẩm</small></a>`).join("");
 /* ===== 9. TRANG CHI TIẾT SẢN PHẨM (địa chỉ dạng #/san-pham/1) ===== */
