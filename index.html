@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Famstyle – Thời trang</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64.00 64%22 role=%22img%22 aria-label=%22Famstyle icon%22%3E%3Ctitle%3EFamstyle icon%3C/title%3E%3Crect width=%2264%22 height=%2264%22 rx=%2212%22 fill=%22%23111318%22/%3E%3Cg transform=%22translate%2832 32%29 scale%28.8%29 translate%28-32 -32%29%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%224.2%22%3E%3Cpath stroke=%22%23fff%22 d=%22M32 35V29c0-2.6 5.8-3.2 5.8-9.2a5.8 5.8 0 1 0-11.6 0%22/%3E%3Cpath stroke=%22%23fff%22 d=%22M10 50 32 35l22 15%22/%3E%3Cpath stroke=%22%23B8975A%22 d=%22M10 50h44%22/%3E%3C/g%3E%3C/svg%3E">
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 <style>
 /* ===== 1. MÀU SẮC: đổi ở đây để đổi toàn trang ===== */
 :root{--bg:#fff;--ink:#111;--muted:#777;--line:#E6E6E6;--soft:#F6F6F6;--star:#F2A900;--hover:#2347E8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -506,6 +506,60 @@ button[data-add]:active,button[data-dadd]:active,button[data-qvadd]:active{trans
 .mml details details{margin-left:12px;border-bottom:0}.mml details details summary{font-size:14px}
 @media(prefers-reduced-motion:reduce){button[data-add]:hover,button[data-dadd]:hover,button[data-qvadd]:hover{transform:none}.cart-plus{animation:none}}
 
+
+/* Refined editorial home sections */
+#featured{padding:80px 0 72px;background:#fff}
+#coll{padding:78px 0 88px;background:#f5f3ef;border-top:1px solid #e8e4dc}
+#featured .editorial-heading,#coll .editorial-heading{display:flex;align-items:flex-end;justify-content:space-between;text-align:left;gap:28px;margin-bottom:38px}
+.eyebrow{display:block;font-size:10px;font-weight:500;letter-spacing:2.6px;color:#9b8152;margin-bottom:13px}
+#featured .sh h2,#coll .sh h2{font-size:clamp(28px,3.4vw,42px);font-weight:400;line-height:1.3;letter-spacing:-1.5px;text-transform:none;color:#28251f}
+.heading-dot{color:#a68c60}
+.editorial-heading p{font-size:12px;line-height:1.9;color:#827c72;margin:0 0 4px;max-width:310px}
+#featured .fgrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:36px 22px}
+#featured .fp{min-width:0}
+#featured .fim{background:#f1efeb!important;aspect-ratio:3/4;border-radius:2px}
+#featured .f1,#featured .f2{transition:opacity .5s ease,transform .7s ease}
+#featured .fp:hover .f2{transform:scale(1.035)}
+#featured .fn{margin-top:17px;font-size:13px;line-height:1.7;min-height:44px;font-weight:400;color:#37332d}
+#featured .fn a:hover{color:#8c734c;text-decoration:none}
+#featured .fpr{margin-top:6px;font-size:13px;font-weight:500;color:#25221c;letter-spacing:.2px}
+#featured .fic{top:12px;right:12px;gap:7px}
+#featured .fic button{width:35px;height:35px;background:#ffffffed;box-shadow:0 3px 12px #29221a0c;border:1px solid #e8e3da}
+#featured .fic button:hover{background:#302b24;color:#fff;transform:translateY(-3px)}
+#featured .fmore{margin-top:42px}
+.editorial-link{display:inline-flex;align-items:center;gap:30px;border-bottom:1px solid #aaa090;padding:10px 0;color:#51493c;font-size:12px;text-decoration:none;transition:color .2s,gap .2s}
+.editorial-link:hover{gap:40px;color:#9b8152}
+.editorial-link span{font-size:20px}
+.product-art{width:72%;height:72%;color:#9c9487;filter:drop-shadow(0 12px 10px #534b3410)}
+.art-fallback{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.art-label{position:absolute;bottom:18px;left:0;right:0;text-align:center;font-size:8px;letter-spacing:2px;color:#9b9386;font-weight:400}
+.editorial-photo{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover}
+.collection-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+.collection-card{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:335px;text-decoration:none;color:#2e2a23;background:#ebe6de;overflow:hidden;border:1px solid #e4ded3;transition:box-shadow .3s,transform .3s}
+.collection-card:nth-child(2){background:#e8e9e3}.collection-card:nth-child(3){background:#eee4df}.collection-card:nth-child(4){background:#e4e9e8}
+.collection-copy{position:relative;z-index:2;padding:30px 0 30px 28px;display:flex;flex-direction:column;align-items:flex-start}
+.collection-number{font-size:10px;letter-spacing:2px;color:#8c8170;margin-bottom:33px}
+.collection-copy h3{font-family:Georgia,'Times New Roman',serif;font-size:32px;line-height:1.13;font-weight:400;letter-spacing:-.6px;margin:0 0 14px}
+.collection-copy p{font-size:11px;line-height:1.8;color:#746c60;max-width:210px;margin:0 0 22px}
+.collection-cta{display:flex;align-items:center;gap:16px;font-size:10px;text-transform:uppercase;letter-spacing:1px;margin-top:auto;border-bottom:1px solid #a99c87;padding-bottom:7px}
+.collection-cta span{font-size:19px;transition:transform .3s}.collection-card:hover .collection-cta span{transform:translateX(5px)}
+.collection-visual{position:relative;overflow:hidden;min-width:0;margin:18px 18px 18px 14px;background:#ffffff30}
+.collection-visual img{transition:transform .7s ease}.collection-card:hover .collection-visual img{transform:scale(1.04)}
+.collection-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px #3c332914}
+.collection-visual .product-art{width:90%;height:80%;opacity:.7}
+.collection-card:focus-visible{outline:2px solid #9b8152;outline-offset:4px}
+@media(max-width:900px){#featured .fgrid{gap:28px 16px}.collection-copy{padding:24px 0 24px 20px}.collection-copy h3{font-size:27px}.collection-card{min-height:300px}.collection-number{margin-bottom:24px}.collection-visual{margin:14px 14px 14px 10px}}
+@media(max-width:700px){#featured,#coll{padding:45px 0}#featured .editorial-heading,#coll .editorial-heading{display:block;margin-bottom:26px}.editorial-heading p{margin-top:15px;font-size:11px}.editorial-heading p br{display:none}#featured .sh h2,#coll .sh h2{font-size:30px;letter-spacing:-1px}#featured .fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 14px}#featured .fn{font-size:12px;margin-top:12px}#featured .fpr{font-size:12px}.collection-grid{grid-template-columns:1fr;gap:18px}.collection-card{min-height:310px}.collection-copy h3{font-size:32px}.collection-copy{padding:26px 0 26px 24px}.art-label{font-size:7px;letter-spacing:1px}}
+@media(prefers-reduced-motion:reduce){.collection-card:hover,#featured .fp:hover .f2,.collection-card:hover .collection-visual img{transform:none}}
+
+/* Typography for the Autumn/Winter collection */
+#heroT,
+.collection-card[href="#/bo-suu-tap/thu-dong-2026"] .collection-copy h3{
+ font-family:"Playfair Display",Georgia,"Times New Roman",serif;
+ font-weight:500;
+ letter-spacing:-.35px;
+ line-height:1.25;
+}
 </style>
 </head>
 <body>
@@ -533,14 +587,9 @@ button[data-add]:active,button[data-dadd]:active,button[data-qvadd]:active{trans
 </div>
 
 <section id="featured"><div class="wrap">
-  <div class="sh"><h2>Sản phẩm nổi bật</h2></div>
+  <div class="sh editorial-heading"><div><span class="eyebrow">FAMSTYLE SELECTION</span><h2>Sản phẩm nổi bật<span class="heading-dot">.</span></h2></div><p>Những thiết kế được chọn lọc,<br>cho phong cách riêng của bạn.</p></div>
   <div class="fgrid" id="fgrid"></div>
-  <div class="fmore"><a class="btn" href="#/danh-muc/tat-ca">Xem thêm</a></div>
-</div></section>
-
-<section id="cats"><div class="wrap">
-  <div class="sh"><h2>Danh mục</h2><a class="btn" href="#/danh-muc/tat-ca">Xem tất cả</a></div>
-  <div class="cgrid" id="catTiles"></div>
+  <div class="fmore"><a class="editorial-link" href="#/danh-muc/tat-ca">Khám phá tất cả sản phẩm <span aria-hidden="true">↗</span></a></div>
 </div></section>
 
 <div class="feat"><div class="wrap">
@@ -549,8 +598,8 @@ button[data-add]:active,button[data-dadd]:active,button[data-qvadd]:active{trans
 </div></div>
 
 <section id="coll"><div class="wrap">
-  <div class="sh"><h2>Our collection</h2><a class="btn" href="#">Xem tất cả</a></div>
-  <div class="slide" id="colls"></div>
+  <div class="sh editorial-heading"><div><span class="eyebrow">THE FAMSTYLE EDIT</span><h2>Bộ sưu tập<span class="heading-dot">.</span></h2></div><p>Mỗi bộ sưu tập, một nguồn cảm hứng.<br>Tìm cách kể câu chuyện của bạn.</p></div>
+  <div class="collection-grid" id="colls"></div>
 </div></section>
 
 </div>
@@ -559,8 +608,8 @@ button[data-add]:active,button[data-dadd]:active,button[data-qvadd]:active{trans
 <footer><div class="wrap">
   <div><svg class="lg f" viewBox="0 0 321.28 64" role="img" aria-label="Famstyle"><use href="#fam-logo"/></svg><p id="ftag"></p></div>
   <div><b>Liên hệ</b><p>Hotline</p><p>1900 000 000</p></div>
-  <div><b>Cửa hàng</b><p>123 Đường ABC, Quận 123</p><p>TP. Hà Nội</p></div>
-  <div><b>Hỗ trợ</b><p>Chính sách hoàn trả</p><p>Hướng dẫn chọn size</p></div>
+  <div><b>Cửa hàng</b><p>123 Đường ABC, Quận 1</p><p>TP. Hồ Chí Minh</p></div>
+  <div><b>Hỗ trợ</b><p>Chính sách đổi trả</p><p>Hướng dẫn chọn size</p></div>
 </div></footer>
 
 <div class="mmx" id="mmx"></div>
@@ -681,14 +730,24 @@ const card=p=>`<article class="pc" data-pid="${p.id}">
 const FEATURED=[1,6,5,2,16,20,9,17];
 const ICO_BAG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V7a3 3 0 0 1 6 0v1"/></svg>';
 const ICO_EYE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>';
+/* Vector placeholders keep the layout polished until product photography is supplied. */
+function productArt(p){
+ const shapes={
+  'quan':'<path d="M68 38h104l10 166h-45l-17-112-17 112H58z"/><path d="M68 54h104M120 54v38M79 58q0 22-15 25M161 58q0 22 15 25"/>',
+  'vay':'<path d="m100 35-20 12 14 52-42 103q68 24 136 0L146 99l14-52-20-12q-20 25-40 0z"/><path d="M94 99h52M105 112l-15 87M135 112l15 87"/>',
+  'ao-khoac':'<path d="m93 38-38 21-25 93 32 10 19-57-4 103h86l-4-103 19 57 32-10-25-93-38-21-27 17z"/><path d="m93 38 27 17-19 28-13-34m59-11-27 17 19 28 13-34M120 55v153M86 146h23v27H86m45-27h23v27h-23"/>',
+  'ao':'<path d="m91 39-37 18-29 57 35 19 21-32-4 105h86l-4-105 21 32 35-19-29-57-37-18q-29 34-58 0z"/><path d="M91 39q29 55 58 0M80 194h80"/>',
+  'phu-kien':'<path d="M64 83h112l-8 119H72z"/><path d="M92 89V60a28 28 0 0 1 56 0v29M82 190h76"/>'};
+ return `<svg class="product-art" viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true">${shapes[p.cat]||shapes.ao}</svg>`;
+}
+function editorialMedia(p,src){return `<div class="art-fallback">${productArt(p)}<span class="art-label">FAMSTYLE · ẢNH ĐANG CẬP NHẬT</span></div>${src?`<img class="editorial-photo" src="${src}" alt="${p.n}" loading="lazy" onerror="this.remove()">`:''}`}
 function products(){
  $("#fgrid").innerHTML=FEATURED.map(id=>P.find(x=>x.id===id)).filter(Boolean).map(p=>{
-  const g=gallery(p),a=g[0],b=g[1]||g[0],lay=x=>x.img?`<img src="${x.img}" alt="">`:`<span style="transform:${x.t||"none"}">${p.e}</span>`;
+  const g=gallery(p),a=g[0],b=g[1]||g[0],lay=x=>editorialMedia(p,x.img);
   return `<article class="fp"><div class="fim" style="background:${p.bg}">
    <a class="fl" href="#/san-pham/${p.id}" aria-label="Xem ${p.n}"><div class="f1">${lay(a)}</div><div class="f2">${lay(b)}</div></a>
    ${p.old?`<span class="ftag">-${Math.round(100-p.price/p.old*100)}%</span>`:""}
    <div class="fic"><button data-qa="${p.id}|${defSize(p)}" aria-label="Thêm nhanh vào giỏ hàng">${ICO_BAG}</button><button data-qv="${p.id}" aria-label="Xem nhanh sản phẩm">${ICO_EYE}</button></div>
-   <div class="fq"><span>Thêm nhanh vào giỏ hàng +</span><div>${p.sizes.map(z=>`<button data-qa="${p.id}|${z}">${z}</button>`).join("")}</div></div>
   </div>
   <div class="fn"><a href="#/san-pham/${p.id}">${p.n}</a></div>
   <div class="fpr">${fmt(p.price)}${p.old?`<s>${fmt(p.old)}</s>`:""}</div></article>`;
@@ -744,7 +803,8 @@ if(HERO.video){
  $("#hero").insertAdjacentHTML("afterbegin",`<img class="bgimg" src="${still?(HERO.img||HERO.anim):HERO.anim}" alt=""><div class="scrim"></div>`);
 }
 $("#featM").style.background=FEATURE.bg;$("#featM").innerHTML=media(FEATURE);$("#featT").textContent=FEATURE.title;$("#featP").textContent=FEATURE.text;
-$("#colls").innerHTML=COLLS.map(c=>`<a class="cc" href="#/bo-suu-tap/${c.slug}"><div class="ph" style="background:${c.bg}">${media(c)}</div><div class="cap">${c.n}</div><small class="sub">${P.filter(p=>p.col===c.slug).length} sản phẩm</small></a>`).join("");
+const collectionNotes=['Sắc trầm ấm áp, phom dáng thoải mái cho những ngày se lạnh.','Những thiết kế đánh dấu hành trình và cá tính Famstyle.','Tự do phối màu. Tự tin thể hiện chất riêng.','Chất liệu nhẹ nhàng, sắc màu tươi mới cho ngày nắng.'];
+$("#colls").innerHTML=COLLS.map((c,i)=>{const p=P.find(p=>p.col===c.slug&&p.img)||P.find(p=>p.col===c.slug);return `<a class="collection-card" href="#/bo-suu-tap/${c.slug}"><div class="collection-copy"><span class="collection-number">BỘ SƯU TẬP / 0${i+1}</span><h3>${c.n.replace(/^Bộ sưu tập /,'')}</h3><p>${collectionNotes[i]}</p><div class="collection-cta">Khám phá <span aria-hidden="true">↗</span></div></div><div class="collection-visual">${editorialMedia(p,c.img||p.img)}</div></a>`}).join('');
 /* ===== 9. TRANG CHI TIẾT SẢN PHẨM (địa chỉ dạng #/san-pham/1) ===== */
 let cur=null,sel={size:"",col:0,qty:1},ccur="tat-ca",csort="",colcur="",csub="";
 const defSize=p=>p.sizes.includes("M")?"M":p.sizes[0];
@@ -833,7 +893,6 @@ document.querySelectorAll(".dd").forEach(dd=>{
  dd.addEventListener("click",e=>{const a=e.target.closest(".panel a");if(a){a.blur();dd.classList.add("shut")}});
  dd.addEventListener("mouseleave",()=>dd.classList.remove("shut"));
 });
-$("#catTiles").innerHTML=CATS.map(c=>`<a class="ctile" href="#/danh-muc/${c.slug}" style="background:${c.bg}"><span class="ce">${media(c)}</span><b>${c.n}</b><small>${P.filter(p=>p.cat===c.slug).length} sản phẩm</small></a>`).join("");
 window.addEventListener("hashchange",route);
 /* ===== 10. PREVIEW KHI DI CHUỘT VÀO SẢN PHẨM (chỉ chạy trên thiết bị có chuột) ===== */
 /* Thư viện ảnh của sản phẩm: dùng imgs (nhiều ảnh) hoặc img (một ảnh).
@@ -1171,7 +1230,7 @@ topB.addEventListener("click",()=>scrollTo({top:0,behavior:calm?"auto":"smooth"}
 function reveal(){
  if(calm||!("IntersectionObserver" in window))return;
  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}}),{threshold:.12,rootMargin:"0px 0px -6% 0px"});
- ["#featured .sh","#fgrid .fp","#featured .fmore","#cats .sh","#coll .sh","#catTiles .ctile",".feat .wrap>*","#colls>*","footer .wrap>*"].forEach(sel=>
+ ["#featured .sh","#fgrid .fp","#featured .fmore","#coll .sh",".feat .wrap>*","#colls>*","footer .wrap>*"].forEach(sel=>
   document.querySelectorAll(sel).forEach((el,i)=>{el.classList.add("rvl");el.style.setProperty("--d",(i%4)*90+"ms");io.observe(el)}));
 }
 products();
