@@ -560,6 +560,30 @@ button[data-add]:active,button[data-dadd]:active,button[data-qvadd]:active{trans
  letter-spacing:-.35px;
  line-height:1.25;
 }
+
+/* Offers share the warm, understated visual language of the shop. */
+.pc .im{position:relative}
+.sale-badge{position:absolute;top:12px;left:12px;z-index:2;background:#72533b;color:#fff;padding:5px 9px;font-size:11px;line-height:1.4;font-weight:500;letter-spacing:.3px;pointer-events:none}
+.sale-price{color:#805139;font-weight:600}.old-price{font-size:11px;font-weight:400;color:#928b82;margin-left:6px;white-space:nowrap}
+.dpr .old-price{font-size:14px}.sale-saving{font-size:12px;color:#805139;margin:0 0 16px}
+.offers-nav{color:#987444;font-weight:500}
+.offers-strip{display:flex;align-items:center;justify-content:space-between;gap:20px;text-decoration:none;background:#eee8de;border:1px solid #e2d9ca;padding:28px 32px;margin:0 0 48px;color:#4a3d2d}
+.offers-strip .eyebrow{margin-bottom:8px}.offers-strip strong{font-size:18px;font-weight:400}.offers-strip-cta{font-size:12px;white-space:nowrap}.offers-strip-cta span{display:inline-block;font-size:22px;margin-left:16px;transition:transform .2s}.offers-strip:hover .offers-strip-cta span{transform:translate(3px,-3px)}
+.offers-hero{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:45px;background:#f2ede5;border:1px solid #e5ddd1;margin-bottom:30px}
+.offers-hero h1{font-family:"Playfair Display",Georgia,serif;font-weight:500;font-size:clamp(28px,4vw,44px);line-height:1.25;margin:0 0 16px;color:#3e352a}
+.offers-hero p{font-size:13px;line-height:1.8;color:#857967;margin:0}
+.offers-rate{text-align:center;flex-shrink:0;padding:12px 0 12px 38px;border-left:1px solid #d8cbb6}
+.offers-rate>span{font-size:10px;letter-spacing:2px}.offers-rate strong{display:block;font-family:Georgia,serif;font-size:74px;font-weight:400;line-height:1.2;color:#977248}.offers-rate small{font-size:10px;color:#857967}
+.offers-tools{align-items:center}.offers-count{margin-left:auto;color:#8d8376;font-size:11px}.offers-grid{margin-bottom:50px}
+@media(max-width:700px){.offers-hero{padding:26px 22px;align-items:flex-start;flex-direction:column}.offers-rate{border-left:0;border-top:1px solid #d8cbb6;padding:18px 0 0;width:100%;text-align:left}.offers-rate strong{font-size:52px}.offers-strip{padding:22px;align-items:flex-start;flex-direction:column;margin-bottom:32px}.offers-strip strong{font-size:16px}.offers-count{margin-left:0}.offers-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.offers-grid .pc{padding:10px}.offers-grid .im{font-size:56px}.offers-grid .pr{display:flex;flex-wrap:wrap;gap:4px}.offers-grid .old-price{margin-left:0}.offers-grid .sale-badge{top:7px;left:7px}}
+
+
+.product-offers{display:flex;justify-content:space-between;align-items:center;gap:20px;margin:22px 0 26px;padding:24px 28px;border:1px solid #e3d8c8;background:#f6f1e9;color:#63513a}
+.product-offers .eyebrow{margin-bottom:8px}.product-offers p{margin:0;font-size:12px;line-height:1.7}.product-offers strong{font-weight:500}
+.product-offer-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap}.product-offer-actions a{font-size:11px;color:#826a47;text-underline-offset:4px}
+.sale-filter{display:inline-flex;gap:12px;align-items:center;background:#fff;border:1px solid #b49a76;padding:11px 16px;font-size:12px;color:#725737;cursor:pointer;transition:background .2s,color .2s}
+.sale-filter span{font-size:10px;min-width:21px;padding:2px 4px;background:#ede5d8;color:#725737;border-radius:20px}.sale-filter[aria-pressed="true"]{background:#725737;color:#fff}.sale-filter:hover{box-shadow:0 3px 12px #72573715}
+@media(max-width:700px){.product-offers{align-items:flex-start;flex-direction:column;padding:20px}.product-offer-actions{gap:14px}}
 </style>
 </head>
 <body>
@@ -592,6 +616,8 @@ button[data-add]:active,button[data-dadd]:active,button[data-qvadd]:active{trans
   <div class="fmore"><a class="editorial-link" href="#/danh-muc/tat-ca">Khám phá tất cả sản phẩm <span aria-hidden="true">↗</span></a></div>
 </div></section>
 
+<div class="wrap"><a class="offers-strip" href="#/uu-dai"><div><span class="eyebrow">FAMSTYLE OFFERS</span><strong>Thiết kế yêu thích, giá thêm hấp dẫn.</strong></div><span class="offers-strip-cta">Khám phá ưu đãi <span aria-hidden="true">↗</span></span></a></div>
+
 <div class="feat"><div class="wrap">
   <div class="ph" id="featM"></div>
   <div><h3 id="featT"></h3><p id="featP"></p><a class="btn" href="#">XEM THÊM</a></div>
@@ -608,7 +634,7 @@ button[data-add]:active,button[data-dadd]:active,button[data-qvadd]:active{trans
 <footer><div class="wrap">
   <div><svg class="lg f" viewBox="0 0 321.28 64" role="img" aria-label="Famstyle"><use href="#fam-logo"/></svg><p id="ftag"></p></div>
   <div><b>Liên hệ</b><p>Hotline</p><p>1900 000 000</p></div>
-  <div><b>Cửa hàng</b><p>123 Đường ABC, Phường ABC </p><p>TP. Hà Nội</p></div>
+  <div><b>Cửa hàng</b><p>123 Đường ABC, Quận 1</p><p>TP. Hồ Chí Minh</p></div>
   <div><b>Hỗ trợ</b><p>Chính sách đổi trả</p><p>Hướng dẫn chọn size</p></div>
 </div></footer>
 
@@ -642,6 +668,8 @@ const P=[
  {id:23,sub:"ao-len",col:"thu-dong-2026",cat:"ao",desc:"Áo thun tay ngắn dệt kim màu nâu đậm, cổ tròn gọn gàng, bề mặt dệt có họa tiết nhẹ. Dễ phối với quần tây hoặc quần ống rộng.",n:"Áo thun dệt kim nâu",price:359000,tag:"",sizes:["S","M","L","XL"],colors:["#3B2A24"],r:0,bg:"#ECECEE",e:"👕",img:"images/p01.jpg"},
  {id:24,sub:"vay-midi",col:"xuan-he-2026",cat:"vay",desc:"Váy midi phối hai màu: thân trên đen tay ngắn, chân váy xòe màu xanh rêu có túi. Đứng form, dễ mặc đi làm và dạo phố.",n:"Váy midi phối đen và xanh rêu",price:589000,tag:"",sizes:["S","M","L"],colors:["#9AA58A"],r:0,bg:"#E9ECEF",e:"👕",img:"images/p02.jpg"},
  {id:25,sub:"vay-midi",col:"ky-niem-4-nam",cat:"vay",desc:"Set gồm áo vest đen sát nách cài một cúc và chân váy xếp tầng bất đối xứng, nhẹ nhàng và thanh lịch.",n:"Set vest đen và chân váy xếp tầng",price:790000,tag:"",sizes:["S","M","L"],colors:["#111"],r:0,bg:"#E9E1D6",e:"👕",img:"images/p03.jpg"},
+ {id:26,sub:"quan-cargo",col:"share-your-color",cat:"quan",desc:"Quần nỉ ống rộng màu xám tro, cạp thun có dây rút, túi hai bên. Thoải mái cho ngày cuối tuần.",n:"Quần nỉ ống rộng xám",price:399000,tag:"",sizes:["S","M","L","XL"],colors:["#8A8F98"],r:0,bg:"#E6E8EA",e:"👕",img:"images/p04.jpg"},
+ {id:27,sub:"quan-cargo",col:"share-your-color",cat:"quan",desc:"Quần ống rộng màu đen, cạp thun có dây rút đầu kim loại, dáng suông đứng. Phối với áo thun hay áo nỉ đều gọn.",n:"Quần ống rộng đen cạp dây rút",price:399000,tag:"",sizes:["S","M","L","XL"],colors:["#111"],r:0,bg:"#E6E8EA",e:"👕",imgs:["images/p05.jpg","images/p16.jpg"]},
  {id:28,sub:"quan-tay",col:"xuan-he-2026",cat:"quan",desc:"Quần ống rộng màu trắng, lưng cao, túi chéo hai bên. Hợp với áo thun kẻ sọc khi đi dạo phố hay đi làm.",n:"Quần ống rộng trắng",price:459000,tag:"",sizes:["S","M","L"],colors:["#fff"],r:0,bg:"#E9ECEF",e:"👕",img:"images/p06.jpg"},
  {id:29,sub:"jacket",col:"thu-dong-2026",cat:"ao-khoac",desc:"Áo jacket màu nâu bò, cổ bẻ, khóa kéo giấu và hai túi hông. Dáng ngắn gọn gàng, ấm vừa phải.",n:"Áo jacket da lộn nâu bò",price:759000,tag:"",sizes:["S","M","L","XL"],colors:["#8A5A32"],r:0,bg:"#ECECEE",e:"👕",img:"images/p07.jpg"},
  {id:30,sub:"jacket",col:"thu-dong-2026",cat:"ao-khoac",desc:"Áo jacket denim xanh đậm với đường chỉ nổi, cài cúc kim loại. Dễ phối và bền theo thời gian.",n:"Áo jacket denim xanh đậm",price:659000,tag:"",sizes:["S","M","L","XL"],colors:["#27324A"],r:0,bg:"#E8E8EA",e:"👕",img:"images/p08.jpg"},
@@ -679,12 +707,20 @@ const P=[
  {id:21,sub:"tui",col:"share-your-color",cat:"phu-kien",desc:"Túi tote vải canvas dày, quai dài đeo vai, đựng vừa laptop 14 inch.",n:"Túi tote canvas",price:159000,tag:"",sizes:["Free size"],colors:["#B9A98C","#111"],r:5,bg:"#F0EBE0",e:"👜",img:""},
  {id:22,sub:"that-lung",col:"ky-niem-4-nam",cat:"phu-kien",desc:"Thắt lưng da bản vừa, khóa kim loại mờ, dùng được với cả quần jeans và quần tây.",n:"Thắt lưng da trơn",price:249000,tag:"",sizes:["Free size"],colors:["#111"],r:0,bg:"#E5E5EA",e:"🧵",img:""}
 ];
+/* Ưu đãi: sửa phần trăm theo ID sản phẩm ở đây; giá gốc giữ trong old. */
+const OFFERS={1:20,5:10,17:15,10:20,35:10,34:20};
+P.forEach(p=>{const percent=OFFERS[p.id];if(percent){p.old=p.price;p.price=Math.round(p.old*(100-percent)/100)}});
+const onSale=p=>Number.isFinite(p.old)&&p.old>p.price;
+const discountPercent=p=>Math.round((p.old-p.price)/p.old*100);
+const priceHTML=p=>`<span class="${onSale(p)?'sale-price':''}">${fmt(p.price)}</span>${onSale(p)?` <s class="old-price" aria-label="Giá gốc ${fmt(p.old)}">${fmt(p.old)}</s>`:''}`;
+const saleBadge=p=>onSale(p)?`<span class="sale-badge">−${discountPercent(p)}%</span>`:'';
 /* Phân loại có thể chỉnh riêng: gender = "nam", "nu" hoặc "unisex".
    Đây là phân loại biên tập từ tên/mô tả hiện có; kiểm tra lại khi có ảnh sản phẩm. */
 const PRODUCT_GENDER={1:"unisex",2:"nam",3:"unisex",4:"unisex",5:"unisex",6:"nam",7:"nam",8:"unisex",9:"unisex",10:"nu",11:"nam",12:"nu",13:"unisex",14:"unisex",15:"nam",16:"unisex",17:"nam",18:"nam",19:"nu",20:"unisex",21:"unisex",22:"unisex",23:"nam",24:"nu",25:"nu",26:"unisex",27:"unisex",28:"nu",29:"nam",30:"nam",31:"nam",32:"nam",33:"nam",34:"nu",35:"nu",36:"nu",37:"nu",38:"unisex",39:"nu",40:"nu"};
 P.forEach(p=>p.gender=p.gender||PRODUCT_GENDER[p.id]||"unisex");
 const inGender=(p,g)=>p.gender===g||p.gender==="unisex";
 const genderURL=(g,c='',sub='')=>`#/san-pham-${g}${c?'/'+c:''}${sub?'/'+sub:''}`;
+const genderCategoryName=(g,c)=>g==="nu"&&c.slug==="quan"?"Quần nữ":c.n;
 const genderCategories=g=>CATS.filter(c=>P.some(p=>inGender(p,g)&&p.cat===c.slug));
 const genderSubs=(g,c)=>c.subs.filter(sub=>P.some(p=>inGender(p,g)&&p.cat===c.slug&&p.sub===sub.slug));
 P.forEach(p=>{if(!p.img&&p.imgs&&p.imgs[0])p.img=p.imgs[0]});   // ảnh đại diện = ảnh đầu tiên
@@ -720,8 +756,8 @@ const lines=()=>Object.keys(cart).map(k=>{const [id,s,c]=k.split("|"),p=P.find(x
 function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("on"),1800)}
 
 const card=p=>`<article class="pc" data-pid="${p.id}">
-  <a class="im" href="#/san-pham/${p.id}" style="background:${p.bg}" aria-label="Xem chi tiết ${p.n}">${media(p)}</a>
-  <div class="nm"><a href="#/san-pham/${p.id}">${p.n}</a></div><div class="st" aria-label="${rating(p)} sao">${stars(rating(p))}</div><div class="pr">${fmt(p.price)}</div>
+  <a class="im" href="#/san-pham/${p.id}" style="background:${p.bg}" aria-label="Xem chi tiết ${p.n}">${media(p)}${saleBadge(p)}</a>
+  <div class="nm"><a href="#/san-pham/${p.id}">${p.n}</a></div><div class="st" aria-label="${rating(p)} sao">${stars(rating(p))}</div><div class="pr">${priceHTML(p)}</div>
   <div class="add"><button class="btn" data-add="${p.id}">Thêm vào giỏ</button></div>
  </article>`;
 /* ===== SẢN PHẨM NỔI BẬT: đổi danh sách id ở đây (id nằm trong mảng P) ===== */
@@ -744,11 +780,11 @@ function products(){
   const g=gallery(p),a=g[0],b=g[1]||g[0],lay=x=>editorialMedia(p,x.img);
   return `<article class="fp"><div class="fim" style="background:${p.bg}">
    <a class="fl" href="#/san-pham/${p.id}" aria-label="Xem ${p.n}"><div class="f1">${lay(a)}</div><div class="f2">${lay(b)}</div></a>
-   ${p.old?`<span class="ftag">-${Math.round(100-p.price/p.old*100)}%</span>`:""}
+   ${saleBadge(p)}
    <div class="fic"><button data-qa="${p.id}|${defSize(p)}" aria-label="Thêm nhanh vào giỏ hàng">${ICO_BAG}</button><button data-qv="${p.id}" aria-label="Xem nhanh sản phẩm">${ICO_EYE}</button></div>
   </div>
   <div class="fn"><a href="#/san-pham/${p.id}">${p.n}</a></div>
-  <div class="fpr">${fmt(p.price)}${p.old?`<s>${fmt(p.old)}</s>`:""}</div></article>`;
+  <div class="fpr">${priceHTML(p)}</div></article>`;
  }).join("");
 }
 let cartReturnFocus=null;
@@ -816,7 +852,7 @@ function detail(){
  const p=cur,more=P.filter(x=>x.id!==p.id).slice(0,4);
  $("#detail").innerHTML=`<a class="back" href="#featured">← Quay lại sản phẩm</a>
  <div class="dg"><div class="dim" style="background:${p.bg}">${media(p)}</div>
- <div class="di"><h1>${p.n}</h1><div class="st">${(a=>a.n?stars(Math.round(a.avg))+" "+a.avg.toFixed(1)+"/5 ("+a.n+" đánh giá)":"Chưa có đánh giá")(avg(p))}</div><div class="dpr">${fmt(p.price)}</div>
+ <div class="di"><h1>${p.n}</h1><div class="st">${(a=>a.n?stars(Math.round(a.avg))+" "+a.avg.toFixed(1)+"/5 ("+a.n+" đánh giá)":"Chưa có đánh giá")(avg(p))}</div><div class="dpr">${priceHTML(p)}</div>${onSale(p)?`<p class="sale-saving">Ưu đãi ${discountPercent(p)}% · Tiết kiệm ${fmt(p.old-p.price)}</p>`:""}
  <p>${p.desc||""}</p>
  ${p.colors.length>1?`<b>Màu sắc: ${COLOR_NAMES[p.colors[sel.col]]||""}</b><div class="opts">${p.colors.map((c,i)=>`<button class="col" style="background:${c}" data-dcol="${i}" aria-pressed="${i===sel.col}" aria-label="${COLOR_NAMES[c]||"Màu "+(i+1)}"></button>`).join("")}</div>`:""}
  <b>Kích thước</b><div class="opts">${p.sizes.map(s=>`<button class="sz" data-dsize="${s}" aria-pressed="${s===sel.size}">${s}</button>`).join("")}</div>
@@ -825,17 +861,32 @@ function detail(){
  <ul class="spec"><li>Giao hàng toàn quốc, thanh toán khi nhận hàng</li><li>Đổi size trong 7 ngày nếu chưa sử dụng</li></ul></div></div>
  ${reviewsHTML(p)}<div class="more"><div class="sh"><h2>Có thể bạn cũng thích</h2></div><div class="row">${more.map(m=>`<article class="pc" data-pid="${m.id}"><a class="im" href="#/san-pham/${m.id}" style="background:${m.bg}">${media(m)}</a><div class="nm"><a href="#/san-pham/${m.id}">${m.n}</a></div><div class="pr">${fmt(m.price)}</div></article>`).join("")}</div></div>`;
 }
+let productSaleOnly=false;
+function productOffersHTML(pool){
+ const count=pool.filter(onSale).length;
+ return `<div class="product-offers"><div><span class="eyebrow">ƯU ĐÃI SẢN PHẨM</span><p>${count?`Có <strong>${count} sản phẩm</strong> đang giảm giá trong nhóm này.`:'Hiện chưa có sản phẩm giảm giá trong nhóm này.'}</p></div><div class="product-offer-actions"><button class="sale-filter" data-sale-filter aria-pressed="${productSaleOnly}">${productSaleOnly?'✓ Đang ưu đãi':'Đang ưu đãi'} <span>${count}</span></button><a href="#/uu-dai">Xem tất cả ưu đãi ↗</a></div></div>`;
+}
+function renderProductListing(){if(/^#\/san-pham-(nam|nu)/.test(location.hash))genderPage();else if(location.hash.startsWith('#/bo-suu-tap/'))colPage();else catPage()}
+document.addEventListener('click',e=>{if(!e.target.closest('[data-sale-filter]'))return;productSaleOnly=!productSaleOnly;renderProductListing();$('#catpage [data-sale-filter]').focus()});
+function offersPage(){
+ const g=(location.hash.match(/^#\/uu-dai\/(nam|nu)$/)||[])[1]||'';
+ const items=P.filter(p=>onSale(p)&&(!g||inGender(p,g)));
+ if(csort==='asc')items.sort((a,b)=>a.price-b.price);if(csort==='desc')items.sort((a,b)=>b.price-a.price);
+ const maxDiscount=Math.max(0,...P.filter(onSale).map(discountPercent));
+ $('#catpage').innerHTML=`<a class="back" href="#">← Trang chủ</a><div class="offers-hero"><div><span class="eyebrow">FAMSTYLE / SPECIAL OFFERS</span><h1>Phong cách yêu thích.<br>Mức giá đặc biệt.</h1><p>Khám phá các thiết kế đang có ưu đãi tại Famstyle.</p></div><div class="offers-rate"><span>ƯU ĐÃI ĐẾN</span><strong>${maxDiscount}%</strong><small>Trên các sản phẩm được chọn</small></div></div><div class="tools offers-tools">${[['','Tất cả ưu đãi'],['nam','Sản phẩm Nam'],['nu','Sản phẩm Nữ']].map(([v,n])=>`<a class="chip" href="#/uu-dai${v?'/'+v:''}" aria-current="${v===g}">${n}</a>`).join('')}<span class="offers-count">${items.length} sản phẩm</span><select id="csort" aria-label="Sắp xếp ưu đãi">${[['','Sắp xếp mặc định'],['asc','Giá thấp đến cao'],['desc','Giá cao đến thấp']].map(([v,n])=>`<option value="${v}" ${csort===v?'selected':''}>${n}</option>`).join('')}</select></div><div class="pgrid offers-grid">${items.map(card).join('')}</div>`;
+ document.title='Ưu đãi – '+BRAND;
+}
 function genderPage(){
  const match=location.hash.match(/^#\/san-pham-(nam|nu)(?:\/([\w-]+))?(?:\/([\w-]+))?$/);if(!match)return;
  const [,g,catSlug,subSlug]=match,cat=CATS.find(c=>c.slug===catSlug),sub=cat&&cat.subs.find(x=>x.slug===subSlug),label=g==='nam'?'Nam':'Nữ';
- const items=P.filter(p=>inGender(p,g)&&(!cat||p.cat===cat.slug)&&(!sub||p.sub===sub.slug));
+ const pool=P.filter(p=>inGender(p,g)&&(!cat||p.cat===cat.slug)&&(!sub||p.sub===sub.slug)),items=pool.filter(p=>!productSaleOnly||onSale(p));
  if(csort==='asc')items.sort((a,b)=>a.price-b.price);if(csort==='desc')items.sort((a,b)=>b.price-a.price);
- $('#catpage').innerHTML=`<a class="back" href="#">← Trang chủ</a><h1 class="ct">${sub?sub.n:cat?cat.n:'Sản phẩm'} ${label}</h1><p class="sub">${items.length} sản phẩm · Phong cách dành cho bạn</p><div class="tools">${['nam','nu'].map(v=>`<a class="chip" href="${genderURL(v)}" aria-current="${v===g}">Sản phẩm ${v==='nam'?'Nam':'Nữ'}</a>`).join('')}</div><div class="tools"><a class="chip" href="${genderURL(g)}" aria-current="${!cat}">Tất cả</a>${genderCategories(g).map(c=>`<a class="chip" href="${genderURL(g,c.slug)}" aria-current="${cat?.slug===c.slug}">${c.n}</a>`).join('')}<select id="csort" aria-label="Sắp xếp sản phẩm">${[['','Sắp xếp mặc định'],['asc','Giá thấp đến cao'],['desc','Giá cao đến thấp']].map(([v,n])=>`<option value="${v}" ${v===csort?'selected':''}>${n}</option>`).join('')}</select></div>${cat?`<div class="tools subs">${genderSubs(g,cat).map(x=>`<a class="chip s" href="${genderURL(g,cat.slug,x.slug)}" aria-current="${sub?.slug===x.slug}">${x.n}</a>`).join('')}</div>`:''}${items.length?`<div class="pgrid">${items.map(card).join('')}</div>`:'<p class="sub">Chưa có sản phẩm trong danh mục này.</p>'}`;
+ $('#catpage').innerHTML=`<a class="back" href="#">← Trang chủ</a><h1 class="ct">${sub?sub.n:cat?cat.n:'Sản phẩm'} ${label}</h1><p class="sub">${items.length} sản phẩm · Phong cách dành cho bạn</p><div class="tools">${['nam','nu'].map(v=>`<a class="chip" href="${genderURL(v)}" aria-current="${v===g}">Sản phẩm ${v==='nam'?'Nam':'Nữ'}</a>`).join('')}</div><div class="tools"><a class="chip" href="${genderURL(g)}" aria-current="${!cat}">Tất cả</a>${genderCategories(g).map(c=>`<a class="chip" href="${genderURL(g,c.slug)}" aria-current="${cat?.slug===c.slug}">${genderCategoryName(g,c)}</a>`).join('')}<select id="csort" aria-label="Sắp xếp sản phẩm">${[['','Sắp xếp mặc định'],['asc','Giá thấp đến cao'],['desc','Giá cao đến thấp']].map(([v,n])=>`<option value="${v}" ${v===csort?'selected':''}>${n}</option>`).join('')}</select></div>${cat?`<div class="tools subs">${genderSubs(g,cat).map(x=>`<a class="chip s" href="${genderURL(g,cat.slug,x.slug)}" aria-current="${sub?.slug===x.slug}">${x.n}</a>`).join('')}</div>`:''}${productOffersHTML(pool)}${items.length?`<div class="pgrid">${items.map(card).join('')}</div>`:`<p class="sub">${productSaleOnly?'Chưa có ưu đãi trong nhóm này. Bấm lại “Đang ưu đãi” để xem toàn bộ sản phẩm.':'Chưa có sản phẩm trong danh mục này.'}</p>`}`;
  document.title=`${sub?sub.n:cat?cat.n:'Sản phẩm'} ${label} – ${BRAND}`;
 }
 function catPage(){
  const cat=CATS.find(x=>x.slug===ccur),sub=cat&&cat.subs.find(x=>x.slug===csub),
-  l=P.filter(p=>(!cat||p.cat===cat.slug)&&(!sub||p.sub===sub.slug));
+  pool=P.filter(p=>(!cat||p.cat===cat.slug)&&(!sub||p.sub===sub.slug)),l=pool.filter(p=>!productSaleOnly||onSale(p));
  if(csort==="asc")l.sort((a,b)=>a.price-b.price);if(csort==="desc")l.sort((a,b)=>b.price-a.price);
  const path=cat?(sub?`<a href="#/danh-muc/${cat.slug}">${cat.n}</a> / ${sub.n}`:cat.n)+" · ":"";
  $("#catpage").innerHTML=`<a class="back" href="#">← Trang chủ</a>
@@ -843,21 +894,23 @@ function catPage(){
  <div class="tools">${[{slug:"tat-ca",n:"Tất cả"},...CATS].map(x=>`<a class="chip" href="#/danh-muc/${x.slug}" aria-current="${x.slug===ccur}">${x.n}</a>`).join("")}
  <select id="csort" aria-label="Sắp xếp">${[["","Sắp xếp mặc định"],["asc","Giá thấp đến cao"],["desc","Giá cao đến thấp"]].map(([v,t])=>`<option value="${v}"${v===csort?" selected":""}>${t}</option>`).join("")}</select></div>
  ${cat?`<div class="tools subs"><a class="chip s" href="#/danh-muc/${cat.slug}" aria-current="${!sub}">Tất cả ${cat.n.toLowerCase()}</a>${cat.subs.map(x=>`<a class="chip s" href="#/danh-muc/${cat.slug}/${x.slug}" aria-current="${!!sub&&sub.slug===x.slug}">${x.n}</a>`).join("")}</div>`:""}
- ${l.length?`<div class="pgrid">${l.map(card).join("")}</div>`:`<p class="sub" style="padding:24px 0">Chưa có sản phẩm trong danh mục này.</p>`}`;
+ ${productOffersHTML(pool)}${l.length?`<div class="pgrid">${l.map(card).join("")}</div>`:`<p class="sub" style="padding:24px 0">${productSaleOnly?'Chưa có ưu đãi trong nhóm này. Bấm lại “Đang ưu đãi” để xem toàn bộ sản phẩm.':'Chưa có sản phẩm trong danh mục này.'}</p>`}`;
 }
 function colPage(){
- const c=COLLS.find(x=>x.slug===colcur),l=P.filter(p=>p.col===c.slug);
+ const c=COLLS.find(x=>x.slug===colcur),pool=P.filter(p=>p.col===c.slug),l=pool.filter(p=>!productSaleOnly||onSale(p));
  $("#catpage").innerHTML=`<a class="back" href="#coll">← Tất cả bộ sưu tập</a>
  <div class="banner" style="background:${c.bg}"><div class="bi">${media(c)}</div><div><h1 class="ct">${c.n}</h1><p>${c.desc}</p><p class="sub">${l.length} sản phẩm</p></div></div>
  <div class="tools">${COLLS.map(x=>`<a class="chip" href="#/bo-suu-tap/${x.slug}" aria-current="${x.slug===c.slug}">${x.n}</a>`).join("")}</div>
- ${l.length?`<div class="pgrid">${l.map(card).join("")}</div>`:`<p class="sub" style="padding:24px 0">Chưa có sản phẩm trong bộ sưu tập này.</p>`}`;
+ ${productOffersHTML(pool)}${l.length?`<div class="pgrid">${l.map(card).join("")}</div>`:`<p class="sub" style="padding:24px 0">${productSaleOnly?'Chưa có ưu đãi trong bộ sưu tập này. Bấm lại “Đang ưu đãi” để xem toàn bộ sản phẩm.':'Chưa có sản phẩm trong bộ sưu tập này.'}</p>`}`;
 }
 function route(){
  const h=location.hash,m=h.match(/^#\/san-pham\/(\d+)/),c=h.match(/^#\/danh-muc\/([\w-]+)(?:\/([\w-]+))?/),b=h.match(/^#\/bo-suu-tap\/([\w-]+)/),ab=/^#\/gioi-thieu\/?$/.test(h),isCk=/^#\/thanh-toan\/?$/.test(h),isOk=/^#\/dat-hang-thanh-cong\/?$/.test(h),sm=h.match(/^#\/tim-kiem\/(.*)$/),
   v={home:$("#home"),det:$("#detail"),cat:$("#catpage")};
  Object.values(v).forEach(e=>e.hidden=true);
  document.body.classList.remove("home","ov");
- if(/^#\/san-pham-(nam|nu)(?:\/[\w-]+){0,2}$/.test(h)){
+ if(/^#\/uu-dai(?:\/(nam|nu))?$/.test(h)){
+  v.cat.hidden=false;offersPage();window.scrollTo({top:0,behavior:'instant'});
+ }else if(/^#\/san-pham-(nam|nu)(?:\/[\w-]+){0,2}$/.test(h)){
   v.cat.hidden=false;genderPage();window.scrollTo({top:0,behavior:"instant"});
  }else if(m&&P.some(x=>x.id==m[1])){
   cur=P.find(x=>x.id==m[1]);sel={size:defSize(cur),col:0,qty:1};rvf={r:0,name:"",text:"",err:""};
@@ -884,8 +937,8 @@ function route(){
   if(el)el.scrollIntoView();
  }
 }
-document.addEventListener("change",e=>{if(e.target.id==="csort"){csort=e.target.value;location.hash.startsWith("#/tim-kiem/")?searchPage():/^#\/san-pham-(nam|nu)/.test(location.hash)?genderPage():catPage()}});
-$("#nav").innerHTML=`<a class="nl" href="#/gioi-thieu">Giới thiệu</a><div class="dd gender-menu"><a href="#/danh-muc/tat-ca">Sản phẩm</a><div class="panel">${['nam','nu'].map(g=>`<div class="gender-entry"><a class="gender-link" href="${genderURL(g)}">Sản phẩm ${g==='nam'?'Nam':'Nữ'} <span aria-hidden="true">›</span></a><div class="gender-submenu">${genderCategories(g).map(c=>`<div><a class="gender-cat-title" href="${genderURL(g,c.slug)}">${c.n}</a>${genderSubs(g,c).map(x=>`<a href="${genderURL(g,c.slug,x.slug)}">${x.n}</a>`).join('')}</div>`).join('')}</div></div>`).join('')}<a class="gender-all" href="#/danh-muc/tat-ca">Xem tất cả sản phẩm →</a></div></div><div class="dd"><a href="#coll">Bộ sưu tập</a><div class="panel">${COLLS.map(c=>`<a href="#/bo-suu-tap/${c.slug}"><span>${c.e}</span>${c.n}</a>`).join('')}</div></div>`;
+document.addEventListener("change",e=>{if(e.target.id==="csort"){csort=e.target.value;location.hash.startsWith("#/uu-dai")?offersPage():location.hash.startsWith("#/tim-kiem/")?searchPage():/^#\/san-pham-(nam|nu)/.test(location.hash)?genderPage():catPage()}});
+$("#nav").innerHTML=`<a class="nl" href="#/gioi-thieu">Giới thiệu</a><div class="dd gender-menu"><a href="#/danh-muc/tat-ca">Sản phẩm</a><div class="panel">${['nam','nu'].map(g=>`<div class="gender-entry"><a class="gender-link" href="${genderURL(g)}">Sản phẩm ${g==='nam'?'Nam':'Nữ'} <span aria-hidden="true">›</span></a><div class="gender-submenu">${genderCategories(g).map(c=>`<div><a class="gender-cat-title" href="${genderURL(g,c.slug)}">${genderCategoryName(g,c)}</a>${genderSubs(g,c).map(x=>`<a href="${genderURL(g,c.slug,x.slug)}">${x.n}</a>`).join('')}</div>`).join('')}</div></div>`).join('')}<a class="gender-all" href="#/danh-muc/tat-ca">Xem tất cả sản phẩm →</a></div></div><div class="dd"><a href="#coll">Bộ sưu tập</a><div class="panel">${COLLS.map(c=>`<a href="#/bo-suu-tap/${c.slug}"><span>${c.e}</span>${c.n}</a>`).join('')}</div></div><a class="nl offers-nav" href="#/uu-dai">Ưu đãi</a>`;
 document.querySelectorAll(".dd").forEach(dd=>{
  // bấm vào một mục thì đóng panel cho đến khi di chuột ra rồi vào lại
  dd.addEventListener("click",e=>{const a=e.target.closest(".panel a");if(a){a.blur();dd.classList.add("shut")}});
@@ -1040,7 +1093,7 @@ const ABOUT={
  steps:[{t:"Chọn sản phẩm",d:"Duyệt theo danh mục, bộ sưu tập hoặc tìm nhanh bằng ô tìm kiếm."},
         {t:"Chọn size và màu",d:"Xem ảnh, mô tả và đánh giá ngay ở trang chi tiết sản phẩm."},
         {t:"Thêm vào giỏ hàng",d:"Kiểm tra lại số lượng và tổng tiền trong giỏ trước khi đặt."}],
- contact:[{e:"📞",t:"Hotline",d:"1900 000 000"},{e:"📍",t:"Cửa hàng",d:"123 Đường ABC, Quận 1, TP. Hà Nội"},{e:"💬",t:"Hỗ trợ",d:"Đổi trả và hướng dẫn chọn size"}]
+ contact:[{e:"📞",t:"Hotline",d:"1900 000 000"},{e:"📍",t:"Cửa hàng",d:"123 Đường ABC, Quận 1, TP. Hồ Chí Minh"},{e:"💬",t:"Hỗ trợ",d:"Đổi trả và hướng dẫn chọn size"}]
 };
 function aboutPage(){
  $("#catpage").innerHTML=`<a class="back" href="#">← Trang chủ</a>
@@ -1137,7 +1190,7 @@ miniCart();
 {const cw=$("#cw");   // bấm xong thì đóng mini-cart cho đến khi rời chuột
  cw.addEventListener("click",e=>{if(e.target.closest("button")){document.activeElement&&document.activeElement.blur();cw.classList.add("shut")}});
  cw.addEventListener("mouseleave",()=>cw.classList.remove("shut"));}
-$("#mml").innerHTML=`<a href="#/gioi-thieu">Giới thiệu</a><details><summary>Sản phẩm</summary>${['nam','nu'].map(g=>`<details><summary>Sản phẩm ${g==='nam'?'Nam':'Nữ'}</summary><a href="${genderURL(g)}">Xem tất cả</a>${genderCategories(g).map(c=>`<details><summary>${c.n}</summary><a href="${genderURL(g,c.slug)}">Tất cả ${c.n.toLowerCase()}</a>${genderSubs(g,c).map(x=>`<a href="${genderURL(g,c.slug,x.slug)}">${x.n}</a>`).join('')}</details>`).join('')}</details>`).join('')}<a href="#/danh-muc/tat-ca">Tất cả sản phẩm</a></details><details><summary>Bộ sưu tập</summary>${COLLS.map(c=>`<a href="#/bo-suu-tap/${c.slug}">${c.n}</a>`).join('')}</details>`;
+$("#mml").innerHTML=`<a href="#/gioi-thieu">Giới thiệu</a><details><summary>Sản phẩm</summary>${['nam','nu'].map(g=>`<details><summary>Sản phẩm ${g==='nam'?'Nam':'Nữ'}</summary><a href="${genderURL(g)}">Xem tất cả</a>${genderCategories(g).map(c=>`<details><summary>${genderCategoryName(g,c)}</summary><a href="${genderURL(g,c.slug)}">Tất cả ${genderCategoryName(g,c).toLowerCase()}</a>${genderSubs(g,c).map(x=>`<a href="${genderURL(g,c.slug,x.slug)}">${x.n}</a>`).join('')}</details>`).join('')}</details>`).join('')}<a href="#/danh-muc/tat-ca">Tất cả sản phẩm</a></details><details><summary>Bộ sưu tập</summary>${COLLS.map(c=>`<a href="#/bo-suu-tap/${c.slug}">${c.n}</a>`).join('')}</details><a class="nl offers-nav" href="#/uu-dai">Ưu đãi</a>`;
 {const mm=$("#mm"),mmx=$("#mmx"),hb=$("#hb");
  const set=on=>{mm.classList.toggle("on",on);mmx.classList.toggle("on",on);hb.setAttribute("aria-expanded",on);mm.setAttribute("aria-hidden",!on)};
  hb.addEventListener("click",()=>set(true));$("#mmc").addEventListener("click",()=>set(false));mmx.addEventListener("click",()=>set(false));
@@ -1156,7 +1209,7 @@ function qvInfo(){
  const p=qvp,a=avg(p);
  $("#qvi").innerHTML=`<h2>${p.n}</h2>
  <div class="st">${a.n?stars(Math.round(a.avg))+" "+a.avg.toFixed(1)+"/5 ("+a.n+" đánh giá)":"Chưa có đánh giá"}</div>
- <div class="dpr">${fmt(p.price)}${p.old?`<s style="color:var(--muted);font-weight:400;font-size:14px;margin-left:8px">${fmt(p.old)}</s>`:""}</div>
+ <div class="dpr">${priceHTML(p)}</div>
  <p style="margin:0;color:#4D505B;line-height:1.65">${p.desc||""}</p>
  ${p.colors.length>1?`<b>Màu sắc: ${COLOR_NAMES[p.colors[qs.col]]||""}</b><div class="opts">${p.colors.map((c,i)=>`<button class="col" style="background:${c}" data-qvcol="${i}" aria-pressed="${i===qs.col}" aria-label="${COLOR_NAMES[c]||"Màu "+(i+1)}"></button>`).join("")}</div>`:""}
  <b>Kích thước</b><div class="opts">${p.sizes.map(z=>`<button class="sz" data-qvsize="${z}" aria-pressed="${z===qs.size}">${z}</button>`).join("")}</div>
