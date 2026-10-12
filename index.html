@@ -415,6 +415,30 @@ body.ov .dd:hover>a,body.ov .dd:focus-within>a,body.ov .nl:hover{color:#fff;text
 .fpr{font-weight:600;margin-top:2px}.fpr s{color:var(--muted);font-weight:400;font-size:13px;margin-left:8px}
 .fmore{text-align:center;margin-top:32px}.fmore .btn{padding:12px 36px}
 @media(hover:none){.fq{display:none}.fic{opacity:1;transform:none}}
+/* ===== XEM NHANH (bấm hình con mắt) ===== */
+.qv{position:fixed;inset:0;z-index:15;background:rgba(10,12,20,.55);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.qv[hidden]{display:none}
+.qv.on{opacity:1;visibility:visible}
+.qvd{position:relative;background:#fff;border-radius:16px;width:min(940px,100%);max-height:calc(100vh - 40px);overflow:auto;display:grid;grid-template-columns:1fr 1fr;transform:translateY(14px) scale(.98);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.qv.on .qvd{transform:none}
+.qvg{position:relative;overflow:hidden;aspect-ratio:4/5}
+.qvg .sl span{font-size:160px}
+.qvg .pd i{cursor:pointer}
+.qvi{padding:30px 30px 26px;display:flex;flex-direction:column;align-self:center}
+.qvi h2{font-size:24px;font-weight:500;margin:0 0 6px;letter-spacing:-.01em;padding-right:36px}
+.qvc{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:0;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.16);font-size:15px;cursor:pointer;z-index:3;transition:background .2s,color .2s}
+.qvc:hover{background:var(--ink);color:#fff}
+.qva{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.92);cursor:pointer;font-size:22px;line-height:1;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,.14);transition:background .2s,color .2s}
+.qva:hover{background:var(--ink);color:#fff}
+.qva.l{left:12px}.qva.r{right:12px}
+.qvl{display:block;margin-top:14px;text-align:center;text-decoration:underline;color:var(--muted)}
+.qvl:hover{color:var(--ink)}
+@media(max-width:700px){
+ .qv{align-items:flex-end;padding:12px}
+ .qvd{grid-template-columns:1fr;max-height:calc(100svh - 24px)}
+ .qvg{aspect-ratio:1/1}
+ .qvi{padding:22px 20px 20px}
+}
 </style>
 </head>
 <body>
@@ -476,6 +500,7 @@ body.ov .dd:hover>a,body.ov .dd:focus-within>a,body.ov .nl:hover{color:#fff;text
 <div class="mm" id="mm" role="dialog" aria-label="Menu" aria-hidden="true"><div class="mmh"><svg class="lg" viewBox="0 0 321.28 64" aria-hidden="true"><use href="#fam-logo"/></svg><button class="mmc" id="mmc" aria-label="Đóng menu">✕</button></div><div class="mml" id="mml"></div></div>
 <div class="shade" id="shade"></div>
 <aside id="drawer" aria-label="Giỏ hàng"></aside>
+<div class="qv" id="qv" hidden role="dialog" aria-modal="true" aria-label="Xem nhanh sản phẩm"><div class="qvd"><button class="qvc" id="qvc" data-qvclose aria-label="Đóng">✕</button><div class="qvg" id="qvg"></div><div class="qvi di" id="qvi"></div></div></div>
 <button id="topBtn" aria-label="Lên đầu trang">↑</button>
 <div class="pv" id="pv" aria-hidden="true"></div>
 <div class="toast" id="toast" role="status"></div>
@@ -487,9 +512,9 @@ const FREE_SHIP=500000;   // đơn từ mức này trở lên được miễn ph
 const SHIP_FEE=30000;      // phí giao hàng khi đơn chưa đủ mức miễn phí
 const HERO={title:"Bộ sưu tập Thu Đông 2026",text:"Form rộng, chất liệu dày dặn, màu trung tính dễ phối.",
   bg:"linear-gradient(120deg,#1E2430,#3B4A63)",
-  img:"",       // ảnh banner, ví dụ "images/banner.jpg" (cũng dùng làm ảnh chờ khi có video)
-  video:"",     // (tùy chọn) video banner ngang chạy tự động, ví dụ "video/tvc.mp4"
-  videoMobile:""};  // (tùy chọn) video dọc cho điện thoại; để trống thì dùng video ngang
+  img:"poster.jpg",       // ảnh banner, ví dụ "images/banner.jpg" (cũng dùng làm ảnh chờ khi có video)
+  video:"banner.mp4",     // (tùy chọn) video banner ngang chạy tự động, ví dụ "video/tvc.mp4"
+  videoMobile:"banner-mobile.mp4"};  // (tùy chọn) video dọc cho điện thoại; để trống thì dùng video ngang
 
 /* ===== 6. SẢN PHẨM: mỗi dòng một sản phẩm =====
    tag: "best" (tab Best seller) hoặc "new" (tab New arrival)
@@ -565,7 +590,7 @@ function products(){
   return `<article class="fp"><div class="fim" style="background:${p.bg}">
    <a class="fl" href="#/san-pham/${p.id}" aria-label="Xem ${p.n}"><div class="f1">${lay(a)}</div><div class="f2">${lay(b)}</div></a>
    ${p.old?`<span class="ftag">-${Math.round(100-p.price/p.old*100)}%</span>`:""}
-   <div class="fic"><button data-qa="${p.id}|${defSize(p)}" aria-label="Thêm nhanh vào giỏ hàng">${ICO_BAG}</button><a href="#/san-pham/${p.id}" aria-label="Xem chi tiết">${ICO_EYE}</a></div>
+   <div class="fic"><button data-qa="${p.id}|${defSize(p)}" aria-label="Thêm nhanh vào giỏ hàng">${ICO_BAG}</button><button data-qv="${p.id}" aria-label="Xem nhanh sản phẩm">${ICO_EYE}</button></div>
    <div class="fq"><span>Thêm nhanh vào giỏ hàng +</span><div>${p.sizes.map(z=>`<button data-qa="${p.id}|${z}">${z}</button>`).join("")}</div></div>
   </div>
   <div class="fn"><a href="#/san-pham/${p.id}">${p.n}</a></div>
@@ -590,6 +615,7 @@ document.addEventListener("click",e=>{
  else if(d.dcol){sel.col=+d.dcol;detail()}
  else if(d.dq){sel.qty=Math.max(1,sel.qty+ +d.dq);detail()}
  else if("dadd" in d)addCart(cur,sel.size,sel.col,sel.qty)
+ else if(d.qv){openQV(d.qv,t)}
  else if(d.qa){const [qid,qz]=d.qa.split("|"),qp=P.find(x=>x.id==qid);addCart(qp,qz,0,1)}
  else if("placeorder" in d)placeOrder()
  else if("editcart" in d)open()
@@ -608,7 +634,7 @@ $("#hero").style.background=HERO.bg;
 if(HERO.video){
  const src=(matchMedia("(max-width:700px)").matches&&HERO.videoMobile)||HERO.video;
  $("#hero").classList.add("vid");
- $("#hero").insertAdjacentHTML("afterbegin",`<video class="bgimg" src="${src}" autoplay muted loop playsinline preload="auto"${HERO.img?` poster="${HERO.img}"`:""}></video><div class="scrim"></div>`);
+ $("#hero").insertAdjacentHTML("afterbegin",`<video class="bgimg" src="${src}" ${matchMedia("(prefers-reduced-motion:reduce)").matches?"":"autoplay "}muted loop playsinline preload="auto"${HERO.img?` poster="${HERO.img}"`:""}></video><div class="scrim"></div>`);
 }else if(HERO.img)$("#hero").insertAdjacentHTML("afterbegin",`<img class="bgimg" src="${HERO.img}" alt="">`);
 $("#featM").style.background=FEATURE.bg;$("#featM").innerHTML=media(FEATURE);$("#featT").textContent=FEATURE.title;$("#featP").textContent=FEATURE.text;
 $("#colls").innerHTML=COLLS.map(c=>`<a class="cc" href="#/bo-suu-tap/${c.slug}"><div class="ph" style="background:${c.bg}">${media(c)}</div><div class="cap">${c.n}</div><small class="sub">${P.filter(p=>p.col===c.slug).length} sản phẩm</small></a>`).join("");
@@ -698,7 +724,7 @@ function showPv(card){
  const p=P.find(x=>x.id==card.dataset.pid);if(!p)return;
  const names=p.colors.map(c=>COLOR_NAMES[c]).filter(Boolean).join(", ");
  const G=gallery(p);
- const slides=G.map((g,i)=>`<div class="sl${i?"":" on"}">${g.img?`<img src="${g.img}" alt="">`:`<span style="transform:${g.t}">${p.e}</span><em>${g.l}</em>`}</div>`).join("");
+ const slides=G.map((g,i)=>`<div class="sl${i?"":" on"}">${g.img?`<img src="${g.img}" alt="">`:`<span style="transform:${g.t}">${p.e}</span>`}</div>`).join("");
  const dots=G.length>1?`<div class="pd">${G.map((_,i)=>`<i${i?"":' class="on"'}></i>`).join("")}</div>`:"";
  pv.innerHTML=`<div class="pi" style="background:${p.bg}">${slides}${dots}</div><div class="pb"><h4>${p.n}</h4>${rating(p)?`<div class="st">${stars(rating(p))}</div>`:""}<b>${fmt(p.price)}</b><p>${p.desc||""}</p><div class="pz">${p.sizes.map(z=>`<span>${z}</span>`).join("")}</div>${names?`<p>Màu: ${names}</p>`:""}</div>`;
  const r=card.getBoundingClientRect(),w=300,h=pv.offsetHeight;
@@ -938,6 +964,63 @@ $("#mml").innerHTML=`<a href="#/gioi-thieu">Giới thiệu</a>`+CATS.map(c=>`<de
  hb.addEventListener("click",()=>set(true));$("#mmc").addEventListener("click",()=>set(false));mmx.addEventListener("click",()=>set(false));
  window.addEventListener("hashchange",()=>set(false));
  document.addEventListener("keydown",e=>{if(e.key==="Escape")set(false)});}
+
+/* ===== 17. XEM NHANH: bấm hình con mắt ở sản phẩm nổi bật để mở khung xem trước ===== */
+let qvp=null,qs={size:"",col:0,qty:1,idx:0},qvFrom=null;
+const qvEl=$("#qv");
+function qvSlide(i){
+ const n=gallery(qvp).length;qs.idx=(i+n)%n;
+ qvEl.querySelectorAll(".sl").forEach((el,k)=>el.classList.toggle("on",k===qs.idx));
+ qvEl.querySelectorAll(".pd i").forEach((el,k)=>el.classList.toggle("on",k===qs.idx));
+}
+function qvInfo(){
+ const p=qvp,a=avg(p);
+ $("#qvi").innerHTML=`<h2>${p.n}</h2>
+ <div class="st">${a.n?stars(Math.round(a.avg))+" "+a.avg.toFixed(1)+"/5 ("+a.n+" đánh giá)":"Chưa có đánh giá"}</div>
+ <div class="dpr">${fmt(p.price)}${p.old?`<s style="color:var(--muted);font-weight:400;font-size:14px;margin-left:8px">${fmt(p.old)}</s>`:""}</div>
+ <p style="margin:0;color:#4D505B;line-height:1.65">${p.desc||""}</p>
+ ${p.colors.length>1?`<b>Màu sắc: ${COLOR_NAMES[p.colors[qs.col]]||""}</b><div class="opts">${p.colors.map((c,i)=>`<button class="col" style="background:${c}" data-qvcol="${i}" aria-pressed="${i===qs.col}" aria-label="${COLOR_NAMES[c]||"Màu "+(i+1)}"></button>`).join("")}</div>`:""}
+ <b>Kích thước</b><div class="opts">${p.sizes.map(z=>`<button class="sz" data-qvsize="${z}" aria-pressed="${z===qs.size}">${z}</button>`).join("")}</div>
+ <b>Số lượng</b><div class="q"><button data-qvq="-1" aria-label="Giảm">−</button>${qs.qty}<button data-qvq="1" aria-label="Tăng">+</button></div>
+ <button class="btn" style="margin-top:20px;padding:14px" data-qvadd>Thêm vào giỏ hàng</button>
+ <a class="qvl" href="#/san-pham/${p.id}">Xem chi tiết sản phẩm →</a>`;
+}
+function openQV(id,from){
+ qvp=P.find(x=>x.id==id);if(!qvp)return;
+ qs={size:defSize(qvp),col:0,qty:1,idx:0};qvFrom=from||null;
+ const G=gallery(qvp);
+ $("#qvg").style.background=qvp.bg;
+ $("#qvg").innerHTML=G.map((g,i)=>`<div class="sl${i?"":" on"}">${g.img?`<img src="${g.img}" alt="">`:`<span style="transform:${g.t}">${qvp.e}</span>`}</div>`).join("")+
+  (G.length>1?`<button class="qva l" data-qvprev aria-label="Ảnh trước">‹</button><button class="qva r" data-qvnext aria-label="Ảnh sau">›</button><div class="pd">${G.map((_,i)=>`<i${i?"":' class="on"'} data-qvdot="${i}"></i>`).join("")}</div>`:"");
+ qvInfo();
+ qvEl.hidden=false;requestAnimationFrame(()=>qvEl.classList.add("on"));
+ document.body.style.overflow="hidden";$("#qvc").focus();
+}
+function closeQV(){
+ qvEl.classList.remove("on");document.body.style.overflow="";
+ setTimeout(()=>{if(!qvEl.classList.contains("on"))qvEl.hidden=true},260);
+ if(qvFrom&&document.contains(qvFrom))qvFrom.focus();
+}
+qvEl.addEventListener("click",e=>{
+ if(e.target===qvEl)return closeQV();
+ const t=e.target.closest("[data-qvclose],[data-qvprev],[data-qvnext],[data-qvdot],[data-qvsize],[data-qvcol],[data-qvq],[data-qvadd]");if(!t)return;
+ const d=t.dataset;
+ if("qvclose" in d)closeQV();
+ else if("qvprev" in d)qvSlide(qs.idx-1);
+ else if("qvnext" in d)qvSlide(qs.idx+1);
+ else if(d.qvdot!==undefined)qvSlide(+d.qvdot);
+ else if(d.qvsize){qs.size=d.qvsize;qvInfo()}
+ else if(d.qvcol!==undefined){qs.col=+d.qvcol;qvInfo()}
+ else if(d.qvq){qs.qty=Math.max(1,qs.qty+ +d.qvq);qvInfo()}
+ else if("qvadd" in d)addCart(qvp,qs.size,qs.col,qs.qty);
+});
+document.addEventListener("keydown",e=>{
+ if(qvEl.hidden)return;
+ if(e.key==="Escape")closeQV();
+ else if(e.key==="ArrowLeft")qvSlide(qs.idx-1);
+ else if(e.key==="ArrowRight")qvSlide(qs.idx+1);
+});
+window.addEventListener("hashchange",()=>{if(!qvEl.hidden)closeQV()});
 
 /* ===== 13. HIỆU ỨNG (tự tắt nếu người xem bật chế độ giảm chuyển động) ===== */
 const calm=matchMedia("(prefers-reduced-motion:reduce)").matches;
