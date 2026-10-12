@@ -441,6 +441,71 @@ body.ov .dd:hover>a,body.ov .dd:focus-within>a,body.ov .nl:hover{color:#fff;text
 }
 .li .t,.sl2 .t,.mni .t{overflow:hidden}
 .li .t img,.sl2 .t img,.mni .t img{width:100%;height:100%;object-fit:cover}
+
+/* Famstyle — refined shopping bag */
+#shade{background:rgba(20,18,16,.48);backdrop-filter:blur(4px)}
+#drawer{width:min(480px,100%);background:#faf9f6;box-shadow:-20px 0 70px #0002;color:#24221f}
+body.cart-open{overflow:hidden}
+#drawer .dh{padding:26px 28px;background:#fff;border-bottom:1px solid #e9e5de;gap:16px}
+#drawer .bag-label{font-size:10px;letter-spacing:3px;color:#8c7753;margin-bottom:7px}
+#drawer .dh h2{font-size:24px;text-transform:none;font-weight:500;letter-spacing:-.6px}
+#drawer .bag-count{font-size:12px;color:#817d75;margin-top:7px}
+#drawer .bag-close{width:38px;height:38px;border:1px solid #e8e3da;border-radius:50%;background:#fff;font-size:20px;cursor:pointer;flex-shrink:0}
+#drawer .db{padding:0 28px;min-height:0;overscroll-behavior:contain}
+#drawer .shipping{padding:22px 0 18px;border-bottom:1px solid #e9e5de;font-size:12px;line-height:1.6;color:#777166}
+#drawer .shipping strong{color:#50432f;font-weight:600}
+#drawer .shipping-track{height:4px;background:#e9e3d8;border-radius:4px;margin-top:12px;overflow:hidden}
+#drawer .shipping-track span{display:block;height:100%;background:#9b8152;transition:width .3s}
+#drawer .li{align-items:flex-start;gap:17px;padding:22px 0;border-bottom:1px solid #e9e5de}
+#drawer .li .t{width:84px;height:108px;flex-shrink:0;border-radius:5px;font-size:36px}
+#drawer .li .n{min-width:0;font-size:14px;line-height:1.5}
+#drawer .li .n a{color:inherit;text-decoration:none;font-weight:500}
+#drawer .li small{font-size:11px;margin:5px 0;color:#817b70}
+#drawer .item-price{font-size:14px;font-weight:600;margin:7px 0 11px}
+#drawer .item-controls{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#drawer .q{gap:0;border:1px solid #ddd7cc;border-radius:4px;overflow:hidden;background:#fff}
+#drawer .q button{border:0;width:30px;height:30px;font-size:16px}
+#drawer .q span{min-width:28px;text-align:center;font-size:12px}
+#drawer .remove-item{border:0;background:none;padding:6px 0;color:#8a8173;font-size:11px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+#drawer .df{padding:22px 28px max(22px,env(safe-area-inset-bottom));background:#fff;border-top:1px solid #e9e5de;box-shadow:0 -8px 24px #24221f04}
+#drawer .summary-row{display:flex;justify-content:space-between;gap:12px;font-size:12px;color:#7d776d;margin-bottom:10px}
+#drawer .tot{padding-top:16px;margin:15px 0 8px;border-top:1px solid #eee9e1;align-items:center;font-size:14px}
+#drawer .tot strong{font-size:23px;letter-spacing:-.7px;font-weight:600}
+#drawer .summary-note{font-size:10px;color:#999084;line-height:1.5;margin:0 0 18px}
+#drawer .checkout-btn{width:100%;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;background:#24221f;color:#fff;border:1px solid #24221f;cursor:pointer;font-size:12px;letter-spacing:1px;transition:background .2s,box-shadow .2s}
+#drawer .checkout-btn:hover{background:#483d2c;box-shadow:0 5px 16px #24221f20}
+#drawer .continue-btn{display:block;width:100%;border:0;background:none;padding:13px 0 0;font-size:11px;color:#777166;cursor:pointer}
+#drawer .bag-empty{text-align:center;padding:65px 8px}
+#drawer .empty-icon{width:68px;height:68px;margin:0 auto 22px;color:#9b8152}
+#drawer .bag-empty h3{font-size:22px;font-weight:500;margin:0 0 12px}
+#drawer .bag-empty p{font-size:13px;line-height:1.8;color:#817b70;margin:0 0 28px}
+#drawer button:focus-visible,#drawer a:focus-visible{outline:2px solid #9b8152;outline-offset:3px}
+.mini{border-radius:8px;border-color:#e9e5de;box-shadow:0 18px 50px #24221f20}
+.mnh{letter-spacing:1px}.mnt{background:#faf9f6}
+@media(max-width:420px){#drawer .dh{padding:22px 20px}#drawer .db{padding:0 20px}#drawer .df{padding:18px 20px}#drawer .li .t{width:70px;height:94px}#drawer .li{gap:13px}}
+@media(prefers-reduced-motion:reduce){#drawer,#shade,#drawer *{transition:none!important}}
+
+
+/* Unified gender navigation and add-to-bag interactions */
+.gender-menu{position:relative}
+.gender-menu>.panel{width:235px;min-width:235px}
+.gender-entry>.gender-link{justify-content:space-between;font-weight:500}
+.gender-submenu{display:none;position:absolute;left:100%;top:-1px;width:min(580px,55vw);padding:22px;background:#fff;border:1px solid var(--line);box-shadow:0 14px 30px #0001;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-height:70vh;overflow:auto}
+.gender-entry:hover>.gender-submenu,.gender-entry:focus-within>.gender-submenu{display:grid}
+.gender-submenu a{padding:5px 8px;font-size:12px}
+.gender-submenu .gender-cat-title{font-weight:600;font-size:14px;margin-bottom:5px}
+.gender-menu .gender-all{font-size:12px;border-top:1px solid var(--line);margin-top:6px}
+.pc .nm{min-height:40px;line-height:20px}
+.pc .add{margin-top:auto;padding-top:12px}
+.pc .add .btn{width:100%;min-height:44px;padding:11px 12px}
+button[data-add],button[data-dadd],button[data-qvadd]{position:relative;transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+@media(hover:hover){button[data-add]:hover,button[data-dadd]:hover,button[data-qvadd]:hover{transform:translateY(-5px);box-shadow:0 10px 20px #24221f26}}
+button[data-add]:active,button[data-dadd]:active,button[data-qvadd]:active{transform:translateY(-1px) scale(.97)}
+.cart-plus{position:fixed;z-index:1000;pointer-events:none;border-radius:30px;padding:6px 11px;background:#24221f;color:#fff;font-size:16px;font-weight:600;box-shadow:0 4px 12px #0002;animation:cartPlus .85s ease-out forwards}
+@keyframes cartPlus{0%{opacity:0;transform:translate(-50%,0) scale(.7)}20%{opacity:1;transform:translate(-50%,-10px) scale(1)}100%{opacity:0;transform:translate(-50%,-65px) scale(.9)}}
+.mml details details{margin-left:12px;border-bottom:0}.mml details details summary{font-size:14px}
+@media(prefers-reduced-motion:reduce){button[data-add]:hover,button[data-dadd]:hover,button[data-qvadd]:hover{transform:none}.cart-plus{animation:none}}
+
 </style>
 </head>
 <body>
@@ -501,7 +566,7 @@ body.ov .dd:hover>a,body.ov .dd:focus-within>a,body.ov .nl:hover{color:#fff;text
 <div class="mmx" id="mmx"></div>
 <div class="mm" id="mm" role="dialog" aria-label="Menu" aria-hidden="true"><div class="mmh"><svg class="lg" viewBox="0 0 321.28 64" aria-hidden="true"><use href="#fam-logo"/></svg><button class="mmc" id="mmc" aria-label="Đóng menu">✕</button></div><div class="mml" id="mml"></div></div>
 <div class="shade" id="shade"></div>
-<aside id="drawer" aria-label="Giỏ hàng"></aside>
+<aside id="drawer" role="dialog" aria-modal="true" aria-labelledby="bag-title" aria-hidden="true"></aside>
 <div class="qv" id="qv" hidden role="dialog" aria-modal="true" aria-label="Xem nhanh sản phẩm"><div class="qvd"><button class="qvc" id="qvc" data-qvclose aria-label="Đóng">✕</button><div class="qvg" id="qvg"></div><div class="qvi di" id="qvi"></div></div></div>
 <button id="topBtn" aria-label="Lên đầu trang">↑</button>
 <div class="pv" id="pv" aria-hidden="true"></div>
@@ -567,6 +632,14 @@ const P=[
  {id:21,sub:"tui",col:"share-your-color",cat:"phu-kien",desc:"Túi tote vải canvas dày, quai dài đeo vai, đựng vừa laptop 14 inch.",n:"Túi tote canvas",price:159000,tag:"",sizes:["Free size"],colors:["#B9A98C","#111"],r:5,bg:"#F0EBE0",e:"👜",img:""},
  {id:22,sub:"that-lung",col:"ky-niem-4-nam",cat:"phu-kien",desc:"Thắt lưng da bản vừa, khóa kim loại mờ, dùng được với cả quần jeans và quần tây.",n:"Thắt lưng da trơn",price:249000,tag:"",sizes:["Free size"],colors:["#111"],r:0,bg:"#E5E5EA",e:"🧵",img:""}
 ];
+/* Phân loại có thể chỉnh riêng: gender = "nam", "nu" hoặc "unisex".
+   Đây là phân loại biên tập từ tên/mô tả hiện có; kiểm tra lại khi có ảnh sản phẩm. */
+const PRODUCT_GENDER={1:"unisex",2:"nam",3:"unisex",4:"unisex",5:"unisex",6:"nam",7:"nam",8:"unisex",9:"unisex",10:"nu",11:"nam",12:"nu",13:"unisex",14:"unisex",15:"nam",16:"unisex",17:"nam",18:"nam",19:"nu",20:"unisex",21:"unisex",22:"unisex",23:"nam",24:"nu",25:"nu",26:"unisex",27:"unisex",28:"nu",29:"nam",30:"nam",31:"nam",32:"nam",33:"nam",34:"nu",35:"nu",36:"nu",37:"nu",38:"unisex",39:"nu",40:"nu"};
+P.forEach(p=>p.gender=p.gender||PRODUCT_GENDER[p.id]||"unisex");
+const inGender=(p,g)=>p.gender===g||p.gender==="unisex";
+const genderURL=(g,c='',sub='')=>`#/san-pham-${g}${c?'/'+c:''}${sub?'/'+sub:''}`;
+const genderCategories=g=>CATS.filter(c=>P.some(p=>inGender(p,g)&&p.cat===c.slug));
+const genderSubs=(g,c)=>c.subs.filter(sub=>P.some(p=>inGender(p,g)&&p.cat===c.slug&&p.sub===sub.slug));
 P.forEach(p=>{if(!p.img&&p.imgs&&p.imgs[0])p.img=p.imgs[0]});   // ảnh đại diện = ảnh đầu tiên
 
 /* ===== DANH MỤC: slug = đường dẫn, n = tên hiển thị, subs = danh mục con.
@@ -621,14 +694,19 @@ function products(){
   <div class="fpr">${fmt(p.price)}${p.old?`<s>${fmt(p.old)}</s>`:""}</div></article>`;
  }).join("");
 }
+let cartReturnFocus=null;
 function drawer(){
- const L=lines(),total=L.reduce((t,l)=>t+l.price*l.qty,0);
- $("#cnt").textContent=L.reduce((t,l)=>t+l.qty,0);
- $("#drawer").innerHTML=`<div class="dh"><h2>Giỏ hàng</h2><button class="btn light" data-close>Đóng</button></div><div class="db">${L.length?L.map(l=>`<div class="li"><div class="t" style="background:${l.bg}">${l.img?`<img src="${l.img}" alt="">`:l.e}</div><div class="n">${l.n}<small>Size ${l.size}${l.colors.length>1?" · "+(COLOR_NAMES[l.color]||""):""} · ${fmt(l.price)}</small></div><div class="q"><button data-dec="${l.key}" aria-label="Giảm">−</button>${l.qty}<button data-inc="${l.key}" aria-label="Tăng">+</button></div></div>`).join(""):`<p style="color:var(--muted);padding:20px 0">Giỏ hàng đang trống. Chọn size và thêm sản phẩm để bắt đầu.</p>`}</div>`+(L.length?`<div class="df"><div class="tot"><span>Tạm tính</span><span>${fmt(total)}</span></div><button class="btn" style="width:100%" data-pay>Thanh toán</button></div>`:"");
+ const L=lines(),total=L.reduce((t,l)=>t+l.price*l.qty,0),count=L.reduce((t,l)=>t+l.qty,0),shipping=total>=FREE_SHIP?0:SHIP_FEE;
+ const focused=document.activeElement,focusKey=focused&&focused.closest('#drawer')?['inc','dec','remove'].find(k=>focused.dataset[k]):null,focusValue=focusKey?focused.dataset[focusKey]:null;
+ $('#cnt').textContent=count;
+ $('#drawer').innerHTML=`<div class="dh"><div><div class="bag-label">FAMSTYLE / SHOPPING BAG</div><h2 id="bag-title">Giỏ hàng của bạn</h2><div class="bag-count">${count} sản phẩm được lựa chọn</div></div><button class="bag-close" data-close aria-label="Đóng giỏ hàng">×</button></div><div class="db">${L.length?`<div class="shipping">${total>=FREE_SHIP?'<strong>Đơn hàng của bạn được miễn phí vận chuyển.</strong>':`Thêm <strong>${fmt(FREE_SHIP-total)}</strong> để được miễn phí vận chuyển.`}<div class="shipping-track"><span style="width:${Math.min(100,total/FREE_SHIP*100)}%"></span></div></div>${L.map(l=>`<div class="li"><a class="t" href="#/san-pham/${l.id}" data-cart-product style="background:${l.bg}" aria-label="Xem ${l.n}">${media(l)}</a><div class="n"><a href="#/san-pham/${l.id}" data-cart-product>${l.n}</a><small>Size ${l.size} · ${COLOR_NAMES[l.color]||'Màu đã chọn'}</small><div class="item-price">${fmt(l.price*l.qty)}</div><div class="item-controls"><div class="q"><button data-dec="${l.key}" aria-label="Giảm số lượng ${l.n}">−</button><span aria-live="polite">${l.qty}</span><button data-inc="${l.key}" aria-label="Tăng số lượng ${l.n}">+</button></div><button class="remove-item" data-remove="${l.key}" aria-label="Xóa ${l.n} khỏi giỏ hàng">Xóa</button></div></div></div>`).join('')}`:`<div class="bag-empty"><svg class="empty-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M15 23h34l-3 31H18z"/><path d="M24 23v-7a8 8 0 0 1 16 0v7"/></svg><div class="bag-label">MỘT CHÚT CẢM HỨNG MỚI</div><h3>Giỏ hàng đang trống</h3><p>Khám phá những thiết kế phù hợp<br>với phong cách của bạn.</p><button class="checkout-btn" data-close>TIẾP TỤC MUA SẮM <span>→</span></button></div>`}</div>${L.length?`<div class="df"><div class="summary-row"><span>Tạm tính</span><span>${fmt(total)}</span></div><div class="summary-row"><span>Phí vận chuyển dự kiến</span><span>${shipping?fmt(shipping):'Miễn phí'}</span></div><div class="tot"><span>Tổng dự kiến</span><strong>${fmt(total+shipping)}</strong></div><p class="summary-note">Phí vận chuyển được tính theo chính sách hiện tại của cửa hàng.</p><button class="checkout-btn" data-pay>TIẾN HÀNH THANH TOÁN <span aria-hidden="true">→</span></button><button class="continue-btn" data-close>Tiếp tục mua sắm</button></div>`:''}`;
  miniCart();
+ if(focusKey){const target=Array.from($('#drawer').querySelectorAll('button')).find(el=>el.dataset[focusKey]===focusValue);(target||$('#drawer .bag-close')).focus()}
 }
-const open=()=>{drawer();$("#drawer").classList.add("on");$("#shade").classList.add("on")};
-const close=()=>{$("#drawer").classList.remove("on");$("#shade").classList.remove("on")};
+const open=()=>{cartReturnFocus=document.activeElement;drawer();$('#drawer').classList.add('on');$('#shade').classList.add('on');document.body.classList.add('cart-open');$('#drawer').setAttribute('aria-hidden','false');$('#drawer .bag-close').focus()};
+const close=()=>{const wasOpen=$('#drawer').classList.contains('on');$('#drawer').classList.remove('on');$('#shade').classList.remove('on');document.body.classList.remove('cart-open');$('#drawer').setAttribute('aria-hidden','true');if(wasOpen&&cartReturnFocus&&cartReturnFocus.isConnected)cartReturnFocus.focus()};
+document.addEventListener('click',e=>{if(e.target.closest('[data-cart-product]'))close()});
+document.addEventListener('keydown',e=>{if(!$('#drawer').classList.contains('on'))return;if(e.key==='Escape'){e.preventDefault();close()}if(e.key==='Tab'){const nodes=Array.from($('#drawer').querySelectorAll('button,a[href]')),first=nodes[0],last=nodes[nodes.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
 
 document.addEventListener("click",e=>{
  const t=e.target.closest("button,.shade");if(!t)return;const d=t.dataset;
@@ -646,6 +724,7 @@ document.addEventListener("click",e=>{
  else if(d.rvstar){rvf.r=+d.rvstar;detail()}
  else if("rvsubmit" in d)submitReview()
  else if(d.rvdel!==undefined){(UR[cur.id]||[]).splice(+d.rvdel,1);saveR();detail()}
+ else if(d.remove){delete cart[d.remove];save();drawer()}
  else if(d.inc){cart[d.inc]++;save();drawer()}
  else if(d.dec){cart[d.dec]--;if(cart[d.dec]<=0)delete cart[d.dec];save();drawer()}
  else if("pay" in d){close();location.hash="#/thanh-toan"}
@@ -669,7 +748,12 @@ $("#colls").innerHTML=COLLS.map(c=>`<a class="cc" href="#/bo-suu-tap/${c.slug}">
 /* ===== 9. TRANG CHI TIẾT SẢN PHẨM (địa chỉ dạng #/san-pham/1) ===== */
 let cur=null,sel={size:"",col:0,qty:1},ccur="tat-ca",csort="",colcur="",csub="";
 const defSize=p=>p.sizes.includes("M")?"M":p.sizes[0];
-function addCart(p,s,c,n){const k=p.id+"|"+s+"|"+c;cart[k]=(cart[k]||0)+n;save();drawer();toast(`Đã thêm ${p.n} (size ${s})`);bump()}
+function cartPlus(button,n){
+ if(!button)return;const r=button.getBoundingClientRect(),el=document.createElement('span');el.className='cart-plus';el.textContent='+'+n;el.setAttribute('aria-hidden','true');el.style.left=(r.left+r.width/2)+'px';el.style.top=(r.top-8)+'px';document.body.appendChild(el);setTimeout(()=>el.remove(),900);
+}
+let addOrigin=null;
+document.addEventListener('click',e=>{addOrigin=e.target.closest('button[data-add],button[data-dadd],button[data-qa],button[data-qvadd]')},true);
+function addCart(p,s,c,n){cartPlus(addOrigin,n);const k=p.id+"|"+s+"|"+c;cart[k]=(cart[k]||0)+n;save();drawer();toast(`Đã thêm ${p.n} (size ${s})`);bump()}
 function detail(){
  const p=cur,more=P.filter(x=>x.id!==p.id).slice(0,4);
  $("#detail").innerHTML=`<a class="back" href="#featured">← Quay lại sản phẩm</a>
@@ -682,6 +766,14 @@ function detail(){
  <button class="btn" style="width:100%;margin-top:22px;padding:14px" data-dadd>Thêm vào giỏ</button>
  <ul class="spec"><li>Giao hàng toàn quốc, thanh toán khi nhận hàng</li><li>Đổi size trong 7 ngày nếu chưa sử dụng</li></ul></div></div>
  ${reviewsHTML(p)}<div class="more"><div class="sh"><h2>Có thể bạn cũng thích</h2></div><div class="row">${more.map(m=>`<article class="pc" data-pid="${m.id}"><a class="im" href="#/san-pham/${m.id}" style="background:${m.bg}">${media(m)}</a><div class="nm"><a href="#/san-pham/${m.id}">${m.n}</a></div><div class="pr">${fmt(m.price)}</div></article>`).join("")}</div></div>`;
+}
+function genderPage(){
+ const match=location.hash.match(/^#\/san-pham-(nam|nu)(?:\/([\w-]+))?(?:\/([\w-]+))?$/);if(!match)return;
+ const [,g,catSlug,subSlug]=match,cat=CATS.find(c=>c.slug===catSlug),sub=cat&&cat.subs.find(x=>x.slug===subSlug),label=g==='nam'?'Nam':'Nữ';
+ const items=P.filter(p=>inGender(p,g)&&(!cat||p.cat===cat.slug)&&(!sub||p.sub===sub.slug));
+ if(csort==='asc')items.sort((a,b)=>a.price-b.price);if(csort==='desc')items.sort((a,b)=>b.price-a.price);
+ $('#catpage').innerHTML=`<a class="back" href="#">← Trang chủ</a><h1 class="ct">${sub?sub.n:cat?cat.n:'Sản phẩm'} ${label}</h1><p class="sub">${items.length} sản phẩm · Phong cách dành cho bạn</p><div class="tools">${['nam','nu'].map(v=>`<a class="chip" href="${genderURL(v)}" aria-current="${v===g}">Sản phẩm ${v==='nam'?'Nam':'Nữ'}</a>`).join('')}</div><div class="tools"><a class="chip" href="${genderURL(g)}" aria-current="${!cat}">Tất cả</a>${genderCategories(g).map(c=>`<a class="chip" href="${genderURL(g,c.slug)}" aria-current="${cat?.slug===c.slug}">${c.n}</a>`).join('')}<select id="csort" aria-label="Sắp xếp sản phẩm">${[['','Sắp xếp mặc định'],['asc','Giá thấp đến cao'],['desc','Giá cao đến thấp']].map(([v,n])=>`<option value="${v}" ${v===csort?'selected':''}>${n}</option>`).join('')}</select></div>${cat?`<div class="tools subs">${genderSubs(g,cat).map(x=>`<a class="chip s" href="${genderURL(g,cat.slug,x.slug)}" aria-current="${sub?.slug===x.slug}">${x.n}</a>`).join('')}</div>`:''}${items.length?`<div class="pgrid">${items.map(card).join('')}</div>`:'<p class="sub">Chưa có sản phẩm trong danh mục này.</p>'}`;
+ document.title=`${sub?sub.n:cat?cat.n:'Sản phẩm'} ${label} – ${BRAND}`;
 }
 function catPage(){
  const cat=CATS.find(x=>x.slug===ccur),sub=cat&&cat.subs.find(x=>x.slug===csub),
@@ -707,7 +799,9 @@ function route(){
   v={home:$("#home"),det:$("#detail"),cat:$("#catpage")};
  Object.values(v).forEach(e=>e.hidden=true);
  document.body.classList.remove("home","ov");
- if(m&&P.some(x=>x.id==m[1])){
+ if(/^#\/san-pham-(nam|nu)(?:\/[\w-]+){0,2}$/.test(h)){
+  v.cat.hidden=false;genderPage();window.scrollTo({top:0,behavior:"instant"});
+ }else if(m&&P.some(x=>x.id==m[1])){
   cur=P.find(x=>x.id==m[1]);sel={size:defSize(cur),col:0,qty:1};rvf={r:0,name:"",text:"",err:""};
   v.det.hidden=false;detail();window.scrollTo({top:0,behavior:"instant"});document.title=cur.n+" – "+BRAND;
  }else if(isCk){
@@ -732,8 +826,8 @@ function route(){
   if(el)el.scrollIntoView();
  }
 }
-document.addEventListener("change",e=>{if(e.target.id==="csort"){csort=e.target.value;location.hash.startsWith("#/tim-kiem/")?searchPage():catPage()}});
-$("#nav").innerHTML=`<a class="nl" href="#/gioi-thieu">Giới thiệu</a><div class="dd mega"><a href="#/danh-muc/tat-ca">Sản phẩm</a><div class="panel mega"><div class="mg">${CATS.map(c=>`<div><a class="mh" href="#/danh-muc/${c.slug}">${c.n}</a>${c.subs.map(x=>`<a href="#/danh-muc/${c.slug}/${x.slug}">${x.n}</a>`).join("")}</div>`).join("")}</div><div class="mf"><a href="#/danh-muc/tat-ca">Xem tất cả sản phẩm →</a></div></div></div><div class="dd"><a href="#coll">Bộ sưu tập</a><div class="panel">${COLLS.map(c=>`<a href="#/bo-suu-tap/${c.slug}"><span>${c.e}</span>${c.n}</a>`).join("")}</div></div>`;
+document.addEventListener("change",e=>{if(e.target.id==="csort"){csort=e.target.value;location.hash.startsWith("#/tim-kiem/")?searchPage():/^#\/san-pham-(nam|nu)/.test(location.hash)?genderPage():catPage()}});
+$("#nav").innerHTML=`<a class="nl" href="#/gioi-thieu">Giới thiệu</a><div class="dd gender-menu"><a href="#/danh-muc/tat-ca">Sản phẩm</a><div class="panel">${['nam','nu'].map(g=>`<div class="gender-entry"><a class="gender-link" href="${genderURL(g)}">Sản phẩm ${g==='nam'?'Nam':'Nữ'} <span aria-hidden="true">›</span></a><div class="gender-submenu">${genderCategories(g).map(c=>`<div><a class="gender-cat-title" href="${genderURL(g,c.slug)}">${c.n}</a>${genderSubs(g,c).map(x=>`<a href="${genderURL(g,c.slug,x.slug)}">${x.n}</a>`).join('')}</div>`).join('')}</div></div>`).join('')}<a class="gender-all" href="#/danh-muc/tat-ca">Xem tất cả sản phẩm →</a></div></div><div class="dd"><a href="#coll">Bộ sưu tập</a><div class="panel">${COLLS.map(c=>`<a href="#/bo-suu-tap/${c.slug}"><span>${c.e}</span>${c.n}</a>`).join('')}</div></div>`;
 document.querySelectorAll(".dd").forEach(dd=>{
  // bấm vào một mục thì đóng panel cho đến khi di chuột ra rồi vào lại
  dd.addEventListener("click",e=>{const a=e.target.closest(".panel a");if(a){a.blur();dd.classList.add("shut")}});
@@ -986,7 +1080,7 @@ miniCart();
 {const cw=$("#cw");   // bấm xong thì đóng mini-cart cho đến khi rời chuột
  cw.addEventListener("click",e=>{if(e.target.closest("button")){document.activeElement&&document.activeElement.blur();cw.classList.add("shut")}});
  cw.addEventListener("mouseleave",()=>cw.classList.remove("shut"));}
-$("#mml").innerHTML=`<a href="#/gioi-thieu">Giới thiệu</a>`+CATS.map(c=>`<details><summary>${c.n}</summary><a href="#/danh-muc/${c.slug}">Tất cả ${c.n.toLowerCase()}</a>${c.subs.map(x=>`<a href="#/danh-muc/${c.slug}/${x.slug}">${x.n}</a>`).join("")}</details>`).join("")+`<details><summary>Bộ sưu tập</summary>${COLLS.map(c=>`<a href="#/bo-suu-tap/${c.slug}">${c.n}</a>`).join("")}</details><a href="#/danh-muc/tat-ca">Tất cả sản phẩm</a>`;
+$("#mml").innerHTML=`<a href="#/gioi-thieu">Giới thiệu</a><details><summary>Sản phẩm</summary>${['nam','nu'].map(g=>`<details><summary>Sản phẩm ${g==='nam'?'Nam':'Nữ'}</summary><a href="${genderURL(g)}">Xem tất cả</a>${genderCategories(g).map(c=>`<details><summary>${c.n}</summary><a href="${genderURL(g,c.slug)}">Tất cả ${c.n.toLowerCase()}</a>${genderSubs(g,c).map(x=>`<a href="${genderURL(g,c.slug,x.slug)}">${x.n}</a>`).join('')}</details>`).join('')}</details>`).join('')}<a href="#/danh-muc/tat-ca">Tất cả sản phẩm</a></details><details><summary>Bộ sưu tập</summary>${COLLS.map(c=>`<a href="#/bo-suu-tap/${c.slug}">${c.n}</a>`).join('')}</details>`;
 {const mm=$("#mm"),mmx=$("#mmx"),hb=$("#hb");
  const set=on=>{mm.classList.toggle("on",on);mmx.classList.toggle("on",on);hb.setAttribute("aria-expanded",on);mm.setAttribute("aria-hidden",!on)};
  hb.addEventListener("click",()=>set(true));$("#mmc").addEventListener("click",()=>set(false));mmx.addEventListener("click",()=>set(false));
