@@ -729,7 +729,7 @@ const priceHTML=p=>`<span class="${onSale(p)?'sale-price':''}">${fmt(p.price)}</
 const saleBadge=p=>onSale(p)?`<span class="sale-badge${p.winterOffer?' winter-badge':''}">${p.winterOffer?'Mùa đông · ':''}−${discountPercent(p)}%</span>`:'';
 /* Phân loại có thể chỉnh riêng: gender = "nam", "nu" hoặc "unisex".
    Đây là phân loại biên tập từ tên/mô tả hiện có; kiểm tra lại khi có ảnh sản phẩm. */
-const PRODUCT_GENDER={1:"unisex",2:"nam",3:"unisex",4:"unisex",5:"unisex",6:"nam",7:"nam",8:"unisex",9:"unisex",10:"nu",11:"nam",12:"nu",13:"unisex",14:"unisex",15:"nam",16:"unisex",17:"nam",18:"nam",19:"nu",20:"unisex",21:"unisex",22:"unisex",23:"nam",24:"nu",25:"nu",26:"unisex",27:"unisex",28:"nu",29:"nam",30:"nam",31:"nam",32:"nam",33:"nam",34:"nu",35:"nu",36:"nu",37:"nu",38:"unisex",39:"nu",40:"nu"};
+const PRODUCT_GENDER={1:"unisex",2:"nam",3:"unisex",4:"unisex",5:"unisex",6:"nam",7:"nam",8:"unisex",9:"unisex",10:"nu",11:"nam",12:"nu",13:"unisex",14:"unisex",15:"nam",16:"unisex",17:"nam",18:"nam",19:"nu",20:"unisex",21:"unisex",22:"unisex",23:"nam",24:"nu",25:"nu",26:"nam",27:"nam",28:"nu",29:"nam",30:"nam",31:"nam",32:"nam",33:"nam",34:"nu",35:"nu",36:"nu",37:"nu",38:"unisex",39:"nu",40:"nu"};
 P.forEach(p=>p.gender=p.gender||PRODUCT_GENDER[p.id]||"unisex");
 const inGender=(p,g)=>p.gender===g||p.gender==="unisex";
 const genderURL=(g,c='',sub='')=>`#/san-pham-${g}${c?'/'+c:''}${sub?'/'+sub:''}`;
