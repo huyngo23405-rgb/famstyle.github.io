@@ -609,6 +609,12 @@ button[data-add]:active,button[data-dadd]:active,button[data-qvadd]:active{trans
 
 
 .listing-filters{display:flex;align-items:end;gap:16px;flex-wrap:wrap;padding:20px;background:#f6f3ec;border:1px solid #e8e0d3;border-radius:12px;margin:24px 0 16px}.listing-filters label{display:grid;gap:8px;font-size:13px;font-weight:600;flex:1;min-width:160px}.listing-filters select{width:100%;padding:12px;border:1px solid #d8cebe;border-radius:6px;background:#fff;font:inherit;color:#29251f}.filter-reset{border:0;border-bottom:1px solid #89704a;padding:12px 2px;background:none;color:#6c5534;cursor:pointer;font:inherit}.listing-empty{text-align:center;padding:44px 20px;border:1px dashed #d7c9b5;border-radius:12px;margin:24px 0}.listing-empty h2{font-size:23px}.listing-empty p{line-height:1.7;color:#746b5e}.listing-empty .btn{margin:14px auto;display:inline-flex}button:focus-visible,a:focus-visible,select:focus-visible{outline:2px solid #89704a;outline-offset:4px}@media(max-width:480px){.listing-filters{gap:12px;padding:16px}.listing-filters label{min-width:100%;}.filter-reset{min-height:44px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* Unified filter and sorting row */
+.listing-filters{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.2fr) auto;align-items:end}
+.listing-filters label{min-width:0}.listing-filters select{min-height:46px;margin:0;max-width:100%}.listing-filters .filter-reset{min-height:46px;white-space:nowrap}
+@media(max-width:760px){.listing-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.listing-filters .listing-sort{grid-column:1}.listing-filters .filter-reset{justify-self:end}}
+@media(max-width:400px){.listing-filters{grid-template-columns:minmax(0,1fr)}.listing-filters .filter-reset{justify-self:start}}
 </style>
 </head>
 <body>
@@ -901,7 +907,7 @@ let productSaleOnly=false;
 const listingFilters={size:'',price:''};
 const priceBands={'under300':[0,300000],'300to600':[300000,600000],'over600':[600000,Infinity]};
 function matchesListing(p){const band=priceBands[listingFilters.price];return (!listingFilters.size||p.sizes.includes(listingFilters.size))&&(!band||(p.price>=band[0]&&p.price<band[1]))}
-function filterTools(pool){const sizes=[...new Set(pool.flatMap(p=>p.sizes))];return `<div class="listing-filters" role="group" aria-label="Lọc sản phẩm"><label>Kích thước<select id="filterSize"><option value="">Tất cả kích thước</option>${[...new Set([...sizes,...(listingFilters.size?[listingFilters.size]:[])])].map(size=>`<option value="${esc(size)}" ${listingFilters.size===size?'selected':''}>${esc(size)}</option>`).join('')}</select></label><label>Khoảng giá<select id="filterPrice">${[['','Tất cả mức giá'],['under300','Dưới 300.000 ₫'],['300to600','300.000 – dưới 600.000 ₫'],['over600','Từ 600.000 ₫']].map(([value,label])=>`<option value="${value}" ${listingFilters.price===value?'selected':''}>${label}</option>`).join('')}</select></label><button type="button" class="filter-reset" data-reset-filters>Xóa bộ lọc</button></div>`}
+function filterTools(pool){const sizes=[...new Set(pool.flatMap(p=>p.sizes))];return `<div class="listing-filters" role="group" aria-label="Lọc sản phẩm"><label>Kích thước<select id="filterSize"><option value="">Tất cả kích thước</option>${[...new Set([...sizes,...(listingFilters.size?[listingFilters.size]:[])])].map(size=>`<option value="${esc(size)}" ${listingFilters.size===size?'selected':''}>${esc(size)}</option>`).join('')}</select></label><label>Khoảng giá<select id="filterPrice">${[['','Tất cả mức giá'],['under300','Dưới 300.000 ₫'],['300to600','300.000 – dưới 600.000 ₫'],['over600','Từ 600.000 ₫']].map(([value,label])=>`<option value="${value}" ${listingFilters.price===value?'selected':''}>${label}</option>`).join('')}</select></label><label class="listing-sort">Sắp xếp${sortSel()}</label><button type="button" class="filter-reset" data-reset-filters>Xóa bộ lọc</button></div>`}
 function listingEmpty(){return `<div class="listing-empty" role="status"><h2>Chưa có sản phẩm phù hợp</h2><p>Thử đổi kích thước, khoảng giá hoặc xóa bộ lọc để xem thêm sản phẩm.</p><button class="btn" data-reset-filters>Xóa bộ lọc</button></div>`}
 document.addEventListener('change',e=>{const field={filterSize:'size',filterPrice:'price'}[e.target.id];if(!field)return;listingFilters[field]=e.target.value;const id=e.target.id;renderProductListing();document.getElementById(id)?.focus()});
 document.addEventListener('click',e=>{if(!e.target.closest('[data-reset-filters]'))return;listingFilters.size='';listingFilters.price='';productSaleOnly=false;renderProductListing();$('#filterSize')?.focus()});
@@ -917,7 +923,7 @@ function offersPage(){
  const pool=P.filter(p=>onSale(p)&&(!winter||p.winterOffer)),items=pool.filter(p=>(!g||inGender(p,g))&&matchesListing(p));
  if(csort==='asc')items.sort((a,b)=>a.price-b.price);if(csort==='desc')items.sort((a,b)=>b.price-a.price);
  const maxDiscount=Math.max(0,...pool.map(discountPercent));
- $('#catpage').innerHTML=`<a class="back" href="#">← Trang chủ</a><div class="offers-hero${winter?' winter-hero':''}"><div><span class="eyebrow">${winter?'FAMSTYLE / WINTER EDIT':'FAMSTYLE / SPECIAL OFFERS'}</span><h1>${winter?'Ưu đãi mùa đông':'Phong cách yêu thích.<br>Mức giá đặc biệt.'}</h1><p>${winter?'Ấm áp mỗi ngày, phong cách trọn mùa. Khám phá áo khoác, áo len và phụ kiện giữ ấm đang giảm giá.':'Khám phá các thiết kế đang có ưu đãi tại Famstyle.'}</p></div><div class="offers-rate"><span>ƯU ĐÃI ĐẾN</span><strong>${maxDiscount}%</strong><small>Trên các sản phẩm được chọn</small></div></div><div class="tools offer-campaigns"><a class="chip" href="#/uu-dai" aria-current="${!winter}">Tất cả ưu đãi</a><a class="chip" href="#/uu-dai/mua-dong" aria-current="${winter}">Ưu đãi mùa đông</a></div><div class="tools offers-tools">${[['','Tất cả'],['nam','Sản phẩm Nam'],['nu','Sản phẩm Nữ']].map(([v,n])=>`<a class="chip" href="${base}${v?'/'+v:''}" aria-current="${v===g}">${n}</a>`).join('')}<span class="offers-count">${items.length} sản phẩm</span><select id="csort" aria-label="Sắp xếp ưu đãi">${[['','Sắp xếp mặc định'],['asc','Giá thấp đến cao'],['desc','Giá cao đến thấp']].map(([v,n])=>`<option value="${v}" ${csort===v?'selected':''}>${n}</option>`).join('')}</select></div>${filterTools(pool)}<p class="offer-policy">Giá ưu đãi được áp dụng trực tiếp, không cộng dồn với ưu đãi khác trên cùng sản phẩm.</p>${items.length?`<div class="pgrid offers-grid">${items.map(card).join('')}</div>`:listingEmpty()}`;
+ $('#catpage').innerHTML=`<a class="back" href="#">← Trang chủ</a><div class="offers-hero${winter?' winter-hero':''}"><div><span class="eyebrow">${winter?'FAMSTYLE / WINTER EDIT':'FAMSTYLE / SPECIAL OFFERS'}</span><h1>${winter?'Ưu đãi mùa đông':'Phong cách yêu thích.<br>Mức giá đặc biệt.'}</h1><p>${winter?'Ấm áp mỗi ngày, phong cách trọn mùa. Khám phá áo khoác, áo len và phụ kiện giữ ấm đang giảm giá.':'Khám phá các thiết kế đang có ưu đãi tại Famstyle.'}</p></div><div class="offers-rate"><span>ƯU ĐÃI ĐẾN</span><strong>${maxDiscount}%</strong><small>Trên các sản phẩm được chọn</small></div></div><div class="tools offer-campaigns"><a class="chip" href="#/uu-dai" aria-current="${!winter}">Tất cả ưu đãi</a><a class="chip" href="#/uu-dai/mua-dong" aria-current="${winter}">Ưu đãi mùa đông</a></div><div class="tools offers-tools">${[['','Tất cả'],['nam','Sản phẩm Nam'],['nu','Sản phẩm Nữ']].map(([v,n])=>`<a class="chip" href="${base}${v?'/'+v:''}" aria-current="${v===g}">${n}</a>`).join('')}<span class="offers-count">${items.length} sản phẩm</span></div>${filterTools(pool)}<p class="offer-policy">Giá ưu đãi được áp dụng trực tiếp, không cộng dồn với ưu đãi khác trên cùng sản phẩm.</p>${items.length?`<div class="pgrid offers-grid">${items.map(card).join('')}</div>`:listingEmpty()}`;
  document.title=(winter?'Ưu đãi mùa đông':'Ưu đãi')+' – '+BRAND;
 }
 
@@ -926,7 +932,7 @@ function genderPage(){
  const [,g,catSlug,subSlug]=match,cat=CATS.find(c=>c.slug===catSlug),sub=cat&&cat.subs.find(x=>x.slug===subSlug),label=g==='nam'?'Nam':'Nữ';
  const pool=P.filter(p=>inGender(p,g)&&(!cat||p.cat===cat.slug)&&(!sub||p.sub===sub.slug)),items=pool.filter(p=>matchesListing(p)&&(!productSaleOnly||onSale(p)));
  if(csort==='asc')items.sort((a,b)=>a.price-b.price);if(csort==='desc')items.sort((a,b)=>b.price-a.price);
- $('#catpage').innerHTML=`<a class="back" href="#">← Trang chủ</a><h1 class="ct">${sub?sub.n:cat?cat.n:'Sản phẩm'} ${label}</h1><p class="sub">${items.length} sản phẩm · Phong cách dành cho bạn</p><div class="tools">${['nam','nu'].map(v=>`<a class="chip" href="${genderURL(v)}" aria-current="${v===g}">Sản phẩm ${v==='nam'?'Nam':'Nữ'}</a>`).join('')}</div><div class="tools"><a class="chip" href="${genderURL(g)}" aria-current="${!cat}">Tất cả</a>${genderCategories(g).map(c=>`<a class="chip" href="${genderURL(g,c.slug)}" aria-current="${cat?.slug===c.slug}">${genderCategoryName(g,c)}</a>`).join('')}<select id="csort" aria-label="Sắp xếp sản phẩm">${[['','Sắp xếp mặc định'],['asc','Giá thấp đến cao'],['desc','Giá cao đến thấp']].map(([v,n])=>`<option value="${v}" ${v===csort?'selected':''}>${n}</option>`).join('')}</select></div>${cat?`<div class="tools subs">${genderSubs(g,cat).map(x=>`<a class="chip s" href="${genderURL(g,cat.slug,x.slug)}" aria-current="${sub?.slug===x.slug}">${x.n}</a>`).join('')}</div>`:''}${productOffersHTML(pool)}${items.length?`<div class="pgrid">${items.map(card).join('')}</div>`:listingEmpty()}`;
+ $('#catpage').innerHTML=`<a class="back" href="#">← Trang chủ</a><h1 class="ct">${sub?sub.n:cat?cat.n:'Sản phẩm'} ${label}</h1><p class="sub">${items.length} sản phẩm · Phong cách dành cho bạn</p><div class="tools">${['nam','nu'].map(v=>`<a class="chip" href="${genderURL(v)}" aria-current="${v===g}">Sản phẩm ${v==='nam'?'Nam':'Nữ'}</a>`).join('')}</div><div class="tools"><a class="chip" href="${genderURL(g)}" aria-current="${!cat}">Tất cả</a>${genderCategories(g).map(c=>`<a class="chip" href="${genderURL(g,c.slug)}" aria-current="${cat?.slug===c.slug}">${genderCategoryName(g,c)}</a>`).join('')}</div>${cat?`<div class="tools subs">${genderSubs(g,cat).map(x=>`<a class="chip s" href="${genderURL(g,cat.slug,x.slug)}" aria-current="${sub?.slug===x.slug}">${x.n}</a>`).join('')}</div>`:''}${productOffersHTML(pool)}${items.length?`<div class="pgrid">${items.map(card).join('')}</div>`:listingEmpty()}`;
  document.title=`${sub?sub.n:cat?cat.n:'Sản phẩm'} ${label} – ${BRAND}`;
 }
 function catPage(){
@@ -937,7 +943,7 @@ function catPage(){
  $("#catpage").innerHTML=`<a class="back" href="#">← Trang chủ</a>
  <h1 class="ct">${sub?sub.n:cat?cat.n:"Tất cả sản phẩm"}</h1><p class="sub">${path}${l.length} sản phẩm</p>
  <div class="tools">${[{slug:"tat-ca",n:"Tất cả"},...CATS].map(x=>`<a class="chip" href="#/danh-muc/${x.slug}" aria-current="${x.slug===ccur}">${x.n}</a>`).join("")}
- <select id="csort" aria-label="Sắp xếp">${[["","Sắp xếp mặc định"],["asc","Giá thấp đến cao"],["desc","Giá cao đến thấp"]].map(([v,t])=>`<option value="${v}"${v===csort?" selected":""}>${t}</option>`).join("")}</select></div>
+ </div>
  ${cat?`<div class="tools subs"><a class="chip s" href="#/danh-muc/${cat.slug}" aria-current="${!sub}">Tất cả ${cat.n.toLowerCase()}</a>${cat.subs.map(x=>`<a class="chip s" href="#/danh-muc/${cat.slug}/${x.slug}" aria-current="${!!sub&&sub.slug===x.slug}">${x.n}</a>`).join("")}</div>`:""}
  ${productOffersHTML(pool)}${l.length?`<div class="pgrid">${l.map(card).join("")}</div>`:listingEmpty()}`;
 }
@@ -946,7 +952,7 @@ function colPage(){
  if(csort==="asc")l.sort((a,b)=>a.price-b.price);if(csort==="desc")l.sort((a,b)=>b.price-a.price);
  $("#catpage").innerHTML=`<a class="back" href="#coll">← Tất cả bộ sưu tập</a>
  <div class="banner" style="background:${c.bg}"><div class="bi">${media(c)}</div><div><h1 class="ct">${c.n}</h1><p>${c.desc}</p><p class="sub">${l.length} sản phẩm</p></div></div>
- <div class="tools">${sortSel()}${COLLS.map(x=>`<a class="chip" href="#/bo-suu-tap/${x.slug}" aria-current="${x.slug===c.slug}">${x.n}</a>`).join("")}</div>
+ <div class="tools">${COLLS.map(x=>`<a class="chip" href="#/bo-suu-tap/${x.slug}" aria-current="${x.slug===c.slug}">${x.n}</a>`).join("")}</div>
  ${productOffersHTML(pool)}${l.length?`<div class="pgrid">${l.map(card).join("")}</div>`:listingEmpty()}`;
 }
 const HELP_PAGES={
@@ -1123,13 +1129,13 @@ function searchP(q){
   return {p,sc,i};
  }).filter(Boolean).sort((a,b)=>b.sc-a.sc||a.i-b.i).map(x=>x.p);
 }
-const sortSel=()=>`<select id="csort" aria-label="Sắp xếp">${[["","Liên quan nhất"],["asc","Giá thấp đến cao"],["desc","Giá cao đến thấp"]].map(([v,t])=>`<option value="${v}"${v===csort?" selected":""}>${t}</option>`).join("")}</select>`;
+const sortSel=()=>`<select id="csort" aria-label="Sắp xếp">${[["",location.hash.startsWith("#/tim-kiem/")?"Liên quan nhất":"Sắp xếp mặc định"],["asc","Giá thấp đến cao"],["desc","Giá cao đến thấp"]].map(([v,t])=>`<option value="${v}"${v===csort?" selected":""}>${t}</option>`).join("")}</select>`;
 function searchPage(){
  const pool=searchP(sq),l=pool.filter(matchesListing);
  if(csort==="asc")l.sort((a,b)=>a.price-b.price);if(csort==="desc")l.sort((a,b)=>b.price-a.price);
  $("#catpage").innerHTML=`<a class="back" href="#">← Trang chủ</a>
  <h1 class="ct">Kết quả cho “${esc(sq)}”</h1><p class="sub">${l.length} sản phẩm</p>${filterTools(pool)}
- ${l.length?`<div class="tools">${sortSel()}</div><div class="pgrid">${l.map(card).join("")}</div>`:
+ ${l.length?`<div class="pgrid">${l.map(card).join("")}</div>`:
  pool.length?listingEmpty():`<div style="padding:24px 0"><p>Không tìm thấy sản phẩm nào khớp “${esc(sq)}”.</p><p class="sub">Hãy thử từ khóa ngắn hơn hoặc xem theo danh mục:</p><div class="tools">${CATS.map(c=>`<a class="chip" href="#/danh-muc/${c.slug}">${c.n}</a>`).join("")}</div></div>`}`;
 }
 const hs=$("#hs"),sug=$("#sug");
