@@ -617,6 +617,17 @@ button[data-add]:active,button[data-dadd]:active,button[data-qvadd]:active{trans
 @media(max-width:400px){.listing-filters{grid-template-columns:minmax(0,1fr)}.listing-filters .filter-reset{justify-self:start}}
 
 .music-widget{position:fixed;left:18px;bottom:18px;z-index:80;font-size:13px}.music-widget[hidden],.music-panel[hidden]{display:none!important}.music-toggle{width:40px;height:40px;border-radius:50%;border:1px solid #d7c9b5;background:#f8f5ee;color:#77603e;box-shadow:0 4px 18px #00000012;cursor:pointer;font-size:19px}.music-panel{width:min(280px,calc(100vw - 36px));padding:20px;margin-bottom:10px;border:1px solid #ddd1be;border-radius:14px;background:#fffcf7;box-shadow:0 10px 35px #00000014}.music-panel h2{font-size:17px;margin:0 0 12px}.music-panel p{line-height:1.6;overflow-wrap:anywhere}.music-actions{display:flex;gap:8px;margin:12px 0}.music-actions button{flex:1;padding:10px;border:1px solid #d7c9b5;background:#f3ece0;border-radius:7px;cursor:pointer;font:inherit}.music-panel label{display:grid;gap:8px}.music-panel input{width:100%;accent-color:#947446}.music-status{font-size:12px;color:#75664e;min-height:20px}.cart-open .music-widget,body.ov .music-widget{visibility:hidden}
+
+/* Header utilities stay together and keep a consistent touch target. */
+.bar,html:not([lang="vi"]) .bar{gap:18px}.header-actions{display:flex;align-items:center;gap:6px;flex-shrink:0;margin-left:0;padding-left:12px;border-left:1px solid currentColor;border-left-color:#b9aa9238}
+.header-actions .language-picker{position:relative;display:flex;justify-content:center;gap:6px;width:62px;height:44px;margin:0;border:1px solid #b9aa9240;border-radius:22px;cursor:pointer}
+.header-actions .language-picker>span{display:inline;font-size:12px;font-weight:600;line-height:1;pointer-events:none}.header-actions .language-chevron{font-size:15px;font-weight:400}
+.header-actions .language-picker select{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;opacity:0;cursor:pointer}
+.header-actions .language-picker:focus-within{outline:2px solid #b8975a;outline-offset:3px}
+.header-actions .account-link,.header-actions .cartBtn{display:grid;place-items:center;width:44px;height:44px;flex:0 0 44px;border:0;border-radius:50%;background:transparent;color:inherit}
+.header-actions .account-link:hover,.header-actions .cartBtn:hover,.header-actions .language-picker:hover{background:#b8975a18}.header-actions .account-link.signed-in:after{right:4px;top:4px}
+@media(max-width:1100px){.bar,html:not([lang="vi"]) .bar{gap:12px}.header-actions{padding-left:8px;gap:3px}}
+@media(max-width:700px){.bar,html:not([lang="vi"]) .bar{gap:6px}.header-actions{padding-left:0;border-left:0;gap:0}.header-actions .language-picker{width:54px}.bar .sw{margin-left:auto;flex-shrink:1}.header-actions .mini{right:0;max-width:calc(100vw - 24px)}}
 </style>
 </head>
 <body>
@@ -631,11 +642,13 @@ button[data-add]:active,button[data-dadd]:active,button[data-qvadd]:active{trans
     <input class="hs" id="hs" type="search" placeholder="Tìm sản phẩm..." autocomplete="off" aria-label="Tìm sản phẩm" role="combobox" aria-expanded="false" aria-controls="sug">
     <div class="sug" id="sug" role="listbox" hidden></div>
   </div>
-  <a class="account-link" id="accountLink" href="#/tai-khoan" aria-label="Tài khoản"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></svg></a>
-  <label class="language-picker" translate="no"><span aria-hidden="true">◎</span><select id="siteLanguage" aria-label="Language / Ngôn ngữ"><option value="vi">VI · Tiếng Việt</option><option value="en">EN · English</option><option value="ja">JA · 日本語</option><option value="fr">FR · Français</option><option value="es">ES · Español</option></select></label>
+  <div class="header-actions">
+  <label class="language-picker" translate="no"><span class="language-code" id="languageCode" aria-hidden="true">VI</span><span class="language-chevron" aria-hidden="true">⌄</span><select id="siteLanguage" aria-label="Language / Ngôn ngữ"><option value="vi">VI · Tiếng Việt</option><option value="en">EN · English</option><option value="ja">JA · 日本語</option><option value="fr">FR · Français</option><option value="es">ES · Español</option></select></label>
+  <a class="account-link" id="accountLink" href="#/tai-khoan" aria-label="Tài khoản" title="Tài khoản"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></svg></a>
   <div class="cw" id="cw">
     <button class="cartBtn" id="cartBtn" aria-label="Giỏ hàng"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V7a3 3 0 0 1 6 0v1"/></svg><span class="bd z" id="cnt">0</span></button>
     <div class="mini" id="mini"></div>
+  </div>
   </div>
 </div></header>
 
@@ -1423,6 +1436,7 @@ function applyLanguage(){
  if(document.title!==localizedTitle.last)localizedTitle.original=document.title;
  document.title=translateUI(localizedTitle.original);localizedTitle.last=document.title;
  $('#siteLanguage').value=activeLanguage;
+ $('#languageCode').textContent=activeLanguage.toUpperCase();
  languageObserver.observe(document.body,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:['placeholder','aria-label','title','alt']});
 }
 $('#siteLanguage').addEventListener('change',e=>{activeLanguage=e.target.value;try{localStorage.setItem('famstyle-language',activeLanguage)}catch(err){}applyLanguage()});
