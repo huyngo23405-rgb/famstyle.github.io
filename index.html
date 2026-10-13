@@ -4,6 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Famstyle – Thời trang</title>
+<meta name="description" content="Khám phá thời trang Nam và Nữ, bộ sưu tập theo mùa và ưu đãi tại Famstyle. Website đang ở chế độ trải nghiệm, chưa nhận đơn hàng thật.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Famstyle – Thời trang">
+<meta property="og:description" content="Thời trang Nam và Nữ, bộ sưu tập theo mùa và ưu đãi Famstyle.">
+<meta property="og:site_name" content="Famstyle">
+<meta name="theme-color" content="#243d36">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64.00 64%22 role=%22img%22 aria-label=%22Famstyle icon%22%3E%3Ctitle%3EFamstyle icon%3C/title%3E%3Crect width=%2264%22 height=%2264%22 rx=%2212%22 fill=%22%23111318%22/%3E%3Cg transform=%22translate%2832 32%29 scale%28.8%29 translate%28-32 -32%29%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%224.2%22%3E%3Cpath stroke=%22%23fff%22 d=%22M32 35V29c0-2.6 5.8-3.2 5.8-9.2a5.8 5.8 0 1 0-11.6 0%22/%3E%3Cpath stroke=%22%23fff%22 d=%22M10 50 32 35l22 15%22/%3E%3Cpath stroke=%22%23B8975A%22 d=%22M10 50h44%22/%3E%3C/g%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 <style>
@@ -593,6 +599,8 @@ button[data-add]:active,button[data-dadd]:active,button[data-qvadd]:active{trans
 
 .winter-strip{background:linear-gradient(115deg,#243d36,#3c5548);border-color:#3c5548;color:#f9f4e9;padding:34px 36px}.winter-strip .eyebrow{color:#cfba92}.winter-strip strong{font-family:"Playfair Display",Georgia,serif;font-size:30px;font-weight:500}.winter-strip p{font-size:12px;color:#ddd8cb;margin:10px 0 0}.winter-hero{background:#edf1ec;border-color:#ccd7cb}.winter-hero h1{color:#2e473a}.winter-hero .offers-rate strong{color:#44644f}.winter-badge{background:#365443;font-size:10px}.offer-policy{font-size:11px;color:#827b6f;line-height:1.8;margin:0 0 20px}
 @media(max-width:700px){.winter-strip{padding:24px}.winter-strip strong{font-size:26px}.winter-badge{font-size:9px;padding:4px 6px}}
+
+.demo-notice{padding:18px 22px;background:#f6f1e8;border:1px solid #ddcdb5;color:#67543a;margin:20px 0}.demo-notice p{font-size:12px;line-height:1.8;margin:8px 0 0}.po:has(input:disabled){opacity:.55;cursor:not-allowed}.help-page{max-width:760px;margin:20px auto 60px;line-height:1.9}.help-page h1{font-size:30px;font-weight:500}.help-page h2{font-size:20px;font-weight:500}.help-page li{margin-bottom:12px}.size-help{font-size:12px;display:block;margin-top:12px;color:#806747}.qvi .size-help{align-self:flex-start}
 </style>
 </head>
 <body>
@@ -643,9 +651,9 @@ button[data-add]:active,button[data-dadd]:active,button[data-qvadd]:active{trans
 <main class="wrap" id="detail" hidden></main>
 <footer><div class="wrap">
   <div><svg class="lg f" viewBox="0 0 321.28 64" role="img" aria-label="Famstyle"><use href="#fam-logo"/></svg><p id="ftag"></p></div>
-  <div><b>Liên hệ</b><p>Hotline</p><p>1900 000 000</p></div>
-  <div><b>Cửa hàng</b><p>123 Đường ABC, Quận 1</p><p>TP. Hồ Chí Minh</p></div>
-  <div><b>Hỗ trợ</b><p>Chính sách đổi trả</p><p>Hướng dẫn chọn size</p></div>
+  <div><b>Liên hệ</b><p>Hotline</p><p>Đang cập nhật thông tin liên hệ</p></div>
+  <div><b>Cửa hàng</b><p>Địa chỉ cửa hàng đang cập nhật</p></div>
+  <div><b>Hỗ trợ</b><p><a href="#/doi-tra">Chính sách đổi trả</a></p><p><a href="#/huong-dan-size">Hướng dẫn chọn size</a></p><p><a href="#/quyen-rieng-tu">Quyền riêng tư</a></p></div>
 </div></footer>
 
 <div class="mmx" id="mmx"></div>
@@ -763,14 +771,15 @@ const stars=r=>"★".repeat(r)+"☆".repeat(5-r);
 const media=o=>o.img?`<img src="${o.img}" alt="${o.n||""}">`:o.e;
 const KEY="hem-cart";let cart={};
 try{cart=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){}
-Object.keys(cart).forEach(k=>{const [id,s]=k.split("|"),p=P.find(x=>x.id==id);if(!p||!p.sizes.includes(s)||!(cart[k]>0))delete cart[k]});
+if(!cart||typeof cart!=='object'||Array.isArray(cart))cart={};
+Object.keys(cart).forEach(k=>{const [id,size,color]=k.split('|'),p=P.find(x=>x.id==id),quantity=cart[k],ci=Number(color||0);if(!p||!p.sizes.includes(size)||!Number.isInteger(ci)||ci<0||ci>=p.colors.length||!Number.isInteger(quantity)||quantity<1||quantity>99)delete cart[k]});
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(cart))}catch(e){}};
 const lines=()=>Object.keys(cart).map(k=>{const [id,s,c]=k.split("|"),p=P.find(x=>x.id==id);return {...p,size:s,color:p.colors[+c||0],key:k,qty:cart[k]}});
 function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("on"),1800)}
 
 const card=p=>`<article class="pc" data-pid="${p.id}">
   <a class="im" href="#/san-pham/${p.id}" style="background:${p.bg}" aria-label="Xem chi tiết ${p.n}">${media(p)}${saleBadge(p)}</a>
-  <div class="nm"><a href="#/san-pham/${p.id}">${p.n}</a></div><div class="st" aria-label="${rating(p)} sao">${stars(rating(p))}</div><div class="pr">${priceHTML(p)}</div>
+  <div class="nm"><a href="#/san-pham/${p.id}">${p.n}</a></div><div class="st" aria-label="${rating(p)?rating(p)+' sao':'Chưa có đánh giá'}">${stars(rating(p))}</div><div class="pr">${priceHTML(p)}</div>
   <div class="add"><button class="btn" data-add="${p.id}">Thêm vào giỏ</button></div>
  </article>`;
 /* ===== SẢN PHẨM NỔI BẬT: đổi danh sách id ở đây (id nằm trong mảng P) ===== */
@@ -818,20 +827,20 @@ document.addEventListener("click",e=>{
  const t=e.target.closest("button,.shade");if(!t)return;const d=t.dataset;
  if(t.id==="shade"||"close" in d)close();
  else if(t.id==="cartBtn")open();
- else if(d.add){const p=P.find(x=>x.id==d.add);addCart(p,defSize(p),0,1)}
+ else if(d.add){openQV(d.add,t)}
  else if(d.dsize){sel.size=d.dsize;detail()}
  else if(d.dcol){sel.col=+d.dcol;detail()}
- else if(d.dq){sel.qty=Math.max(1,sel.qty+ +d.dq);detail()}
+ else if(d.dq){sel.qty=Math.min(99,Math.max(1,sel.qty+ +d.dq));detail()}
  else if("dadd" in d)addCart(cur,sel.size,sel.col,sel.qty)
  else if(d.qv){openQV(d.qv,t)}
- else if(d.qa){const [qid,qz]=d.qa.split("|"),qp=P.find(x=>x.id==qid);addCart(qp,qz,0,1)}
+ else if(d.qa){openQV(d.qa.split("|")[0],t)}
  else if("placeorder" in d)placeOrder()
  else if("editcart" in d)open()
  else if(d.rvstar){rvf.r=+d.rvstar;detail()}
  else if("rvsubmit" in d)submitReview()
  else if(d.rvdel!==undefined){(UR[cur.id]||[]).splice(+d.rvdel,1);saveR();detail()}
  else if(d.remove){delete cart[d.remove];save();drawer()}
- else if(d.inc){cart[d.inc]++;save();drawer()}
+ else if(d.inc){if(cart[d.inc]>=99){toast("Số lượng hợp lệ từ 1 đến 99.");return}cart[d.inc]++;save();drawer()}
  else if(d.dec){cart[d.dec]--;if(cart[d.dec]<=0)delete cart[d.dec];save();drawer()}
  else if("pay" in d){close();location.hash="#/thanh-toan"}
 });
@@ -860,18 +869,22 @@ function cartPlus(button,n){
 }
 let addOrigin=null;
 document.addEventListener('click',e=>{addOrigin=e.target.closest('button[data-add],button[data-dadd],button[data-qa],button[data-qvadd]')},true);
-function addCart(p,s,c,n){cartPlus(addOrigin,n);const k=p.id+"|"+s+"|"+c;cart[k]=(cart[k]||0)+n;save();drawer();toast(`Đã thêm ${p.n} (size ${s})`);bump()}
+function addCart(p,s,c,n){
+ if(!p||!p.sizes.includes(s)){toast('Vui lòng chọn kích thước trước khi thêm vào giỏ.');const scope=!qvEl.hidden?qvEl:$('#detail');scope.querySelector('.sz')?.focus();return}
+ if(!Number.isInteger(c)||c<0||c>=p.colors.length||!Number.isInteger(n)||n<1||n>99){toast('Số lượng hợp lệ từ 1 đến 99.');return}
+ const current=cart[p.id+'|'+s+'|'+c]||0;if(current+n>99){toast('Số lượng hợp lệ từ 1 đến 99.');return}
+ cartPlus(addOrigin,n);const k=p.id+"|"+s+"|"+c;cart[k]=(cart[k]||0)+n;save();drawer();toast(`Đã thêm ${p.n} (size ${s})`);bump()}
 function detail(){
  const p=cur,more=P.filter(x=>x.id!==p.id).slice(0,4);
  $("#detail").innerHTML=`<a class="back" href="#featured">← Quay lại sản phẩm</a>
  <div class="dg"><div class="dim" style="background:${p.bg}">${media(p)}</div>
  <div class="di"><h1>${p.n}</h1><div class="st">${(a=>a.n?stars(Math.round(a.avg))+" "+a.avg.toFixed(1)+"/5 ("+a.n+" đánh giá)":"Chưa có đánh giá")(avg(p))}</div><div class="dpr">${priceHTML(p)}</div>${onSale(p)?`<p class="sale-saving">Ưu đãi ${discountPercent(p)}% · Tiết kiệm ${fmt(p.old-p.price)}</p>`:""}
- <p>${p.desc||""}</p>
+ <p lang="vi" translate="no">${p.desc||""}</p>
  ${p.colors.length>1?`<b>Màu sắc: ${COLOR_NAMES[p.colors[sel.col]]||""}</b><div class="opts">${p.colors.map((c,i)=>`<button class="col" style="background:${c}" data-dcol="${i}" aria-pressed="${i===sel.col}" aria-label="${COLOR_NAMES[c]||"Màu "+(i+1)}"></button>`).join("")}</div>`:""}
  <b>Kích thước</b><div class="opts">${p.sizes.map(s=>`<button class="sz" data-dsize="${s}" aria-pressed="${s===sel.size}">${s}</button>`).join("")}</div>
  <b>Số lượng</b><div class="q"><button data-dq="-1" aria-label="Giảm">−</button>${sel.qty}<button data-dq="1" aria-label="Tăng">+</button></div>
- <button class="btn" style="width:100%;margin-top:22px;padding:14px" data-dadd>Thêm vào giỏ</button>
- <ul class="spec"><li>Giao hàng toàn quốc, thanh toán khi nhận hàng</li><li>Đổi size trong 7 ngày nếu chưa sử dụng</li></ul></div></div>
+ <button class="btn" style="width:100%;margin-top:22px;padding:14px" data-dadd>Thêm vào giỏ</button><a class="size-help" href="#/huong-dan-size">Hướng dẫn chọn size ↗</a>
+ <ul class="spec"><li>Điều kiện giao hàng và đổi trả cần được cửa hàng xác nhận.</li><li><a href="#/doi-tra">Xem thông tin đổi trả</a></li></ul></div></div>
  ${reviewsHTML(p)}<div class="more"><div class="sh"><h2>Có thể bạn cũng thích</h2></div><div class="row">${more.map(m=>`<article class="pc" data-pid="${m.id}"><a class="im" href="#/san-pham/${m.id}" style="background:${m.bg}">${media(m)}</a><div class="nm"><a href="#/san-pham/${m.id}">${m.n}</a></div><div class="pr">${fmt(m.price)}</div></article>`).join("")}</div></div>`;
 }
 let productSaleOnly=false;
@@ -917,23 +930,31 @@ function colPage(){
  <div class="tools">${COLLS.map(x=>`<a class="chip" href="#/bo-suu-tap/${x.slug}" aria-current="${x.slug===c.slug}">${x.n}</a>`).join("")}</div>
  ${productOffersHTML(pool)}${l.length?`<div class="pgrid">${l.map(card).join("")}</div>`:`<p class="sub" style="padding:24px 0">${productSaleOnly?'Chưa có ưu đãi trong bộ sưu tập này. Bấm lại “Đang ưu đãi” để xem toàn bộ sản phẩm.':'Chưa có sản phẩm trong bộ sưu tập này.'}</p>`}`;
 }
+const HELP_PAGES={
+ 'huong-dan-size':{title:'Hướng dẫn chọn size',body:'<h2>Đo cơ thể trước khi chọn</h2><ol><li>Vòng ngực: đo quanh phần đầy nhất, giữ thước ngang.</li><li>Vòng eo: đo quanh eo tự nhiên, không siết thước.</li><li>Vòng hông: đo quanh phần rộng nhất của hông.</li><li>Đối chiếu số đo với bảng size riêng của sản phẩm.</li></ol><p>Hiện chưa có bảng số đo đã xác nhận cho từng mẫu. Không nên suy ra size chỉ từ cân nặng; hãy xác nhận số đo với cửa hàng trước khi mua thật.</p>'},
+ 'doi-tra':{title:'Thông tin đổi trả',body:'<p>Chính sách đổi trả chính thức đang chờ cửa hàng xác nhận. Website chưa nhận đơn hàng thật.</p><p>Trước khi mua, cần xác nhận thời hạn đổi trả, tình trạng sản phẩm được chấp nhận, phí vận chuyển và cách hoàn tiền.</p>'},
+ 'quyen-rieng-tu':{title:'Quyền riêng tư',body:'<p>Giỏ hàng và ngôn ngữ được lưu trên trình duyệt để thuận tiện cho lần truy cập sau.</p><p>Thông tin nhập khi xem thử đơn hàng và đánh giá chỉ tồn tại trong phiên trang hiện tại. Website không gửi các thông tin này đến cửa hàng hoặc dịch vụ tài chính.</p><p>Bạn có thể xóa dữ liệu trình duyệt của website trong phần cài đặt trình duyệt. Việc tải font chữ có kết nối đến Google Fonts.</p>'}
+};
+document.addEventListener('click',e=>{if(!e.target.closest('[data-clear-legacy]'))return;try{['hem-orders','hem-last-order','hem-reviews'].forEach(key=>localStorage.removeItem(key));toast('Đã xóa dữ liệu cá nhân lưu từ bản cũ.')}catch(err){toast('Không thể truy cập dữ liệu trình duyệt.')}});
+function helpPage(key){const page=HELP_PAGES[key];$('#catpage').innerHTML=`<a class="back" href="#">← Trang chủ</a><article class="help-page"><h1>${page.title}</h1><div lang="vi" translate="no">${page.body}</div>${key==='quyen-rieng-tu'?'<button class="btn light" style="border:1px solid #ccc;margin:14px 0" data-clear-legacy>Xóa dữ liệu cá nhân lưu từ bản cũ</button>':''}<a class="btn" href="#/danh-muc/tat-ca">Tiếp tục mua sắm</a></article>`;document.title=page.title+' – '+BRAND}
 function route(){
- const h=location.hash,m=h.match(/^#\/san-pham\/(\d+)/),c=h.match(/^#\/danh-muc\/([\w-]+)(?:\/([\w-]+))?/),b=h.match(/^#\/bo-suu-tap\/([\w-]+)/),ab=/^#\/gioi-thieu\/?$/.test(h),isCk=/^#\/thanh-toan\/?$/.test(h),isOk=/^#\/dat-hang-thanh-cong\/?$/.test(h),sm=h.match(/^#\/tim-kiem\/(.*)$/),
+ const h=location.hash,m=h.match(/^#\/san-pham\/(\d+)/),c=h.match(/^#\/danh-muc\/([\w-]+)(?:\/([\w-]+))?/),b=h.match(/^#\/bo-suu-tap\/([\w-]+)/),ab=/^#\/gioi-thieu\/?$/.test(h),isCk=/^#\/thanh-toan\/?$/.test(h),isOk=/^#\/(?:dat-hang-thanh-cong|xem-truoc-don-hang)\/?$/.test(h),sm=h.match(/^#\/tim-kiem\/(.*)$/),
   v={home:$("#home"),det:$("#detail"),cat:$("#catpage")};
  Object.values(v).forEach(e=>e.hidden=true);
  document.body.classList.remove("home","ov");
- if(/^#\/uu-dai(?:\/mua-dong)?(?:\/(nam|nu))?$/.test(h)){
+ if(HELP_PAGES[h.slice(2)]){v.cat.hidden=false;helpPage(h.slice(2));window.scrollTo({top:0,behavior:'instant'});
+ }else if(/^#\/uu-dai(?:\/mua-dong)?(?:\/(nam|nu))?$/.test(h)){
   v.cat.hidden=false;offersPage();window.scrollTo({top:0,behavior:'instant'});
  }else if(/^#\/san-pham-(nam|nu)(?:\/[\w-]+){0,2}$/.test(h)){
   v.cat.hidden=false;genderPage();window.scrollTo({top:0,behavior:"instant"});
  }else if(m&&P.some(x=>x.id==m[1])){
-  cur=P.find(x=>x.id==m[1]);sel={size:defSize(cur),col:0,qty:1};rvf={r:0,name:"",text:"",err:""};
+  cur=P.find(x=>x.id==m[1]);sel={size:cur.sizes.length===1?cur.sizes[0]:"",col:0,qty:1};rvf={r:0,name:"",text:"",err:""};
   v.det.hidden=false;detail();window.scrollTo({top:0,behavior:"instant"});document.title=cur.n+" – "+BRAND;
  }else if(isCk){
   CKE={};v.cat.hidden=false;checkoutPage();window.scrollTo({top:0,behavior:"instant"});document.title="Thanh toán – "+BRAND;
  }else if(isOk){
   if(!lastOrder()){location.hash="";return}
-  v.cat.hidden=false;successPage();window.scrollTo({top:0,behavior:"instant"});document.title="Đặt hàng thành công – "+BRAND;
+  v.cat.hidden=false;successPage();window.scrollTo({top:0,behavior:"instant"});document.title="Xem trước đơn hàng – "+BRAND;
  }else if(ab){
   v.cat.hidden=false;aboutPage();window.scrollTo({top:0,behavior:"instant"});document.title="Giới thiệu – "+BRAND;
  }else if(sm){
@@ -1002,27 +1023,20 @@ document.addEventListener("click",hidePv);
    SEED_REVIEWS là đánh giá MẪU để trang không trống, hãy xóa trước khi bán thật.
    Đánh giá khách gửi được lưu trong trình duyệt của chính họ (localStorage);
    muốn mọi người cùng thấy thì cần thêm backend lưu vào cơ sở dữ liệu. */
-const SEED_REVIEWS={
- 1:[{n:"Minh Anh",r:5,t:"Áo form rộng vừa, vải dày dặn và màu lên ảnh rất đẹp. Mình cao 1m65 mặc size M vừa.",d:"28/09/2026"},{n:"Quốc Bảo",r:4,t:"Chất vải ổn, nút may chắc. Giao hàng nhanh, tiếc là hơi dài tay so với mình.",d:"21/09/2026"}],
- 2:[{n:"Thu Hà",r:5,t:"Quần ống suông mặc rất thoải mái, wash màu nhạt đẹp. Nên lấy đúng size vì ít co giãn.",d:"30/09/2026"},{n:"Đức Long",r:4,t:"Form đẹp, vải dày. Mình lấy size 30 đúng như bảng size.",d:"15/09/2026"}],
- 3:[{n:"Lan Phương",r:5,t:"Áo mềm, mặc mát, phối với chân váy xếp ly rất xinh.",d:"02/10/2026"}],
- 5:[{n:"Ngọc Trâm",r:5,t:"Cardigan ấm vừa phải, đường may gọn. Phối với váy hay quần jeans đều hợp.",d:"05/10/2026"},{n:"Hoàng Nam",r:4,t:"Len mịn, không bị xù sau vài lần giặt. Màu thực tế hơi sáng hơn ảnh một chút.",d:"24/09/2026"}],
- 6:[{n:"Tuấn Kiệt",r:5,t:"Bomber đứng form, khóa kéo mượt, mặc đi xe máy rất ổn.",d:"01/10/2026"}],
- 10:[{n:"Bảo Châu",r:4,t:"Váy xếp ly xòe vừa, lưng thun thoải mái. Hơi ngắn nếu bạn cao trên 1m68.",d:"27/09/2026"}]
-};
+const SEED_REVIEWS={};
 const esc=t=>String(t).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const RKEY="hem-reviews";let UR={},rvf={r:0,name:"",text:"",err:""};
-try{UR=JSON.parse(localStorage.getItem(RKEY)||"{}")||{}}catch(e){}
-const saveR=()=>{try{localStorage.setItem(RKEY,JSON.stringify(UR))}catch(e){}};
+// Reviews are session-only until a shared review service is configured.
+const saveR=()=>{};
 const revs=p=>[...(Array.isArray(UR[p.id])?UR[p.id]:[]).map((x,i)=>({...x,mine:true,i})).filter(x=>x&&x.r>=1&&x.r<=5&&typeof x.t==="string"),...(SEED_REVIEWS[p.id]||[])];
 const avg=p=>{const l=revs(p);return {n:l.length,avg:l.length?l.reduce((t,x)=>t+x.r,0)/l.length:0}};
-const rating=p=>{const a=avg(p);return a.n?Math.round(a.avg):p.r};
+const rating=p=>{const a=avg(p);return a.n?Math.round(a.avg):0};
 function reviewsHTML(p){
  const l=revs(p),a=avg(p);
  const bars=[5,4,3,2,1].map(k=>{const c=l.filter(x=>x.r===k).length;return `<div class="dr"><span>${k}★</span><i><u style="width:${a.n?c/a.n*100:0}%"></u></i><span>${c}</span></div>`}).join("");
  const picker=[1,2,3,4,5].map(k=>`<button class="sp${k<=rvf.r?" on":""}" data-rvstar="${k}" aria-label="${k} sao">★</button>`).join("");
  return `<div class="rv"><div>
-  <h2>Đánh giá sản phẩm</h2>
+  <h2>Đánh giá sản phẩm</h2><p class="sub">Đánh giá thử chỉ hiển thị trong phiên này, chưa được gửi đến cửa hàng.</p>
   ${a.n?`<div class="big">${a.avg.toFixed(1)} <small>/ 5</small></div><div class="st" style="margin:6px 0 10px">${stars(Math.round(a.avg))} <span style="color:var(--muted);letter-spacing:0">(${a.n} đánh giá)</span></div>${bars}`:`<p style="color:var(--muted)">Chưa có đánh giá nào.</p>`}
   <div class="rf"><h3>Viết đánh giá của bạn</h3><div>${picker}</div>
    <label for="rn">Tên của bạn</label><input class="f" id="rn" data-rv="name" maxlength="40" value="${esc(rvf.name)}">
@@ -1107,12 +1121,12 @@ const ABOUT={
  steps:[{t:"Chọn sản phẩm",d:"Duyệt theo danh mục, bộ sưu tập hoặc tìm nhanh bằng ô tìm kiếm."},
         {t:"Chọn size và màu",d:"Xem ảnh, mô tả và đánh giá ngay ở trang chi tiết sản phẩm."},
         {t:"Thêm vào giỏ hàng",d:"Kiểm tra lại số lượng và tổng tiền trong giỏ trước khi đặt."}],
- contact:[{e:"📞",t:"Hotline",d:"1900 000 000"},{e:"📍",t:"Cửa hàng",d:"123 Đường ABC, Quận 1, TP. Hồ Chí Minh"},{e:"💬",t:"Hỗ trợ",d:"Đổi trả và hướng dẫn chọn size"}]
+ contact:[{e:"📞",t:"Hotline",d:"Đang cập nhật thông tin liên hệ"},{e:"📍",t:"Cửa hàng",d:"Địa chỉ cửa hàng đang cập nhật"},{e:"💬",t:"Hỗ trợ",d:"Đổi trả và hướng dẫn chọn size"}]
 };
 function aboutPage(){
  $("#catpage").innerHTML=`<a class="back" href="#">← Trang chủ</a>
  <h1 class="ct">Giới thiệu</h1>
- <div class="ab" style="margin-top:20px"><div class="abt"><h3>${ABOUT.title}</h3>${ABOUT.text.map(t=>`<p>${t}</p>`).join("")}<p class="abq">${ABOUT.slogan}</p><a class="btn" href="#/danh-muc/tat-ca">Khám phá sản phẩm</a></div>
+ <div class="ab" style="margin-top:20px"><div class="abt"><h3 lang="vi" translate="no">${ABOUT.title}</h3>${ABOUT.text.map(t=>`<p lang="vi" translate="no">${t}</p>`).join("")}<p class="abq" lang="vi" translate="no">${ABOUT.slogan}</p><a class="btn" href="#/danh-muc/tat-ca">Khám phá sản phẩm</a></div>
  <div class="abf">${ABOUT.features.map(x=>`<div class="fc"><div class="e">${x.e}</div><div><b>${x.t}</b><span>${x.d}</span></div></div>`).join("")}</div></div>
  <div class="steps">${ABOUT.steps.map((x,i)=>`<div class="stp"><i>BƯỚC ${i+1}</i><b>${x.t}</b><span>${x.d}</span></div>`).join("")}</div>
  <div class="sh" style="margin-top:36px"><h2>Liên hệ</h2></div>
@@ -1120,25 +1134,25 @@ function aboutPage(){
 }
 
 /* ===== 15. THANH TOÁN (đơn hàng được lưu trong trình duyệt; muốn nhận đơn thật cần thêm backend) ===== */
-const BANK={bank:"Ngân hàng ABC",no:"0123 456 789",owner:"CÔNG TY TNHH FAMSTYLE"};   // MẪU: thay bằng tài khoản thật của shop
+const BANK={bank:"",no:"",owner:""};   // MẪU: thay bằng tài khoản thật của shop
 const OKEY="hem-orders",LKEY="hem-last-order";
 let CK={name:"",phone:"",email:"",prov:"",addr:"",note:"",pay:"cod",installmentMonths:"",installmentConsent:false},CKE={},lastMem=null;
-const lastOrder=()=>{if(lastMem)return lastMem;try{return JSON.parse(localStorage.getItem(LKEY)||"null")}catch(e){return null}};
+const lastOrder=()=>lastMem;
 const n1=l=>({n:l.n,e:l.e,bg:l.bg,img:(l.img&&!l.img.startsWith("data:"))?l.img:"",size:l.size,cn:l.colors.length>1?(COLOR_NAMES[l.color]||""):"",qty:l.qty,price:l.price});
 const sums=()=>{const t=lines().reduce((a,l)=>a+l.price*l.qty,0),sh=t===0||t>=FREE_SHIP?0:SHIP_FEE;return {t,sh,total:t+sh}};
 const itemsHTML=L=>L.map(l=>`<div class="sl2"><div class="t" style="background:${l.bg}">${l.img?`<img src="${l.img}" alt="">`:l.e}</div><div class="n"><span style="font-weight:500">${l.n}</span><small>Size ${l.size}${l.cn?" · "+l.cn:""} · SL ${l.qty}</small></div><div>${fmt(l.price*l.qty)}</div></div>`).join("");
 const totalsHTML=s=>`<div class="sm"><span>Tạm tính</span><span>${fmt(s.t)}</span></div><div class="sm"><span>Phí giao hàng</span><span>${s.sh?fmt(s.sh):"Miễn phí"}</span></div><div class="sm t"><span>Tổng cộng</span><span>${fmt(s.total)}</span></div>`;
-const bankHTML=(code,hide)=>`<div class="bankbox" id="bankbox"${hide?" hidden":""}><div><span>Ngân hàng</span><b>${esc(BANK.bank)}</b></div><div><span>Số tài khoản</span><b>${esc(BANK.no)}</b></div><div><span>Chủ tài khoản</span><b>${esc(BANK.owner)}</b></div><div><span>Nội dung chuyển khoản</span><b>${code?esc(code):"Mã đơn hàng (hiện sau khi đặt)"}</b></div></div>`;
+const bankHTML=(code,hide)=>!BANK.no?"":`<div class="bankbox" id="bankbox"${hide?" hidden":""}><div><span>Ngân hàng</span><b>${esc(BANK.bank)}</b></div><div><span>Số tài khoản</span><b>${esc(BANK.no)}</b></div><div><span>Chủ tài khoản</span><b>${esc(BANK.owner)}</b></div><div><span>Nội dung chuyển khoản</span><b>${code?esc(code):"Mã đơn hàng (hiện sau khi đặt)"}</b></div></div>`;
 const INSTALLMENT_TERMS=[3,6,12];
-function installmentHTML(){return `<div id="installment-box" class="installment-box"${CK.pay==='installment'?'':' hidden'}><span class="eyebrow">TRẢ GÓP · MÔ PHỎNG</span><h3>Chọn kỳ hạn mong muốn</h3><p>Đây là yêu cầu trả góp, chưa phải khoản vay được phê duyệt. Kỳ hạn, lãi suất, phí và số tiền trả mỗi kỳ cần được đơn vị cung cấp xác nhận trước khi bạn đồng ý.</p><label class="l" for="ck-installmentMonths">Kỳ hạn mong muốn</label><select id="ck-installmentMonths" class="f${CKE.installmentMonths?' bad':''}" data-ck="installmentMonths"${CKE.installmentMonths?' aria-invalid="true" aria-describedby="e-installmentMonths"':''}><option value="">Chọn kỳ hạn</option>${INSTALLMENT_TERMS.map(n=>`<option value="${n}"${Number(CK.installmentMonths)===n?' selected':''}>${n} tháng</option>`).join('')}</select>${CKE.installmentMonths?`<p class="err" id="e-installmentMonths" role="alert">${CKE.installmentMonths}</p>`:''}<p class="installment-notice">Yêu cầu chỉ lưu trên trình duyệt này; chưa gửi đến cửa hàng hay đơn vị tài chính. Không thu tiền khi lưu yêu cầu.</p><label class="installment-consent"><input type="checkbox" id="ck-installmentConsent"${CK.installmentConsent?' checked':''}${CKE.installmentConsent?' aria-invalid="true" aria-describedby="e-installmentConsent"':''}><span>Tôi hiểu đây là bản mô phỏng, chưa xác nhận hợp đồng trả góp.</span></label>${CKE.installmentConsent?`<p class="err" id="e-installmentConsent" role="alert">${CKE.installmentConsent}</p>`:''}</div>`}
+function installmentHTML(){return `<div id="installment-box" class="installment-box"${CK.pay==='installment'?'':' hidden'}><span class="eyebrow">TRẢ GÓP · MÔ PHỎNG</span><h3>Chọn kỳ hạn mong muốn</h3><p>Đây là yêu cầu trả góp, chưa phải khoản vay được phê duyệt. Kỳ hạn, lãi suất, phí và số tiền trả mỗi kỳ cần được đơn vị cung cấp xác nhận trước khi bạn đồng ý.</p><label class="l" for="ck-installmentMonths">Kỳ hạn mong muốn</label><select id="ck-installmentMonths" class="f${CKE.installmentMonths?' bad':''}" data-ck="installmentMonths"${CKE.installmentMonths?' aria-invalid="true" aria-describedby="e-installmentMonths"':''}><option value="">Chọn kỳ hạn</option>${INSTALLMENT_TERMS.map(n=>`<option value="${n}"${Number(CK.installmentMonths)===n?' selected':''}>${n} tháng</option>`).join('')}</select>${CKE.installmentMonths?`<p class="err" id="e-installmentMonths" role="alert">${CKE.installmentMonths}</p>`:''}<p class="installment-notice">Yêu cầu chỉ tồn tại trong phiên này; chưa gửi đi và chưa thu tiền.</p><label class="installment-consent"><input type="checkbox" id="ck-installmentConsent"${CK.installmentConsent?' checked':''}${CKE.installmentConsent?' aria-invalid="true" aria-describedby="e-installmentConsent"':''}><span>Tôi hiểu đây là bản mô phỏng, chưa xác nhận hợp đồng trả góp.</span></label>${CKE.installmentConsent?`<p class="err" id="e-installmentConsent" role="alert">${CKE.installmentConsent}</p>`:''}</div>`}
 function checkoutPage(){
  const L=lines();
  if(!L.length){$("#catpage").innerHTML=`<a class="back" href="#">← Trang chủ</a><h1 class="ct">Thanh toán</h1><p class="sub" style="padding:24px 0">Giỏ hàng đang trống. <a href="#/danh-muc/tat-ca" style="text-decoration:underline">Chọn sản phẩm</a> để tiếp tục.</p>`;return}
  const s=sums(),cnt=L.reduce((a,l)=>a+l.qty,0),er=k=>CKE[k]?`<p class="err" id="e-${k}" role="alert">${CKE[k]}</p>`:"";
  const inp=(k,label,extra,opt)=>`<label class="l" for="ck-${k}">${label}${opt?" <small>(không bắt buộc)</small>":""}</label><input class="f${CKE[k]?" bad":""}" id="ck-${k}" data-ck="${k}" value="${esc(CK[k])}" ${extra||""}${CKE[k]?` aria-invalid="true" aria-describedby="e-${k}"`:""}>${er(k)}`;
- const po=(v,t,d)=>`<label class="po${CK.pay===v?" on":""}"><input type="radio" name="ckpay" value="${v}"${CK.pay===v?" checked":""}><div><b>${t}</b><span>${d}</span></div></label>`;
+ const po=(v,t,d)=>`<label class="po${CK.pay===v?" on":""}"><input type="radio" name="ckpay" value="${v}"${v==="bank"?" disabled":""}${CK.pay===v?" checked":""}><div><b>${t}</b><span>${d}</span></div></label>`;
  const hint=s.sh?`<p class="sub" style="font-size:13px;margin-top:8px">Mua thêm ${fmt(FREE_SHIP-s.t)} để được miễn phí giao hàng.</p>`:"";
- $("#catpage").innerHTML=`<a class="back" href="#">← Tiếp tục mua sắm</a><h1 class="ct">Thanh toán</h1><p class="sub">${cnt} sản phẩm trong giỏ</p>
+ $("#catpage").innerHTML=`<a class="back" href="#">← Tiếp tục mua sắm</a><h1 class="ct">Thanh toán</h1><div class="demo-notice" role="note"><strong>Chế độ xem thử đơn hàng</strong><p>Website chưa nhận đơn hoặc thanh toán thật. Vui lòng dùng thông tin giả để thử. Thông tin nhập chỉ dùng trong phiên này, không gửi đi và không lưu sau khi tải lại trang.</p></div><p class="sub">${cnt} sản phẩm trong giỏ</p>
  <div class="ckw"><div>
   <div class="ckb"><h2><i>1</i>Thông tin nhận hàng</h2>
    <div class="ckg"><div>${inp("name","Họ và tên",'autocomplete="name" maxlength="60"')}</div><div>${inp("phone","Số điện thoại",'inputmode="tel" autocomplete="tel" maxlength="15"')}</div></div>
@@ -1149,16 +1163,16 @@ function checkoutPage(){
   </div>
   <div class="ckb"><h2><i>2</i>Phương thức thanh toán</h2>
    ${po("cod","Thanh toán khi nhận hàng (COD)","Trả tiền mặt cho nhân viên giao hàng.")}
-   ${po("bank","Chuyển khoản ngân hàng","Chuyển theo thông tin dưới đây, shop xác nhận rồi giao hàng.")}
+   ${po("bank","Chuyển khoản ngân hàng","Chưa khả dụng: thông tin thanh toán chưa được xác nhận.")}
    ${po("installment","Trả góp (mô phỏng)","Chọn kỳ hạn mong muốn; chưa thu tiền hoặc phê duyệt khoản vay.")}
    ${bankHTML("",CK.pay!=="bank")}
    ${installmentHTML()}
   </div>
  </div>
  <div class="ckb sumc"><h2><i>3</i>Đơn hàng của bạn</h2>${itemsHTML(L.map(n1))}<div style="margin-top:12px">${totalsHTML(s)}</div>${hint}
-  <button class="btn" style="width:100%;margin-top:14px;padding:14px" data-placeorder>${CK.pay==="installment"?"Lưu yêu cầu trả góp":"Đặt hàng"}</button>
+  <button class="btn" style="width:100%;margin-top:14px;padding:14px" data-placeorder>${CK.pay==="installment"?"Xem thử yêu cầu trả góp":"Xem trước đơn hàng"}</button>
   <button class="btn light" style="width:100%;margin-top:8px;border:1px solid var(--line)" data-editcart>Sửa giỏ hàng</button>
-  <p class="sub" style="font-size:12px;margin-top:10px">${CK.pay==="installment"?"Đây là yêu cầu lưu trên thiết bị, không phải xác nhận thanh toán hoặc phê duyệt trả góp.":"Khi đặt hàng, bạn đồng ý để shop gọi xác nhận đơn qua số điện thoại đã nhập."}</p>
+  <p class="sub" style="font-size:12px;margin-top:10px">${CK.pay==="installment"?"Đây là yêu cầu lưu trên thiết bị, không phải xác nhận thanh toán hoặc phê duyệt trả góp.":"Chưa gửi đơn đến cửa hàng. Giỏ hàng được giữ nguyên khi xem thử."}</p>
  </div></div>`;
 }
 function placeOrder(){
@@ -1174,21 +1188,22 @@ function placeOrder(){
   if(!INSTALLMENT_TERMS.includes(Number(CK.installmentMonths)))CKE.installmentMonths='Vui lòng chọn kỳ hạn mong muốn.';
   if(!CK.installmentConsent)CKE.installmentConsent='Vui lòng xác nhận bạn hiểu đây là bản mô phỏng.';
  }
+ if(!["cod","installment"].includes(CK.pay)){toast("Phương thức thanh toán chưa khả dụng.");return}
  if(Object.keys(CKE).length){checkoutPage();const f=document.querySelector('#catpage [aria-invalid="true"]');if(f)f.focus();return}
- const s=sums(),o={code:"FS"+String(Date.now()).slice(-7),date:new Date().toISOString(),name:n,phone:p,email:m,prov:pr,addr:a,note:CK.note.trim(),pay:CK.pay,installment:CK.pay==="installment"?{months:Number(CK.installmentMonths),status:"local_request",approved:false,interestRate:null,fees:null,consent:true}:null,items:L.map(n1),sub:s.t,ship:s.sh,total:s.total};
+ const s=sums(),o={code:"DEMO-"+crypto.randomUUID().slice(0,8).toUpperCase(),status:"demo_not_submitted",date:new Date().toISOString(),name:n,phone:p,email:m,prov:pr,addr:a,note:CK.note.trim(),pay:CK.pay,installment:CK.pay==="installment"?{months:Number(CK.installmentMonths),status:"local_request",approved:false,interestRate:null,fees:null,consent:true}:null,items:L.map(n1),sub:s.t,ship:s.sh,total:s.total};
  lastMem=o;
- try{const all=JSON.parse(localStorage.getItem(OKEY)||"[]");localStorage.setItem(OKEY,JSON.stringify([o,...(Array.isArray(all)?all:[])].slice(0,30)));localStorage.setItem(LKEY,JSON.stringify(o))}catch(e){}
- cart={};save();drawer();CK.note="";CK.installmentMonths="";CK.installmentConsent=false;
- location.hash="#/dat-hang-thanh-cong";
+ // Never persist customer identity or contact details in browser storage.
+ location.hash="#/xem-truoc-don-hang";
 }
+function privateText(value){return `<span translate="no">${esc(value)}</span>`}
 function successPage(){
  const o=lastOrder();
- $("#catpage").innerHTML=`<div class="okp"><div class="okc">✓</div><h1 class="ct">${o.pay==="installment"?"Đã lưu yêu cầu trả góp":"Đặt hàng thành công"}</h1><p class="sub">${o.pay==="installment"?`Yêu cầu <b>${esc(o.code)}</b> đã được lưu trên trình duyệt này. Chưa gửi đến cửa hàng, chưa phê duyệt và chưa thu tiền.`:`Cảm ơn ${esc(o.name)}! Mã đơn của bạn là <b>${esc(o.code)}</b>. Chúng mình sẽ gọi ${esc(o.phone)} để xác nhận đơn.`}</p></div>
+ $("#catpage").innerHTML=`<div class="okp"><div class="okc">◎</div><h1 class="ct">${o.pay==="installment"?"Xem thử yêu cầu trả góp":"Xem trước đơn hàng"}</h1><p class="sub">Chưa gửi đơn, chưa thu tiền. Bản xem thử chỉ tồn tại trong phiên này.</p><p class="sub">Mã tham chiếu: <span translate="no">${privateText(o.code)}</span></p></div>
  <div class="ckw" style="margin-top:24px"><div>
-  <div class="ckb"><h2>Thông tin nhận hàng</h2><p style="margin:10px 0 0"><b>${esc(o.name)}</b> · ${esc(o.phone)}${o.email?"<br>"+esc(o.email):""}<br>${esc(o.addr)}, ${esc(o.prov)}${o.note?`<br><span style="color:var(--muted)">Ghi chú: ${esc(o.note)}</span>`:""}</p></div>
-  <div class="ckb"><h2>Thanh toán</h2><p style="margin:10px 0 0">${o.pay==="installment"?"Trả góp (mô phỏng)":o.pay==="bank"?"Chuyển khoản ngân hàng":"Thanh toán khi nhận hàng (COD)"}</p>${o.pay==="bank"?`<p class="sub" style="margin:6px 0 0">Vui lòng chuyển khoản đúng số tiền và ghi mã đơn ở phần nội dung.</p>${bankHTML(o.code,false)}`:""}${o.pay==="installment"?`<div class="installment-box"><p><strong>Kỳ hạn mong muốn:</strong> ${Number(o.installment?.months)||0} tháng</p><p>Trạng thái: Chỉ lưu trên thiết bị</p><p>Lãi suất, phí và lịch trả góp chưa được xác nhận. Đây không phải hợp đồng tín dụng.</p></div>`:""}</div>
+  <div class="ckb"><h2>Thông tin nhận hàng</h2><p style="margin:10px 0 0"><b>${privateText(o.name)}</b> · ${privateText(o.phone)}${o.email?"<br>"+privateText(o.email):""}<br>${privateText(o.addr)}, ${privateText(o.prov)}${o.note?`<br><span style="color:var(--muted)">Ghi chú: ${privateText(o.note)}</span>`:""}</p></div>
+  <div class="ckb"><h2>Thanh toán</h2><p style="margin:10px 0 0">${o.pay==="installment"?"Trả góp (mô phỏng)":o.pay==="bank"?"Chuyển khoản ngân hàng":"Thanh toán khi nhận hàng (COD)"}</p>${o.pay==="bank"?`<p class="sub" style="margin:6px 0 0">Vui lòng chuyển khoản đúng số tiền và ghi mã đơn ở phần nội dung.</p>${bankHTML(o.code,false)}`:""}${o.pay==="installment"?`<div class="installment-box"><p><strong>Kỳ hạn mong muốn:</strong> ${Number(o.installment?.months)||0} tháng</p><p>Trạng thái: Chỉ xem thử trong phiên này</p><p>Lãi suất, phí và lịch trả góp chưa được xác nhận. Đây không phải hợp đồng tín dụng.</p></div>`:""}</div>
  </div>
- <div class="ckb"><h2>Đơn hàng ${esc(o.code)}</h2>${itemsHTML(o.items)}<div style="margin-top:12px">${totalsHTML({t:o.sub,sh:o.ship,total:o.total})}</div><a class="btn" style="display:block;margin-top:14px;padding:14px" href="#/danh-muc/tat-ca">Tiếp tục mua sắm</a></div></div>`;
+ <div class="ckb"><h2>Đơn hàng ${privateText(o.code)}</h2>${itemsHTML(o.items)}<div style="margin-top:12px">${totalsHTML({t:o.sub,sh:o.ship,total:o.total})}</div><a class="btn" style="display:block;margin-top:14px;padding:14px" href="#/danh-muc/tat-ca">Tiếp tục mua sắm</a></div></div>`;
 }
 document.addEventListener("input",e=>{
  const k=e.target.dataset&&e.target.dataset.ck;if(!k)return;
@@ -1235,16 +1250,16 @@ function qvInfo(){
  $("#qvi").innerHTML=`<h2>${p.n}</h2>
  <div class="st">${a.n?stars(Math.round(a.avg))+" "+a.avg.toFixed(1)+"/5 ("+a.n+" đánh giá)":"Chưa có đánh giá"}</div>
  <div class="dpr">${priceHTML(p)}</div>
- <p style="margin:0;color:#4D505B;line-height:1.65">${p.desc||""}</p>
+ <p lang="vi" translate="no" style="margin:0;color:#4D505B;line-height:1.65">${p.desc||""}</p>
  ${p.colors.length>1?`<b>Màu sắc: ${COLOR_NAMES[p.colors[qs.col]]||""}</b><div class="opts">${p.colors.map((c,i)=>`<button class="col" style="background:${c}" data-qvcol="${i}" aria-pressed="${i===qs.col}" aria-label="${COLOR_NAMES[c]||"Màu "+(i+1)}"></button>`).join("")}</div>`:""}
  <b>Kích thước</b><div class="opts">${p.sizes.map(z=>`<button class="sz" data-qvsize="${z}" aria-pressed="${z===qs.size}">${z}</button>`).join("")}</div>
  <b>Số lượng</b><div class="q"><button data-qvq="-1" aria-label="Giảm">−</button>${qs.qty}<button data-qvq="1" aria-label="Tăng">+</button></div>
- <button class="btn" style="margin-top:20px;padding:14px" data-qvadd>Thêm vào giỏ hàng</button>
+ <button class="btn" style="margin-top:20px;padding:14px" data-qvadd>Thêm vào giỏ hàng</button><a class="size-help" href="#/huong-dan-size">Hướng dẫn chọn size ↗</a>
  <a class="qvl" href="#/san-pham/${p.id}">Xem chi tiết sản phẩm →</a>`;
 }
 function openQV(id,from){
  qvp=P.find(x=>x.id==id);if(!qvp)return;
- qs={size:defSize(qvp),col:0,qty:1,idx:0};qvFrom=from||null;
+ qs={size:qvp.sizes.length===1?qvp.sizes[0]:"",col:0,qty:1,idx:0};qvFrom=from||null;
  const G=gallery(qvp);
  $("#qvg").style.background=qvp.bg;
  $("#qvg").innerHTML=G.map((g,i)=>`<div class="sl${i?"":" on"}">${g.img?`<img src="${g.img}" alt="">`:`<span style="transform:${g.t}">${qvp.e}</span>`}</div>`).join("")+
@@ -1268,7 +1283,7 @@ qvEl.addEventListener("click",e=>{
  else if(d.qvdot!==undefined)qvSlide(+d.qvdot);
  else if(d.qvsize){qs.size=d.qvsize;qvInfo()}
  else if(d.qvcol!==undefined){qs.col=+d.qvcol;qvInfo()}
- else if(d.qvq){qs.qty=Math.max(1,qs.qty+ +d.qvq);qvInfo()}
+ else if(d.qvq){qs.qty=Math.min(99,Math.max(1,qs.qty+ +d.qvq));qvInfo()}
  else if("qvadd" in d)addCart(qvp,qs.size,qs.col,qs.qty);
 });
 document.addEventListener("keydown",e=>{
@@ -1322,14 +1337,15 @@ P.forEach(p=>{if(LANGUAGE_PRODUCT_NAMES[p.id])LANGUAGE_TEXT[p.n]=LANGUAGE_PRODUC
 let activeLanguage='vi';try{const saved=localStorage.getItem('famstyle-language');if(['vi','en','ja','fr','es'].includes(saved))activeLanguage=saved}catch(e){}
 const languageIndex={en:0,ja:1,fr:2,es:3};
 Object.assign(LANGUAGE_TEXT,{"Nam": ["Men", "メンズ", "Homme", "Hombre"], "Nữ": ["Women", "レディース", "Femme", "Mujer"], "Thời trang": ["Fashion", "ファッション", "Mode", "Moda"], "Có": ["There are", "対象商品数：", "Il y a", "Hay"], "Đơn hàng": ["Order", "ご注文", "Commande", "Pedido"], "Thông tin đặt hàng": ["Order information", "注文情報", "Informations de commande", "Información del pedido"], "Thông tin khách hàng": ["Customer details", "お客様情報", "Informations client", "Datos del cliente"], "Địa chỉ": ["Address", "住所", "Adresse", "Dirección"], "Điện thoại": ["Phone", "電話", "Téléphone", "Teléfono"], "Chỉnh sửa": ["Edit", "編集", "Modifier", "Editar"], "Quay lại": ["Go back", "戻る", "Retour", "Volver"], "Lên đầu trang": ["Back to top", "ページ上部へ", "Haut de page", "Volver arriba"], "Ảnh trước": ["Previous image", "前の画像", "Image précédente", "Imagen anterior"], "Ảnh sau": ["Next image", "次の画像", "Image suivante", "Imagen siguiente"], "Tăng": ["Increase", "増やす", "Augmenter", "Aumentar"], "Giảm": ["Decrease", "減らす", "Diminuer", "Reducir"], "Tìm kiếm": ["Search", "検索", "Recherche", "Buscar"], "Sắc trầm ấm áp, phom dáng thoải mái cho những ngày se lạnh.": ["Warm muted colours and relaxed shapes for cooler days.", "肌寒い日に、暖かな落ち着いた色とリラックスしたシルエットを。", "Des tons chaleureux et des coupes confortables pour les journées fraîches.", "Tonos cálidos y cortes cómodos para los días frescos."], "Những thiết kế đánh dấu hành trình và cá tính Famstyle.": ["Designs celebrating Famstyle's journey and character.", "Famstyleの歩みと個性を表現するデザイン。", "Des créations qui célèbrent le parcours et la personnalité de Famstyle.", "Diseños que celebran la trayectoria y personalidad de Famstyle."], "Tự do phối màu. Tự tin thể hiện chất riêng.": ["Mix colours freely. Express yourself with confidence.", "自由に色を組み合わせて、自信を持って自分らしく。", "Associez les couleurs librement. Affirmez votre personnalité.", "Combina colores con libertad. Expresa tu personalidad con confianza."], "Chất liệu nhẹ nhàng, sắc màu tươi mới cho ngày nắng.": ["Light fabrics and fresh colours for sunny days.", "晴れた日にぴったりの軽い素材と爽やかな色。", "Des matières légères et des couleurs fraîches pour les beaux jours.", "Tejidos ligeros y colores frescos para los días de sol."], "Form rộng, chất liệu dày dặn, màu trung tính dễ phối.": ["Relaxed fits, substantial fabrics and versatile neutral colours.", "ゆったりしたシルエット、しっかりした素材、合わせやすいニュートラルカラー。", "Des coupes amples, des matières épaisses et des tons neutres faciles à associer.", "Cortes amplios, tejidos gruesos y colores neutros fáciles de combinar."], "Giấc mơ dịu dàng": ["A gentle dream", "やさしい夢", "Un rêve tout en douceur", "Un sueño delicado"], "Bộ sưu tập mang tinh thần mơ mộng của thương hiệu: nhẹ nhàng, ấm áp và đáng yêu. Hãy mặc những gì bạn thích và sống đúng với màu sắc của mình.": ["A collection with the brand's dreamy spirit: gentle, warm and charming. Wear what you love and express your true colours.", "ブランドの夢見る世界観を、やさしく、暖かく、愛らしく表現したコレクション。好きな服を着て、自分らしい色で生きよう。", "Une collection à l'esprit rêveur de la marque : douce, chaleureuse et charmante. Portez ce que vous aimez et affirmez vos couleurs.", "Una colección con el espíritu soñador de la marca: delicado, cálido y encantador. Viste lo que te gusta y expresa tus colores."], "MỘT CHÚT CẢM HỨNG MỚI": ["A LITTLE NEW INSPIRATION", "新しいインスピレーションを", "UNE NOUVELLE INSPIRATION", "UN POCO DE INSPIRACIÓN"], "Khám phá những thiết kế phù hợp": ["Discover designs that suit", "デザインを見つけよう、", "Découvrez des modèles adaptés", "Descubre diseños que encajan"], "với phong cách của bạn.": ["your personal style.", "あなたらしいスタイルに。", "à votre style.", "con tu estilo."], "Giao hàng toàn quốc, thanh toán khi nhận hàng": ["Nationwide delivery, cash on delivery available", "全国配送・代金引換対応", "Livraison nationale, paiement à la réception", "Envío nacional y pago contra reembolso"], "Đổi size trong 7 ngày nếu chưa sử dụng": ["Size exchanges within 7 days for unworn items", "未使用品は7日以内サイズ交換可", "Échange de taille sous 7 jours pour les articles non portés", "Cambio de talla en 7 días para artículos sin usar"], "Chưa có ưu đãi trong nhóm này. Bấm lại “Đang ưu đãi” để xem toàn bộ sản phẩm.": ["No offers in this group. Click “On sale” again to see all products.", "このグループにはセール商品がありません。「セール中」をもう一度押すと全商品を表示します。", "Aucune offre dans ce groupe. Cliquez à nouveau sur « En promotion » pour voir tous les produits.", "No hay ofertas en este grupo. Pulsa otra vez «En oferta» para ver todos los productos."], "Chưa có ưu đãi trong bộ sưu tập này. Bấm lại “Đang ưu đãi” để xem toàn bộ sản phẩm.": ["No offers in this collection. Click “On sale” again to see all products.", "このコレクションにはセール商品がありません。「セール中」をもう一度押すと全商品を表示します。", "Aucune offre dans cette collection. Cliquez à nouveau sur « En promotion » pour voir tous les produits.", "No hay ofertas en esta colección. Pulsa otra vez «En oferta» para ver todos los productos."], "Chưa có sản phẩm trong bộ sưu tập này.": ["No products in this collection yet.", "このコレクションにはまだ商品がありません。", "Aucun produit dans cette collection.", "Aún no hay productos en esta colección."], "Thông báo cửa hàng": ["Store announcements", "店舗からのお知らせ", "Annonces de la boutique", "Avisos de la tienda"], "miễn phí giao hàng": ["free shipping", "送料無料", "livraison gratuite", "envío gratuito"], "Miễn phí giao hàng": ["Free shipping", "送料無料", "Livraison gratuite", "Envío gratuito"], "đánh giá": ["reviews", "レビュー", "avis", "reseñas"], "Chưa có đánh giá nào.": ["No reviews yet.", "レビューはまだありません。", "Aucun avis pour le moment.", "Aún no hay reseñas."], "Hãy là người đầu tiên đánh giá sản phẩm này.": ["Be the first to review this product.", "この商品の最初のレビューを書きましょう。", "Soyez le premier à donner votre avis.", "Sé el primero en valorar este producto."], "Cảm ơn bạn đã đánh giá!": ["Thank you for your review!", "レビューありがとうございます！", "Merci pour votre avis !", "¡Gracias por tu reseña!"]});
-Object.assign(LANGUAGE_TEXT,{"Trả góp (mô phỏng)": ["Installments (demo)", "分割払い（デモ）", "Paiement échelonné (démo)", "Pago a plazos (demo)"], "TRẢ GÓP · MÔ PHỎNG": ["INSTALLMENTS · DEMO", "分割払い・デモ", "PAIEMENT ÉCHELONNÉ · DÉMO", "PAGO A PLAZOS · DEMO"], "Chọn kỳ hạn mong muốn": ["Choose your preferred term", "希望する支払期間を選択", "Choisissez la durée souhaitée", "Elige el plazo deseado"], "Kỳ hạn mong muốn": ["Preferred term", "希望する支払期間", "Durée souhaitée", "Plazo deseado"], "Chọn kỳ hạn": ["Choose a term", "期間を選択", "Choisir une durée", "Elegir plazo"], "tháng": ["months", "か月", "mois", "meses"], "Chọn kỳ hạn mong muốn; chưa thu tiền hoặc phê duyệt khoản vay.": ["Choose a preferred term; no payment or loan approval occurs.", "希望期間を選択します。支払い・融資承認は行われません。", "Choisissez une durée ; aucun paiement ni accord de prêt.", "Elige un plazo; no se realiza ningún cobro ni aprobación de crédito."], "Đây là yêu cầu trả góp, chưa phải khoản vay được phê duyệt. Kỳ hạn, lãi suất, phí và số tiền trả mỗi kỳ cần được đơn vị cung cấp xác nhận trước khi bạn đồng ý.": ["This is an installment request, not an approved loan. The provider must confirm the term, interest rate, fees and installment amounts before you agree.", "これは分割払いの希望登録であり、承認済みの融資ではありません。同意前に、提供会社による期間、金利、手数料、各回支払額の確認が必要です。", "Il s’agit d’une demande, pas d’un prêt approuvé. Le prestataire doit confirmer la durée, le taux, les frais et les échéances avant votre accord.", "Es una solicitud, no un crédito aprobado. El proveedor debe confirmar plazo, intereses, comisiones y cuotas antes de tu aceptación."], "Yêu cầu chỉ lưu trên trình duyệt này; chưa gửi đến cửa hàng hay đơn vị tài chính. Không thu tiền khi lưu yêu cầu.": ["This request is saved only in this browser; it is not sent to the store or a finance provider. Saving it does not charge you.", "希望内容はこのブラウザーのみに保存され、店舗や金融機関には送信されません。保存による請求はありません。", "La demande est enregistrée uniquement dans ce navigateur, sans envoi à la boutique ni à un organisme financier. Aucun montant n’est prélevé.", "La solicitud se guarda solo en este navegador; no se envía a la tienda ni a una entidad financiera. No se realiza ningún cobro."], "Tôi hiểu đây là bản mô phỏng, chưa xác nhận hợp đồng trả góp.": ["I understand this is a demo and no installment agreement is confirmed.", "これはデモであり、分割払い契約は成立していないことを理解しました。", "Je comprends qu’il s’agit d’une démo et qu’aucun contrat n’est confirmé.", "Entiendo que es una demo y no se confirma ningún contrato a plazos."], "Lưu yêu cầu trả góp": ["Save installment request", "分割払いの希望を保存", "Enregistrer la demande", "Guardar solicitud de pago a plazos"], "Đã lưu yêu cầu trả góp": ["Installment request saved", "分割払いの希望を保存しました", "Demande enregistrée", "Solicitud guardada"], "Vui lòng chọn kỳ hạn mong muốn.": ["Please choose your preferred term.", "希望する期間を選択してください。", "Veuillez choisir la durée souhaitée.", "Selecciona el plazo deseado."], "Vui lòng xác nhận bạn hiểu đây là bản mô phỏng.": ["Please confirm that you understand this is a demo.", "デモであることを確認してください。", "Veuillez confirmer qu’il s’agit d’une démo.", "Confirma que entiendes que es una demo."], "Đây là yêu cầu lưu trên thiết bị, không phải xác nhận thanh toán hoặc phê duyệt trả góp.": ["This is a locally saved request, not a payment confirmation or installment approval.", "これは端末内に保存された希望内容であり、支払確認や分割払い承認ではありません。", "Il s’agit d’une demande locale, pas d’une confirmation de paiement ni d’un accord de crédit.", "Es una solicitud local, no una confirmación de pago ni aprobación de crédito."], "Trạng thái: Chỉ lưu trên thiết bị": ["Status: Saved only on this device", "状態：この端末のみに保存", "Statut : enregistré sur cet appareil uniquement", "Estado: guardado solo en este dispositivo"], "Lãi suất, phí và lịch trả góp chưa được xác nhận. Đây không phải hợp đồng tín dụng.": ["Interest, fees and the repayment schedule are unconfirmed. This is not a credit agreement.", "金利、手数料、支払予定は未確定です。これは信用契約ではありません。", "Le taux, les frais et l’échéancier ne sont pas confirmés. Ceci n’est pas un contrat de crédit.", "Los intereses, comisiones y calendario no están confirmados. Esto no es un contrato de crédito."], "Yêu cầu": ["Request", "希望内容", "Demande", "Solicitud"], "đã được lưu trên trình duyệt này. Chưa gửi đến cửa hàng, chưa phê duyệt và chưa thu tiền.": ["has been saved in this browser. It has not been sent to the store, approved or charged.", "をこのブラウザーに保存しました。店舗への送信、承認、請求は行われていません。", "a été enregistrée dans ce navigateur, sans envoi à la boutique, approbation ni prélèvement.", "se ha guardado en este navegador. No se ha enviado a la tienda, aprobado ni cobrado."]});
+Object.assign(LANGUAGE_TEXT,{"Trả góp (mô phỏng)": ["Installments (demo)", "分割払い（デモ）", "Paiement échelonné (démo)", "Pago a plazos (demo)"], "TRẢ GÓP · MÔ PHỎNG": ["INSTALLMENTS · DEMO", "分割払い・デモ", "PAIEMENT ÉCHELONNÉ · DÉMO", "PAGO A PLAZOS · DEMO"], "Chọn kỳ hạn mong muốn": ["Choose your preferred term", "希望する支払期間を選択", "Choisissez la durée souhaitée", "Elige el plazo deseado"], "Kỳ hạn mong muốn": ["Preferred term", "希望する支払期間", "Durée souhaitée", "Plazo deseado"], "Chọn kỳ hạn": ["Choose a term", "期間を選択", "Choisir une durée", "Elegir plazo"], "tháng": ["months", "か月", "mois", "meses"], "Chọn kỳ hạn mong muốn; chưa thu tiền hoặc phê duyệt khoản vay.": ["Choose a preferred term; no payment or loan approval occurs.", "希望期間を選択します。支払い・融資承認は行われません。", "Choisissez une durée ; aucun paiement ni accord de prêt.", "Elige un plazo; no se realiza ningún cobro ni aprobación de crédito."], "Đây là yêu cầu trả góp, chưa phải khoản vay được phê duyệt. Kỳ hạn, lãi suất, phí và số tiền trả mỗi kỳ cần được đơn vị cung cấp xác nhận trước khi bạn đồng ý.": ["This is an installment request, not an approved loan. The provider must confirm the term, interest rate, fees and installment amounts before you agree.", "これは分割払いの希望登録であり、承認済みの融資ではありません。同意前に、提供会社による期間、金利、手数料、各回支払額の確認が必要です。", "Il s’agit d’une demande, pas d’un prêt approuvé. Le prestataire doit confirmer la durée, le taux, les frais et les échéances avant votre accord.", "Es una solicitud, no un crédito aprobado. El proveedor debe confirmar plazo, intereses, comisiones y cuotas antes de tu aceptación."], "Yêu cầu chỉ tồn tại trong phiên này; chưa gửi đi và chưa thu tiền.": ["This request is saved only in this browser; it is not sent to the store or a finance provider. Saving it does not charge you.", "希望内容はこのブラウザーのみに保存され、店舗や金融機関には送信されません。保存による請求はありません。", "La demande est enregistrée uniquement dans ce navigateur, sans envoi à la boutique ni à un organisme financier. Aucun montant n’est prélevé.", "La solicitud se guarda solo en este navegador; no se envía a la tienda ni a una entidad financiera. No se realiza ningún cobro."], "Tôi hiểu đây là bản mô phỏng, chưa xác nhận hợp đồng trả góp.": ["I understand this is a demo and no installment agreement is confirmed.", "これはデモであり、分割払い契約は成立していないことを理解しました。", "Je comprends qu’il s’agit d’une démo et qu’aucun contrat n’est confirmé.", "Entiendo que es una demo y no se confirma ningún contrato a plazos."], "Lưu yêu cầu trả góp": ["Save installment request", "分割払いの希望を保存", "Enregistrer la demande", "Guardar solicitud de pago a plazos"], "Đã lưu yêu cầu trả góp": ["Installment request saved", "分割払いの希望を保存しました", "Demande enregistrée", "Solicitud guardada"], "Vui lòng chọn kỳ hạn mong muốn.": ["Please choose your preferred term.", "希望する期間を選択してください。", "Veuillez choisir la durée souhaitée.", "Selecciona el plazo deseado."], "Vui lòng xác nhận bạn hiểu đây là bản mô phỏng.": ["Please confirm that you understand this is a demo.", "デモであることを確認してください。", "Veuillez confirmer qu’il s’agit d’une démo.", "Confirma que entiendes que es una demo."], "Đây là yêu cầu lưu trên thiết bị, không phải xác nhận thanh toán hoặc phê duyệt trả góp.": ["This is a locally saved request, not a payment confirmation or installment approval.", "これは端末内に保存された希望内容であり、支払確認や分割払い承認ではありません。", "Il s’agit d’une demande locale, pas d’une confirmation de paiement ni d’un accord de crédit.", "Es una solicitud local, no una confirmación de pago ni aprobación de crédito."], "Trạng thái: Chỉ xem thử trong phiên này": ["Status: Saved only on this device", "状態：この端末のみに保存", "Statut : enregistré sur cet appareil uniquement", "Estado: guardado solo en este dispositivo"], "Lãi suất, phí và lịch trả góp chưa được xác nhận. Đây không phải hợp đồng tín dụng.": ["Interest, fees and the repayment schedule are unconfirmed. This is not a credit agreement.", "金利、手数料、支払予定は未確定です。これは信用契約ではありません。", "Le taux, les frais et l’échéancier ne sont pas confirmés. Ceci n’est pas un contrat de crédit.", "Los intereses, comisiones y calendario no están confirmados. Esto no es un contrato de crédito."], "Yêu cầu": ["Request", "希望内容", "Demande", "Solicitud"], "đã được lưu trên trình duyệt này. Chưa gửi đến cửa hàng, chưa phê duyệt và chưa thu tiền.": ["has been saved in this browser. It has not been sent to the store, approved or charged.", "をこのブラウザーに保存しました。店舗への送信、承認、請求は行われていません。", "a été enregistrée dans ce navigateur, sans envoi à la boutique, approbation ni prélèvement.", "se ha guardado en este navegador. No se ha enviado a la tienda, aprobado ni cobrado."]});
 Object.assign(LANGUAGE_TEXT,{"Ưu đãi mùa đông": ["Winter offers", "冬のセール", "Offres d’hiver", "Ofertas de invierno"], "Khám phá ưu đãi mùa đông": ["Explore winter offers", "冬のセールを見る", "Découvrir les offres d’hiver", "Descubrir ofertas de invierno"], "Ấm áp mỗi ngày, phong cách trọn mùa. Khám phá áo khoác, áo len và phụ kiện giữ ấm đang giảm giá.": ["Warmth every day, style all season. Discover jackets, knitwear and warm accessories on sale.", "毎日暖かく、冬も自分らしく。アウター、ニット、防寒小物をセール価格で。", "Au chaud chaque jour, avec style toute la saison. Découvrez vestes, mailles et accessoires chauds en promotion.", "Abrigo cada día y estilo toda la temporada. Descubre chaquetas, prendas de punto y accesorios de abrigo en oferta."], "Giữ ấm đầy phong cách · Giảm đến": ["Stay warm in style · Save up to", "おしゃれに暖かく・最大割引", "Au chaud avec style · Jusqu’à", "Abrígate con estilo · Hasta un"], "Giá ưu đãi được áp dụng trực tiếp, không cộng dồn với ưu đãi khác trên cùng sản phẩm.": ["Discounts are applied directly and cannot be combined with other offers on the same product.", "割引は価格に適用済みです。同一商品への他の割引との併用はできません。", "La remise est appliquée directement et n’est pas cumulable avec d’autres offres sur le même produit.", "El descuento se aplica directamente y no se acumula con otras ofertas sobre el mismo producto."], "Mùa đông": ["Winter", "冬", "Hiver", "Invierno"]});
+Object.assign(LANGUAGE_TEXT,{"Vui lòng chọn kích thước trước khi thêm vào giỏ.": ["Please choose a size before adding to your bag.", "カートに追加する前にサイズを選択してください。", "Veuillez choisir une taille avant l’ajout au panier.", "Selecciona una talla antes de añadir al carrito."], "Số lượng hợp lệ từ 1 đến 99.": ["Quantity must be between 1 and 99.", "数量は1〜99で指定してください。", "La quantité doit être comprise entre 1 et 99.", "La cantidad debe estar entre 1 y 99."], "Đánh giá thử chỉ hiển thị trong phiên này, chưa được gửi đến cửa hàng.": ["Test reviews appear only in this session and are not sent to the store.", "テストレビューはこのセッションのみに表示され、店舗には送信されません。", "Les avis de test restent dans cette session et ne sont pas envoyés à la boutique.", "Las reseñas de prueba solo aparecen en esta sesión y no se envían a la tienda."], "Đang cập nhật thông tin liên hệ": ["Contact details coming soon", "連絡先情報は準備中です", "Coordonnées en cours de mise à jour", "Datos de contacto pendientes"], "Địa chỉ cửa hàng đang cập nhật": ["Store address coming soon", "店舗住所は準備中です", "Adresse de la boutique à venir", "Dirección de la tienda pendiente"], "Điều kiện giao hàng và đổi trả cần được cửa hàng xác nhận.": ["Delivery and return conditions must be confirmed by the store.", "配送・返品条件は店舗への確認が必要です。", "Les conditions de livraison et de retour doivent être confirmées par la boutique.", "La tienda debe confirmar las condiciones de envío y devolución."], "Xem thông tin đổi trả": ["View return information", "返品について", "Voir les informations de retour", "Ver información de devoluciones"], "Thông tin đổi trả": ["Return information", "返品について", "Informations de retour", "Información de devoluciones"], "Quyền riêng tư": ["Privacy", "プライバシー", "Confidentialité", "Privacidad"], "Chế độ xem thử đơn hàng": ["Order preview mode", "注文プレビューモード", "Mode aperçu de commande", "Modo de vista previa del pedido"], "Website chưa nhận đơn hoặc thanh toán thật. Vui lòng dùng thông tin giả để thử. Thông tin nhập chỉ dùng trong phiên này, không gửi đi và không lưu sau khi tải lại trang.": ["This website does not accept real orders or payments yet. Use fictional details for testing. Entered details stay in this page session, are not sent and disappear when the page reloads.", "このサイトでは実際の注文・支払いは受け付けていません。テストには架空の情報を使用してください。入力情報は送信されず、このセッションでのみ使用され、再読み込みで消去されます。", "Ce site n’accepte pas encore de commandes ni de paiements réels. Utilisez des données fictives. Elles restent dans cette session, ne sont pas envoyées et disparaissent au rechargement.", "Este sitio aún no acepta pedidos ni pagos reales. Usa datos ficticios. Los datos solo se usan en esta sesión, no se envían y desaparecen al recargar."], "Chưa khả dụng: thông tin thanh toán chưa được xác nhận.": ["Unavailable: payment details are not confirmed.", "利用不可：支払い情報が未確認です。", "Indisponible : coordonnées de paiement non confirmées.", "No disponible: los datos de pago no están confirmados."], "Phương thức thanh toán chưa khả dụng.": ["This payment method is not available.", "この支払い方法は利用できません。", "Ce mode de paiement est indisponible.", "Este método de pago no está disponible."], "Xem trước đơn hàng": ["Order preview", "注文プレビュー", "Aperçu de commande", "Vista previa del pedido"], "Xem thử yêu cầu trả góp": ["Preview installment request", "分割払い希望のプレビュー", "Aperçu de demande de paiement échelonné", "Vista previa de solicitud a plazos"], "Chưa gửi đơn đến cửa hàng. Giỏ hàng được giữ nguyên khi xem thử.": ["No order is sent to the store. Your bag is retained during preview.", "注文は店舗に送信されません。プレビュー後もカートは保持されます。", "Aucune commande n’est envoyée. Votre panier est conservé pendant l’aperçu.", "No se envía ningún pedido. El carrito se conserva durante la vista previa."], "Chưa gửi đơn, chưa thu tiền. Bản xem thử chỉ tồn tại trong phiên này.": ["No order was sent and no payment was taken. This preview exists only in this session.", "注文の送信・請求は行われていません。このプレビューはこのセッションでのみ有効です。", "Aucune commande envoyée, aucun paiement prélevé. Cet aperçu ne dure que cette session.", "No se ha enviado ningún pedido ni realizado cobros. Esta vista previa solo dura esta sesión."], "Mã tham chiếu": ["Reference", "参照番号", "Référence", "Referencia"], "Yêu cầu chỉ tồn tại trong phiên này; chưa gửi đi và chưa thu tiền.": ["This request exists only in this session; it has not been sent or charged.", "この希望内容はこのセッションのみで有効です。送信・請求はされていません。", "La demande reste dans cette session, sans envoi ni prélèvement.", "La solicitud solo existe en esta sesión; no se ha enviado ni cobrado."], "Trạng thái: Chỉ xem thử trong phiên này": ["Status: Preview in this session only", "状態：このセッション内のプレビューのみ", "Statut : aperçu dans cette session uniquement", "Estado: vista previa solo en esta sesión"], "Xóa dữ liệu cá nhân lưu từ bản cũ": ["Delete personal data saved by earlier versions", "旧バージョンの保存済み個人情報を削除", "Supprimer les données personnelles des versions précédentes", "Eliminar datos personales de versiones anteriores"], "Đã xóa dữ liệu cá nhân lưu từ bản cũ.": ["Personal data saved by earlier versions was deleted.", "旧バージョンの保存済み個人情報を削除しました。", "Les anciennes données personnelles ont été supprimées.", "Se han eliminado los datos personales de versiones anteriores."], "Không thể truy cập dữ liệu trình duyệt.": ["Browser storage is unavailable.", "ブラウザーの保存領域にアクセスできません。", "Le stockage du navigateur est indisponible.", "El almacenamiento del navegador no está disponible."]});
 const languageKeys=Object.keys(LANGUAGE_TEXT).sort((a,b)=>b.length-a.length);
 const languagePattern=new RegExp('(?<![\\p{L}\\p{N}])(?:'+languageKeys.map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')(?![\\p{L}\\p{N}])','gu');
 function translateUI(value){if(activeLanguage==='vi')return value;const index=languageIndex[activeLanguage];return value.replace(languagePattern,key=>LANGUAGE_TEXT[key][index])}
 const originalTexts=new WeakMap(),originalAttributes=new WeakMap();
 function translateTextNode(node){const value=node.nodeValue;let record=originalTexts.get(node);if(!record||value!==record.last)record={original:value,last:value};const translated=translateUI(record.original);if(value!==translated)node.nodeValue=translated;record.last=translated;originalTexts.set(node,record)}
-let languageScheduled=false;
+let languageScheduled=false,localizedTitle={original:document.title,last:document.title};
 const languageObserver=new MutationObserver(()=>{if(!languageScheduled){languageScheduled=true;queueMicrotask(()=>{languageScheduled=false;applyLanguage()})}});
 function applyLanguage(){
  languageObserver.disconnect();
@@ -1338,11 +1354,12 @@ function applyLanguage(){
  let node;while(node=walker.nextNode())translateTextNode(node);
  document.querySelectorAll('[placeholder],[aria-label],[title],[alt]').forEach(el=>{if(el.closest('[translate="no"]'))return;let record=originalAttributes.get(el)||{};for(const key of ['placeholder','aria-label','title','alt']){if(!el.hasAttribute(key))continue;const value=el.getAttribute(key);if(!record[key]||value!==record[key].last)record[key]={original:value,last:value};const translated=translateUI(record[key].original);if(value!==translated)el.setAttribute(key,translated);record[key].last=translated}originalAttributes.set(el,record)});
  const title=translateUI(HERO.title);if($('#heroT').textContent.trim()!==title)$('#heroT').textContent=title;
- if(document.title!==translateUI(document.title))document.title=translateUI(document.title);
+ if(document.title!==localizedTitle.last)localizedTitle.original=document.title;
+ document.title=translateUI(localizedTitle.original);localizedTitle.last=document.title;
  $('#siteLanguage').value=activeLanguage;
  languageObserver.observe(document.body,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:['placeholder','aria-label','title','alt']});
 }
-$('#siteLanguage').addEventListener('change',e=>{activeLanguage=e.target.value;try{localStorage.setItem('famstyle-language',activeLanguage)}catch(err){}route();applyLanguage()});
+$('#siteLanguage').addEventListener('change',e=>{activeLanguage=e.target.value;try{localStorage.setItem('famstyle-language',activeLanguage)}catch(err){}applyLanguage()});
 applyLanguage();
 
 </script>
