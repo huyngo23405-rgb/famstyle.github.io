@@ -32,7 +32,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:#ff
 .logo{font-weight:600;font-size:20px;letter-spacing:.04em;text-decoration:none;margin-right:auto}
 nav{display:flex;gap:24px}nav a{text-decoration:none;font-weight:400}
 .cartBtn{background:none;border:0;cursor:pointer;font-weight:500}
-@media(max-width:700px){nav{display:none}}
+@media(max-width:700px){#nav{display:none}}
 
 /* ===== 3. BANNER ===== */
 .hero{position:relative;min-height:72vh;display:flex;align-items:center;color:#fff;overflow:hidden}
@@ -380,7 +380,7 @@ section[id]{scroll-margin-top:70px}
 .mml details a{display:block;padding:11px 20px 11px 32px;text-decoration:none;color:var(--muted)}
 .mml details a:hover,.mml>a:hover{color:var(--hover)}
 .mml>a{display:block;padding:16px 20px;font-weight:500;text-decoration:none;border-bottom:1px solid var(--line)}
-@media(max-width:960px){nav{display:none}.hb{display:flex}}
+@media(max-width:960px){#nav{display:none}.hb{display:flex}}
 /* ===== ĐẦU TRANG HÒA VÀO BANNER (chỉ ở trang chủ khi chưa cuộn; sang mục khác hoặc cuộn xuống thì trắng như cũ) ===== */
 .dd>a,.nl{padding:18px 14px}
 header{transition:background-color .3s,color .3s,border-color .3s,box-shadow .25s}
@@ -592,7 +592,7 @@ button[data-add]:active,button[data-dadd]:active,button[data-qvadd]:active{trans
 @media(max-width:700px){.product-offers{align-items:flex-start;flex-direction:column;padding:20px}.product-offer-actions{gap:14px}}
 
 .language-picker{display:flex;align-items:center;gap:5px;flex-shrink:0;color:inherit}.language-picker>span{font-size:20px}.language-picker select{width:64px;cursor:pointer;border:0;border-bottom:1px solid #a39176;background:transparent;color:inherit;font-size:11px;padding:8px 0}.language-picker select option{background:#fff;color:#29251f}html[lang="ja"] body{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif}html:not([lang="vi"]) .bar{gap:15px}html:not([lang="vi"]) nav{gap:16px}
-@media(max-width:1100px){html:not([lang="vi"]) nav{display:none}html:not([lang="vi"]) .hb{display:flex}}
+@media(max-width:1100px){html:not([lang="vi"]) #nav{display:none}html:not([lang="vi"]) .hb{display:flex}}
 @media(max-width:700px){.bar,html:not([lang="vi"]) .bar{gap:8px}.language-picker>span{display:none}.language-picker select{width:47px;font-size:10px}.bar .lg{max-width:130px}.language-picker{margin-left:auto}}
 
 .installment-box{background:#f7f3ec;border:1px solid #dfd3c0;padding:20px;margin-top:16px;color:#554a3b}.installment-box[hidden]{display:none}.installment-box h3{font-weight:500;font-size:17px;margin:0 0 10px}.installment-box p{font-size:12px;line-height:1.8}.installment-box select{width:100%;background:#fff}.installment-notice{border-top:1px solid #dfd3c0;padding-top:12px}.installment-consent{display:flex;gap:10px;font-size:12px;line-height:1.7;align-items:flex-start;margin-top:16px}.installment-consent input{margin-top:4px;accent-color:#806747;flex-shrink:0}.installment-box .err{color:#b23b32}
@@ -628,6 +628,11 @@ button[data-add]:active,button[data-dadd]:active,button[data-qvadd]:active{trans
 .header-actions .account-link:hover,.header-actions .cartBtn:hover,.header-actions .language-picker:hover{background:#b8975a18}.header-actions .account-link.signed-in:after{right:4px;top:4px}
 @media(max-width:1100px){.bar,html:not([lang="vi"]) .bar{gap:12px}.header-actions{padding-left:8px;gap:3px}}
 @media(max-width:700px){.bar,html:not([lang="vi"]) .bar{gap:6px}.header-actions{padding-left:0;border-left:0;gap:0}.header-actions .language-picker{width:54px}.bar .sw{margin-left:auto;flex-shrink:1}.header-actions .mini{right:0;max-width:calc(100vw - 24px)}}
+
+/* Account tabs remain available independently of the primary navigation. */
+.account-tabs{display:flex;flex-wrap:wrap;gap:12px 24px}.account-tabs a{min-height:44px;display:flex;align-items:center}
+body.menu-open{overflow:hidden}.pc,.fp,.di,.nm,.fn{min-width:0}.nm a,.fn a,.di h1{overflow-wrap:anywhere}.pr,.fpr,.dpr{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px}.sz,.col,.q button{min-width:44px;min-height:44px}
+@media(max-width:700px){.bar .sw:hover,.bar .sw:focus-within,.bar .sw:has(.hs:not(:placeholder-shown)){flex:0 0 40px}.bar .sw:focus-within .hs,.bar .sw:has(.hs:not(:placeholder-shown)) .hs{position:fixed;left:12px;right:12px;top:calc(env(safe-area-inset-top,0px) + 60px);width:calc(100% - 24px);z-index:8;background-color:#fff;color:#171717;box-shadow:0 5px 20px #00000012}.bar .sw .sug{top:calc(env(safe-area-inset-top,0px) + 102px)}.account-main{padding:24px}.qv{padding:12px}.qvd{max-height:calc(100dvh - 24px)}}
 </style>
 </head>
 <body>
@@ -687,7 +692,7 @@ button[data-add]:active,button[data-dadd]:active,button[data-qvadd]:active{trans
 </div></footer>
 
 <div class="mmx" id="mmx"></div>
-<div class="mm" id="mm" role="dialog" aria-label="Menu" aria-hidden="true"><div class="mmh"><svg class="lg" viewBox="0 0 321.28 64" aria-hidden="true"><use href="#fam-logo"/></svg><button class="mmc" id="mmc" aria-label="Đóng menu">✕</button></div><div class="mml" id="mml"></div></div>
+<div class="mm" id="mm" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true" inert><div class="mmh"><svg class="lg" viewBox="0 0 321.28 64" aria-hidden="true"><use href="#fam-logo"/></svg><button class="mmc" id="mmc" aria-label="Đóng menu">✕</button></div><div class="mml" id="mml"></div></div>
 <div class="shade" id="shade"></div>
 <aside id="drawer" role="dialog" aria-modal="true" aria-labelledby="bag-title" aria-hidden="true"></aside>
 <div class="qv" id="qv" hidden role="dialog" aria-modal="true" aria-label="Xem nhanh sản phẩm"><div class="qvd"><button class="qvc" id="qvc" data-qvclose aria-label="Đóng">✕</button><div class="qvg" id="qvg"></div><div class="qvi di" id="qvi"></div></div></div>
@@ -798,7 +803,7 @@ const $=s=>document.querySelector(s);
 const fmt=n=>new Intl.NumberFormat("vi-VN").format(n)+" VND";
 const stars=r=>"★".repeat(r)+"☆".repeat(5-r);
 // hiện ảnh thật nếu có img, nếu không thì hiện emoji
-const media=o=>o.img?`<img src="${o.img}" alt="${o.n||""}">`:o.e;
+const media=(o,priority=false)=>o.img?`<img src="${o.img}" alt="${o.n||""}" loading="${priority?'eager':'lazy'}" decoding="async">`:o.e;
 const KEY="hem-cart";let cart={};
 try{cart=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){}
 if(!cart||typeof cart!=='object'||Array.isArray(cart))cart={};
@@ -858,9 +863,9 @@ document.addEventListener("click",e=>{
  if(t.id==="shade"||"close" in d)close();
  else if(t.id==="cartBtn")open();
  else if(d.add){openQV(d.add,t)}
- else if(d.dsize){sel.size=d.dsize;detail()}
- else if(d.dcol){sel.col=+d.dcol;detail()}
- else if(d.dq){sel.qty=Math.min(99,Math.max(1,sel.qty+ +d.dq));detail()}
+ else if(d.dsize){sel.size=d.dsize;detail();restoreDetailFocus("dsize",d.dsize)}
+ else if(d.dcol!==undefined){sel.col=+d.dcol;detail();restoreDetailFocus("dcol",d.dcol)}
+ else if(d.dq){sel.qty=Math.min(99,Math.max(1,sel.qty+ +d.dq));detail();restoreDetailFocus("dq",d.dq)}
  else if("dadd" in d)addCart(cur,sel.size,sel.col,sel.qty)
  else if(d.qv){openQV(d.qv,t)}
  else if(d.qa){openQV(d.qa.split("|")[0],t)}
@@ -886,7 +891,7 @@ if(HERO.video){
 }else if(HERO.anim||HERO.img){
  const still=matchMedia("(prefers-reduced-motion:reduce)").matches||!HERO.anim;   // giảm chuyển động thì chỉ hiện ảnh tĩnh
  $("#hero").classList.add("vid");
- $("#hero").insertAdjacentHTML("afterbegin",`<img class="bgimg" src="${still?(HERO.img||HERO.anim):HERO.anim}" alt=""><div class="scrim"></div>`);
+ $("#hero").insertAdjacentHTML("afterbegin",`<img class="bgimg" fetchpriority="high" decoding="async" src="${still?(HERO.img||HERO.anim):HERO.anim}" alt=""><div class="scrim"></div>`);
 }
 $("#featM").style.background=FEATURE.bg;$("#featM").innerHTML=media(FEATURE);$("#featT").textContent=FEATURE.title;$("#featP").textContent=FEATURE.text;
 const collectionNotes=['Sắc trầm ấm áp, phom dáng thoải mái cho những ngày se lạnh.','Những thiết kế đánh dấu hành trình và cá tính Famstyle.','Tự do phối màu. Tự tin thể hiện chất riêng.','Chất liệu nhẹ nhàng, sắc màu tươi mới cho ngày nắng.'];
@@ -904,10 +909,11 @@ function addCart(p,s,c,n){
  if(!Number.isInteger(c)||c<0||c>=p.colors.length||!Number.isInteger(n)||n<1||n>99){toast('Số lượng hợp lệ từ 1 đến 99.');return}
  const current=cart[p.id+'|'+s+'|'+c]||0;if(current+n>99){toast('Số lượng hợp lệ từ 1 đến 99.');return}
  cartPlus(addOrigin,n);const k=p.id+"|"+s+"|"+c;cart[k]=(cart[k]||0)+n;save();drawer();toast(`Đã thêm ${p.n} (size ${s})`);bump()}
+function restoreDetailFocus(key,value){Array.from($("#detail").querySelectorAll("button")).find(b=>b.dataset[key]===value)?.focus({preventScroll:true})}
 function detail(){
  const p=cur,more=P.filter(x=>x.id!==p.id).map((x,i)=>({p:x,i,score:(x.cat===p.cat?4:0)+(x.col===p.col?2:0)+(x.gender===p.gender?3:0)})).sort((a,b)=>b.score-a.score||a.i-b.i).slice(0,4).map(x=>x.p);
  $("#detail").innerHTML=`<a class="back" href="#featured">← Quay lại sản phẩm</a>
- <div class="dg"><div class="dim" style="background:${p.bg}">${media(p)}</div>
+ <div class="dg"><div class="dim" style="background:${p.bg}">${media(p,true)}</div>
  <div class="di"><h1>${p.n}</h1><div class="st">${(a=>a.n?stars(Math.round(a.avg))+" "+a.avg.toFixed(1)+"/5 ("+a.n+" đánh giá)":"Chưa có đánh giá")(avg(p))}</div><div class="dpr">${priceHTML(p)}</div>${onSale(p)?`<p class="sale-saving">Ưu đãi ${discountPercent(p)}% · Tiết kiệm ${fmt(p.old-p.price)}</p>`:""}
  <p lang="vi" translate="no">${p.desc||""}</p>
  ${p.colors.length>1?`<b>Màu sắc: ${COLOR_NAMES[p.colors[sel.col]]||""}</b><div class="opts">${p.colors.map((c,i)=>`<button class="col" style="background:${c}" data-dcol="${i}" aria-pressed="${i===sel.col}" aria-label="${COLOR_NAMES[c]||"Màu "+(i+1)}"></button>`).join("")}</div>`:""}
@@ -1303,14 +1309,18 @@ function miniCart(){
 }
 miniCart();
 {const cw=$("#cw");   // bấm xong thì đóng mini-cart cho đến khi rời chuột
- cw.addEventListener("click",e=>{if(e.target.closest("button")){document.activeElement&&document.activeElement.blur();cw.classList.add("shut")}});
+ cw.addEventListener("click",e=>{if(e.target.closest("button")){cw.classList.add("shut")}});
  cw.addEventListener("mouseleave",()=>cw.classList.remove("shut"));}
 $("#mml").innerHTML=`<a href="#/tai-khoan">Tài khoản</a><a href="#/gioi-thieu">Giới thiệu</a><details><summary>Sản phẩm</summary>${['nam','nu'].map(g=>`<details><summary>Sản phẩm ${g==='nam'?'Nam':'Nữ'}</summary><a href="${genderURL(g)}">Xem tất cả</a>${genderCategories(g).map(c=>`<details><summary>${genderCategoryName(g,c)}</summary><a href="${genderURL(g,c.slug)}">Tất cả ${genderCategoryName(g,c).toLowerCase()}</a>${genderSubs(g,c).map(x=>`<a href="${genderURL(g,c.slug,x.slug)}">${x.n}</a>`).join('')}</details>`).join('')}</details>`).join('')}<a href="#/danh-muc/tat-ca">Tất cả sản phẩm</a></details><details><summary>Bộ sưu tập</summary>${COLLS.map(c=>`<a href="#/bo-suu-tap/${c.slug}">${c.n}</a>`).join('')}</details><details><summary>Ưu đãi</summary><a href="#/uu-dai">Tất cả ưu đãi</a><a href="#/uu-dai/mua-dong">Ưu đãi mùa đông</a></details>`;
 {const mm=$("#mm"),mmx=$("#mmx"),hb=$("#hb");
- const set=on=>{mm.classList.toggle("on",on);mmx.classList.toggle("on",on);hb.setAttribute("aria-expanded",on);mm.setAttribute("aria-hidden",!on)};
+ let returnTo=null;
+ const set=on=>{const wasOpen=mm.classList.contains('on');if(on)returnTo=document.activeElement;mm.inert=!on;mm.classList.toggle("on",on);mmx.classList.toggle("on",on);hb.setAttribute("aria-expanded",on);mm.setAttribute("aria-hidden",!on);document.body.classList.toggle('menu-open',on);if(on)$('#mmc').focus();else if(wasOpen&&returnTo?.isConnected)returnTo.focus({preventScroll:true})};
  hb.addEventListener("click",()=>set(true));$("#mmc").addEventListener("click",()=>set(false));mmx.addEventListener("click",()=>set(false));
  window.addEventListener("hashchange",()=>set(false));
- document.addEventListener("keydown",e=>{if(e.key==="Escape")set(false)});}
+ document.addEventListener("keydown",e=>{if(!mm.classList.contains('on'))return;if(e.key==="Escape"){e.preventDefault();set(false)}if(e.key==='Tab'){const nodes=[...mm.querySelectorAll('button,a[href],summary')].filter(el=>el.getClientRects().length),first=nodes[0],last=nodes[nodes.length-1];if(e.shiftKey&&(document.activeElement===first||!mm.contains(document.activeElement))){e.preventDefault();last?.focus()}else if(!e.shiftKey&&(document.activeElement===last||!mm.contains(document.activeElement))){e.preventDefault();first?.focus()}}});
+ mm.addEventListener('click',e=>{if(e.target.closest('a[href]'))set(false)});
+ window.addEventListener('resize',()=>{if(hb.getClientRects().length===0)set(false)});
+}
 
 /* ===== 17. XEM NHANH: bấm hình con mắt ở sản phẩm nổi bật để mở khung xem trước ===== */
 let qvp=null,qs={size:"",col:0,qty:1,idx:0},qvFrom=null;
