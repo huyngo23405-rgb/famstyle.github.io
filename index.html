@@ -4,17 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Famstyle – Thời trang</title>
-<meta name="description" content="Khám phá thời trang Nam và Nữ, bộ sưu tập theo mùa và ưu đãi tại Famstyle. Website đang ở chế độ trải nghiệm, chưa nhận đơn hàng thật.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Famstyle – Thời trang">
-<meta property="og:description" content="Thời trang Nam và Nữ, bộ sưu tập theo mùa và ưu đãi Famstyle.">
-<meta property="og:site_name" content="Famstyle">
-<meta name="theme-color" content="#243d36">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64.00 64%22 role=%22img%22 aria-label=%22Famstyle icon%22%3E%3Ctitle%3EFamstyle icon%3C/title%3E%3Crect width=%2264%22 height=%2264%22 rx=%2212%22 fill=%22%23111318%22/%3E%3Cg transform=%22translate%2832 32%29 scale%28.8%29 translate%28-32 -32%29%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%224.2%22%3E%3Cpath stroke=%22%23fff%22 d=%22M32 35V29c0-2.6 5.8-3.2 5.8-9.2a5.8 5.8 0 1 0-11.6 0%22/%3E%3Cpath stroke=%22%23fff%22 d=%22M10 50 32 35l22 15%22/%3E%3Cpath stroke=%22%23B8975A%22 d=%22M10 50h44%22/%3E%3C/g%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 <style>
 /* ===== 1. MÀU SẮC: đổi ở đây để đổi toàn trang ===== */
-:root{--bg:#fff;--ink:#111;--muted:#777;--line:#E6E6E6;--soft:#F6F6F6;--star:#F2A900;--hover:#8c734c;--motion-fast:.4s;--motion-base:.5s;--motion-slow:.6s;--motion-ease:cubic-bezier(.22,1,.36,1);--motion-gold:#b8975a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#fff;--ink:#111;--muted:#777;--line:#E6E6E6;--soft:#F6F6F6;--star:#F2A900;--hover:#2347E8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -32,7 +26,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:#ff
 .logo{font-weight:600;font-size:20px;letter-spacing:.04em;text-decoration:none;margin-right:auto}
 nav{display:flex;gap:24px}nav a{text-decoration:none;font-weight:400}
 .cartBtn{background:none;border:0;cursor:pointer;font-weight:500}
-@media(max-width:700px){#nav{display:none}}
+@media(max-width:700px){nav{display:none}}
 
 /* ===== 3. BANNER ===== */
 .hero{position:relative;min-height:72vh;display:flex;align-items:center;color:#fff;overflow:hidden}
@@ -86,10 +80,10 @@ footer p{margin:2px 0;color:var(--muted)}
 @media(max-width:760px){footer .wrap{grid-template-columns:1fr 1fr}}
 
 /* giỏ hàng */
-.shade{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9;opacity:0;visibility:hidden;transition:opacity var(--motion-base) ease,visibility 0s var(--motion-base)}
-.shade.on{opacity:1;visibility:visible;transition-delay:0s}
-aside{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:#fff;z-index:10;display:flex;flex-direction:column;transform:translateX(100%);visibility:hidden;transition:transform var(--motion-base) var(--motion-ease),visibility 0s var(--motion-base)}
-aside.on{transform:none;visibility:visible;transition-delay:0s}
+.shade{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9;opacity:0;visibility:hidden;transition:opacity .28s ease,visibility .28s}
+.shade.on{opacity:1;visibility:visible}
+aside{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:#fff;z-index:10;display:flex;flex-direction:column;transform:translateX(100%);visibility:hidden;transition:transform .32s cubic-bezier(.2,.8,.2,1),visibility .32s}
+aside.on{transform:none;visibility:visible}
 .dh{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}
 .dh h2{margin:0;font-size:15px;font-weight:500;text-transform:uppercase}
 .db{flex:1;overflow:auto;padding:8px 18px}
@@ -166,17 +160,15 @@ nav{gap:0}
 @media(hover:none){.pv{display:none}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-#home:not([hidden]){animation:none}
-#detail:not([hidden]),#catpage:not([hidden]){animation:none}
-#products .pc,.pgrid>.pc{animation:none}
+#home:not([hidden]){animation:fadeIn .3s ease}
+#detail:not([hidden]),#catpage:not([hidden]){animation:fadeUp .32s cubic-bezier(.2,.8,.2,1)}
+#products .pc,.pgrid>.pc{animation:fadeIn .3s ease}
 .row,.slide{scroll-behavior:smooth}
 .pc{transition:background .2s}.pc:hover{background:#FAFAFB}
-.im{overflow:hidden}
-.im img{transition:transform var(--motion-base) var(--motion-ease)}
-@media(hover:hover) and (pointer:fine){.pc:hover .im img{transform:scale(1.03)}}
-.pc:focus-within .im img{transform:scale(1.03)}
-.btn,.chip,.sz,.tab,.q button,.ctile,.cc .ph{transition:background-color var(--motion-fast) ease,color var(--motion-fast) ease,border-color var(--motion-fast) ease,opacity var(--motion-fast) ease,transform var(--motion-fast) var(--motion-ease),box-shadow var(--motion-fast) ease}
-.btn:hover{opacity:1}.btn:active{scale:.985}
+.im{transition:font-size .35s cubic-bezier(.2,.8,.2,1)}.pc:hover .im{font-size:90px}
+.im img{transition:transform .5s cubic-bezier(.2,.7,.2,1)}.pc:hover .im img{transform:scale(1.05)}
+.btn,.chip,.sz,.tab,.q button,.ctile,.cc .ph{transition:background .18s,color .18s,border-color .18s,opacity .18s,transform .18s}
+.btn:hover{opacity:.86}.btn:active{transform:scale(.98)}
 .chip:hover,.sz:hover{border-color:var(--ink)}
 .q button:hover{background:var(--soft)}
 .ctile:hover{border-color:var(--ink);transform:translateY(-2px)}
@@ -249,25 +241,26 @@ header{transition:box-shadow .25s}header.shadow{box-shadow:0 6px 24px rgba(0,0,0
 .mq{position:relative;cursor:pointer}
 .mqg{display:inline-flex}.mqg span{padding:8px 26px}
 @keyframes mq{to{transform:translateX(-50%)}}
-/* 1–2. Cinematic hero and staggered words: one entrance, no scroll parallax. */
-#hero{background-size:cover!important}
-.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;opacity:.12;pointer-events:none;background:#b8975a}
-.hero::before{width:380px;height:380px;top:-120px;right:8%}
-.hero::after{width:320px;height:320px;bottom:-100px;right:28%}
+#hero{background-size:240% 240%!important;animation:heroShift 18s ease-in-out infinite}
+@keyframes heroShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(60px);opacity:.38;pointer-events:none}
+.hero::before{width:380px;height:380px;background:#6C8BFF;top:-120px;right:8%;animation:float1 12s ease-in-out infinite;translate:0 calc(var(--py,0)*-.5px)}
+.hero::after{width:320px;height:320px;background:#FF9AA2;bottom:-100px;right:28%;animation:float2 15s ease-in-out infinite}
+@keyframes float1{50%{transform:translate(-40px,30px) scale(1.1)}}
+@keyframes float2{50%{transform:translate(50px,-30px) scale(1.15)}}
+.hero .txt{translate:0 calc(var(--py,0)*1px)}
 .hero .txt,.hero .btn{z-index:1}
-.hero .bgimg{animation:heroMediaIn var(--motion-slow) var(--motion-ease) both}
-.hero h1 span{display:inline-block;animation:wordUp var(--motion-base) var(--motion-ease) calc(var(--i)*35ms) both}
-.hero p{animation:fadeUp var(--motion-base) var(--motion-ease) .1s both}
-.hero .btn{animation:btnIn var(--motion-base) var(--motion-ease) .16s backwards}
-.hero .btn:hover{background:#f1e9db;color:#24221f}
-@keyframes heroMediaIn{from{opacity:.45;transform:scale(1.03)}to{opacity:1;transform:scale(1)}}
-@keyframes wordUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-@keyframes btnIn{from{opacity:0;translate:0 12px}to{opacity:1;translate:0 0}}
-/* 4. Reveal once; transforms live on the independent translate property. */
-.rvl{opacity:0;translate:0 16px;transition:opacity var(--motion-slow) var(--motion-ease) var(--d,0ms),translate var(--motion-slow) var(--motion-ease) var(--d,0ms)}
-.rvl.in,.rvl:focus-within{opacity:1;translate:0 0}
+.hero h1 span{display:inline-block;animation:wordUp .9s cubic-bezier(.2,.8,.2,1) calc(var(--i)*90ms + 150ms) both}
+.hero p{animation:fadeUp .9s cubic-bezier(.2,.8,.2,1) .55s both}
+.hero .btn{animation:btnIn .9s cubic-bezier(.2,.8,.2,1) .75s both}
+.hero .btn:hover{background:var(--hover);color:#fff}
+@keyframes wordUp{from{opacity:0;transform:translateY(46px) rotate(2deg)}to{opacity:1;transform:none}}
+@keyframes btnIn{from{opacity:0;transform:translate(-50%,18px)}to{opacity:1;transform:translateX(-50%)}}
+.rvl{opacity:0}
+.rvl.in{opacity:1;animation:revealUp .8s cubic-bezier(.2,.7,.2,1) var(--d,0ms) backwards}
+@keyframes revealUp{from{opacity:0;transform:translateY(30px)}}
 .cartBtn.bump{animation:bump .45s cubic-bezier(.3,1.6,.5,1)}
-@keyframes bump{40%{transform:scale(1.06)}}
+@keyframes bump{40%{transform:scale(1.18)}}
 #topBtn{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));width:44px;height:44px;border-radius:50%;border:0;background:var(--ink);color:#fff;font-size:18px;cursor:pointer;z-index:8;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s,transform .25s,visibility .25s,background .2s}
 #topBtn.on{opacity:1;visibility:visible;transform:none}
 #topBtn:hover{background:var(--hover)}
@@ -381,7 +374,7 @@ section[id]{scroll-margin-top:70px}
 .mml details a{display:block;padding:11px 20px 11px 32px;text-decoration:none;color:var(--muted)}
 .mml details a:hover,.mml>a:hover{color:var(--hover)}
 .mml>a{display:block;padding:16px 20px;font-weight:500;text-decoration:none;border-bottom:1px solid var(--line)}
-@media(max-width:960px){#nav{display:none}.hb{display:flex}}
+@media(max-width:960px){nav{display:none}.hb{display:flex}}
 /* ===== ĐẦU TRANG HÒA VÀO BANNER (chỉ ở trang chủ khi chưa cuộn; sang mục khác hoặc cuộn xuống thì trắng như cũ) ===== */
 .dd>a,.nl{padding:18px 14px}
 header{transition:background-color .3s,color .3s,border-color .3s,box-shadow .25s}
@@ -402,13 +395,12 @@ body.ov .dd:hover>a,body.ov .dd:focus-within>a,body.ov .nl:hover{color:#fff;text
 @media(max-width:700px){.fgrid{grid-template-columns:repeat(2,1fr);gap:22px 10px}}
 .fim{position:relative;aspect-ratio:3/4;overflow:hidden}
 .fl{position:absolute;inset:0;display:block}
-.f1,.f2{position:absolute;inset:0;display:grid;place-items:center;font-size:88px;transition:opacity var(--motion-base) ease,transform var(--motion-base) var(--motion-ease)}
+.f1,.f2{position:absolute;inset:0;display:grid;place-items:center;font-size:88px;transition:opacity .45s ease}
 .f1 img,.f2 img{width:100%;height:100%;object-fit:cover}
 .f2{opacity:0}
-@media(hover:hover) and (pointer:fine){.fp:hover .f2{opacity:1;transform:scale(1.03)}.fp:hover .f1{opacity:0;transform:scale(1.03)}}
-.fp:focus-within .f2{opacity:1;transform:scale(1.03)}.fp:focus-within .f1{opacity:0;transform:scale(1.03)}
+.fp:hover .f2{opacity:1}.fp:hover .f1{opacity:0}
 .ftag{position:absolute;top:10px;left:10px;background:var(--ink);color:#fff;font-size:12px;padding:2px 8px;z-index:2}
-.fic{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:8px;z-index:2;opacity:0;transform:translateX(8px);transition:opacity var(--motion-fast) ease,transform var(--motion-fast) var(--motion-ease)}
+.fic{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:8px;z-index:2;opacity:0;transform:translateX(8px);transition:opacity .25s,transform .25s}
 .fic button,.fic a{width:36px;height:36px;border-radius:50%;background:#fff;border:0;display:grid;place-items:center;cursor:pointer;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.12);transition:background .2s,color .2s}
 .fic button:hover,.fic a:hover{background:var(--ink);color:#fff}
 .fic svg{width:18px;height:18px}
@@ -451,7 +443,7 @@ body.ov .dd:hover>a,body.ov .dd:focus-within>a,body.ov .nl:hover{color:#fff;text
 .li .t img,.sl2 .t img,.mni .t img{width:100%;height:100%;object-fit:cover}
 
 /* Famstyle — refined shopping bag */
-#shade{background:rgba(20,18,16,.42)}
+#shade{background:rgba(20,18,16,.48);backdrop-filter:blur(4px)}
 #drawer{width:min(480px,100%);background:#faf9f6;box-shadow:-20px 0 70px #0002;color:#24221f}
 body.cart-open{overflow:hidden}
 #drawer .dh{padding:26px 28px;background:#fff;border-bottom:1px solid #e9e5de;gap:16px}
@@ -480,7 +472,7 @@ body.cart-open{overflow:hidden}
 #drawer .tot{padding-top:16px;margin:15px 0 8px;border-top:1px solid #eee9e1;align-items:center;font-size:14px}
 #drawer .tot strong{font-size:23px;letter-spacing:-.7px;font-weight:600}
 #drawer .summary-note{font-size:10px;color:#999084;line-height:1.5;margin:0 0 18px}
-#drawer .checkout-btn{width:100%;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;background:#24221f;color:#fff;border:1px solid #24221f;cursor:pointer;font-size:12px;letter-spacing:1px;transition:background-color var(--motion-fast) ease,box-shadow var(--motion-fast) ease,translate var(--motion-fast) var(--motion-ease),scale var(--motion-fast) var(--motion-ease)}
+#drawer .checkout-btn{width:100%;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;background:#24221f;color:#fff;border:1px solid #24221f;cursor:pointer;font-size:12px;letter-spacing:1px;transition:background .2s,box-shadow .2s}
 #drawer .checkout-btn:hover{background:#483d2c;box-shadow:0 5px 16px #24221f20}
 #drawer .continue-btn{display:block;width:100%;border:0;background:none;padding:13px 0 0;font-size:11px;color:#777166;cursor:pointer}
 #drawer .bag-empty{text-align:center;padding:65px 8px}
@@ -506,9 +498,11 @@ body.cart-open{overflow:hidden}
 .pc .nm{min-height:40px;line-height:20px}
 .pc .add{margin-top:auto;padding-top:12px}
 .pc .add .btn{width:100%;min-height:44px;padding:11px 12px}
-button[data-add],button[data-dadd],button[data-qvadd]{position:relative}
-.cart-plus{position:fixed;z-index:1000;pointer-events:none;border-radius:30px;padding:6px 11px;background:#24221f;color:#fff;font-size:16px;font-weight:600;box-shadow:0 4px 12px #0002;animation:cartPlus var(--motion-slow) ease-out forwards}
-@keyframes cartPlus{0%{opacity:0;transform:translate(-50%,0)}25%{opacity:1}100%{opacity:0;transform:translate(-50%,-30px)}}
+button[data-add],button[data-dadd],button[data-qvadd]{position:relative;transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+@media(hover:hover){button[data-add]:hover,button[data-dadd]:hover,button[data-qvadd]:hover{transform:translateY(-5px);box-shadow:0 10px 20px #24221f26}}
+button[data-add]:active,button[data-dadd]:active,button[data-qvadd]:active{transform:translateY(-1px) scale(.97)}
+.cart-plus{position:fixed;z-index:1000;pointer-events:none;border-radius:30px;padding:6px 11px;background:#24221f;color:#fff;font-size:16px;font-weight:600;box-shadow:0 4px 12px #0002;animation:cartPlus .85s ease-out forwards}
+@keyframes cartPlus{0%{opacity:0;transform:translate(-50%,0) scale(.7)}20%{opacity:1;transform:translate(-50%,-10px) scale(1)}100%{opacity:0;transform:translate(-50%,-65px) scale(.9)}}
 .mml details details{margin-left:12px;border-bottom:0}.mml details details summary{font-size:14px}
 @media(prefers-reduced-motion:reduce){button[data-add]:hover,button[data-dadd]:hover,button[data-qvadd]:hover{transform:none}.cart-plus{animation:none}}
 
@@ -524,7 +518,8 @@ button[data-add],button[data-dadd],button[data-qvadd]{position:relative}
 #featured .fgrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:36px 22px}
 #featured .fp{min-width:0}
 #featured .fim{background:#f1efeb!important;aspect-ratio:3/4;border-radius:2px}
-/* Featured media uses the shared 1.03× zoom/crossfade above. */
+#featured .f1,#featured .f2{transition:opacity .5s ease,transform .7s ease}
+#featured .fp:hover .f2{transform:scale(1.035)}
 #featured .fn{margin-top:17px;font-size:13px;line-height:1.7;min-height:44px;font-weight:400;color:#37332d}
 #featured .fn a:hover{color:#8c734c;text-decoration:none}
 #featured .fpr{margin-top:6px;font-size:13px;font-weight:500;color:#25221c;letter-spacing:.2px}
@@ -540,18 +535,16 @@ button[data-add],button[data-dadd],button[data-qvadd]{position:relative}
 .art-label{position:absolute;bottom:18px;left:0;right:0;text-align:center;font-size:8px;letter-spacing:2px;color:#9b9386;font-weight:400}
 .editorial-photo{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover}
 .collection-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
-.collection-card{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:335px;text-decoration:none;color:#2e2a23;background:#ebe6de;overflow:hidden;border:1px solid #e4ded3;transition:box-shadow var(--motion-base) ease,transform var(--motion-base) var(--motion-ease)}
+.collection-card{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:335px;text-decoration:none;color:#2e2a23;background:#ebe6de;overflow:hidden;border:1px solid #e4ded3;transition:box-shadow .3s,transform .3s}
 .collection-card:nth-child(2){background:#e8e9e3}.collection-card:nth-child(3){background:#eee4df}.collection-card:nth-child(4){background:#e4e9e8}
 .collection-copy{position:relative;z-index:2;padding:30px 0 30px 28px;display:flex;flex-direction:column;align-items:flex-start}
 .collection-number{font-size:10px;letter-spacing:2px;color:#8c8170;margin-bottom:33px}
 .collection-copy h3{font-family:Georgia,'Times New Roman',serif;font-size:32px;line-height:1.13;font-weight:400;letter-spacing:-.6px;margin:0 0 14px}
 .collection-copy p{font-size:11px;line-height:1.8;color:#746c60;max-width:210px;margin:0 0 22px}
 .collection-cta{display:flex;align-items:center;gap:16px;font-size:10px;text-transform:uppercase;letter-spacing:1px;margin-top:auto;border-bottom:1px solid #a99c87;padding-bottom:7px}
-.collection-cta span{font-size:19px;transition:transform var(--motion-fast) var(--motion-ease)}.collection-card:hover .collection-cta span{transform:translateX(5px)}
+.collection-cta span{font-size:19px;transition:transform .3s}.collection-card:hover .collection-cta span{transform:translateX(5px)}
 .collection-visual{position:relative;overflow:hidden;min-width:0;margin:18px 18px 18px 14px;background:#ffffff30}
-.collection-visual img{transition:transform var(--motion-base) var(--motion-ease)}
-@media(hover:hover) and (pointer:fine){.collection-card:hover .collection-visual img{transform:scale(1.03)}}
-.collection-card:focus-visible .collection-visual img{transform:scale(1.03)}
+.collection-visual img{transition:transform .7s ease}.collection-card:hover .collection-visual img{transform:scale(1.04)}
 .collection-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px #3c332914}
 .collection-visual .product-art{width:90%;height:80%;opacity:.7}
 .collection-card:focus-visible{outline:2px solid #9b8152;outline-offset:4px}
@@ -593,61 +586,8 @@ button[data-add],button[data-dadd],button[data-qvadd]{position:relative}
 @media(max-width:700px){.product-offers{align-items:flex-start;flex-direction:column;padding:20px}.product-offer-actions{gap:14px}}
 
 .language-picker{display:flex;align-items:center;gap:5px;flex-shrink:0;color:inherit}.language-picker>span{font-size:20px}.language-picker select{width:64px;cursor:pointer;border:0;border-bottom:1px solid #a39176;background:transparent;color:inherit;font-size:11px;padding:8px 0}.language-picker select option{background:#fff;color:#29251f}html[lang="ja"] body{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif}html:not([lang="vi"]) .bar{gap:15px}html:not([lang="vi"]) nav{gap:16px}
-@media(max-width:1100px){html:not([lang="vi"]) #nav{display:none}html:not([lang="vi"]) .hb{display:flex}}
+@media(max-width:1100px){html:not([lang="vi"]) nav{display:none}html:not([lang="vi"]) .hb{display:flex}}
 @media(max-width:700px){.bar,html:not([lang="vi"]) .bar{gap:8px}.language-picker>span{display:none}.language-picker select{width:47px;font-size:10px}.bar .lg{max-width:130px}.language-picker{margin-left:auto}}
-
-.installment-box{background:#f7f3ec;border:1px solid #dfd3c0;padding:20px;margin-top:16px;color:#554a3b}.installment-box[hidden]{display:none}.installment-box h3{font-weight:500;font-size:17px;margin:0 0 10px}.installment-box p{font-size:12px;line-height:1.8}.installment-box select{width:100%;background:#fff}.installment-notice{border-top:1px solid #dfd3c0;padding-top:12px}.installment-consent{display:flex;gap:10px;font-size:12px;line-height:1.7;align-items:flex-start;margin-top:16px}.installment-consent input{margin-top:4px;accent-color:#806747;flex-shrink:0}.installment-box .err{color:#b23b32}
-
-.winter-strip{background:linear-gradient(115deg,#243d36,#3c5548);border-color:#3c5548;color:#f9f4e9;padding:34px 36px}.winter-strip .eyebrow{color:#cfba92}.winter-strip strong{font-family:"Playfair Display",Georgia,serif;font-size:30px;font-weight:500}.winter-strip p{font-size:12px;color:#ddd8cb;margin:10px 0 0}.winter-hero{background:#edf1ec;border-color:#ccd7cb}.winter-hero h1{color:#2e473a}.winter-hero .offers-rate strong{color:#44644f}.winter-badge{background:#365443;font-size:10px}.offer-policy{font-size:11px;color:#827b6f;line-height:1.8;margin:0 0 20px}
-@media(max-width:700px){.winter-strip{padding:24px}.winter-strip strong{font-size:26px}.winter-badge{font-size:9px;padding:4px 6px}}
-
-.demo-notice{padding:18px 22px;background:#f6f1e8;border:1px solid #ddcdb5;color:#67543a;margin:20px 0}.demo-notice p{font-size:12px;line-height:1.8;margin:8px 0 0}.po:has(input:disabled){opacity:.55;cursor:not-allowed}.help-page{max-width:760px;margin:20px auto 60px;line-height:1.9}.help-page h1{font-size:30px;font-weight:500}.help-page h2{font-size:20px;font-weight:500}.help-page li{margin-bottom:12px}.size-help{font-size:12px;display:block;margin-top:12px;color:#806747}.qvi .size-help{align-self:flex-start}
-
-/* Demo accounts */
-.account-link{display:grid;place-items:center;width:40px;height:40px;flex:0 0 40px;border-radius:50%;color:inherit;border:1px solid #ddd3c3;position:relative}.account-link svg{width:21px;height:21px}.account-link.signed-in:after{content:"";position:absolute;right:1px;top:1px;width:8px;height:8px;background:#658260;border:2px solid white;border-radius:50%}
-.account-shell{display:grid;grid-template-columns:1fr 1fr;max-width:1000px;margin:30px auto 70px;border:1px solid #e4ded3;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 18px 60px #29211608}.account-story{padding:60px 44px;background:#f3efe6;display:flex;flex-direction:column;justify-content:center}.account-story small{letter-spacing:4px;color:#806744}.account-story h1{font-family:Georgia,serif;font-size:46px;font-weight:400;line-height:1.15;margin:25px 0}.account-story p{line-height:1.8;color:#686052}.account-demo{margin-top:30px;padding:18px;border:1px solid #d7cab3;border-radius:10px;font-size:13px;line-height:1.7}.account-main{padding:42px;min-width:0}.account-main h2{font-size:26px;margin:0 0 12px}.account-tabs{display:flex;border-bottom:1px solid #e5dfd5;margin-bottom:28px;gap:24px}.account-tabs a{padding:12px 0;color:#70695e;text-decoration:none}.account-tabs a[aria-current="page"]{color:#171717;border-bottom:2px solid #b8975a}.account-form{display:grid;gap:18px}.account-form label{display:grid;gap:8px;font-size:14px;font-weight:600}.account-form input{width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid #d6d1c8;border-radius:8px;background:#fff;font:inherit;min-width:0}.account-form input:focus-visible{outline:2px solid #b8975a;outline-offset:2px}.account-password{display:flex;border:1px solid #d6d1c8;border-radius:8px}.account-password input{border:0}.account-password button{border:0;background:transparent;padding:0 14px;font:inherit;font-size:12px;color:#625039;cursor:pointer}.account-form .account-consent{display:flex;align-items:flex-start;font-weight:400;line-height:1.5}.account-consent input{width:17px;height:17px;flex:0 0 17px;margin-top:2px}.account-message{font-size:14px;line-height:1.6;color:#924128;min-height:1em}.account-profile{padding:22px;background:#f7f5f0;border-radius:12px;margin:24px 0;overflow-wrap:anywhere}.account-profile p{margin:8px 0}.account-actions{display:grid;gap:12px}.account-note{font-size:13px;color:#756c60;line-height:1.7}.account-main .btn{width:100%;justify-content:center}.account-main button:disabled{opacity:.55;cursor:wait}
-@media(max-width:700px){.account-shell{grid-template-columns:1fr;margin:20px auto 40px}.account-story{padding:28px}.account-story h1{font-size:34px;margin:16px 0}.account-demo{margin-top:10px}.account-main{padding:26px}.bar{gap:8px}.account-link{width:34px;height:34px;flex-basis:34px}}
-
-
-.listing-filters{display:flex;align-items:end;gap:16px;flex-wrap:wrap;padding:20px;background:#f6f3ec;border:1px solid #e8e0d3;border-radius:12px;margin:24px 0 16px}.listing-filters label{display:grid;gap:8px;font-size:13px;font-weight:600;flex:1;min-width:160px}.listing-filters select{width:100%;padding:12px;border:1px solid #d8cebe;border-radius:6px;background:#fff;font:inherit;color:#29251f}.filter-reset{border:0;border-bottom:1px solid #89704a;padding:12px 2px;background:none;color:#6c5534;cursor:pointer;font:inherit}.listing-empty{text-align:center;padding:44px 20px;border:1px dashed #d7c9b5;border-radius:12px;margin:24px 0}.listing-empty h2{font-size:23px}.listing-empty p{line-height:1.7;color:#746b5e}.listing-empty .btn{margin:14px auto;display:inline-flex}button:focus-visible,a:focus-visible,select:focus-visible{outline:2px solid #89704a;outline-offset:4px}@media(max-width:480px){.listing-filters{gap:12px;padding:16px}.listing-filters label{min-width:100%;}.filter-reset{min-height:44px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
-
-/* Unified filter and sorting row */
-.listing-filters{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.2fr) auto;align-items:end}
-.listing-filters label{min-width:0}.listing-filters select{min-height:46px;margin:0;max-width:100%}.listing-filters .filter-reset{min-height:46px;white-space:nowrap}
-@media(max-width:760px){.listing-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.listing-filters .listing-sort{grid-column:1}.listing-filters .filter-reset{justify-self:end}}
-@media(max-width:400px){.listing-filters{grid-template-columns:minmax(0,1fr)}.listing-filters .filter-reset{justify-self:start}}
-
-.music-widget{position:fixed;left:18px;bottom:18px;z-index:80;font-size:13px}.music-widget[hidden],.music-panel[hidden]{display:none!important}.music-toggle{width:40px;height:40px;border-radius:50%;border:1px solid #d7c9b5;background:#f8f5ee;color:#77603e;box-shadow:0 4px 18px #00000012;cursor:pointer;font-size:19px}.music-panel{width:min(280px,calc(100vw - 36px));padding:20px;margin-bottom:10px;border:1px solid #ddd1be;border-radius:14px;background:#fffcf7;box-shadow:0 10px 35px #00000014}.music-panel h2{font-size:17px;margin:0 0 12px}.music-panel p{line-height:1.6;overflow-wrap:anywhere}.music-actions{display:flex;gap:8px;margin:12px 0}.music-actions button{flex:1;padding:10px;border:1px solid #d7c9b5;background:#f3ece0;border-radius:7px;cursor:pointer;font:inherit}.music-panel label{display:grid;gap:8px}.music-panel input{width:100%;accent-color:#947446}.music-status{font-size:12px;color:#75664e;min-height:20px}.cart-open .music-widget,body.ov .music-widget{visibility:hidden}
-
-/* Header utilities stay together and keep a consistent touch target. */
-.bar,html:not([lang="vi"]) .bar{gap:18px}.header-actions{display:flex;align-items:center;gap:6px;flex-shrink:0;margin-left:0;padding-left:12px;border-left:1px solid currentColor;border-left-color:#b9aa9238}
-.header-actions .language-picker{position:relative;display:flex;justify-content:center;gap:6px;width:62px;height:44px;margin:0;border:1px solid #b9aa9240;border-radius:22px;cursor:pointer}
-.header-actions .language-picker>span{display:inline;font-size:12px;font-weight:600;line-height:1;pointer-events:none}
-.header-actions .language-picker select{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;opacity:0;cursor:pointer}
-.header-actions .language-picker:focus-within{outline:2px solid #b8975a;outline-offset:3px}
-.header-actions .account-link,.header-actions .cartBtn{display:grid;place-items:center;width:44px;height:44px;flex:0 0 44px;border:0;border-radius:50%;background:transparent;color:inherit}
-.header-actions .account-link:hover,.header-actions .cartBtn:hover,.header-actions .language-picker:hover{background:#b8975a18}.header-actions .account-link.signed-in:after{right:4px;top:4px}
-@media(max-width:1100px){.bar,html:not([lang="vi"]) .bar{gap:12px}.header-actions{padding-left:8px;gap:3px}}
-@media(max-width:700px){.bar,html:not([lang="vi"]) .bar{gap:6px}.header-actions{padding-left:0;border-left:0;gap:0}.header-actions .language-picker{width:54px}.bar .sw{margin-left:auto;flex-shrink:1}.header-actions .mini{right:0;max-width:calc(100vw - 24px)}}
-
-/* Account tabs remain available independently of the primary navigation. */
-.account-tabs{display:flex;flex-wrap:wrap;gap:12px 24px}.account-tabs a{min-height:44px;display:flex;align-items:center}
-body.menu-open{overflow:hidden}.pc,.fp,.di,.nm,.fn{min-width:0}.nm a,.fn a,.di h1{overflow-wrap:anywhere}.pr,.fpr,.dpr{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px}.sz,.col,.q button{min-width:44px;min-height:44px}
-@media(max-width:700px){.bar .sw:hover,.bar .sw:focus-within,.bar .sw:has(.hs:not(:placeholder-shown)){flex:0 0 40px}.bar .sw:focus-within .hs,.bar .sw:has(.hs:not(:placeholder-shown)) .hs{position:fixed;left:12px;right:12px;top:calc(env(safe-area-inset-top,0px) + 60px);width:calc(100% - 24px);z-index:8;background-color:#fff;color:#171717;box-shadow:0 5px 20px #00000012}.bar .sw .sug{top:calc(env(safe-area-inset-top,0px) + 102px)}.account-main{padding:24px}.qv{padding:12px}.qvd{max-height:calc(100dvh - 24px)}}
-
-/* 5. A fine gold line, also available to keyboard users. */
-#nav>.nl,#nav>.dd>a,.fn>a,.nm>a,.collection-cta,.offers-strip-cta{position:relative;text-decoration:none}
-#nav>.nl::after,#nav>.dd>a::after,.fn>a::after,.nm>a::after,.collection-cta::after,.offers-strip-cta::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:var(--motion-gold);transform:scaleX(0);transform-origin:left;transition:transform var(--motion-fast) var(--motion-ease);pointer-events:none}
-#nav>.nl::after,#nav>.dd>a::after{left:14px;right:14px;bottom:11px}
-@media(hover:hover) and (pointer:fine){#nav>.nl:hover::after,#nav>.dd:hover>a::after,.fn>a:hover::after,.nm>a:hover::after,.collection-card:hover .collection-cta::after,.offers-strip:hover .offers-strip-cta::after{transform:scaleX(1)}}
-#nav>.nl:focus-visible::after,#nav>.dd:focus-within>a::after,.fn>a:focus-visible::after,.nm>a:focus-visible::after,.collection-card:focus-visible .collection-cta::after,.offers-strip:focus-visible .offers-strip-cta::after{transform:scaleX(1)}
-/* 6–7. Quiet drawer and button feedback; never move surrounding layout. */
-.btn,.checkout-btn,.continue-btn,.bag-close,.fic button{transition:background-color var(--motion-fast) ease,color var(--motion-fast) ease,box-shadow var(--motion-fast) ease,translate var(--motion-fast) var(--motion-ease),scale var(--motion-fast) var(--motion-ease)}
-@media(hover:hover) and (pointer:fine){.btn:not(:disabled):hover,.checkout-btn:not(:disabled):hover{translate:0 -2px;box-shadow:0 5px 14px #24221f14}.btn:not(:disabled):hover{background-color:#302b23}.btn.light:not(:disabled):hover,.hero .btn:not(:disabled):hover{background-color:#f1e9db;color:#24221f}}
-.btn:not(:disabled):active,.checkout-btn:not(:disabled):active,.bag-close:active,.fic button:active{translate:0 0;scale:.985}
-.btn:disabled,.checkout-btn:disabled{translate:0 0;scale:1;box-shadow:none;cursor:not-allowed}
-@media(hover:none),(pointer:coarse){.fic{opacity:1;transform:none}.pc:focus-within .im img{transform:none}.fp:focus-within .f1{opacity:1;transform:none}.fp:focus-within .f2{opacity:0;transform:none}}
-@media(prefers-reduced-motion:reduce){.rvl{opacity:1!important;translate:none!important}.hero .bgimg,.hero h1 span,.hero p,.hero .btn{opacity:1!important;animation:none!important}.hero .btn{translate:none!important}.f1,.f2,.im img,.collection-visual img{transform:none!important}.btn,.checkout-btn,.bag-close,.fic button{translate:none!important;scale:1!important}.cart-plus{display:none!important}#nav a::after,.fn>a::after,.nm>a::after,.collection-cta::after,.offers-strip-cta::after{transition:none!important}}
 </style>
 </head>
 <body>
@@ -662,13 +602,10 @@ body.menu-open{overflow:hidden}.pc,.fp,.di,.nm,.fn{min-width:0}.nm a,.fn a,.di h
     <input class="hs" id="hs" type="search" placeholder="Tìm sản phẩm..." autocomplete="off" aria-label="Tìm sản phẩm" role="combobox" aria-expanded="false" aria-controls="sug">
     <div class="sug" id="sug" role="listbox" hidden></div>
   </div>
-  <div class="header-actions">
-  <label class="language-picker" translate="no"><span class="language-code" id="languageCode" aria-hidden="true">VI</span><select id="siteLanguage" aria-label="Language / Ngôn ngữ"><option value="vi">VI · Tiếng Việt</option><option value="en">EN · English</option><option value="ja">JA · 日本語</option><option value="fr">FR · Français</option><option value="es">ES · Español</option></select></label>
-  <a class="account-link" id="accountLink" href="#/tai-khoan" aria-label="Tài khoản" title="Tài khoản"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></svg></a>
+  <label class="language-picker" translate="no"><span aria-hidden="true">◎</span><select id="siteLanguage" aria-label="Language / Ngôn ngữ"><option value="vi">VI · Tiếng Việt</option><option value="en">EN · English</option><option value="ja">JA · 日本語</option><option value="fr">FR · Français</option><option value="es">ES · Español</option></select></label>
   <div class="cw" id="cw">
     <button class="cartBtn" id="cartBtn" aria-label="Giỏ hàng"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V7a3 3 0 0 1 6 0v1"/></svg><span class="bd z" id="cnt">0</span></button>
     <div class="mini" id="mini"></div>
-  </div>
   </div>
 </div></header>
 
@@ -684,7 +621,7 @@ body.menu-open{overflow:hidden}.pc,.fp,.di,.nm,.fn{min-width:0}.nm a,.fn a,.di h
   <div class="fmore"><a class="editorial-link" href="#/danh-muc/tat-ca">Khám phá tất cả sản phẩm <span aria-hidden="true">↗</span></a></div>
 </div></section>
 
-<div class="wrap"><a class="offers-strip winter-strip" href="#/uu-dai/mua-dong"><div><span class="eyebrow">FAMSTYLE / WINTER EDIT</span><strong>Ưu đãi mùa đông</strong><p>Giữ ấm đầy phong cách · Giảm đến <span id="winter-max"></span>%</p></div><span class="offers-strip-cta">Khám phá ưu đãi mùa đông <span aria-hidden="true">↗</span></span></a></div>
+<div class="wrap"><a class="offers-strip" href="#/uu-dai"><div><span class="eyebrow">FAMSTYLE OFFERS</span><strong>Thiết kế yêu thích, giá thêm hấp dẫn.</strong></div><span class="offers-strip-cta">Khám phá ưu đãi <span aria-hidden="true">↗</span></span></a></div>
 
 <div class="feat"><div class="wrap">
   <div class="ph" id="featM"></div>
@@ -701,13 +638,13 @@ body.menu-open{overflow:hidden}.pc,.fp,.di,.nm,.fn{min-width:0}.nm a,.fn a,.di h
 <main class="wrap" id="detail" hidden></main>
 <footer><div class="wrap">
   <div><svg class="lg f" viewBox="0 0 321.28 64" role="img" aria-label="Famstyle"><use href="#fam-logo"/></svg><p id="ftag"></p></div>
-  <div><b>Liên hệ</b><p>Hotline</p><p>Đang cập nhật thông tin liên hệ</p></div>
-  <div><b>Cửa hàng</b><p>Địa chỉ cửa hàng đang cập nhật</p></div>
-  <div><b>Hỗ trợ</b><p><a href="#/doi-tra">Chính sách đổi trả</a></p><p><a href="#/huong-dan-size">Hướng dẫn chọn size</a></p><p><a href="#/quyen-rieng-tu">Quyền riêng tư</a></p></div>
+  <div><b>Liên hệ</b><p>Hotline</p><p>1900 000 000</p></div>
+  <div><b>Cửa hàng</b><p>123 Đường ABC, Quận 1</p><p>TP. Hồ Chí Minh</p></div>
+  <div><b>Hỗ trợ</b><p>Chính sách đổi trả</p><p>Hướng dẫn chọn size</p></div>
 </div></footer>
 
 <div class="mmx" id="mmx"></div>
-<div class="mm" id="mm" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true" inert><div class="mmh"><svg class="lg" viewBox="0 0 321.28 64" aria-hidden="true"><use href="#fam-logo"/></svg><button class="mmc" id="mmc" aria-label="Đóng menu">✕</button></div><div class="mml" id="mml"></div></div>
+<div class="mm" id="mm" role="dialog" aria-label="Menu" aria-hidden="true"><div class="mmh"><svg class="lg" viewBox="0 0 321.28 64" aria-hidden="true"><use href="#fam-logo"/></svg><button class="mmc" id="mmc" aria-label="Đóng menu">✕</button></div><div class="mml" id="mml"></div></div>
 <div class="shade" id="shade"></div>
 <aside id="drawer" role="dialog" aria-modal="true" aria-labelledby="bag-title" aria-hidden="true"></aside>
 <div class="qv" id="qv" hidden role="dialog" aria-modal="true" aria-label="Xem nhanh sản phẩm"><div class="qvd"><button class="qvc" id="qvc" data-qvclose aria-label="Đóng">✕</button><div class="qvg" id="qvg"></div><div class="qvi di" id="qvi"></div></div></div>
@@ -777,17 +714,14 @@ const P=[
 ];
 /* Ưu đãi: sửa phần trăm theo ID sản phẩm ở đây; giá gốc giữ trong old. */
 const OFFERS={1:20,5:10,17:15,10:20,35:10,34:20};
-// Winter offers use the better discount, never stack discounts on an already reduced price.
-const WINTER_OFFERS={5:20,6:20,8:15,13:15,16:20,20:15};
-P.forEach(p=>{const winter=WINTER_OFFERS[p.id]||0,percent=Math.max(OFFERS[p.id]||0,winter);p.winterOffer=winter>0;if(percent){p.old=p.price;p.price=Math.round(p.old*(100-percent)/100)}});
-document.querySelector('#winter-max').textContent=Math.max(...Object.values(WINTER_OFFERS));
+P.forEach(p=>{const percent=OFFERS[p.id];if(percent){p.old=p.price;p.price=Math.round(p.old*(100-percent)/100)}});
 const onSale=p=>Number.isFinite(p.old)&&p.old>p.price;
 const discountPercent=p=>Math.round((p.old-p.price)/p.old*100);
 const priceHTML=p=>`<span class="${onSale(p)?'sale-price':''}">${fmt(p.price)}</span>${onSale(p)?` <s class="old-price" aria-label="Giá gốc ${fmt(p.old)}">${fmt(p.old)}</s>`:''}`;
-const saleBadge=p=>onSale(p)?`<span class="sale-badge${p.winterOffer?' winter-badge':''}">${p.winterOffer?'Mùa đông · ':''}−${discountPercent(p)}%</span>`:'';
+const saleBadge=p=>onSale(p)?`<span class="sale-badge">−${discountPercent(p)}%</span>`:'';
 /* Phân loại có thể chỉnh riêng: gender = "nam", "nu" hoặc "unisex".
    Đây là phân loại biên tập từ tên/mô tả hiện có; kiểm tra lại khi có ảnh sản phẩm. */
-const PRODUCT_GENDER={1:"unisex",2:"nam",3:"unisex",4:"unisex",5:"unisex",6:"nam",7:"nam",8:"unisex",9:"unisex",10:"nu",11:"nam",12:"nu",13:"unisex",14:"unisex",15:"nam",16:"unisex",17:"nam",18:"nam",19:"nu",20:"unisex",21:"unisex",22:"unisex",23:"nam",24:"nu",25:"nu",26:"nam",27:"nam",28:"nu",29:"nam",30:"nam",31:"nam",32:"nam",33:"nam",34:"nu",35:"nu",36:"nu",37:"nu",38:"unisex",39:"nu",40:"nu"};
+const PRODUCT_GENDER={1:"unisex",2:"nam",3:"unisex",4:"unisex",5:"unisex",6:"nam",7:"nam",8:"unisex",9:"unisex",10:"nu",11:"nam",12:"nu",13:"unisex",14:"unisex",15:"nam",16:"unisex",17:"nam",18:"nam",19:"nu",20:"unisex",21:"unisex",22:"unisex",23:"nam",24:"nu",25:"nu",26:"unisex",27:"unisex",28:"nu",29:"nam",30:"nam",31:"nam",32:"nam",33:"nam",34:"nu",35:"nu",36:"nu",37:"nu",38:"unisex",39:"nu",40:"nu"};
 P.forEach(p=>p.gender=p.gender||PRODUCT_GENDER[p.id]||"unisex");
 const inGender=(p,g)=>p.gender===g||p.gender==="unisex";
 const genderURL=(g,c='',sub='')=>`#/san-pham-${g}${c?'/'+c:''}${sub?'/'+sub:''}`;
@@ -818,18 +752,17 @@ const $=s=>document.querySelector(s);
 const fmt=n=>new Intl.NumberFormat("vi-VN").format(n)+" VND";
 const stars=r=>"★".repeat(r)+"☆".repeat(5-r);
 // hiện ảnh thật nếu có img, nếu không thì hiện emoji
-const media=(o,priority=false)=>o.img?`<img src="${o.img}" alt="${o.n||""}" loading="${priority?'eager':'lazy'}" decoding="async">`:o.e;
+const media=o=>o.img?`<img src="${o.img}" alt="${o.n||""}">`:o.e;
 const KEY="hem-cart";let cart={};
 try{cart=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){}
-if(!cart||typeof cart!=='object'||Array.isArray(cart))cart={};
-Object.keys(cart).forEach(k=>{const [id,size,color]=k.split('|'),p=P.find(x=>x.id==id),quantity=cart[k],ci=Number(color||0);if(!p||k!==`${p.id}|${size}|${ci}`||!p.sizes.includes(size)||!Number.isInteger(ci)||ci<0||ci>=p.colors.length||!Number.isInteger(quantity)||quantity<1||quantity>99)delete cart[k]});
+Object.keys(cart).forEach(k=>{const [id,s]=k.split("|"),p=P.find(x=>x.id==id);if(!p||!p.sizes.includes(s)||!(cart[k]>0))delete cart[k]});
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(cart))}catch(e){}};
 const lines=()=>Object.keys(cart).map(k=>{const [id,s,c]=k.split("|"),p=P.find(x=>x.id==id);return {...p,size:s,color:p.colors[+c||0],key:k,qty:cart[k]}});
 function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("on"),1800)}
 
 const card=p=>`<article class="pc" data-pid="${p.id}">
   <a class="im" href="#/san-pham/${p.id}" style="background:${p.bg}" aria-label="Xem chi tiết ${p.n}">${media(p)}${saleBadge(p)}</a>
-  <div class="nm"><a href="#/san-pham/${p.id}">${p.n}</a></div><div class="st" aria-label="${rating(p)?rating(p)+' sao':'Chưa có đánh giá'}">${stars(rating(p))}</div><div class="pr">${priceHTML(p)}</div>
+  <div class="nm"><a href="#/san-pham/${p.id}">${p.n}</a></div><div class="st" aria-label="${rating(p)} sao">${stars(rating(p))}</div><div class="pr">${priceHTML(p)}</div>
   <div class="add"><button class="btn" data-add="${p.id}">Thêm vào giỏ</button></div>
  </article>`;
 /* ===== SẢN PHẨM NỔI BẬT: đổi danh sách id ở đây (id nằm trong mảng P) ===== */
@@ -877,27 +810,27 @@ document.addEventListener("click",e=>{
  const t=e.target.closest("button,.shade");if(!t)return;const d=t.dataset;
  if(t.id==="shade"||"close" in d)close();
  else if(t.id==="cartBtn")open();
- else if(d.add){openQV(d.add,t)}
- else if(d.dsize){sel.size=d.dsize;detail();restoreDetailFocus("dsize",d.dsize)}
- else if(d.dcol!==undefined){sel.col=+d.dcol;detail();restoreDetailFocus("dcol",d.dcol)}
- else if(d.dq){sel.qty=Math.min(99,Math.max(1,sel.qty+ +d.dq));detail();restoreDetailFocus("dq",d.dq)}
+ else if(d.add){const p=P.find(x=>x.id==d.add);addCart(p,defSize(p),0,1)}
+ else if(d.dsize){sel.size=d.dsize;detail()}
+ else if(d.dcol){sel.col=+d.dcol;detail()}
+ else if(d.dq){sel.qty=Math.max(1,sel.qty+ +d.dq);detail()}
  else if("dadd" in d)addCart(cur,sel.size,sel.col,sel.qty)
  else if(d.qv){openQV(d.qv,t)}
- else if(d.qa){openQV(d.qa.split("|")[0],t)}
+ else if(d.qa){const [qid,qz]=d.qa.split("|"),qp=P.find(x=>x.id==qid);addCart(qp,qz,0,1)}
  else if("placeorder" in d)placeOrder()
  else if("editcart" in d)open()
  else if(d.rvstar){rvf.r=+d.rvstar;detail()}
  else if("rvsubmit" in d)submitReview()
  else if(d.rvdel!==undefined){(UR[cur.id]||[]).splice(+d.rvdel,1);saveR();detail()}
  else if(d.remove){delete cart[d.remove];save();drawer()}
- else if(d.inc){if(cart[d.inc]>=99){toast("Số lượng hợp lệ từ 1 đến 99.");return}cart[d.inc]++;save();drawer()}
+ else if(d.inc){cart[d.inc]++;save();drawer()}
  else if(d.dec){cart[d.dec]--;if(cart[d.dec]<=0)delete cart[d.dec];save();drawer()}
  else if("pay" in d){close();location.hash="#/thanh-toan"}
 });
 
 /* đổ dữ liệu vào trang */
 $("#ftag").textContent=TAGLINE;
-$("#heroT").innerHTML="";HERO.title.split(" ").forEach((w,i)=>{const sp=document.createElement("span");sp.textContent=w;sp.style.setProperty("--i",Math.min(i,6));$("#heroT").append(sp," ")});$("#heroP").textContent=HERO.text;
+$("#heroT").innerHTML="";HERO.title.split(" ").forEach((w,i)=>{const sp=document.createElement("span");sp.textContent=w;sp.style.setProperty("--i",i);$("#heroT").append(sp," ")});$("#heroP").textContent=HERO.text;
 $("#hero").style.background=HERO.bg;
 if(HERO.video){
  const src=(matchMedia("(max-width:700px)").matches&&HERO.videoMobile)||HERO.video;
@@ -906,7 +839,7 @@ if(HERO.video){
 }else if(HERO.anim||HERO.img){
  const still=matchMedia("(prefers-reduced-motion:reduce)").matches||!HERO.anim;   // giảm chuyển động thì chỉ hiện ảnh tĩnh
  $("#hero").classList.add("vid");
- $("#hero").insertAdjacentHTML("afterbegin",`<img class="bgimg" fetchpriority="high" decoding="async" src="${still?(HERO.img||HERO.anim):HERO.anim}" alt=""><div class="scrim"></div>`);
+ $("#hero").insertAdjacentHTML("afterbegin",`<img class="bgimg" src="${still?(HERO.img||HERO.anim):HERO.anim}" alt=""><div class="scrim"></div>`);
 }
 $("#featM").style.background=FEATURE.bg;$("#featM").innerHTML=media(FEATURE);$("#featT").textContent=FEATURE.title;$("#featP").textContent=FEATURE.text;
 const collectionNotes=['Sắc trầm ấm áp, phom dáng thoải mái cho những ngày se lạnh.','Những thiết kế đánh dấu hành trình và cá tính Famstyle.','Tự do phối màu. Tự tin thể hiện chất riêng.','Chất liệu nhẹ nhàng, sắc màu tươi mới cho ngày nắng.'];
@@ -915,143 +848,83 @@ $("#colls").innerHTML=COLLS.map((c,i)=>{const p=P.find(p=>p.col===c.slug&&p.img)
 let cur=null,sel={size:"",col:0,qty:1},ccur="tat-ca",csort="",colcur="",csub="";
 const defSize=p=>p.sizes.includes("M")?"M":p.sizes[0];
 function cartPlus(button,n){
- if(!button||matchMedia("(prefers-reduced-motion:reduce)").matches)return;const r=button.getBoundingClientRect(),el=document.createElement('span');el.className='cart-plus';el.textContent='+'+n;el.setAttribute('aria-hidden','true');el.style.left=(r.left+r.width/2)+'px';el.style.top=(r.top-8)+'px';document.body.appendChild(el);setTimeout(()=>el.remove(),650);
+ if(!button)return;const r=button.getBoundingClientRect(),el=document.createElement('span');el.className='cart-plus';el.textContent='+'+n;el.setAttribute('aria-hidden','true');el.style.left=(r.left+r.width/2)+'px';el.style.top=(r.top-8)+'px';document.body.appendChild(el);setTimeout(()=>el.remove(),900);
 }
 let addOrigin=null;
 document.addEventListener('click',e=>{addOrigin=e.target.closest('button[data-add],button[data-dadd],button[data-qa],button[data-qvadd]')},true);
-function addCart(p,s,c,n){
- if(!p||!p.sizes.includes(s)){toast('Vui lòng chọn kích thước trước khi thêm vào giỏ.');const scope=!qvEl.hidden?qvEl:$('#detail');scope.querySelector('.sz')?.focus();return}
- if(!Number.isInteger(c)||c<0||c>=p.colors.length||!Number.isInteger(n)||n<1||n>99){toast('Số lượng hợp lệ từ 1 đến 99.');return}
- const current=cart[p.id+'|'+s+'|'+c]||0;if(current+n>99){toast('Số lượng hợp lệ từ 1 đến 99.');return}
- cartPlus(addOrigin,n);const k=p.id+"|"+s+"|"+c;cart[k]=(cart[k]||0)+n;save();drawer();toast(`Đã thêm ${p.n} (size ${s})`);bump()}
-function restoreDetailFocus(key,value){Array.from($("#detail").querySelectorAll("button")).find(b=>b.dataset[key]===value)?.focus({preventScroll:true})}
+function addCart(p,s,c,n){cartPlus(addOrigin,n);const k=p.id+"|"+s+"|"+c;cart[k]=(cart[k]||0)+n;save();drawer();toast(`Đã thêm ${p.n} (size ${s})`);bump()}
 function detail(){
- const p=cur,more=P.filter(x=>x.id!==p.id).map((x,i)=>({p:x,i,score:(x.cat===p.cat?4:0)+(x.col===p.col?2:0)+(x.gender===p.gender?3:0)})).sort((a,b)=>b.score-a.score||a.i-b.i).slice(0,4).map(x=>x.p);
+ const p=cur,more=P.filter(x=>x.id!==p.id).slice(0,4);
  $("#detail").innerHTML=`<a class="back" href="#featured">← Quay lại sản phẩm</a>
- <div class="dg"><div class="dim" style="background:${p.bg}">${media(p,true)}</div>
+ <div class="dg"><div class="dim" style="background:${p.bg}">${media(p)}</div>
  <div class="di"><h1>${p.n}</h1><div class="st">${(a=>a.n?stars(Math.round(a.avg))+" "+a.avg.toFixed(1)+"/5 ("+a.n+" đánh giá)":"Chưa có đánh giá")(avg(p))}</div><div class="dpr">${priceHTML(p)}</div>${onSale(p)?`<p class="sale-saving">Ưu đãi ${discountPercent(p)}% · Tiết kiệm ${fmt(p.old-p.price)}</p>`:""}
- <p lang="vi" translate="no">${p.desc||""}</p>
+ <p>${p.desc||""}</p>
  ${p.colors.length>1?`<b>Màu sắc: ${COLOR_NAMES[p.colors[sel.col]]||""}</b><div class="opts">${p.colors.map((c,i)=>`<button class="col" style="background:${c}" data-dcol="${i}" aria-pressed="${i===sel.col}" aria-label="${COLOR_NAMES[c]||"Màu "+(i+1)}"></button>`).join("")}</div>`:""}
  <b>Kích thước</b><div class="opts">${p.sizes.map(s=>`<button class="sz" data-dsize="${s}" aria-pressed="${s===sel.size}">${s}</button>`).join("")}</div>
  <b>Số lượng</b><div class="q"><button data-dq="-1" aria-label="Giảm">−</button>${sel.qty}<button data-dq="1" aria-label="Tăng">+</button></div>
- <button class="btn" style="width:100%;margin-top:22px;padding:14px" data-dadd>Thêm vào giỏ</button><a class="size-help" href="#/huong-dan-size">Hướng dẫn chọn size ↗</a>
- <ul class="spec"><li>Điều kiện giao hàng và đổi trả cần được cửa hàng xác nhận.</li><li><a href="#/doi-tra">Xem thông tin đổi trả</a></li></ul></div></div>
+ <button class="btn" style="width:100%;margin-top:22px;padding:14px" data-dadd>Thêm vào giỏ</button>
+ <ul class="spec"><li>Giao hàng toàn quốc, thanh toán khi nhận hàng</li><li>Đổi size trong 7 ngày nếu chưa sử dụng</li></ul></div></div>
  ${reviewsHTML(p)}<div class="more"><div class="sh"><h2>Có thể bạn cũng thích</h2></div><div class="row">${more.map(m=>`<article class="pc" data-pid="${m.id}"><a class="im" href="#/san-pham/${m.id}" style="background:${m.bg}">${media(m)}</a><div class="nm"><a href="#/san-pham/${m.id}">${m.n}</a></div><div class="pr">${fmt(m.price)}</div></article>`).join("")}</div></div>`;
 }
 let productSaleOnly=false;
-
-const listingFilters={size:'',price:''};
-const priceBands={'under300':[0,300000],'300to600':[300000,600000],'over600':[600000,Infinity]};
-function matchesListing(p){const band=priceBands[listingFilters.price];return (!listingFilters.size||p.sizes.includes(listingFilters.size))&&(!band||(p.price>=band[0]&&p.price<band[1]))}
-function filterTools(pool){const sizes=[...new Set(pool.flatMap(p=>p.sizes))];return `<div class="listing-filters" role="group" aria-label="Lọc sản phẩm"><label>Kích thước<select id="filterSize"><option value="">Tất cả kích thước</option>${[...new Set([...sizes,...(listingFilters.size?[listingFilters.size]:[])])].map(size=>`<option value="${esc(size)}" ${listingFilters.size===size?'selected':''}>${esc(size)}</option>`).join('')}</select></label><label>Khoảng giá<select id="filterPrice">${[['','Tất cả mức giá'],['under300','Dưới 300.000 ₫'],['300to600','300.000 – dưới 600.000 ₫'],['over600','Từ 600.000 ₫']].map(([value,label])=>`<option value="${value}" ${listingFilters.price===value?'selected':''}>${label}</option>`).join('')}</select></label><label class="listing-sort">Sắp xếp${sortSel()}</label><button type="button" class="filter-reset" data-reset-filters>Xóa bộ lọc</button></div>`}
-function listingEmpty(){return `<div class="listing-empty" role="status"><h2>Chưa có sản phẩm phù hợp</h2><p>Thử đổi kích thước, khoảng giá hoặc xóa bộ lọc để xem thêm sản phẩm.</p><button class="btn" data-reset-filters>Xóa bộ lọc</button></div>`}
-document.addEventListener('change',e=>{const field={filterSize:'size',filterPrice:'price'}[e.target.id];if(!field)return;listingFilters[field]=e.target.value;const id=e.target.id;renderProductListing();document.getElementById(id)?.focus()});
-document.addEventListener('click',e=>{if(!e.target.closest('[data-reset-filters]'))return;listingFilters.size='';listingFilters.price='';productSaleOnly=false;renderProductListing();$('#filterSize')?.focus()});
-
 function productOffersHTML(pool){
  const count=pool.filter(onSale).length;
- return filterTools(pool)+`<div class="product-offers"><div><span class="eyebrow">ƯU ĐÃI SẢN PHẨM</span><p>${count?`Có <strong>${count} sản phẩm</strong> đang giảm giá trong nhóm này.`:'Hiện chưa có sản phẩm giảm giá trong nhóm này.'}</p></div><div class="product-offer-actions"><button class="sale-filter" data-sale-filter aria-pressed="${productSaleOnly}">${productSaleOnly?'✓ Đang ưu đãi':'Đang ưu đãi'} <span>${count}</span></button><a href="#/uu-dai">Xem tất cả ưu đãi ↗</a></div></div>`;
+ return `<div class="product-offers"><div><span class="eyebrow">ƯU ĐÃI SẢN PHẨM</span><p>${count?`Có <strong>${count} sản phẩm</strong> đang giảm giá trong nhóm này.`:'Hiện chưa có sản phẩm giảm giá trong nhóm này.'}</p></div><div class="product-offer-actions"><button class="sale-filter" data-sale-filter aria-pressed="${productSaleOnly}">${productSaleOnly?'✓ Đang ưu đãi':'Đang ưu đãi'} <span>${count}</span></button><a href="#/uu-dai">Xem tất cả ưu đãi ↗</a></div></div>`;
 }
-function renderProductListing(){if(location.hash.startsWith('#/uu-dai'))offersPage();else if(location.hash.startsWith('#/tim-kiem/'))searchPage();else if(/^#\/san-pham-(nam|nu)/.test(location.hash))genderPage();else if(location.hash.startsWith('#/bo-suu-tap/'))colPage();else catPage()}
+function renderProductListing(){if(/^#\/san-pham-(nam|nu)/.test(location.hash))genderPage();else if(location.hash.startsWith('#/bo-suu-tap/'))colPage();else catPage()}
 document.addEventListener('click',e=>{if(!e.target.closest('[data-sale-filter]'))return;productSaleOnly=!productSaleOnly;renderProductListing();$('#catpage [data-sale-filter]').focus()});
 function offersPage(){
- const winter=/^#\/uu-dai\/mua-dong/.test(location.hash),g=(location.hash.match(/\/(nam|nu)$/)||[])[1]||'',base=winter?'#/uu-dai/mua-dong':'#/uu-dai';
- const pool=P.filter(p=>onSale(p)&&(!winter||p.winterOffer)),items=pool.filter(p=>(!g||inGender(p,g))&&matchesListing(p));
+ const g=(location.hash.match(/^#\/uu-dai\/(nam|nu)$/)||[])[1]||'';
+ const items=P.filter(p=>onSale(p)&&(!g||inGender(p,g)));
  if(csort==='asc')items.sort((a,b)=>a.price-b.price);if(csort==='desc')items.sort((a,b)=>b.price-a.price);
- const maxDiscount=Math.max(0,...pool.map(discountPercent));
- $('#catpage').innerHTML=`<a class="back" href="#">← Trang chủ</a><div class="offers-hero${winter?' winter-hero':''}"><div><span class="eyebrow">${winter?'FAMSTYLE / WINTER EDIT':'FAMSTYLE / SPECIAL OFFERS'}</span><h1>${winter?'Ưu đãi mùa đông':'Phong cách yêu thích.<br>Mức giá đặc biệt.'}</h1><p>${winter?'Ấm áp mỗi ngày, phong cách trọn mùa. Khám phá áo khoác, áo len và phụ kiện giữ ấm đang giảm giá.':'Khám phá các thiết kế đang có ưu đãi tại Famstyle.'}</p></div><div class="offers-rate"><span>ƯU ĐÃI ĐẾN</span><strong>${maxDiscount}%</strong><small>Trên các sản phẩm được chọn</small></div></div><div class="tools offer-campaigns"><a class="chip" href="#/uu-dai" aria-current="${!winter}">Tất cả ưu đãi</a><a class="chip" href="#/uu-dai/mua-dong" aria-current="${winter}">Ưu đãi mùa đông</a></div><div class="tools offers-tools">${[['','Tất cả'],['nam','Sản phẩm Nam'],['nu','Sản phẩm Nữ']].map(([v,n])=>`<a class="chip" href="${base}${v?'/'+v:''}" aria-current="${v===g}">${n}</a>`).join('')}<span class="offers-count">${items.length} sản phẩm</span></div>${filterTools(pool)}<p class="offer-policy">Giá ưu đãi được áp dụng trực tiếp, không cộng dồn với ưu đãi khác trên cùng sản phẩm.</p>${items.length?`<div class="pgrid offers-grid">${items.map(card).join('')}</div>`:listingEmpty()}`;
- document.title=(winter?'Ưu đãi mùa đông':'Ưu đãi')+' – '+BRAND;
+ const maxDiscount=Math.max(0,...P.filter(onSale).map(discountPercent));
+ $('#catpage').innerHTML=`<a class="back" href="#">← Trang chủ</a><div class="offers-hero"><div><span class="eyebrow">FAMSTYLE / SPECIAL OFFERS</span><h1>Phong cách yêu thích.<br>Mức giá đặc biệt.</h1><p>Khám phá các thiết kế đang có ưu đãi tại Famstyle.</p></div><div class="offers-rate"><span>ƯU ĐÃI ĐẾN</span><strong>${maxDiscount}%</strong><small>Trên các sản phẩm được chọn</small></div></div><div class="tools offers-tools">${[['','Tất cả ưu đãi'],['nam','Sản phẩm Nam'],['nu','Sản phẩm Nữ']].map(([v,n])=>`<a class="chip" href="#/uu-dai${v?'/'+v:''}" aria-current="${v===g}">${n}</a>`).join('')}<span class="offers-count">${items.length} sản phẩm</span><select id="csort" aria-label="Sắp xếp ưu đãi">${[['','Sắp xếp mặc định'],['asc','Giá thấp đến cao'],['desc','Giá cao đến thấp']].map(([v,n])=>`<option value="${v}" ${csort===v?'selected':''}>${n}</option>`).join('')}</select></div><div class="pgrid offers-grid">${items.map(card).join('')}</div>`;
+ document.title='Ưu đãi – '+BRAND;
 }
-
 function genderPage(){
  const match=location.hash.match(/^#\/san-pham-(nam|nu)(?:\/([\w-]+))?(?:\/([\w-]+))?$/);if(!match)return;
  const [,g,catSlug,subSlug]=match,cat=CATS.find(c=>c.slug===catSlug),sub=cat&&cat.subs.find(x=>x.slug===subSlug),label=g==='nam'?'Nam':'Nữ';
- const pool=P.filter(p=>inGender(p,g)&&(!cat||p.cat===cat.slug)&&(!sub||p.sub===sub.slug)),items=pool.filter(p=>matchesListing(p)&&(!productSaleOnly||onSale(p)));
+ const pool=P.filter(p=>inGender(p,g)&&(!cat||p.cat===cat.slug)&&(!sub||p.sub===sub.slug)),items=pool.filter(p=>!productSaleOnly||onSale(p));
  if(csort==='asc')items.sort((a,b)=>a.price-b.price);if(csort==='desc')items.sort((a,b)=>b.price-a.price);
- $('#catpage').innerHTML=`<a class="back" href="#">← Trang chủ</a><h1 class="ct">${sub?sub.n:cat?cat.n:'Sản phẩm'} ${label}</h1><p class="sub">${items.length} sản phẩm · Phong cách dành cho bạn</p><div class="tools">${['nam','nu'].map(v=>`<a class="chip" href="${genderURL(v)}" aria-current="${v===g}">Sản phẩm ${v==='nam'?'Nam':'Nữ'}</a>`).join('')}</div><div class="tools"><a class="chip" href="${genderURL(g)}" aria-current="${!cat}">Tất cả</a>${genderCategories(g).map(c=>`<a class="chip" href="${genderURL(g,c.slug)}" aria-current="${cat?.slug===c.slug}">${genderCategoryName(g,c)}</a>`).join('')}</div>${cat?`<div class="tools subs">${genderSubs(g,cat).map(x=>`<a class="chip s" href="${genderURL(g,cat.slug,x.slug)}" aria-current="${sub?.slug===x.slug}">${x.n}</a>`).join('')}</div>`:''}${productOffersHTML(pool)}${items.length?`<div class="pgrid">${items.map(card).join('')}</div>`:listingEmpty()}`;
+ $('#catpage').innerHTML=`<a class="back" href="#">← Trang chủ</a><h1 class="ct">${sub?sub.n:cat?cat.n:'Sản phẩm'} ${label}</h1><p class="sub">${items.length} sản phẩm · Phong cách dành cho bạn</p><div class="tools">${['nam','nu'].map(v=>`<a class="chip" href="${genderURL(v)}" aria-current="${v===g}">Sản phẩm ${v==='nam'?'Nam':'Nữ'}</a>`).join('')}</div><div class="tools"><a class="chip" href="${genderURL(g)}" aria-current="${!cat}">Tất cả</a>${genderCategories(g).map(c=>`<a class="chip" href="${genderURL(g,c.slug)}" aria-current="${cat?.slug===c.slug}">${genderCategoryName(g,c)}</a>`).join('')}<select id="csort" aria-label="Sắp xếp sản phẩm">${[['','Sắp xếp mặc định'],['asc','Giá thấp đến cao'],['desc','Giá cao đến thấp']].map(([v,n])=>`<option value="${v}" ${v===csort?'selected':''}>${n}</option>`).join('')}</select></div>${cat?`<div class="tools subs">${genderSubs(g,cat).map(x=>`<a class="chip s" href="${genderURL(g,cat.slug,x.slug)}" aria-current="${sub?.slug===x.slug}">${x.n}</a>`).join('')}</div>`:''}${productOffersHTML(pool)}${items.length?`<div class="pgrid">${items.map(card).join('')}</div>`:`<p class="sub">${productSaleOnly?'Chưa có ưu đãi trong nhóm này. Bấm lại “Đang ưu đãi” để xem toàn bộ sản phẩm.':'Chưa có sản phẩm trong danh mục này.'}</p>`}`;
  document.title=`${sub?sub.n:cat?cat.n:'Sản phẩm'} ${label} – ${BRAND}`;
 }
 function catPage(){
  const cat=CATS.find(x=>x.slug===ccur),sub=cat&&cat.subs.find(x=>x.slug===csub),
-  pool=P.filter(p=>(!cat||p.cat===cat.slug)&&(!sub||p.sub===sub.slug)),l=pool.filter(p=>matchesListing(p)&&(!productSaleOnly||onSale(p)));
+  pool=P.filter(p=>(!cat||p.cat===cat.slug)&&(!sub||p.sub===sub.slug)),l=pool.filter(p=>!productSaleOnly||onSale(p));
  if(csort==="asc")l.sort((a,b)=>a.price-b.price);if(csort==="desc")l.sort((a,b)=>b.price-a.price);
  const path=cat?(sub?`<a href="#/danh-muc/${cat.slug}">${cat.n}</a> / ${sub.n}`:cat.n)+" · ":"";
  $("#catpage").innerHTML=`<a class="back" href="#">← Trang chủ</a>
  <h1 class="ct">${sub?sub.n:cat?cat.n:"Tất cả sản phẩm"}</h1><p class="sub">${path}${l.length} sản phẩm</p>
  <div class="tools">${[{slug:"tat-ca",n:"Tất cả"},...CATS].map(x=>`<a class="chip" href="#/danh-muc/${x.slug}" aria-current="${x.slug===ccur}">${x.n}</a>`).join("")}
- </div>
+ <select id="csort" aria-label="Sắp xếp">${[["","Sắp xếp mặc định"],["asc","Giá thấp đến cao"],["desc","Giá cao đến thấp"]].map(([v,t])=>`<option value="${v}"${v===csort?" selected":""}>${t}</option>`).join("")}</select></div>
  ${cat?`<div class="tools subs"><a class="chip s" href="#/danh-muc/${cat.slug}" aria-current="${!sub}">Tất cả ${cat.n.toLowerCase()}</a>${cat.subs.map(x=>`<a class="chip s" href="#/danh-muc/${cat.slug}/${x.slug}" aria-current="${!!sub&&sub.slug===x.slug}">${x.n}</a>`).join("")}</div>`:""}
- ${productOffersHTML(pool)}${l.length?`<div class="pgrid">${l.map(card).join("")}</div>`:listingEmpty()}`;
+ ${productOffersHTML(pool)}${l.length?`<div class="pgrid">${l.map(card).join("")}</div>`:`<p class="sub" style="padding:24px 0">${productSaleOnly?'Chưa có ưu đãi trong nhóm này. Bấm lại “Đang ưu đãi” để xem toàn bộ sản phẩm.':'Chưa có sản phẩm trong danh mục này.'}</p>`}`;
 }
 function colPage(){
- const c=COLLS.find(x=>x.slug===colcur),pool=P.filter(p=>p.col===c.slug),l=pool.filter(p=>matchesListing(p)&&(!productSaleOnly||onSale(p)));
- if(csort==="asc")l.sort((a,b)=>a.price-b.price);if(csort==="desc")l.sort((a,b)=>b.price-a.price);
+ const c=COLLS.find(x=>x.slug===colcur),pool=P.filter(p=>p.col===c.slug),l=pool.filter(p=>!productSaleOnly||onSale(p));
  $("#catpage").innerHTML=`<a class="back" href="#coll">← Tất cả bộ sưu tập</a>
  <div class="banner" style="background:${c.bg}"><div class="bi">${media(c)}</div><div><h1 class="ct">${c.n}</h1><p>${c.desc}</p><p class="sub">${l.length} sản phẩm</p></div></div>
  <div class="tools">${COLLS.map(x=>`<a class="chip" href="#/bo-suu-tap/${x.slug}" aria-current="${x.slug===c.slug}">${x.n}</a>`).join("")}</div>
- ${productOffersHTML(pool)}${l.length?`<div class="pgrid">${l.map(card).join("")}</div>`:listingEmpty()}`;
+ ${productOffersHTML(pool)}${l.length?`<div class="pgrid">${l.map(card).join("")}</div>`:`<p class="sub" style="padding:24px 0">${productSaleOnly?'Chưa có ưu đãi trong bộ sưu tập này. Bấm lại “Đang ưu đãi” để xem toàn bộ sản phẩm.':'Chưa có sản phẩm trong bộ sưu tập này.'}</p>`}`;
 }
-const HELP_PAGES={
- 'huong-dan-size':{title:'Hướng dẫn chọn size',body:'<h2>Đo cơ thể trước khi chọn</h2><ol><li>Vòng ngực: đo quanh phần đầy nhất, giữ thước ngang.</li><li>Vòng eo: đo quanh eo tự nhiên, không siết thước.</li><li>Vòng hông: đo quanh phần rộng nhất của hông.</li><li>Đối chiếu số đo với bảng size riêng của sản phẩm.</li></ol><p>Hiện chưa có bảng số đo đã xác nhận cho từng mẫu. Không nên suy ra size chỉ từ cân nặng; hãy xác nhận số đo với cửa hàng trước khi mua thật.</p>'},
- 'doi-tra':{title:'Thông tin đổi trả',body:'<p>Chính sách đổi trả chính thức đang chờ cửa hàng xác nhận. Website chưa nhận đơn hàng thật.</p><p>Trước khi mua, cần xác nhận thời hạn đổi trả, tình trạng sản phẩm được chấp nhận, phí vận chuyển và cách hoàn tiền.</p>'},
- 'quyen-rieng-tu':{title:'Quyền riêng tư',body:'<p>Giỏ hàng và ngôn ngữ được lưu trên trình duyệt để thuận tiện cho lần truy cập sau.</p><p>Thông tin nhập khi xem thử đơn hàng và đánh giá chỉ tồn tại trong phiên trang hiện tại. Website không gửi các thông tin này đến cửa hàng hoặc dịch vụ tài chính.</p><p>Bạn có thể xóa dữ liệu trình duyệt của website trong phần cài đặt trình duyệt. Việc tải font chữ có kết nối đến Google Fonts.</p>'}
-};
-document.addEventListener('click',e=>{if(!e.target.closest('[data-clear-legacy]'))return;try{['hem-orders','hem-last-order','hem-reviews'].forEach(key=>localStorage.removeItem(key));toast('Đã xóa dữ liệu cá nhân lưu từ bản cũ.')}catch(err){toast('Không thể truy cập dữ liệu trình duyệt.')}});
-function helpPage(key){const page=HELP_PAGES[key];$('#catpage').innerHTML=`<a class="back" href="#">← Trang chủ</a><article class="help-page"><h1>${page.title}</h1><div lang="vi" translate="no">${page.body}</div>${key==='quyen-rieng-tu'?'<button class="btn light" style="border:1px solid #ccc;margin:14px 0" data-clear-legacy>Xóa dữ liệu cá nhân lưu từ bản cũ</button>':''}<a class="btn" href="#/danh-muc/tat-ca">Tiếp tục mua sắm</a></article>`;document.title=page.title+' – '+BRAND}
-
-/* Simulated accounts: memory only, no server, no persistent credentials. */
-const demoAccounts=new Map();
-let demoUser=null,demoAccountBusy=false;
-function accountPage(){
- const signup=location.hash==='#/tai-khoan/dang-ky';
- document.title='Tài khoản – '+BRAND;
- $('#accountLink').classList.toggle('signed-in',!!demoUser);
- $('#catpage').innerHTML=`<a class="back" href="#">← Trang chủ</a><section class="account-shell"><div class="account-story"><small translate="no">FAMSTYLE / MEMBERS</small><h1>Phong cách của bạn.<br>Dấu ấn riêng.</h1><p>Một không gian riêng để bắt đầu hành trình phong cách cùng Famstyle.</p><div class="account-demo"><strong>Tài khoản mô phỏng</strong><br>Chỉ dùng email và mật khẩu giả. Tài khoản chỉ tồn tại trong lần mở trang này; tải lại trang sẽ xóa toàn bộ tài khoản. Không gửi dữ liệu lên máy chủ.</div></div><div class="account-main">${demoUser?`<h2>Chào mừng trở lại</h2><p class="account-note">Bạn đang đăng nhập vào tài khoản mô phỏng.</p><div class="account-profile"><strong translate="no">${esc(demoUser.name)}</strong><p translate="no">${esc(demoUser.email)}</p></div><div class="account-actions"><a class="btn" href="#/danh-muc/tat-ca">Tiếp tục mua sắm</a><button class="btn light" id="demoLogout">Đăng xuất</button></div>`:`<nav class="account-tabs" aria-label="Tài khoản"><a href="#/tai-khoan" ${!signup?'aria-current="page"':''}>Đăng nhập</a><a href="#/tai-khoan/dang-ky" ${signup?'aria-current="page"':''}>Đăng ký</a></nav><h2>${signup?'Tạo tài khoản mô phỏng':'Đăng nhập mô phỏng'}</h2><p class="account-note">${signup?'Thử trải nghiệm thành viên với thông tin giả.':'Sử dụng tài khoản bạn vừa tạo trong lần mở trang này.'}</p><form class="account-form" id="demoAccountForm" autocomplete="off">${signup?'<label>Tên hiển thị<input name="displayName" required maxlength="60" placeholder="Ví dụ: Khách Famstyle"></label>':''}<label>Email dùng thử<input name="email" type="email" required maxlength="254" placeholder="ban@example.com" autocapitalize="none" spellcheck="false"></label><label>Mật khẩu dùng thử<span class="account-password"><input name="password" type="password" required minlength="8" maxlength="128" autocomplete="new-password" aria-describedby="demoPasswordHelp"><button type="button" data-demo-reveal aria-label="Hiện mật khẩu" aria-pressed="false">Hiện</button></span></label><small class="account-note" id="demoPasswordHelp">Ít nhất 8 ký tự. Không sử dụng mật khẩu thật.</small>${signup?'<label>Nhập lại mật khẩu<span class="account-password"><input name="confirmPassword" type="password" required minlength="8" maxlength="128" autocomplete="new-password"><button type="button" data-demo-reveal aria-label="Hiện mật khẩu" aria-pressed="false">Hiện</button></span></label><label class="account-consent"><input name="consent" type="checkbox" required><span>Tôi hiểu đây là tài khoản mô phỏng và đang dùng thông tin giả.</span></label>':''}<div class="account-message" id="demoAccountMessage" role="status" aria-live="polite"></div><button class="btn" type="submit">${signup?'Tạo tài khoản':'Đăng nhập'}</button></form>`}</div></section>`;
- $('#demoLogout')?.addEventListener('click',()=>{demoUser=null;accountPage()});
- document.querySelectorAll('[data-demo-reveal]').forEach(button=>button.addEventListener('click',()=>{const input=button.previousElementSibling,show=input.type==='password';input.type=show?'text':'password';button.textContent=show?'Ẩn':'Hiện';button.setAttribute('aria-label',show?'Ẩn mật khẩu':'Hiện mật khẩu');button.setAttribute('aria-pressed',String(show))}));
- $('#demoAccountForm')?.addEventListener('submit',async e=>{
- e.preventDefault();if(demoAccountBusy)return;
- const form=e.currentTarget,msg=form.querySelector('#demoAccountMessage'),data=new FormData(form),email=String(data.get('email')).trim().toLowerCase(),password=String(data.get('password')),name=String(data.get('displayName')||'').trim();
- const say=text=>{msg.textContent=text};
- if(!form.reportValidity())return;
- if(signup&&!name){say('Vui lòng nhập tên hiển thị.');return}
- if(signup&&password!==data.get('confirmPassword')){say('Mật khẩu nhập lại chưa khớp.');return}
- if(signup&&demoAccounts.has(email)){say('Email này đã có tài khoản mô phỏng.');return}
- demoAccountBusy=true;const submit=form.querySelector('[type="submit"]');submit.disabled=true;
- try{
- const existing=demoAccounts.get(email),salt=signup?crypto.getRandomValues(new Uint8Array(16)):existing?.salt;
- if(!salt){say('Email hoặc mật khẩu chưa đúng.');return}
- const key=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveBits']);
- const hash=Array.from(new Uint8Array(await crypto.subtle.deriveBits({name:'PBKDF2',salt,iterations:100000,hash:'SHA-256'},key,256))).map(x=>x.toString(16).padStart(2,'0')).join('');
- if(signup){demoAccounts.set(email,{name,email,salt,hash});demoUser={name,email}}
- else if(existing.hash===hash){demoUser={name:existing.name,email}}
- else{say('Email hoặc mật khẩu chưa đúng.');return}
- form.reset();$('#accountLink').classList.add('signed-in');
- if(location.hash.startsWith('#/tai-khoan'))accountPage();
- }catch(err){say('Không thể xử lý tài khoản. Vui lòng thử lại trên kết nối HTTPS.')}finally{demoAccountBusy=false;submit.disabled=false}
- });
-}
-
 function route(){
- const h=location.hash,m=h.match(/^#\/san-pham\/(\d+)/),c=h.match(/^#\/danh-muc\/([\w-]+)(?:\/([\w-]+))?/),b=h.match(/^#\/bo-suu-tap\/([\w-]+)/),ab=/^#\/gioi-thieu\/?$/.test(h),isCk=/^#\/thanh-toan\/?$/.test(h),isOk=/^#\/(?:dat-hang-thanh-cong|xem-truoc-don-hang)\/?$/.test(h),sm=h.match(/^#\/tim-kiem\/(.*)$/),
+ const h=location.hash,m=h.match(/^#\/san-pham\/(\d+)/),c=h.match(/^#\/danh-muc\/([\w-]+)(?:\/([\w-]+))?/),b=h.match(/^#\/bo-suu-tap\/([\w-]+)/),ab=/^#\/gioi-thieu\/?$/.test(h),isCk=/^#\/thanh-toan\/?$/.test(h),isOk=/^#\/dat-hang-thanh-cong\/?$/.test(h),sm=h.match(/^#\/tim-kiem\/(.*)$/),
   v={home:$("#home"),det:$("#detail"),cat:$("#catpage")};
  Object.values(v).forEach(e=>e.hidden=true);
  document.body.classList.remove("home","ov");
- queueReveal();
- if(/^#\/tai-khoan(?:\/dang-ky)?$/.test(h)){v.cat.hidden=false;accountPage();window.scrollTo({top:0,behavior:"instant"});
- }else if(HELP_PAGES[h.slice(2)]){v.cat.hidden=false;helpPage(h.slice(2));window.scrollTo({top:0,behavior:'instant'});
- }else if(/^#\/uu-dai(?:\/mua-dong)?(?:\/(nam|nu))?$/.test(h)){
+ if(/^#\/uu-dai(?:\/(nam|nu))?$/.test(h)){
   v.cat.hidden=false;offersPage();window.scrollTo({top:0,behavior:'instant'});
  }else if(/^#\/san-pham-(nam|nu)(?:\/[\w-]+){0,2}$/.test(h)){
   v.cat.hidden=false;genderPage();window.scrollTo({top:0,behavior:"instant"});
  }else if(m&&P.some(x=>x.id==m[1])){
-  cur=P.find(x=>x.id==m[1]);sel={size:cur.sizes.length===1?cur.sizes[0]:"",col:0,qty:1};rvf={r:0,name:"",text:"",err:""};
+  cur=P.find(x=>x.id==m[1]);sel={size:defSize(cur),col:0,qty:1};rvf={r:0,name:"",text:"",err:""};
   v.det.hidden=false;detail();window.scrollTo({top:0,behavior:"instant"});document.title=cur.n+" – "+BRAND;
  }else if(isCk){
   CKE={};v.cat.hidden=false;checkoutPage();window.scrollTo({top:0,behavior:"instant"});document.title="Thanh toán – "+BRAND;
  }else if(isOk){
   if(!lastOrder()){location.hash="";return}
-  v.cat.hidden=false;successPage();window.scrollTo({top:0,behavior:"instant"});document.title="Xem trước đơn hàng – "+BRAND;
+  v.cat.hidden=false;successPage();window.scrollTo({top:0,behavior:"instant"});document.title="Đặt hàng thành công – "+BRAND;
  }else if(ab){
   v.cat.hidden=false;aboutPage();window.scrollTo({top:0,behavior:"instant"});document.title="Giới thiệu – "+BRAND;
  }else if(sm){
@@ -1069,8 +942,8 @@ function route(){
   if(el)el.scrollIntoView();
  }
 }
-document.addEventListener("change",e=>{if(e.target.id==="csort"){csort=e.target.value;location.hash.startsWith("#/uu-dai")?offersPage():location.hash.startsWith("#/tim-kiem/")?searchPage():/^#\/san-pham-(nam|nu)/.test(location.hash)?genderPage():location.hash.startsWith("#/bo-suu-tap/")?colPage():catPage();$("#csort")?.focus()}});
-$("#nav").innerHTML=`<a class="nl" href="#/gioi-thieu">Giới thiệu</a><div class="dd gender-menu"><a href="#/danh-muc/tat-ca">Sản phẩm</a><div class="panel">${['nam','nu'].map(g=>`<div class="gender-entry"><a class="gender-link" href="${genderURL(g)}">Sản phẩm ${g==='nam'?'Nam':'Nữ'} <span aria-hidden="true">›</span></a><div class="gender-submenu">${genderCategories(g).map(c=>`<div><a class="gender-cat-title" href="${genderURL(g,c.slug)}">${genderCategoryName(g,c)}</a>${genderSubs(g,c).map(x=>`<a href="${genderURL(g,c.slug,x.slug)}">${x.n}</a>`).join('')}</div>`).join('')}</div></div>`).join('')}<a class="gender-all" href="#/danh-muc/tat-ca">Xem tất cả sản phẩm →</a></div></div><div class="dd"><a href="#coll">Bộ sưu tập</a><div class="panel">${COLLS.map(c=>`<a href="#/bo-suu-tap/${c.slug}"><span>${c.e}</span>${c.n}</a>`).join('')}</div></div><div class="dd"><a class="nl offers-nav" href="#/uu-dai">Ưu đãi</a><div class="panel"><a href="#/uu-dai">Tất cả ưu đãi</a><a href="#/uu-dai/mua-dong">Ưu đãi mùa đông</a></div></div>`;
+document.addEventListener("change",e=>{if(e.target.id==="csort"){csort=e.target.value;location.hash.startsWith("#/uu-dai")?offersPage():location.hash.startsWith("#/tim-kiem/")?searchPage():/^#\/san-pham-(nam|nu)/.test(location.hash)?genderPage():catPage()}});
+$("#nav").innerHTML=`<a class="nl" href="#/gioi-thieu">Giới thiệu</a><div class="dd gender-menu"><a href="#/danh-muc/tat-ca">Sản phẩm</a><div class="panel">${['nam','nu'].map(g=>`<div class="gender-entry"><a class="gender-link" href="${genderURL(g)}">Sản phẩm ${g==='nam'?'Nam':'Nữ'} <span aria-hidden="true">›</span></a><div class="gender-submenu">${genderCategories(g).map(c=>`<div><a class="gender-cat-title" href="${genderURL(g,c.slug)}">${genderCategoryName(g,c)}</a>${genderSubs(g,c).map(x=>`<a href="${genderURL(g,c.slug,x.slug)}">${x.n}</a>`).join('')}</div>`).join('')}</div></div>`).join('')}<a class="gender-all" href="#/danh-muc/tat-ca">Xem tất cả sản phẩm →</a></div></div><div class="dd"><a href="#coll">Bộ sưu tập</a><div class="panel">${COLLS.map(c=>`<a href="#/bo-suu-tap/${c.slug}"><span>${c.e}</span>${c.n}</a>`).join('')}</div></div><a class="nl offers-nav" href="#/uu-dai">Ưu đãi</a>`;
 document.querySelectorAll(".dd").forEach(dd=>{
  // bấm vào một mục thì đóng panel cho đến khi di chuột ra rồi vào lại
  dd.addEventListener("click",e=>{const a=e.target.closest(".panel a");if(a){a.blur();dd.classList.add("shut")}});
@@ -1120,20 +993,27 @@ document.addEventListener("click",hidePv);
    SEED_REVIEWS là đánh giá MẪU để trang không trống, hãy xóa trước khi bán thật.
    Đánh giá khách gửi được lưu trong trình duyệt của chính họ (localStorage);
    muốn mọi người cùng thấy thì cần thêm backend lưu vào cơ sở dữ liệu. */
-const SEED_REVIEWS={};
+const SEED_REVIEWS={
+ 1:[{n:"Minh Anh",r:5,t:"Áo form rộng vừa, vải dày dặn và màu lên ảnh rất đẹp. Mình cao 1m65 mặc size M vừa.",d:"28/09/2026"},{n:"Quốc Bảo",r:4,t:"Chất vải ổn, nút may chắc. Giao hàng nhanh, tiếc là hơi dài tay so với mình.",d:"21/09/2026"}],
+ 2:[{n:"Thu Hà",r:5,t:"Quần ống suông mặc rất thoải mái, wash màu nhạt đẹp. Nên lấy đúng size vì ít co giãn.",d:"30/09/2026"},{n:"Đức Long",r:4,t:"Form đẹp, vải dày. Mình lấy size 30 đúng như bảng size.",d:"15/09/2026"}],
+ 3:[{n:"Lan Phương",r:5,t:"Áo mềm, mặc mát, phối với chân váy xếp ly rất xinh.",d:"02/10/2026"}],
+ 5:[{n:"Ngọc Trâm",r:5,t:"Cardigan ấm vừa phải, đường may gọn. Phối với váy hay quần jeans đều hợp.",d:"05/10/2026"},{n:"Hoàng Nam",r:4,t:"Len mịn, không bị xù sau vài lần giặt. Màu thực tế hơi sáng hơn ảnh một chút.",d:"24/09/2026"}],
+ 6:[{n:"Tuấn Kiệt",r:5,t:"Bomber đứng form, khóa kéo mượt, mặc đi xe máy rất ổn.",d:"01/10/2026"}],
+ 10:[{n:"Bảo Châu",r:4,t:"Váy xếp ly xòe vừa, lưng thun thoải mái. Hơi ngắn nếu bạn cao trên 1m68.",d:"27/09/2026"}]
+};
 const esc=t=>String(t).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const RKEY="hem-reviews";let UR={},rvf={r:0,name:"",text:"",err:""};
-// Reviews are session-only until a shared review service is configured.
-const saveR=()=>{};
+try{UR=JSON.parse(localStorage.getItem(RKEY)||"{}")||{}}catch(e){}
+const saveR=()=>{try{localStorage.setItem(RKEY,JSON.stringify(UR))}catch(e){}};
 const revs=p=>[...(Array.isArray(UR[p.id])?UR[p.id]:[]).map((x,i)=>({...x,mine:true,i})).filter(x=>x&&x.r>=1&&x.r<=5&&typeof x.t==="string"),...(SEED_REVIEWS[p.id]||[])];
 const avg=p=>{const l=revs(p);return {n:l.length,avg:l.length?l.reduce((t,x)=>t+x.r,0)/l.length:0}};
-const rating=p=>{const a=avg(p);return a.n?Math.round(a.avg):0};
+const rating=p=>{const a=avg(p);return a.n?Math.round(a.avg):p.r};
 function reviewsHTML(p){
  const l=revs(p),a=avg(p);
  const bars=[5,4,3,2,1].map(k=>{const c=l.filter(x=>x.r===k).length;return `<div class="dr"><span>${k}★</span><i><u style="width:${a.n?c/a.n*100:0}%"></u></i><span>${c}</span></div>`}).join("");
  const picker=[1,2,3,4,5].map(k=>`<button class="sp${k<=rvf.r?" on":""}" data-rvstar="${k}" aria-label="${k} sao">★</button>`).join("");
  return `<div class="rv"><div>
-  <h2>Đánh giá sản phẩm</h2><p class="sub">Đánh giá thử chỉ hiển thị trong phiên này, chưa được gửi đến cửa hàng.</p>
+  <h2>Đánh giá sản phẩm</h2>
   ${a.n?`<div class="big">${a.avg.toFixed(1)} <small>/ 5</small></div><div class="st" style="margin:6px 0 10px">${stars(Math.round(a.avg))} <span style="color:var(--muted);letter-spacing:0">(${a.n} đánh giá)</span></div>${bars}`:`<p style="color:var(--muted)">Chưa có đánh giá nào.</p>`}
   <div class="rf"><h3>Viết đánh giá của bạn</h3><div>${picker}</div>
    <label for="rn">Tên của bạn</label><input class="f" id="rn" data-rv="name" maxlength="40" value="${esc(rvf.name)}">
@@ -1166,14 +1046,14 @@ function searchP(q){
   return {p,sc,i};
  }).filter(Boolean).sort((a,b)=>b.sc-a.sc||a.i-b.i).map(x=>x.p);
 }
-const sortSel=()=>`<select id="csort" aria-label="Sắp xếp">${[["",location.hash.startsWith("#/tim-kiem/")?"Liên quan nhất":"Sắp xếp mặc định"],["asc","Giá thấp đến cao"],["desc","Giá cao đến thấp"]].map(([v,t])=>`<option value="${v}"${v===csort?" selected":""}>${t}</option>`).join("")}</select>`;
+const sortSel=()=>`<select id="csort" aria-label="Sắp xếp">${[["","Liên quan nhất"],["asc","Giá thấp đến cao"],["desc","Giá cao đến thấp"]].map(([v,t])=>`<option value="${v}"${v===csort?" selected":""}>${t}</option>`).join("")}</select>`;
 function searchPage(){
- const pool=searchP(sq),l=pool.filter(matchesListing);
+ const l=searchP(sq);
  if(csort==="asc")l.sort((a,b)=>a.price-b.price);if(csort==="desc")l.sort((a,b)=>b.price-a.price);
  $("#catpage").innerHTML=`<a class="back" href="#">← Trang chủ</a>
- <h1 class="ct">Kết quả cho “${esc(sq)}”</h1><p class="sub">${l.length} sản phẩm</p>${filterTools(pool)}
- ${l.length?`<div class="pgrid">${l.map(card).join("")}</div>`:
- pool.length?listingEmpty():`<div style="padding:24px 0"><p>Không tìm thấy sản phẩm nào khớp “${esc(sq)}”.</p><p class="sub">Hãy thử từ khóa ngắn hơn hoặc xem theo danh mục:</p><div class="tools">${CATS.map(c=>`<a class="chip" href="#/danh-muc/${c.slug}">${c.n}</a>`).join("")}</div></div>`}`;
+ <h1 class="ct">Kết quả cho “${esc(sq)}”</h1><p class="sub">${l.length} sản phẩm</p>
+ ${l.length?`<div class="tools">${sortSel()}</div><div class="pgrid">${l.map(card).join("")}</div>`:
+ `<div style="padding:24px 0"><p>Không tìm thấy sản phẩm nào khớp “${esc(sq)}”.</p><p class="sub">Hãy thử từ khóa ngắn hơn hoặc xem theo danh mục:</p><div class="tools">${CATS.map(c=>`<a class="chip" href="#/danh-muc/${c.slug}">${c.n}</a>`).join("")}</div></div>`}`;
 }
 const hs=$("#hs"),sug=$("#sug");
 function closeSug(){sug.hidden=true;hs.setAttribute("aria-expanded","false");sAct=-1}
@@ -1218,12 +1098,12 @@ const ABOUT={
  steps:[{t:"Chọn sản phẩm",d:"Duyệt theo danh mục, bộ sưu tập hoặc tìm nhanh bằng ô tìm kiếm."},
         {t:"Chọn size và màu",d:"Xem ảnh, mô tả và đánh giá ngay ở trang chi tiết sản phẩm."},
         {t:"Thêm vào giỏ hàng",d:"Kiểm tra lại số lượng và tổng tiền trong giỏ trước khi đặt."}],
- contact:[{e:"📞",t:"Hotline",d:"Đang cập nhật thông tin liên hệ"},{e:"📍",t:"Cửa hàng",d:"Địa chỉ cửa hàng đang cập nhật"},{e:"💬",t:"Hỗ trợ",d:"Đổi trả và hướng dẫn chọn size"}]
+ contact:[{e:"📞",t:"Hotline",d:"1900 000 000"},{e:"📍",t:"Cửa hàng",d:"123 Đường ABC, Quận 1, TP. Hồ Chí Minh"},{e:"💬",t:"Hỗ trợ",d:"Đổi trả và hướng dẫn chọn size"}]
 };
 function aboutPage(){
  $("#catpage").innerHTML=`<a class="back" href="#">← Trang chủ</a>
  <h1 class="ct">Giới thiệu</h1>
- <div class="ab" style="margin-top:20px"><div class="abt"><h3 lang="vi" translate="no">${ABOUT.title}</h3>${ABOUT.text.map(t=>`<p lang="vi" translate="no">${t}</p>`).join("")}<p class="abq" lang="vi" translate="no">${ABOUT.slogan}</p><a class="btn" href="#/danh-muc/tat-ca">Khám phá sản phẩm</a></div>
+ <div class="ab" style="margin-top:20px"><div class="abt"><h3>${ABOUT.title}</h3>${ABOUT.text.map(t=>`<p>${t}</p>`).join("")}<p class="abq">${ABOUT.slogan}</p><a class="btn" href="#/danh-muc/tat-ca">Khám phá sản phẩm</a></div>
  <div class="abf">${ABOUT.features.map(x=>`<div class="fc"><div class="e">${x.e}</div><div><b>${x.t}</b><span>${x.d}</span></div></div>`).join("")}</div></div>
  <div class="steps">${ABOUT.steps.map((x,i)=>`<div class="stp"><i>BƯỚC ${i+1}</i><b>${x.t}</b><span>${x.d}</span></div>`).join("")}</div>
  <div class="sh" style="margin-top:36px"><h2>Liên hệ</h2></div>
@@ -1231,25 +1111,23 @@ function aboutPage(){
 }
 
 /* ===== 15. THANH TOÁN (đơn hàng được lưu trong trình duyệt; muốn nhận đơn thật cần thêm backend) ===== */
-const BANK={bank:"",no:"",owner:""};   // MẪU: thay bằng tài khoản thật của shop
+const BANK={bank:"Ngân hàng ABC",no:"0123 456 789",owner:"CÔNG TY TNHH FAMSTYLE"};   // MẪU: thay bằng tài khoản thật của shop
 const OKEY="hem-orders",LKEY="hem-last-order";
-let CK={name:"",phone:"",email:"",prov:"",addr:"",note:"",pay:"cod",installmentMonths:"",installmentConsent:false},CKE={},lastMem=null;
-const lastOrder=()=>lastMem;
+let CK={name:"",phone:"",email:"",prov:"",addr:"",note:"",pay:"cod"},CKE={},lastMem=null;
+const lastOrder=()=>{if(lastMem)return lastMem;try{return JSON.parse(localStorage.getItem(LKEY)||"null")}catch(e){return null}};
 const n1=l=>({n:l.n,e:l.e,bg:l.bg,img:(l.img&&!l.img.startsWith("data:"))?l.img:"",size:l.size,cn:l.colors.length>1?(COLOR_NAMES[l.color]||""):"",qty:l.qty,price:l.price});
 const sums=()=>{const t=lines().reduce((a,l)=>a+l.price*l.qty,0),sh=t===0||t>=FREE_SHIP?0:SHIP_FEE;return {t,sh,total:t+sh}};
 const itemsHTML=L=>L.map(l=>`<div class="sl2"><div class="t" style="background:${l.bg}">${l.img?`<img src="${l.img}" alt="">`:l.e}</div><div class="n"><span style="font-weight:500">${l.n}</span><small>Size ${l.size}${l.cn?" · "+l.cn:""} · SL ${l.qty}</small></div><div>${fmt(l.price*l.qty)}</div></div>`).join("");
 const totalsHTML=s=>`<div class="sm"><span>Tạm tính</span><span>${fmt(s.t)}</span></div><div class="sm"><span>Phí giao hàng</span><span>${s.sh?fmt(s.sh):"Miễn phí"}</span></div><div class="sm t"><span>Tổng cộng</span><span>${fmt(s.total)}</span></div>`;
-const bankHTML=(code,hide)=>!BANK.no?"":`<div class="bankbox" id="bankbox"${hide?" hidden":""}><div><span>Ngân hàng</span><b>${esc(BANK.bank)}</b></div><div><span>Số tài khoản</span><b>${esc(BANK.no)}</b></div><div><span>Chủ tài khoản</span><b>${esc(BANK.owner)}</b></div><div><span>Nội dung chuyển khoản</span><b>${code?esc(code):"Mã đơn hàng (hiện sau khi đặt)"}</b></div></div>`;
-const INSTALLMENT_TERMS=[3,6,12];
-function installmentHTML(){return `<div id="installment-box" class="installment-box"${CK.pay==='installment'?'':' hidden'}><span class="eyebrow">TRẢ GÓP · MÔ PHỎNG</span><h3>Chọn kỳ hạn mong muốn</h3><p>Đây là yêu cầu trả góp, chưa phải khoản vay được phê duyệt. Kỳ hạn, lãi suất, phí và số tiền trả mỗi kỳ cần được đơn vị cung cấp xác nhận trước khi bạn đồng ý.</p><label class="l" for="ck-installmentMonths">Kỳ hạn mong muốn</label><select id="ck-installmentMonths" class="f${CKE.installmentMonths?' bad':''}" data-ck="installmentMonths"${CKE.installmentMonths?' aria-invalid="true" aria-describedby="e-installmentMonths"':''}><option value="">Chọn kỳ hạn</option>${INSTALLMENT_TERMS.map(n=>`<option value="${n}"${Number(CK.installmentMonths)===n?' selected':''}>${n} tháng</option>`).join('')}</select>${CKE.installmentMonths?`<p class="err" id="e-installmentMonths" role="alert">${CKE.installmentMonths}</p>`:''}<p class="installment-notice">Yêu cầu chỉ tồn tại trong phiên này; chưa gửi đi và chưa thu tiền.</p><label class="installment-consent"><input type="checkbox" id="ck-installmentConsent"${CK.installmentConsent?' checked':''}${CKE.installmentConsent?' aria-invalid="true" aria-describedby="e-installmentConsent"':''}><span>Tôi hiểu đây là bản mô phỏng, chưa xác nhận hợp đồng trả góp.</span></label>${CKE.installmentConsent?`<p class="err" id="e-installmentConsent" role="alert">${CKE.installmentConsent}</p>`:''}</div>`}
+const bankHTML=(code,hide)=>`<div class="bankbox" id="bankbox"${hide?" hidden":""}><div><span>Ngân hàng</span><b>${esc(BANK.bank)}</b></div><div><span>Số tài khoản</span><b>${esc(BANK.no)}</b></div><div><span>Chủ tài khoản</span><b>${esc(BANK.owner)}</b></div><div><span>Nội dung chuyển khoản</span><b>${code?esc(code):"Mã đơn hàng (hiện sau khi đặt)"}</b></div></div>`;
 function checkoutPage(){
  const L=lines();
  if(!L.length){$("#catpage").innerHTML=`<a class="back" href="#">← Trang chủ</a><h1 class="ct">Thanh toán</h1><p class="sub" style="padding:24px 0">Giỏ hàng đang trống. <a href="#/danh-muc/tat-ca" style="text-decoration:underline">Chọn sản phẩm</a> để tiếp tục.</p>`;return}
  const s=sums(),cnt=L.reduce((a,l)=>a+l.qty,0),er=k=>CKE[k]?`<p class="err" id="e-${k}" role="alert">${CKE[k]}</p>`:"";
  const inp=(k,label,extra,opt)=>`<label class="l" for="ck-${k}">${label}${opt?" <small>(không bắt buộc)</small>":""}</label><input class="f${CKE[k]?" bad":""}" id="ck-${k}" data-ck="${k}" value="${esc(CK[k])}" ${extra||""}${CKE[k]?` aria-invalid="true" aria-describedby="e-${k}"`:""}>${er(k)}`;
- const po=(v,t,d)=>`<label class="po${CK.pay===v?" on":""}"><input type="radio" name="ckpay" value="${v}"${v==="bank"?" disabled":""}${CK.pay===v?" checked":""}><div><b>${t}</b><span>${d}</span></div></label>`;
+ const po=(v,t,d)=>`<label class="po${CK.pay===v?" on":""}"><input type="radio" name="ckpay" value="${v}"${CK.pay===v?" checked":""}><div><b>${t}</b><span>${d}</span></div></label>`;
  const hint=s.sh?`<p class="sub" style="font-size:13px;margin-top:8px">Mua thêm ${fmt(FREE_SHIP-s.t)} để được miễn phí giao hàng.</p>`:"";
- $("#catpage").innerHTML=`<a class="back" href="#">← Tiếp tục mua sắm</a><h1 class="ct">Thanh toán</h1><div class="demo-notice" role="note"><strong>Chế độ xem thử đơn hàng</strong><p>Website chưa nhận đơn hoặc thanh toán thật. Vui lòng dùng thông tin giả để thử. Thông tin nhập chỉ dùng trong phiên này, không gửi đi và không lưu sau khi tải lại trang.</p></div><p class="sub">${cnt} sản phẩm trong giỏ</p>
+ $("#catpage").innerHTML=`<a class="back" href="#">← Tiếp tục mua sắm</a><h1 class="ct">Thanh toán</h1><p class="sub">${cnt} sản phẩm trong giỏ</p>
  <div class="ckw"><div>
   <div class="ckb"><h2><i>1</i>Thông tin nhận hàng</h2>
    <div class="ckg"><div>${inp("name","Họ và tên",'autocomplete="name" maxlength="60"')}</div><div>${inp("phone","Số điện thoại",'inputmode="tel" autocomplete="tel" maxlength="15"')}</div></div>
@@ -1260,16 +1138,14 @@ function checkoutPage(){
   </div>
   <div class="ckb"><h2><i>2</i>Phương thức thanh toán</h2>
    ${po("cod","Thanh toán khi nhận hàng (COD)","Trả tiền mặt cho nhân viên giao hàng.")}
-   ${po("bank","Chuyển khoản ngân hàng","Chưa khả dụng: thông tin thanh toán chưa được xác nhận.")}
-   ${po("installment","Trả góp (mô phỏng)","Chọn kỳ hạn mong muốn; chưa thu tiền hoặc phê duyệt khoản vay.")}
+   ${po("bank","Chuyển khoản ngân hàng","Chuyển theo thông tin dưới đây, shop xác nhận rồi giao hàng.")}
    ${bankHTML("",CK.pay!=="bank")}
-   ${installmentHTML()}
   </div>
  </div>
  <div class="ckb sumc"><h2><i>3</i>Đơn hàng của bạn</h2>${itemsHTML(L.map(n1))}<div style="margin-top:12px">${totalsHTML(s)}</div>${hint}
-  <button class="btn" style="width:100%;margin-top:14px;padding:14px" data-placeorder>${CK.pay==="installment"?"Xem thử yêu cầu trả góp":"Xem trước đơn hàng"}</button>
+  <button class="btn" style="width:100%;margin-top:14px;padding:14px" data-placeorder>Đặt hàng</button>
   <button class="btn light" style="width:100%;margin-top:8px;border:1px solid var(--line)" data-editcart>Sửa giỏ hàng</button>
-  <p class="sub" style="font-size:12px;margin-top:10px">${CK.pay==="installment"?"Đây là yêu cầu lưu trên thiết bị, không phải xác nhận thanh toán hoặc phê duyệt trả góp.":"Chưa gửi đơn đến cửa hàng. Giỏ hàng được giữ nguyên khi xem thử."}</p>
+  <p class="sub" style="font-size:12px;margin-top:10px">Khi đặt hàng, bạn đồng ý để shop gọi xác nhận đơn qua số điện thoại đã nhập.</p>
  </div></div>`;
 }
 function placeOrder(){
@@ -1281,26 +1157,21 @@ function placeOrder(){
  if(m&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m))CKE.email="Email chưa đúng dạng, ví dụ ten@gmail.com.";
  if(pr.length<2)CKE.prov="Nhập tỉnh hoặc thành phố nhận hàng.";
  if(a.length<8)CKE.addr="Nhập đầy đủ số nhà, đường, phường/xã và quận/huyện.";
- if(CK.pay==='installment'){
-  if(!INSTALLMENT_TERMS.includes(Number(CK.installmentMonths)))CKE.installmentMonths='Vui lòng chọn kỳ hạn mong muốn.';
-  if(!CK.installmentConsent)CKE.installmentConsent='Vui lòng xác nhận bạn hiểu đây là bản mô phỏng.';
- }
- if(!["cod","installment"].includes(CK.pay)){toast("Phương thức thanh toán chưa khả dụng.");return}
- if(Object.keys(CKE).length){checkoutPage();const f=document.querySelector('#catpage [aria-invalid="true"]');if(f)f.focus();return}
- const s=sums(),o={code:"DEMO-"+crypto.randomUUID().slice(0,8).toUpperCase(),status:"demo_not_submitted",date:new Date().toISOString(),name:n,phone:p,email:m,prov:pr,addr:a,note:CK.note.trim(),pay:CK.pay,installment:CK.pay==="installment"?{months:Number(CK.installmentMonths),status:"local_request",approved:false,interestRate:null,fees:null,consent:true}:null,items:L.map(n1),sub:s.t,ship:s.sh,total:s.total};
+ if(Object.keys(CKE).length){checkoutPage();const f=document.querySelector("#catpage .f.bad");if(f)f.focus();return}
+ const s=sums(),o={code:"FS"+String(Date.now()).slice(-7),date:new Date().toISOString(),name:n,phone:p,email:m,prov:pr,addr:a,note:CK.note.trim(),pay:CK.pay,items:L.map(n1),sub:s.t,ship:s.sh,total:s.total};
  lastMem=o;
- // Never persist customer identity or contact details in browser storage.
- location.hash="#/xem-truoc-don-hang";
+ try{const all=JSON.parse(localStorage.getItem(OKEY)||"[]");localStorage.setItem(OKEY,JSON.stringify([o,...(Array.isArray(all)?all:[])].slice(0,30)));localStorage.setItem(LKEY,JSON.stringify(o))}catch(e){}
+ cart={};save();drawer();CK.note="";
+ location.hash="#/dat-hang-thanh-cong";
 }
-function privateText(value){return `<span translate="no">${esc(value)}</span>`}
 function successPage(){
  const o=lastOrder();
- $("#catpage").innerHTML=`<div class="okp"><div class="okc">◎</div><h1 class="ct">${o.pay==="installment"?"Xem thử yêu cầu trả góp":"Xem trước đơn hàng"}</h1><p class="sub">Chưa gửi đơn, chưa thu tiền. Bản xem thử chỉ tồn tại trong phiên này.</p><p class="sub">Mã tham chiếu: <span translate="no">${privateText(o.code)}</span></p></div>
+ $("#catpage").innerHTML=`<div class="okp"><div class="okc">✓</div><h1 class="ct">Đặt hàng thành công</h1><p class="sub">Cảm ơn ${esc(o.name)}! Mã đơn của bạn là <b>${esc(o.code)}</b>. Chúng mình sẽ gọi ${esc(o.phone)} để xác nhận đơn.</p></div>
  <div class="ckw" style="margin-top:24px"><div>
-  <div class="ckb"><h2>Thông tin nhận hàng</h2><p style="margin:10px 0 0"><b>${privateText(o.name)}</b> · ${privateText(o.phone)}${o.email?"<br>"+privateText(o.email):""}<br>${privateText(o.addr)}, ${privateText(o.prov)}${o.note?`<br><span style="color:var(--muted)">Ghi chú: ${privateText(o.note)}</span>`:""}</p></div>
-  <div class="ckb"><h2>Thanh toán</h2><p style="margin:10px 0 0">${o.pay==="installment"?"Trả góp (mô phỏng)":o.pay==="bank"?"Chuyển khoản ngân hàng":"Thanh toán khi nhận hàng (COD)"}</p>${o.pay==="bank"?`<p class="sub" style="margin:6px 0 0">Vui lòng chuyển khoản đúng số tiền và ghi mã đơn ở phần nội dung.</p>${bankHTML(o.code,false)}`:""}${o.pay==="installment"?`<div class="installment-box"><p><strong>Kỳ hạn mong muốn:</strong> ${Number(o.installment?.months)||0} tháng</p><p>Trạng thái: Chỉ xem thử trong phiên này</p><p>Lãi suất, phí và lịch trả góp chưa được xác nhận. Đây không phải hợp đồng tín dụng.</p></div>`:""}</div>
+  <div class="ckb"><h2>Thông tin nhận hàng</h2><p style="margin:10px 0 0"><b>${esc(o.name)}</b> · ${esc(o.phone)}${o.email?"<br>"+esc(o.email):""}<br>${esc(o.addr)}, ${esc(o.prov)}${o.note?`<br><span style="color:var(--muted)">Ghi chú: ${esc(o.note)}</span>`:""}</p></div>
+  <div class="ckb"><h2>Thanh toán</h2><p style="margin:10px 0 0">${o.pay==="bank"?"Chuyển khoản ngân hàng":"Thanh toán khi nhận hàng (COD)"}</p>${o.pay==="bank"?`<p class="sub" style="margin:6px 0 0">Vui lòng chuyển khoản đúng số tiền và ghi mã đơn ở phần nội dung.</p>${bankHTML(o.code,false)}`:""}</div>
  </div>
- <div class="ckb"><h2>Đơn hàng ${privateText(o.code)}</h2>${itemsHTML(o.items)}<div style="margin-top:12px">${totalsHTML({t:o.sub,sh:o.ship,total:o.total})}</div><a class="btn" style="display:block;margin-top:14px;padding:14px" href="#/danh-muc/tat-ca">Tiếp tục mua sắm</a></div></div>`;
+ <div class="ckb"><h2>Đơn hàng ${esc(o.code)}</h2>${itemsHTML(o.items)}<div style="margin-top:12px">${totalsHTML({t:o.sub,sh:o.ship,total:o.total})}</div><a class="btn" style="display:block;margin-top:14px;padding:14px" href="#/danh-muc/tat-ca">Tiếp tục mua sắm</a></div></div>`;
 }
 document.addEventListener("input",e=>{
  const k=e.target.dataset&&e.target.dataset.ck;if(!k)return;
@@ -1308,11 +1179,8 @@ document.addEventListener("input",e=>{
  if(CKE[k]){delete CKE[k];e.target.classList.remove("bad");e.target.removeAttribute("aria-invalid");const x=$("#e-"+k);if(x)x.remove()}
 });
 document.addEventListener("change",e=>{
- if(e.target.id==='ck-installmentConsent'){CK.installmentConsent=e.target.checked;delete CKE.installmentConsent;e.target.removeAttribute('aria-invalid');$('#e-installmentConsent')?.remove();return}
- if(e.target.id==='ck-installmentMonths'){CK.installmentMonths=e.target.value;return}
  if(e.target.name!=="ckpay")return;
  CK.pay=e.target.value;
- checkoutPage();document.querySelector(`input[name="ckpay"][value="${CK.pay}"]`)?.focus();
  document.querySelectorAll(".po").forEach(l=>l.classList.toggle("on",l.querySelector("input").checked));
  const b=$("#bankbox");if(b)b.hidden=CK.pay!=="bank";
 });
@@ -1325,18 +1193,14 @@ function miniCart(){
 }
 miniCart();
 {const cw=$("#cw");   // bấm xong thì đóng mini-cart cho đến khi rời chuột
- cw.addEventListener("click",e=>{if(e.target.closest("button")){cw.classList.add("shut")}});
+ cw.addEventListener("click",e=>{if(e.target.closest("button")){document.activeElement&&document.activeElement.blur();cw.classList.add("shut")}});
  cw.addEventListener("mouseleave",()=>cw.classList.remove("shut"));}
-$("#mml").innerHTML=`<a href="#/tai-khoan">Tài khoản</a><a href="#/gioi-thieu">Giới thiệu</a><details><summary>Sản phẩm</summary>${['nam','nu'].map(g=>`<details><summary>Sản phẩm ${g==='nam'?'Nam':'Nữ'}</summary><a href="${genderURL(g)}">Xem tất cả</a>${genderCategories(g).map(c=>`<details><summary>${genderCategoryName(g,c)}</summary><a href="${genderURL(g,c.slug)}">Tất cả ${genderCategoryName(g,c).toLowerCase()}</a>${genderSubs(g,c).map(x=>`<a href="${genderURL(g,c.slug,x.slug)}">${x.n}</a>`).join('')}</details>`).join('')}</details>`).join('')}<a href="#/danh-muc/tat-ca">Tất cả sản phẩm</a></details><details><summary>Bộ sưu tập</summary>${COLLS.map(c=>`<a href="#/bo-suu-tap/${c.slug}">${c.n}</a>`).join('')}</details><details><summary>Ưu đãi</summary><a href="#/uu-dai">Tất cả ưu đãi</a><a href="#/uu-dai/mua-dong">Ưu đãi mùa đông</a></details>`;
+$("#mml").innerHTML=`<a href="#/gioi-thieu">Giới thiệu</a><details><summary>Sản phẩm</summary>${['nam','nu'].map(g=>`<details><summary>Sản phẩm ${g==='nam'?'Nam':'Nữ'}</summary><a href="${genderURL(g)}">Xem tất cả</a>${genderCategories(g).map(c=>`<details><summary>${genderCategoryName(g,c)}</summary><a href="${genderURL(g,c.slug)}">Tất cả ${genderCategoryName(g,c).toLowerCase()}</a>${genderSubs(g,c).map(x=>`<a href="${genderURL(g,c.slug,x.slug)}">${x.n}</a>`).join('')}</details>`).join('')}</details>`).join('')}<a href="#/danh-muc/tat-ca">Tất cả sản phẩm</a></details><details><summary>Bộ sưu tập</summary>${COLLS.map(c=>`<a href="#/bo-suu-tap/${c.slug}">${c.n}</a>`).join('')}</details><a class="nl offers-nav" href="#/uu-dai">Ưu đãi</a>`;
 {const mm=$("#mm"),mmx=$("#mmx"),hb=$("#hb");
- let returnTo=null;
- const set=on=>{const wasOpen=mm.classList.contains('on');if(on)returnTo=document.activeElement;mm.inert=!on;mm.classList.toggle("on",on);mmx.classList.toggle("on",on);hb.setAttribute("aria-expanded",on);mm.setAttribute("aria-hidden",!on);document.body.classList.toggle('menu-open',on);if(on)$('#mmc').focus();else if(wasOpen&&returnTo?.isConnected)returnTo.focus({preventScroll:true})};
+ const set=on=>{mm.classList.toggle("on",on);mmx.classList.toggle("on",on);hb.setAttribute("aria-expanded",on);mm.setAttribute("aria-hidden",!on)};
  hb.addEventListener("click",()=>set(true));$("#mmc").addEventListener("click",()=>set(false));mmx.addEventListener("click",()=>set(false));
  window.addEventListener("hashchange",()=>set(false));
- document.addEventListener("keydown",e=>{if(!mm.classList.contains('on'))return;if(e.key==="Escape"){e.preventDefault();set(false)}if(e.key==='Tab'){const nodes=[...mm.querySelectorAll('button,a[href],summary')].filter(el=>el.getClientRects().length),first=nodes[0],last=nodes[nodes.length-1];if(e.shiftKey&&(document.activeElement===first||!mm.contains(document.activeElement))){e.preventDefault();last?.focus()}else if(!e.shiftKey&&(document.activeElement===last||!mm.contains(document.activeElement))){e.preventDefault();first?.focus()}}});
- mm.addEventListener('click',e=>{if(e.target.closest('a[href]'))set(false)});
- window.addEventListener('resize',()=>{if(hb.getClientRects().length===0)set(false)});
-}
+ document.addEventListener("keydown",e=>{if(e.key==="Escape")set(false)});}
 
 /* ===== 17. XEM NHANH: bấm hình con mắt ở sản phẩm nổi bật để mở khung xem trước ===== */
 let qvp=null,qs={size:"",col:0,qty:1,idx:0},qvFrom=null;
@@ -1351,16 +1215,16 @@ function qvInfo(){
  $("#qvi").innerHTML=`<h2>${p.n}</h2>
  <div class="st">${a.n?stars(Math.round(a.avg))+" "+a.avg.toFixed(1)+"/5 ("+a.n+" đánh giá)":"Chưa có đánh giá"}</div>
  <div class="dpr">${priceHTML(p)}</div>
- <p lang="vi" translate="no" style="margin:0;color:#4D505B;line-height:1.65">${p.desc||""}</p>
+ <p style="margin:0;color:#4D505B;line-height:1.65">${p.desc||""}</p>
  ${p.colors.length>1?`<b>Màu sắc: ${COLOR_NAMES[p.colors[qs.col]]||""}</b><div class="opts">${p.colors.map((c,i)=>`<button class="col" style="background:${c}" data-qvcol="${i}" aria-pressed="${i===qs.col}" aria-label="${COLOR_NAMES[c]||"Màu "+(i+1)}"></button>`).join("")}</div>`:""}
  <b>Kích thước</b><div class="opts">${p.sizes.map(z=>`<button class="sz" data-qvsize="${z}" aria-pressed="${z===qs.size}">${z}</button>`).join("")}</div>
  <b>Số lượng</b><div class="q"><button data-qvq="-1" aria-label="Giảm">−</button>${qs.qty}<button data-qvq="1" aria-label="Tăng">+</button></div>
- <button class="btn" style="margin-top:20px;padding:14px" data-qvadd>Thêm vào giỏ hàng</button><a class="size-help" href="#/huong-dan-size">Hướng dẫn chọn size ↗</a>
+ <button class="btn" style="margin-top:20px;padding:14px" data-qvadd>Thêm vào giỏ hàng</button>
  <a class="qvl" href="#/san-pham/${p.id}">Xem chi tiết sản phẩm →</a>`;
 }
 function openQV(id,from){
  qvp=P.find(x=>x.id==id);if(!qvp)return;
- qs={size:qvp.sizes.length===1?qvp.sizes[0]:"",col:0,qty:1,idx:0};qvFrom=from||null;
+ qs={size:defSize(qvp),col:0,qty:1,idx:0};qvFrom=from||null;
  const G=gallery(qvp);
  $("#qvg").style.background=qvp.bg;
  $("#qvg").innerHTML=G.map((g,i)=>`<div class="sl${i?"":" on"}">${g.img?`<img src="${g.img}" alt="">`:`<span style="transform:${g.t}">${qvp.e}</span>`}</div>`).join("")+
@@ -1382,14 +1246,13 @@ qvEl.addEventListener("click",e=>{
  else if("qvprev" in d)qvSlide(qs.idx-1);
  else if("qvnext" in d)qvSlide(qs.idx+1);
  else if(d.qvdot!==undefined)qvSlide(+d.qvdot);
- else if(d.qvsize){qs.size=d.qvsize;qvInfo();Array.from(qvEl.querySelectorAll("[data-qvsize]")).find(b=>b.dataset.qvsize===d.qvsize)?.focus()}
- else if(d.qvcol!==undefined){qs.col=+d.qvcol;qvInfo();Array.from(qvEl.querySelectorAll("[data-qvcol]")).find(b=>b.dataset.qvcol===d.qvcol)?.focus()}
- else if(d.qvq){qs.qty=Math.min(99,Math.max(1,qs.qty+ +d.qvq));qvInfo();Array.from(qvEl.querySelectorAll("[data-qvq]")).find(b=>b.dataset.qvq===d.qvq)?.focus()}
+ else if(d.qvsize){qs.size=d.qvsize;qvInfo()}
+ else if(d.qvcol!==undefined){qs.col=+d.qvcol;qvInfo()}
+ else if(d.qvq){qs.qty=Math.max(1,qs.qty+ +d.qvq);qvInfo()}
  else if("qvadd" in d)addCart(qvp,qs.size,qs.col,qs.qty);
 });
 document.addEventListener("keydown",e=>{
  if(qvEl.hidden)return;
- if(e.key==='Tab'){const nodes=[...qvEl.querySelectorAll('button:not([disabled]),a[href],input:not([disabled]),select:not([disabled])')],first=nodes[0],last=nodes[nodes.length-1];if(e.shiftKey&&(document.activeElement===first||!qvEl.contains(document.activeElement))){e.preventDefault();last?.focus()}else if(!e.shiftKey&&(document.activeElement===last||!qvEl.contains(document.activeElement))){e.preventDefault();first?.focus()}return}
  if(e.key==="Escape")closeQV();
  else if(e.key==="ArrowLeft")qvSlide(qs.idx-1);
  else if(e.key==="ArrowRight")qvSlide(qs.idx+1);
@@ -1397,8 +1260,7 @@ document.addEventListener("keydown",e=>{
 window.addEventListener("hashchange",()=>{if(!qvEl.hidden)closeQV()});
 
 /* ===== 13. HIỆU ỨNG (tự tắt nếu người xem bật chế độ giảm chuyển động) ===== */
-const motionPreference=matchMedia("(prefers-reduced-motion:reduce)");
-let calm=motionPreference.matches;
+const calm=matchMedia("(prefers-reduced-motion:reduce)").matches;
 const bump=()=>{const b=$("#cartBtn");b.classList.remove("bump");void b.offsetWidth;b.classList.add("bump")};
 // dòng chữ chạy trên cùng
 {const items=[`Miễn phí giao hàng cho đơn từ ${fmt(FREE_SHIP)}`,"Thanh toán khi nhận hàng",`${COLLS[0].n} đã có mặt`,TAGLINE];
@@ -1414,29 +1276,19 @@ function onScroll(){
   const y=scrollY,max=document.documentElement.scrollHeight-innerHeight;
   prog.style.transform=`scaleX(${max>0?Math.min(1,y/max):0})`;
   hdr.classList.toggle("shadow",y>8);document.body.classList.toggle("ov",document.body.classList.contains("home")&&y<=24);topB.classList.toggle("on",y>700);
-  // Hero entrance is independent of scroll: no continuous parallax work.
+  if(!calm&&y<1000)document.documentElement.style.setProperty("--py",(y*.22).toFixed(1));
   tick=false;
  });
 }
 addEventListener("scroll",onScroll,{passive:true});onScroll();
 topB.addEventListener("click",()=>scrollTo({top:0,behavior:calm?"auto":"smooth"}));
 // các khối hiện dần khi cuộn tới (so le theo thứ tự)
-const revealTargets="#featured .sh,#fgrid .fp,#featured .fmore,#coll .sh,.feat .wrap>*,#colls>*,footer .wrap>*,#catpage .pgrid>.pc,#catpage .banner,#catpage .offers-hero,#detail .more .pc";
-let revealObserver=null,revealFrame=0;
-function finishReveals(){revealObserver?.disconnect();revealObserver=null;document.querySelectorAll('.rvl').forEach(el=>el.classList.add('in'))}
 function reveal(){
- if(calm||!("IntersectionObserver" in window)){finishReveals();return}
- if(!revealObserver)revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in');revealObserver?.unobserve(entry.target)}}),{threshold:.08,rootMargin:'0px 0px -16px 0px'});
- document.querySelectorAll(revealTargets).forEach((el,i)=>{if(el.classList.contains('rvl')||el.closest('[hidden]'))return;el.classList.add('rvl');el.style.setProperty('--d',((i%3)*35)+'ms');revealObserver.observe(el)});
- // Replaced listing nodes must not accumulate in the observer.
+ if(calm||!("IntersectionObserver" in window))return;
+ const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}}),{threshold:.12,rootMargin:"0px 0px -6% 0px"});
+ ["#featured .sh","#fgrid .fp","#featured .fmore","#coll .sh",".feat .wrap>*","#colls>*","footer .wrap>*"].forEach(sel=>
+  document.querySelectorAll(sel).forEach((el,i)=>{el.classList.add("rvl");el.style.setProperty("--d",(i%4)*90+"ms");io.observe(el)}));
 }
-function queueReveal(){if(revealFrame)return;revealFrame=requestAnimationFrame(()=>{revealFrame=0;reveal()})}
-document.addEventListener('focusin',e=>{const target=e.target.closest?.('.rvl');if(target){target.classList.add('in');revealObserver?.unobserve(target)}});
-const revealChanges=new MutationObserver(records=>{for(const record of records){for(const node of record.removedNodes){if(node.nodeType===1){revealObserver?.unobserve(node);node.querySelectorAll('.rvl').forEach(el=>revealObserver?.unobserve(el))}}}queueReveal()});
-['#catpage','#detail'].forEach(selector=>revealChanges.observe($(selector),{childList:true}));
-function updateMotion(){calm=motionPreference.matches;if(calm){finishReveals();document.querySelectorAll('.cart-plus').forEach(el=>el.remove());document.querySelector('#hero video')?.pause()}else reveal()}
-if(motionPreference.addEventListener)motionPreference.addEventListener('change',updateMotion);else motionPreference.addListener?.(updateMotion);
-
 products();
 reveal();
 drawer();route();
@@ -1450,18 +1302,12 @@ P.forEach(p=>{if(LANGUAGE_PRODUCT_NAMES[p.id])LANGUAGE_TEXT[p.n]=LANGUAGE_PRODUC
 let activeLanguage='vi';try{const saved=localStorage.getItem('famstyle-language');if(['vi','en','ja','fr','es'].includes(saved))activeLanguage=saved}catch(e){}
 const languageIndex={en:0,ja:1,fr:2,es:3};
 Object.assign(LANGUAGE_TEXT,{"Nam": ["Men", "メンズ", "Homme", "Hombre"], "Nữ": ["Women", "レディース", "Femme", "Mujer"], "Thời trang": ["Fashion", "ファッション", "Mode", "Moda"], "Có": ["There are", "対象商品数：", "Il y a", "Hay"], "Đơn hàng": ["Order", "ご注文", "Commande", "Pedido"], "Thông tin đặt hàng": ["Order information", "注文情報", "Informations de commande", "Información del pedido"], "Thông tin khách hàng": ["Customer details", "お客様情報", "Informations client", "Datos del cliente"], "Địa chỉ": ["Address", "住所", "Adresse", "Dirección"], "Điện thoại": ["Phone", "電話", "Téléphone", "Teléfono"], "Chỉnh sửa": ["Edit", "編集", "Modifier", "Editar"], "Quay lại": ["Go back", "戻る", "Retour", "Volver"], "Lên đầu trang": ["Back to top", "ページ上部へ", "Haut de page", "Volver arriba"], "Ảnh trước": ["Previous image", "前の画像", "Image précédente", "Imagen anterior"], "Ảnh sau": ["Next image", "次の画像", "Image suivante", "Imagen siguiente"], "Tăng": ["Increase", "増やす", "Augmenter", "Aumentar"], "Giảm": ["Decrease", "減らす", "Diminuer", "Reducir"], "Tìm kiếm": ["Search", "検索", "Recherche", "Buscar"], "Sắc trầm ấm áp, phom dáng thoải mái cho những ngày se lạnh.": ["Warm muted colours and relaxed shapes for cooler days.", "肌寒い日に、暖かな落ち着いた色とリラックスしたシルエットを。", "Des tons chaleureux et des coupes confortables pour les journées fraîches.", "Tonos cálidos y cortes cómodos para los días frescos."], "Những thiết kế đánh dấu hành trình và cá tính Famstyle.": ["Designs celebrating Famstyle's journey and character.", "Famstyleの歩みと個性を表現するデザイン。", "Des créations qui célèbrent le parcours et la personnalité de Famstyle.", "Diseños que celebran la trayectoria y personalidad de Famstyle."], "Tự do phối màu. Tự tin thể hiện chất riêng.": ["Mix colours freely. Express yourself with confidence.", "自由に色を組み合わせて、自信を持って自分らしく。", "Associez les couleurs librement. Affirmez votre personnalité.", "Combina colores con libertad. Expresa tu personalidad con confianza."], "Chất liệu nhẹ nhàng, sắc màu tươi mới cho ngày nắng.": ["Light fabrics and fresh colours for sunny days.", "晴れた日にぴったりの軽い素材と爽やかな色。", "Des matières légères et des couleurs fraîches pour les beaux jours.", "Tejidos ligeros y colores frescos para los días de sol."], "Form rộng, chất liệu dày dặn, màu trung tính dễ phối.": ["Relaxed fits, substantial fabrics and versatile neutral colours.", "ゆったりしたシルエット、しっかりした素材、合わせやすいニュートラルカラー。", "Des coupes amples, des matières épaisses et des tons neutres faciles à associer.", "Cortes amplios, tejidos gruesos y colores neutros fáciles de combinar."], "Giấc mơ dịu dàng": ["A gentle dream", "やさしい夢", "Un rêve tout en douceur", "Un sueño delicado"], "Bộ sưu tập mang tinh thần mơ mộng của thương hiệu: nhẹ nhàng, ấm áp và đáng yêu. Hãy mặc những gì bạn thích và sống đúng với màu sắc của mình.": ["A collection with the brand's dreamy spirit: gentle, warm and charming. Wear what you love and express your true colours.", "ブランドの夢見る世界観を、やさしく、暖かく、愛らしく表現したコレクション。好きな服を着て、自分らしい色で生きよう。", "Une collection à l'esprit rêveur de la marque : douce, chaleureuse et charmante. Portez ce que vous aimez et affirmez vos couleurs.", "Una colección con el espíritu soñador de la marca: delicado, cálido y encantador. Viste lo que te gusta y expresa tus colores."], "MỘT CHÚT CẢM HỨNG MỚI": ["A LITTLE NEW INSPIRATION", "新しいインスピレーションを", "UNE NOUVELLE INSPIRATION", "UN POCO DE INSPIRACIÓN"], "Khám phá những thiết kế phù hợp": ["Discover designs that suit", "デザインを見つけよう、", "Découvrez des modèles adaptés", "Descubre diseños que encajan"], "với phong cách của bạn.": ["your personal style.", "あなたらしいスタイルに。", "à votre style.", "con tu estilo."], "Giao hàng toàn quốc, thanh toán khi nhận hàng": ["Nationwide delivery, cash on delivery available", "全国配送・代金引換対応", "Livraison nationale, paiement à la réception", "Envío nacional y pago contra reembolso"], "Đổi size trong 7 ngày nếu chưa sử dụng": ["Size exchanges within 7 days for unworn items", "未使用品は7日以内サイズ交換可", "Échange de taille sous 7 jours pour les articles non portés", "Cambio de talla en 7 días para artículos sin usar"], "Chưa có ưu đãi trong nhóm này. Bấm lại “Đang ưu đãi” để xem toàn bộ sản phẩm.": ["No offers in this group. Click “On sale” again to see all products.", "このグループにはセール商品がありません。「セール中」をもう一度押すと全商品を表示します。", "Aucune offre dans ce groupe. Cliquez à nouveau sur « En promotion » pour voir tous les produits.", "No hay ofertas en este grupo. Pulsa otra vez «En oferta» para ver todos los productos."], "Chưa có ưu đãi trong bộ sưu tập này. Bấm lại “Đang ưu đãi” để xem toàn bộ sản phẩm.": ["No offers in this collection. Click “On sale” again to see all products.", "このコレクションにはセール商品がありません。「セール中」をもう一度押すと全商品を表示します。", "Aucune offre dans cette collection. Cliquez à nouveau sur « En promotion » pour voir tous les produits.", "No hay ofertas en esta colección. Pulsa otra vez «En oferta» para ver todos los productos."], "Chưa có sản phẩm trong bộ sưu tập này.": ["No products in this collection yet.", "このコレクションにはまだ商品がありません。", "Aucun produit dans cette collection.", "Aún no hay productos en esta colección."], "Thông báo cửa hàng": ["Store announcements", "店舗からのお知らせ", "Annonces de la boutique", "Avisos de la tienda"], "miễn phí giao hàng": ["free shipping", "送料無料", "livraison gratuite", "envío gratuito"], "Miễn phí giao hàng": ["Free shipping", "送料無料", "Livraison gratuite", "Envío gratuito"], "đánh giá": ["reviews", "レビュー", "avis", "reseñas"], "Chưa có đánh giá nào.": ["No reviews yet.", "レビューはまだありません。", "Aucun avis pour le moment.", "Aún no hay reseñas."], "Hãy là người đầu tiên đánh giá sản phẩm này.": ["Be the first to review this product.", "この商品の最初のレビューを書きましょう。", "Soyez le premier à donner votre avis.", "Sé el primero en valorar este producto."], "Cảm ơn bạn đã đánh giá!": ["Thank you for your review!", "レビューありがとうございます！", "Merci pour votre avis !", "¡Gracias por tu reseña!"]});
-Object.assign(LANGUAGE_TEXT,{"Trả góp (mô phỏng)": ["Installments (demo)", "分割払い（デモ）", "Paiement échelonné (démo)", "Pago a plazos (demo)"], "TRẢ GÓP · MÔ PHỎNG": ["INSTALLMENTS · DEMO", "分割払い・デモ", "PAIEMENT ÉCHELONNÉ · DÉMO", "PAGO A PLAZOS · DEMO"], "Chọn kỳ hạn mong muốn": ["Choose your preferred term", "希望する支払期間を選択", "Choisissez la durée souhaitée", "Elige el plazo deseado"], "Kỳ hạn mong muốn": ["Preferred term", "希望する支払期間", "Durée souhaitée", "Plazo deseado"], "Chọn kỳ hạn": ["Choose a term", "期間を選択", "Choisir une durée", "Elegir plazo"], "tháng": ["months", "か月", "mois", "meses"], "Chọn kỳ hạn mong muốn; chưa thu tiền hoặc phê duyệt khoản vay.": ["Choose a preferred term; no payment or loan approval occurs.", "希望期間を選択します。支払い・融資承認は行われません。", "Choisissez une durée ; aucun paiement ni accord de prêt.", "Elige un plazo; no se realiza ningún cobro ni aprobación de crédito."], "Đây là yêu cầu trả góp, chưa phải khoản vay được phê duyệt. Kỳ hạn, lãi suất, phí và số tiền trả mỗi kỳ cần được đơn vị cung cấp xác nhận trước khi bạn đồng ý.": ["This is an installment request, not an approved loan. The provider must confirm the term, interest rate, fees and installment amounts before you agree.", "これは分割払いの希望登録であり、承認済みの融資ではありません。同意前に、提供会社による期間、金利、手数料、各回支払額の確認が必要です。", "Il s’agit d’une demande, pas d’un prêt approuvé. Le prestataire doit confirmer la durée, le taux, les frais et les échéances avant votre accord.", "Es una solicitud, no un crédito aprobado. El proveedor debe confirmar plazo, intereses, comisiones y cuotas antes de tu aceptación."], "Yêu cầu chỉ tồn tại trong phiên này; chưa gửi đi và chưa thu tiền.": ["This request is saved only in this browser; it is not sent to the store or a finance provider. Saving it does not charge you.", "希望内容はこのブラウザーのみに保存され、店舗や金融機関には送信されません。保存による請求はありません。", "La demande est enregistrée uniquement dans ce navigateur, sans envoi à la boutique ni à un organisme financier. Aucun montant n’est prélevé.", "La solicitud se guarda solo en este navegador; no se envía a la tienda ni a una entidad financiera. No se realiza ningún cobro."], "Tôi hiểu đây là bản mô phỏng, chưa xác nhận hợp đồng trả góp.": ["I understand this is a demo and no installment agreement is confirmed.", "これはデモであり、分割払い契約は成立していないことを理解しました。", "Je comprends qu’il s’agit d’une démo et qu’aucun contrat n’est confirmé.", "Entiendo que es una demo y no se confirma ningún contrato a plazos."], "Lưu yêu cầu trả góp": ["Save installment request", "分割払いの希望を保存", "Enregistrer la demande", "Guardar solicitud de pago a plazos"], "Đã lưu yêu cầu trả góp": ["Installment request saved", "分割払いの希望を保存しました", "Demande enregistrée", "Solicitud guardada"], "Vui lòng chọn kỳ hạn mong muốn.": ["Please choose your preferred term.", "希望する期間を選択してください。", "Veuillez choisir la durée souhaitée.", "Selecciona el plazo deseado."], "Vui lòng xác nhận bạn hiểu đây là bản mô phỏng.": ["Please confirm that you understand this is a demo.", "デモであることを確認してください。", "Veuillez confirmer qu’il s’agit d’une démo.", "Confirma que entiendes que es una demo."], "Đây là yêu cầu lưu trên thiết bị, không phải xác nhận thanh toán hoặc phê duyệt trả góp.": ["This is a locally saved request, not a payment confirmation or installment approval.", "これは端末内に保存された希望内容であり、支払確認や分割払い承認ではありません。", "Il s’agit d’une demande locale, pas d’une confirmation de paiement ni d’un accord de crédit.", "Es una solicitud local, no una confirmación de pago ni aprobación de crédito."], "Trạng thái: Chỉ xem thử trong phiên này": ["Status: Saved only on this device", "状態：この端末のみに保存", "Statut : enregistré sur cet appareil uniquement", "Estado: guardado solo en este dispositivo"], "Lãi suất, phí và lịch trả góp chưa được xác nhận. Đây không phải hợp đồng tín dụng.": ["Interest, fees and the repayment schedule are unconfirmed. This is not a credit agreement.", "金利、手数料、支払予定は未確定です。これは信用契約ではありません。", "Le taux, les frais et l’échéancier ne sont pas confirmés. Ceci n’est pas un contrat de crédit.", "Los intereses, comisiones y calendario no están confirmados. Esto no es un contrato de crédito."], "Yêu cầu": ["Request", "希望内容", "Demande", "Solicitud"], "đã được lưu trên trình duyệt này. Chưa gửi đến cửa hàng, chưa phê duyệt và chưa thu tiền.": ["has been saved in this browser. It has not been sent to the store, approved or charged.", "をこのブラウザーに保存しました。店舗への送信、承認、請求は行われていません。", "a été enregistrée dans ce navigateur, sans envoi à la boutique, approbation ni prélèvement.", "se ha guardado en este navegador. No se ha enviado a la tienda, aprobado ni cobrado."]});
-Object.assign(LANGUAGE_TEXT,{"Ưu đãi mùa đông": ["Winter offers", "冬のセール", "Offres d’hiver", "Ofertas de invierno"], "Khám phá ưu đãi mùa đông": ["Explore winter offers", "冬のセールを見る", "Découvrir les offres d’hiver", "Descubrir ofertas de invierno"], "Ấm áp mỗi ngày, phong cách trọn mùa. Khám phá áo khoác, áo len và phụ kiện giữ ấm đang giảm giá.": ["Warmth every day, style all season. Discover jackets, knitwear and warm accessories on sale.", "毎日暖かく、冬も自分らしく。アウター、ニット、防寒小物をセール価格で。", "Au chaud chaque jour, avec style toute la saison. Découvrez vestes, mailles et accessoires chauds en promotion.", "Abrigo cada día y estilo toda la temporada. Descubre chaquetas, prendas de punto y accesorios de abrigo en oferta."], "Giữ ấm đầy phong cách · Giảm đến": ["Stay warm in style · Save up to", "おしゃれに暖かく・最大割引", "Au chaud avec style · Jusqu’à", "Abrígate con estilo · Hasta un"], "Giá ưu đãi được áp dụng trực tiếp, không cộng dồn với ưu đãi khác trên cùng sản phẩm.": ["Discounts are applied directly and cannot be combined with other offers on the same product.", "割引は価格に適用済みです。同一商品への他の割引との併用はできません。", "La remise est appliquée directement et n’est pas cumulable avec d’autres offres sur le même produit.", "El descuento se aplica directamente y no se acumula con otras ofertas sobre el mismo producto."], "Mùa đông": ["Winter", "冬", "Hiver", "Invierno"]});
-Object.assign(LANGUAGE_TEXT,{"Vui lòng chọn kích thước trước khi thêm vào giỏ.": ["Please choose a size before adding to your bag.", "カートに追加する前にサイズを選択してください。", "Veuillez choisir une taille avant l’ajout au panier.", "Selecciona una talla antes de añadir al carrito."], "Số lượng hợp lệ từ 1 đến 99.": ["Quantity must be between 1 and 99.", "数量は1〜99で指定してください。", "La quantité doit être comprise entre 1 et 99.", "La cantidad debe estar entre 1 y 99."], "Đánh giá thử chỉ hiển thị trong phiên này, chưa được gửi đến cửa hàng.": ["Test reviews appear only in this session and are not sent to the store.", "テストレビューはこのセッションのみに表示され、店舗には送信されません。", "Les avis de test restent dans cette session et ne sont pas envoyés à la boutique.", "Las reseñas de prueba solo aparecen en esta sesión y no se envían a la tienda."], "Đang cập nhật thông tin liên hệ": ["Contact details coming soon", "連絡先情報は準備中です", "Coordonnées en cours de mise à jour", "Datos de contacto pendientes"], "Địa chỉ cửa hàng đang cập nhật": ["Store address coming soon", "店舗住所は準備中です", "Adresse de la boutique à venir", "Dirección de la tienda pendiente"], "Điều kiện giao hàng và đổi trả cần được cửa hàng xác nhận.": ["Delivery and return conditions must be confirmed by the store.", "配送・返品条件は店舗への確認が必要です。", "Les conditions de livraison et de retour doivent être confirmées par la boutique.", "La tienda debe confirmar las condiciones de envío y devolución."], "Xem thông tin đổi trả": ["View return information", "返品について", "Voir les informations de retour", "Ver información de devoluciones"], "Thông tin đổi trả": ["Return information", "返品について", "Informations de retour", "Información de devoluciones"], "Quyền riêng tư": ["Privacy", "プライバシー", "Confidentialité", "Privacidad"], "Chế độ xem thử đơn hàng": ["Order preview mode", "注文プレビューモード", "Mode aperçu de commande", "Modo de vista previa del pedido"], "Website chưa nhận đơn hoặc thanh toán thật. Vui lòng dùng thông tin giả để thử. Thông tin nhập chỉ dùng trong phiên này, không gửi đi và không lưu sau khi tải lại trang.": ["This website does not accept real orders or payments yet. Use fictional details for testing. Entered details stay in this page session, are not sent and disappear when the page reloads.", "このサイトでは実際の注文・支払いは受け付けていません。テストには架空の情報を使用してください。入力情報は送信されず、このセッションでのみ使用され、再読み込みで消去されます。", "Ce site n’accepte pas encore de commandes ni de paiements réels. Utilisez des données fictives. Elles restent dans cette session, ne sont pas envoyées et disparaissent au rechargement.", "Este sitio aún no acepta pedidos ni pagos reales. Usa datos ficticios. Los datos solo se usan en esta sesión, no se envían y desaparecen al recargar."], "Chưa khả dụng: thông tin thanh toán chưa được xác nhận.": ["Unavailable: payment details are not confirmed.", "利用不可：支払い情報が未確認です。", "Indisponible : coordonnées de paiement non confirmées.", "No disponible: los datos de pago no están confirmados."], "Phương thức thanh toán chưa khả dụng.": ["This payment method is not available.", "この支払い方法は利用できません。", "Ce mode de paiement est indisponible.", "Este método de pago no está disponible."], "Xem trước đơn hàng": ["Order preview", "注文プレビュー", "Aperçu de commande", "Vista previa del pedido"], "Xem thử yêu cầu trả góp": ["Preview installment request", "分割払い希望のプレビュー", "Aperçu de demande de paiement échelonné", "Vista previa de solicitud a plazos"], "Chưa gửi đơn đến cửa hàng. Giỏ hàng được giữ nguyên khi xem thử.": ["No order is sent to the store. Your bag is retained during preview.", "注文は店舗に送信されません。プレビュー後もカートは保持されます。", "Aucune commande n’est envoyée. Votre panier est conservé pendant l’aperçu.", "No se envía ningún pedido. El carrito se conserva durante la vista previa."], "Chưa gửi đơn, chưa thu tiền. Bản xem thử chỉ tồn tại trong phiên này.": ["No order was sent and no payment was taken. This preview exists only in this session.", "注文の送信・請求は行われていません。このプレビューはこのセッションでのみ有効です。", "Aucune commande envoyée, aucun paiement prélevé. Cet aperçu ne dure que cette session.", "No se ha enviado ningún pedido ni realizado cobros. Esta vista previa solo dura esta sesión."], "Mã tham chiếu": ["Reference", "参照番号", "Référence", "Referencia"], "Yêu cầu chỉ tồn tại trong phiên này; chưa gửi đi và chưa thu tiền.": ["This request exists only in this session; it has not been sent or charged.", "この希望内容はこのセッションのみで有効です。送信・請求はされていません。", "La demande reste dans cette session, sans envoi ni prélèvement.", "La solicitud solo existe en esta sesión; no se ha enviado ni cobrado."], "Trạng thái: Chỉ xem thử trong phiên này": ["Status: Preview in this session only", "状態：このセッション内のプレビューのみ", "Statut : aperçu dans cette session uniquement", "Estado: vista previa solo en esta sesión"], "Xóa dữ liệu cá nhân lưu từ bản cũ": ["Delete personal data saved by earlier versions", "旧バージョンの保存済み個人情報を削除", "Supprimer les données personnelles des versions précédentes", "Eliminar datos personales de versiones anteriores"], "Đã xóa dữ liệu cá nhân lưu từ bản cũ.": ["Personal data saved by earlier versions was deleted.", "旧バージョンの保存済み個人情報を削除しました。", "Les anciennes données personnelles ont été supprimées.", "Se han eliminado los datos personales de versiones anteriores."], "Không thể truy cập dữ liệu trình duyệt.": ["Browser storage is unavailable.", "ブラウザーの保存領域にアクセスできません。", "Le stockage du navigateur est indisponible.", "El almacenamiento del navegador no está disponible."]});
-Object.assign(LANGUAGE_TEXT,{"Tài khoản": ["Account", "アカウント", "Compte", "Cuenta"], "Tài khoản mô phỏng": ["Demo account", "デモアカウント", "Compte de démonstration", "Cuenta de demostración"], "Phong cách của bạn.": ["Your style.", "あなたのスタイル。", "Votre style.", "Tu estilo."], "Dấu ấn riêng.": ["Your signature.", "あなたらしさ。", "Votre signature.", "Tu sello personal."], "Một không gian riêng để bắt đầu hành trình phong cách cùng Famstyle.": ["Your own space to explore style with Famstyle.", "Famstyleとスタイルを楽しむ、あなたの空間。", "Votre espace pour explorer le style avec Famstyle.", "Tu espacio para explorar el estilo con Famstyle."], "Chỉ dùng email và mật khẩu giả. Tài khoản chỉ tồn tại trong lần mở trang này; tải lại trang sẽ xóa toàn bộ tài khoản. Không gửi dữ liệu lên máy chủ.": ["Use fictional email addresses and passwords only. Accounts last until you reload this page. No data is sent to a server.", "架空のメールアドレスとパスワードのみ使用してください。再読み込みすると全アカウントが消去されます。サーバーには送信されません。", "Utilisez uniquement des identifiants fictifs. Les comptes sont effacés au rechargement de la page. Aucune donnée n’est envoyée à un serveur.", "Usa solo correos y contraseñas ficticios. Las cuentas se borran al recargar la página. No se envían datos a un servidor."], "Chào mừng trở lại": ["Welcome back", "おかえりなさい", "Bienvenue", "Te damos la bienvenida"], "Bạn đang đăng nhập vào tài khoản mô phỏng.": ["You are signed in to a demo account.", "デモアカウントにログイン中です。", "Vous utilisez un compte de démonstration.", "Has iniciado sesión en una cuenta de demostración."], "Đăng xuất": ["Sign out", "ログアウト", "Se déconnecter", "Cerrar sesión"], "Đăng nhập": ["Sign in", "ログイン", "Se connecter", "Iniciar sesión"], "Đăng ký": ["Register", "新規登録", "S’inscrire", "Registrarse"], "Tạo tài khoản mô phỏng": ["Create a demo account", "デモアカウントを作成", "Créer un compte de démonstration", "Crear cuenta de demostración"], "Đăng nhập mô phỏng": ["Demo sign in", "デモログイン", "Connexion de démonstration", "Inicio de sesión de prueba"], "Thử trải nghiệm thành viên với thông tin giả.": ["Try the member experience with fictional details.", "架空の情報で会員体験をお試しください。", "Essayez l’espace membre avec des informations fictives.", "Prueba la experiencia con datos ficticios."], "Sử dụng tài khoản bạn vừa tạo trong lần mở trang này.": ["Use the account you created during this visit.", "今回の閲覧中に作成したアカウントを使用してください。", "Utilisez le compte créé pendant cette visite.", "Usa la cuenta creada durante esta visita."], "Tên hiển thị": ["Display name", "表示名", "Nom affiché", "Nombre visible"], "Ví dụ: Khách Famstyle": ["Example: Famstyle guest", "例：Famstyleゲスト", "Exemple : invité Famstyle", "Ejemplo: visitante Famstyle"], "Email dùng thử": ["Demo email", "デモ用メール", "E-mail fictif", "Correo de prueba"], "Mật khẩu dùng thử": ["Demo password", "デモ用パスワード", "Mot de passe fictif", "Contraseña de prueba"], "Nhập lại mật khẩu": ["Confirm password", "パスワード確認", "Confirmer le mot de passe", "Confirmar contraseña"], "Hiện mật khẩu": ["Show password", "パスワードを表示", "Afficher le mot de passe", "Mostrar contraseña"], "Ẩn mật khẩu": ["Hide password", "パスワードを隠す", "Masquer le mot de passe", "Ocultar contraseña"], "Hiện": ["Show", "表示", "Afficher", "Mostrar"], "Ẩn": ["Hide", "隠す", "Masquer", "Ocultar"], "Ít nhất 8 ký tự. Không sử dụng mật khẩu thật.": ["At least 8 characters. Do not use a real password.", "8文字以上。実際のパスワードは使用しないでください。", "8 caractères minimum. N’utilisez pas de vrai mot de passe.", "Mínimo 8 caracteres. No uses una contraseña real."], "Tôi hiểu đây là tài khoản mô phỏng và đang dùng thông tin giả.": ["I understand this is a demo and I am using fictional details.", "デモであることを理解し、架空の情報を使用しています。", "Je comprends qu’il s’agit d’une démonstration et utilise des informations fictives.", "Entiendo que es una demostración y uso datos ficticios."], "Tạo tài khoản": ["Create account", "アカウント作成", "Créer un compte", "Crear cuenta"], "Vui lòng nhập tên hiển thị.": ["Enter a display name.", "表示名を入力してください。", "Saisissez un nom affiché.", "Introduce un nombre visible."], "Mật khẩu nhập lại chưa khớp.": ["Passwords do not match.", "パスワードが一致しません。", "Les mots de passe ne correspondent pas.", "Las contraseñas no coinciden."], "Email này đã có tài khoản mô phỏng.": ["This email already has a demo account.", "このメールは既に登録されています。", "Cet e-mail possède déjà un compte de démonstration.", "Este correo ya tiene una cuenta de demostración."], "Email hoặc mật khẩu chưa đúng.": ["Incorrect email or password.", "メールまたはパスワードが違います。", "E-mail ou mot de passe incorrect.", "Correo o contraseña incorrectos."], "Không thể xử lý tài khoản. Vui lòng thử lại trên kết nối HTTPS.": ["Unable to process the account. Try again over HTTPS.", "処理できません。HTTPS接続で再試行してください。", "Impossible de traiter le compte. Réessayez via HTTPS.", "No se pudo procesar la cuenta. Reintenta con HTTPS."]});
-Object.assign(LANGUAGE_TEXT,{"Lọc sản phẩm": ["Filter products", "商品を絞り込む", "Filtrer les produits", "Filtrar productos"], "Tất cả kích thước": ["All sizes", "すべてのサイズ", "Toutes les tailles", "Todas las tallas"], "Khoảng giá": ["Price range", "価格帯", "Gamme de prix", "Rango de precios"], "Tất cả mức giá": ["All prices", "すべての価格", "Tous les prix", "Todos los precios"], "Dưới 300.000 ₫": ["Under 300,000 ₫", "300,000 ₫未満", "Moins de 300 000 ₫", "Menos de 300.000 ₫"], "300.000 – dưới 600.000 ₫": ["300,000 – under 600,000 ₫", "300,000～600,000 ₫未満", "300 000 – moins de 600 000 ₫", "300.000 – menos de 600.000 ₫"], "Từ 600.000 ₫": ["600,000 ₫ and above", "600,000 ₫以上", "À partir de 600 000 ₫", "Desde 600.000 ₫"], "Xóa bộ lọc": ["Clear filters", "絞り込みを解除", "Effacer les filtres", "Borrar filtros"], "Chưa có sản phẩm phù hợp": ["No matching products", "該当する商品がありません", "Aucun produit correspondant", "No hay productos coincidentes"], "Thử đổi kích thước, khoảng giá hoặc xóa bộ lọc để xem thêm sản phẩm.": ["Try another size or price range, or clear the filters.", "サイズや価格帯を変更するか、絞り込みを解除してください。", "Modifiez la taille ou le prix, ou effacez les filtres.", "Cambia la talla o el precio, o borra los filtros."]});
-Object.assign(LANGUAGE_TEXT,{"Nhạc nền": ["Background music", "BGM", "Musique de fond", "Música de fondo"], "Phát nhạc": ["Play music", "再生", "Écouter", "Reproducir"], "Tạm dừng": ["Pause", "一時停止", "Pause", "Pausar"], "Bài tiếp theo": ["Next track", "次の曲", "Titre suivant", "Siguiente pista"], "Âm lượng": ["Volume", "音量", "Volume", "Volumen"], "Nhấn phát để nghe nhạc.": ["Press play to listen.", "再生ボタンを押してください。", "Appuyez sur Écouter.", "Pulsa Reproducir para escuchar."], "Đang phát nhạc.": ["Music is playing.", "再生中。", "Lecture en cours.", "Reproduciendo música."], "Đã tạm dừng nhạc.": ["Music paused.", "一時停止中。", "Musique en pause.", "Música en pausa."], "Chưa phát được bài nhạc. Hãy thử lại hoặc chuyển bài.": ["Unable to play. Try again or skip this track.", "再生できません。再試行するか次の曲へ進んでください。", "Lecture impossible. Réessayez ou passez au titre suivant.", "No se puede reproducir. Reintenta o cambia de pista."]});
 const languageKeys=Object.keys(LANGUAGE_TEXT).sort((a,b)=>b.length-a.length);
 const languagePattern=new RegExp('(?<![\\p{L}\\p{N}])(?:'+languageKeys.map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')(?![\\p{L}\\p{N}])','gu');
 function translateUI(value){if(activeLanguage==='vi')return value;const index=languageIndex[activeLanguage];return value.replace(languagePattern,key=>LANGUAGE_TEXT[key][index])}
 const originalTexts=new WeakMap(),originalAttributes=new WeakMap();
 function translateTextNode(node){const value=node.nodeValue;let record=originalTexts.get(node);if(!record||value!==record.last)record={original:value,last:value};const translated=translateUI(record.original);if(value!==translated)node.nodeValue=translated;record.last=translated;originalTexts.set(node,record)}
-let languageScheduled=false,localizedTitle={original:document.title,last:document.title};
+let languageScheduled=false;
 const languageObserver=new MutationObserver(()=>{if(!languageScheduled){languageScheduled=true;queueMicrotask(()=>{languageScheduled=false;applyLanguage()})}});
 function applyLanguage(){
  languageObserver.disconnect();
@@ -1470,59 +1316,13 @@ function applyLanguage(){
  let node;while(node=walker.nextNode())translateTextNode(node);
  document.querySelectorAll('[placeholder],[aria-label],[title],[alt]').forEach(el=>{if(el.closest('[translate="no"]'))return;let record=originalAttributes.get(el)||{};for(const key of ['placeholder','aria-label','title','alt']){if(!el.hasAttribute(key))continue;const value=el.getAttribute(key);if(!record[key]||value!==record[key].last)record[key]={original:value,last:value};const translated=translateUI(record[key].original);if(value!==translated)el.setAttribute(key,translated);record[key].last=translated}originalAttributes.set(el,record)});
  const title=translateUI(HERO.title);if($('#heroT').textContent.trim()!==title)$('#heroT').textContent=title;
- if(document.title!==localizedTitle.last)localizedTitle.original=document.title;
- document.title=translateUI(localizedTitle.original);localizedTitle.last=document.title;
+ if(document.title!==translateUI(document.title))document.title=translateUI(document.title);
  $('#siteLanguage').value=activeLanguage;
- $('#languageCode').textContent=activeLanguage.toUpperCase();
  languageObserver.observe(document.body,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:['placeholder','aria-label','title','alt']});
 }
-$('#siteLanguage').addEventListener('change',e=>{activeLanguage=e.target.value;try{localStorage.setItem('famstyle-language',activeLanguage)}catch(err){}applyLanguage()});
+$('#siteLanguage').addEventListener('change',e=>{activeLanguage=e.target.value;try{localStorage.setItem('famstyle-language',activeLanguage)}catch(err){}route();applyLanguage()});
 applyLanguage();
 
-</script>
-
-<div class="music-widget" id="musicWidget" hidden>
- <section class="music-panel" id="musicPanel" aria-label="Nhạc nền" hidden>
-  <h2>Nhạc nền</h2><p id="musicTitle" translate="no"></p>
-  <div class="music-actions"><button type="button" id="musicPlay">Phát nhạc</button><button type="button" id="musicNext">Bài tiếp theo</button></div>
-  <label>Âm lượng<input id="musicVolume" type="range" min="0" max="100" value="25"></label>
-  <p class="music-status" id="musicStatus" role="status" aria-live="polite">Nhấn phát để nghe nhạc.</p>
- </section>
- <button class="music-toggle" id="musicToggle" type="button" aria-label="Nhạc nền" aria-expanded="false" aria-controls="musicPanel">♪</button>
- <audio id="storeMusic" preload="none"></audio>
-</div>
-<script>
-/* Public playback only. Publishing settings requires repository write access.
-   No password, GitHub token, or mock-account privilege is used on this page. */
-(()=>{
- const audio=document.getElementById('storeMusic'),widget=document.getElementById('musicWidget'),panel=document.getElementById('musicPanel'),toggle=document.getElementById('musicToggle'),play=document.getElementById('musicPlay'),next=document.getElementById('musicNext'),status=document.getElementById('musicStatus'),volume=document.getElementById('musicVolume');
- let tracks=[],index=0,signature='',busy=false,revision=0;
- audio.volume=.25;
- const message=text=>status.textContent=text;
- function sync(){play.textContent=audio.paused?'Phát nhạc':'Tạm dừng';play.setAttribute('aria-pressed',String(!audio.paused))}
- function stop(){revision++;audio.pause();audio.removeAttribute('src');audio.load();tracks=[];signature='';widget.hidden=true;panel.hidden=true;toggle.setAttribute('aria-expanded','false');sync()}
- function choose(){revision++;audio.src=tracks[index].url;document.getElementById('musicTitle').textContent=tracks[index].title;next.disabled=tracks.length<2;sync()}
- async function start(){const version=revision;play.disabled=true;try{await audio.play();if(version===revision)message('Đang phát nhạc.')}catch(e){if(version===revision)message('Chưa phát được bài nhạc. Hãy thử lại hoặc chuyển bài.')}finally{play.disabled=false;sync()}}
- function nextTrack(){const resume=!audio.paused;index=(index+1)%tracks.length;choose();if(resume)start();else message('Nhấn phát để nghe nhạc.')}
- async function refresh(){if(busy)return;busy=true;try{
- const response=await fetch(new URL('music.json',document.baseURI),{cache:'no-store'});if(!response.ok)throw new Error('config');
- const config=await response.json();if(config.enabled!==true){stop();return}
- const cleaned=(Array.isArray(config.tracks)?config.tracks:[]).slice(0,50).flatMap(t=>{try{if(typeof t.url!=='string'||!t.url.trim())return [];const url=new URL(t.url,document.baseURI);if(url.protocol!=='https:')return [];return [{url:url.href,title:typeof t.title==='string'?t.title.slice(0,150):'Famstyle'}]}catch(e){return []}});
- if(!cleaned.length){stop();return}
- const key=JSON.stringify(cleaned);if(key!==signature){audio.pause();tracks=cleaned;signature=key;index=0;choose();message('Nhấn phát để nghe nhạc.')}
- widget.hidden=false;
- }catch(e){stop()}finally{busy=false}}
- toggle.addEventListener('click',()=>{panel.hidden=!panel.hidden;toggle.setAttribute('aria-expanded',String(!panel.hidden));if(!panel.hidden)play.focus()});
- widget.addEventListener('keydown',e=>{if(e.key==='Escape'){panel.hidden=true;toggle.setAttribute('aria-expanded','false');toggle.focus()}});
- play.addEventListener('click',()=>{if(!tracks.length)return;if(audio.paused)start();else{audio.pause();message('Đã tạm dừng nhạc.')}});
- next.addEventListener('click',()=>{if(tracks.length)nextTrack()});
- volume.addEventListener('input',()=>{audio.volume=Number(volume.value)/100});
- audio.addEventListener('play',sync);audio.addEventListener('pause',sync);
- audio.addEventListener('error',()=>{if(tracks.length)message('Chưa phát được bài nhạc. Hãy thử lại hoặc chuyển bài.');sync()});
- audio.addEventListener('ended',()=>{if(!tracks.length)return;index=(index+1)%tracks.length;choose();start()});
- document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh()});
- refresh();setInterval(()=>{if(!document.hidden)refresh()},60000);
-})();
 </script>
 </body>
 </html>
