@@ -727,10 +727,7 @@ const FREE_SHIP=500000;   // đơn từ mức này trở lên được miễn ph
 const SHIP_FEE=30000;      // phí giao hàng khi đơn chưa đủ mức miễn phí
 const HERO={title:"Bộ sưu tập Thu Đông 2026",text:"Form rộng, chất liệu dày dặn, màu trung tính dễ phối.",
   bg:"linear-gradient(120deg,#1E2430,#3B4A63)",
-  img:"poster.jpg",       // ảnh banner, ví dụ "images/banner.jpg" (cũng dùng làm ảnh chờ khi có video)
-  anim:"",            // (tùy chọn) ảnh động WebP/GIF dùng thay video ở nơi không cho phát video
-  video:"banner.mp4",     // (tùy chọn) video banner ngang chạy tự động, ví dụ "video/tvc.mp4"
-  videoMobile:"banner-mobile.mp4"};  // (tùy chọn) video dọc cho điện thoại; để trống thì dùng video ngang
+  img:"poster.jpg"}; // Ảnh tĩnh cho banner trên mọi thiết bị.  // (tùy chọn) video dọc cho điện thoại; để trống thì dùng video ngang
 
 /* ===== 6. SẢN PHẨM: mỗi dòng một sản phẩm =====
    tag: "best" (tab Best seller) hoặc "new" (tab New arrival)
@@ -904,15 +901,11 @@ document.addEventListener("click",e=>{
 $("#ftag").textContent=TAGLINE;
 $("#heroT").innerHTML="";HERO.title.split(" ").forEach((w,i)=>{const sp=document.createElement("span");sp.textContent=w;sp.style.setProperty("--i",Math.min(i,6));$("#heroT").append(sp," ")});$("#heroP").textContent=HERO.text;
 $("#hero").style.background=HERO.bg;
-if(HERO.video){
- const src=(matchMedia("(max-width:700px)").matches&&HERO.videoMobile)||HERO.video;
+if(HERO.img){
  $("#hero").classList.add("vid");
- $("#hero").insertAdjacentHTML("afterbegin",`<video class="bgimg" src="${src}" ${matchMedia("(prefers-reduced-motion:reduce)").matches?"":"autoplay "}muted loop playsinline preload="auto"${HERO.img?` poster="${HERO.img}"`:""}></video><div class="scrim"></div>`);
-}else if(HERO.anim||HERO.img){
- const still=matchMedia("(prefers-reduced-motion:reduce)").matches||!HERO.anim;   // giảm chuyển động thì chỉ hiện ảnh tĩnh
- $("#hero").classList.add("vid");
- $("#hero").insertAdjacentHTML("afterbegin",`<img class="bgimg" fetchpriority="high" decoding="async" src="${still?(HERO.img||HERO.anim):HERO.anim}" alt=""><div class="scrim"></div>`);
+ $("#hero").insertAdjacentHTML("afterbegin",`<img class="bgimg" fetchpriority="high" decoding="async" src="${HERO.img}" alt=""><div class="scrim"></div>`);
 }
+
 $("#featM").style.background=FEATURE.bg;$("#featM").innerHTML=media(FEATURE);$("#featT").textContent=FEATURE.title;$("#featP").textContent=FEATURE.text;
 const collectionNotes=['Sắc trầm ấm áp, phom dáng thoải mái cho những ngày se lạnh.','Những thiết kế đánh dấu hành trình và cá tính Famstyle.','Tự do phối màu. Tự tin thể hiện chất riêng.','Chất liệu nhẹ nhàng, sắc màu tươi mới cho ngày nắng.'];
 $("#colls").innerHTML=COLLS.map((c,i)=>{const p=P.find(p=>p.col===c.slug&&p.img)||P.find(p=>p.col===c.slug);return `<a class="collection-card" href="#/bo-suu-tap/${c.slug}"><div class="collection-copy"><span class="collection-number">BỘ SƯU TẬP / 0${i+1}</span><h3>${c.n.replace(/^Bộ sưu tập /,'')}</h3><p>${collectionNotes[i]}</p><div class="collection-cta">Khám phá <span aria-hidden="true">↗</span></div></div><div class="collection-visual">${editorialMedia(p,c.img||p.img)}</div></a>`}).join('');
@@ -1439,7 +1432,7 @@ function queueReveal(){if(revealFrame)return;revealFrame=requestAnimationFrame((
 document.addEventListener('focusin',e=>{const target=e.target.closest?.('.rvl');if(target){target.classList.add('in');revealObserver?.unobserve(target)}});
 const revealChanges=new MutationObserver(records=>{for(const record of records){for(const node of record.removedNodes){if(node.nodeType===1){revealObserver?.unobserve(node);node.querySelectorAll('.rvl').forEach(el=>revealObserver?.unobserve(el))}}}queueReveal()});
 ['#catpage','#detail'].forEach(selector=>revealChanges.observe($(selector),{childList:true}));
-function updateMotion(){calm=motionPreference.matches;if(calm){finishReveals();document.querySelectorAll('.cart-plus').forEach(el=>el.remove());document.querySelector('#hero video')?.pause()}else reveal()}
+function updateMotion(){calm=motionPreference.matches;if(calm){finishReveals();document.querySelectorAll('.cart-plus').forEach(el=>el.remove())}else reveal()}
 if(motionPreference.addEventListener)motionPreference.addEventListener('change',updateMotion);else motionPreference.addListener?.(updateMotion);
 
 products();
