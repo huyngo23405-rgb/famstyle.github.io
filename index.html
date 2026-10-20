@@ -653,6 +653,19 @@ body.menu-open{overflow:hidden}.pc,.fp,.di,.nm,.fn{min-width:0}.nm a,.fn a,.di h
 .logo{min-height:44px;flex-shrink:0}.logo .lg-full{height:40px}.lg.f{height:44px;max-width:100%}.mmh .lg{width:200px;max-width:calc(100% - 56px)}
 @media(max-width:700px){.logo .lg-icon{height:36px;width:78.75px}.logo{margin-right:0}}
 @media(max-width:380px){header>.wrap{padding-left:12px;padding-right:12px}.header-actions .language-picker{width:44px}.header-actions .account-link,.header-actions .cartBtn{width:40px;height:44px;flex-basis:40px}.bar .sw{flex-basis:36px}}
+
+/* Equal side columns keep the wordmark at the actual centre of the header. */
+header .bar,html:not([lang="vi"]) header .bar{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px;height:56px}
+header .bar>.logo{grid-column:2;grid-row:1;justify-self:center;margin:0;min-width:0}
+header .bar>#nav{grid-column:1;grid-row:1;justify-self:start;gap:0;min-width:0;font-size:12px;white-space:nowrap}
+header .bar>#nav>.nl,header .bar>#nav>.dd>a{padding:18px 10px}
+header .bar>.hb{grid-column:1;grid-row:1;justify-self:start;margin:0}
+header .bar>.header-actions{grid-column:3;grid-row:1;justify-self:end;margin:0;padding-left:0;border-left:0}
+header #sw[hidden]{display:none!important}
+@media(min-width:1181px){header .bar>.hb{display:none}}
+@media(max-width:1180px){header .bar>#nav{display:none}header .bar>.hb{display:flex}}
+@media(max-width:700px){header>.wrap{padding-left:12px;padding-right:12px}.header-actions .language-picker{width:44px}.header-actions .account-link,.header-actions .cartBtn{width:40px;height:44px;flex-basis:40px}header .bar>.header-actions{gap:0}}
+@media(max-width:350px){header .bar,html:not([lang="vi"]) header .bar{gap:8px}.logo .lg-icon{width:64px;height:29.25px}.header-actions .language-picker{width:36px}}
 </style>
 </head>
 <body>
@@ -661,9 +674,9 @@ body.menu-open{overflow:hidden}.pc,.fp,.di,.nm,.fn{min-width:0}.nm a,.fn a,.di h
 <div class="mq" aria-label="Thông báo cửa hàng"><div class="mqt" id="mqt"></div></div>
 <header><div class="wrap bar">
   <button class="hb" id="hb" aria-label="Mở menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <a class="logo" href="#" aria-label="The FamStyle, về trang chủ"><svg class="lg lg-full" viewBox="0 0 321.28 64" aria-hidden="true"><use href="#fam-logo"/></svg><svg class="lg lg-icon" viewBox="0 0 140 64" aria-hidden="true"><use href="#fam-icon"/></svg></a>
   <nav id="nav"></nav>
-  <div class="sw" id="sw">
+  <a class="logo" href="#" aria-label="The FamStyle, về trang chủ"><svg class="lg lg-full" viewBox="0 0 321.28 64" aria-hidden="true"><use href="#fam-logo"/></svg><svg class="lg lg-icon" viewBox="0 0 140 64" aria-hidden="true"><use href="#fam-icon"/></svg></a>
+  <div class="sw" id="sw" hidden inert>
     <input class="hs" id="hs" type="search" placeholder="Tìm sản phẩm..." autocomplete="off" aria-label="Tìm sản phẩm" role="combobox" aria-expanded="false" aria-controls="sug">
     <div class="sug" id="sug" role="listbox" hidden></div>
   </div>
