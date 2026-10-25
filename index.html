@@ -692,6 +692,26 @@ section[id]{scroll-margin-top:calc(var(--brand-header-height) + 16px)}
 /* Selected products are visible previews while merchandising data is pending. */
 .pending-price{font-size:13px;font-weight:400;letter-spacing:.02em;color:#806a46}.selection-note{padding:18px;border:1px solid #e3d7c4;border-radius:8px;background:#f8f4ec;margin:18px 0;color:#685a45;font-size:13px;line-height:1.8}.selection-note p{margin:7px 0 0}.selection-entry{text-align:center;margin:28px 0 0}.selection-entry p{font-size:12px;color:#817461;margin:10px 0}.selection-image img{object-fit:contain}.style-edit{padding:64px 0;background:#f7f4ee;border-top:1px solid #e5ddcf}.style-edit h2{font-size:clamp(28px,3vw,40px);font-weight:400;margin:0}.style-note{color:#796e5f;font-size:13px;line-height:1.8;max-width:720px;margin:14px 0 24px}.style-grid{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 40px)/3);gap:20px;overflow-x:auto;scroll-snap-type:x proximity;padding:4px 4px 18px}.style-grid figure{margin:0;min-width:0;scroll-snap-align:start}.style-grid img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:contain;background:#f0ede7}.style-grid figcaption{font-size:13px;line-height:1.7;margin-top:12px}.style-reference{margin-top:28px;border-top:1px solid #d9cebb;padding-top:20px}.style-reference summary{cursor:pointer;font-size:15px;padding:10px 0}.btn[disabled]{opacity:.65;cursor:not-allowed}
 @media(max-width:700px){.style-grid{grid-auto-columns:72%;gap:14px}.style-edit{padding:44px 0}}
+
+/* Light editorial banner: reserve image space and keep all three models visible on phones. */
+.hero.light-hero{color:#302b23;background:#f5ede4}
+.light-hero .hero-media{position:absolute;inset:0;display:block}
+.light-hero .bgimg{display:block;object-position:right center}
+.light-hero .scrim{background:linear-gradient(90deg,rgba(245,237,228,.96),rgba(245,237,228,.74) 27%,rgba(245,237,228,0) 55%)}
+.hero.light-hero .txt{width:36%;max-width:420px;overflow-wrap:break-word}
+body.home.ov header{color:#24221f;--lgb:#24221f;--lgf:#fff9ee;--lgt:#24221f}
+body.home.ov header .hb span{background:#24221f}
+body.home.ov header .cartBtn:hover{background:rgba(36,34,31,.08)}
+body.home.ov .dd:hover>a,body.home.ov .dd:focus-within>a,body.home.ov .nl:hover{color:#24221f}
+@media(max-width:1000px){
+ body.home .hero.light-hero{min-height:0}
+ .hero.light-hero{flex-direction:column;align-items:stretch}
+ .hero.light-hero .hero-media{position:relative;inset:auto;order:2;width:100%;height:clamp(260px,72vw,480px)}
+ .hero.light-hero .bgimg{height:100%;object-fit:cover;object-position:right center}
+ .hero.light-hero .scrim{display:none}
+ .hero.light-hero .txt{order:1;width:100%;max-width:760px;margin:0 auto;padding:32px 24px 8px}
+ .hero.light-hero h1{font-size:clamp(30px,5.5vw,46px)}
+}
 </style>
 <link rel="stylesheet" href="assets/support-chat.css?v=1">
 </head>
@@ -767,8 +787,10 @@ const BRAND="The FamStyle", TAGLINE="Mặc theo cách của bạn";
 const FREE_SHIP=500000;   // đơn từ mức này trở lên được miễn phí giao hàng (hiện trên dải chữ chạy)
 const SHIP_FEE=30000;      // phí giao hàng khi đơn chưa đủ mức miễn phí
 const HERO={title:"Bộ sưu tập Thu Đông 2026",text:"Form rộng, chất liệu dày dặn, màu trung tính dễ phối.",
-  bg:"linear-gradient(120deg,#1E2430,#3B4A63)",
-  img:"poster.jpg"}; // Ảnh tĩnh cho banner trên mọi thiết bị.  // (tùy chọn) video dọc cho điện thoại; để trống thì dùng video ngang
+  bg:"#f5ede4",
+  img:"images/hero/miabella-1600.webp",
+  srcset:"images/hero/miabella-960.webp 960w, images/hero/miabella-1600.webp 1600w, images/hero/miabella-2400.webp 2400w",
+  width:2400,height:1350,alt:"Ba người mẫu trong trang phục tông kem và be"}; // Ảnh tĩnh cho banner trên mọi thiết bị.  // (tùy chọn) video dọc cho điện thoại; để trống thì dùng video ngang
 
 /* ===== 6. SẢN PHẨM: mỗi dòng một sản phẩm =====
    tag: "best" (tab Best seller) hoặc "new" (tab New arrival)
@@ -952,8 +974,8 @@ $("#ftag").textContent=TAGLINE;
 $("#heroT").innerHTML="";HERO.title.split(" ").forEach((w,i)=>{const sp=document.createElement("span");sp.textContent=w;sp.style.setProperty("--i",Math.min(i,6));$("#heroT").append(sp," ")});$("#heroP").textContent=HERO.text;
 $("#hero").style.background=HERO.bg;
 if(HERO.img){
- $("#hero").classList.add("vid");
- $("#hero").insertAdjacentHTML("afterbegin",`<img class="bgimg" fetchpriority="high" decoding="async" src="${HERO.img}" alt=""><div class="scrim"></div>`);
+ $("#hero").classList.add("vid","light-hero");
+ $("#hero").insertAdjacentHTML("afterbegin",`<picture class="hero-media"><img class="bgimg" fetchpriority="high" decoding="async" src="${HERO.img}" srcset="${HERO.srcset}" sizes="100vw" width="${HERO.width}" height="${HERO.height}" alt="${HERO.alt}"></picture><div class="scrim"></div>`);
 }
 
 $("#featM").style.background=FEATURE.bg;$("#featM").innerHTML=media(FEATURE);$("#featT").textContent=FEATURE.title;$("#featP").textContent=FEATURE.text;
@@ -1557,6 +1579,7 @@ Object.assign(LANGUAGE_TEXT,{
  "Khám phá sản phẩm":["Explore products", "商品を見る", "Découvrir les produits", "Explorar productos"],
  "BƯỚC":["STEP", "ステップ", "ÉTAPE", "PASO"],
 });
+Object.assign(LANGUAGE_TEXT,{"Ba người mẫu trong trang phục tông kem và be":["Three models wearing cream and beige outfits","クリーム色とベージュの服を着た3人のモデル","Trois mannequins en tenues crème et beige","Tres modelos con conjuntos crema y beige"]});
 const languageKeys=Object.keys(LANGUAGE_TEXT).sort((a,b)=>b.length-a.length);
 const languagePattern=new RegExp('(?<![\\p{L}\\p{N}])(?:'+languageKeys.map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')(?![\\p{L}\\p{N}])','gu');
 function translateUI(value){if(activeLanguage==='vi')return value;const index=languageIndex[activeLanguage];return value.replace(languagePattern,key=>LANGUAGE_TEXT[key][index])}
