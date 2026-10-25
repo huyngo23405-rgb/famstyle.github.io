@@ -713,10 +713,18 @@ body.home.ov .dd:hover>a,body.home.ov .dd:focus-within>a,body.home.ov .nl:hover{
  .hero.light-hero h1{font-size:clamp(30px,5.5vw,46px)}
 }
 
-/* Keep the collection action beneath its introduction at every viewport size. */
-.hero .btn.hero-learn{position:relative;left:auto;bottom:auto;transform:none;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;max-width:100%;margin:20px 0 24px;padding:13px 24px;border:1px solid #302b23;border-radius:0;background:#302b23;color:#fff9ee;white-space:normal;text-align:center;line-height:1.5;animation-name:fadeUp}
-.hero .btn.hero-learn:hover{background:#54452f;border-color:#54452f;color:#fff9ee}
+/* Collection action: a fine warm border and a restrained arrow treatment. */
+.hero .btn.hero-learn{position:relative;left:auto;bottom:auto;transform:none;translate:none;scale:1;display:inline-flex;align-items:center;justify-content:space-between;gap:22px;min-height:56px;min-width:min(224px,100%);max-width:100%;margin:28px 0 26px;padding:12px 14px 12px 24px;border:1px solid #b8a383;border-radius:2px;background:rgba(255,252,246,.6);color:#453829;white-space:normal;text-align:left;line-height:1.6;box-shadow:0 3px 14px #43321e05;animation-name:fadeUp;transition:background-color var(--motion-base) ease,border-color var(--motion-base) ease,box-shadow var(--motion-base) ease}
+.hero-learn-label{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase}
+.hero-learn-arrow{display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px;border:1px solid #b8a38380;border-radius:50%;background:rgba(255,255,255,.25);color:#83663d;transition:background-color var(--motion-base) ease,border-color var(--motion-base) ease,color var(--motion-base) ease}
+.hero-learn-arrow svg{display:block;width:17px;height:17px;transition:transform var(--motion-base) var(--motion-ease)}
+.hero .btn.hero-learn:is(:hover,:focus-visible){translate:none;background:#f1e7d8;border-color:#9c7d4d;color:#453829;box-shadow:0 6px 20px #43321e0c}
+.hero .btn.hero-learn:is(:hover,:focus-visible) .hero-learn-arrow{background:#96764a;border-color:#96764a;color:#fffdf8}
+.hero .btn.hero-learn:is(:hover,:focus-visible) .hero-learn-arrow svg{transform:translateX(2px)}
 .hero .btn.hero-learn:focus-visible{outline:2px solid #896b3d;outline-offset:4px}
+.hero .btn.hero-learn:active{background:#e9ddca;box-shadow:none;scale:.99}
+@media(max-width:700px){.hero .btn.hero-learn{gap:18px;padding-left:20px;margin-top:24px}}
+@media(prefers-reduced-motion:reduce){.hero .btn.hero-learn,.hero-learn-arrow,.hero-learn-arrow svg{transition:none!important}.hero-learn-arrow svg{transform:none!important}}
 </style>
 <link rel="stylesheet" href="assets/support-chat.css?v=1">
 </head>
@@ -744,7 +752,7 @@ body.home.ov .dd:hover>a,body.home.ov .dd:focus-within>a,body.home.ov .nl:hover{
 
 <div id="home">
 <div class="hero" id="hero">
-  <div class="txt"><h1 id="heroT"></h1><p id="heroP"></p><a class="btn hero-learn" id="heroLearnMore" href="#/bo-suu-tap/thu-dong-2026" aria-label="Tìm hiểu thêm về bộ sưu tập Thu Đông 2026"><span>Tìm hiểu thêm</span><span aria-hidden="true">→</span></a></div>
+  <div class="txt"><h1 id="heroT"></h1><p id="heroP"></p><a class="btn hero-learn" id="heroLearnMore" href="#/bo-suu-tap/thu-dong-2026" aria-label="Tìm hiểu thêm về bộ sưu tập Thu Đông 2026"><span class="hero-learn-label">Tìm hiểu thêm</span><span class="hero-learn-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span></a></div>
   
 </div>
 
