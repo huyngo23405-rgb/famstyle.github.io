@@ -725,7 +725,6 @@ section[id]{scroll-margin-top:calc(var(--brand-header-height) + 16px)}
 
 <section id="featured"><div class="wrap">
   <div class="sh editorial-heading"><div><span class="eyebrow">FAMSTYLE SELECTION</span><h2>Sản phẩm nổi bật<span class="heading-dot">.</span></h2></div><p>Những thiết kế được chọn lọc,<br>cho phong cách riêng của bạn.</p></div>
-  <div id="featuredSearch"></div>
   <div class="fgrid" id="fgrid"></div>
   <div class="selection-entry"><a class="editorial-link" href="#/bo-suu-tap/the-famstyle-selection">Xem 24 mẫu tuyển chọn <span aria-hidden="true">↗</span></a><p>Giá và size của các mẫu mới đang cập nhật.</p></div>
   <div class="fmore"><a class="editorial-link" href="#/danh-muc/tat-ca">Khám phá tất cả sản phẩm <span aria-hidden="true">↗</span></a></div>
@@ -901,7 +900,6 @@ function productArt(p){
 }
 function editorialMedia(p,src){return `<div class="art-fallback">${productArt(p)}<span class="art-label">FAMSTYLE · ẢNH ĐANG CẬP NHẬT</span></div>${src?`<img class="editorial-photo" src="${src}" alt="${p.n}" loading="lazy" onerror="this.remove()">`:''}`}
 function products(){
- $("#featuredSearch").innerHTML=productSearchHTML("home");
  $("#fgrid").innerHTML=FEATURED.map(id=>P.find(x=>x.id===id)).filter(Boolean).map(p=>{
   const g=gallery(p),a=g[0],b=g[1]||g[0],lay=x=>editorialMedia(p,x.img);
   return `<article class="fp"><div class="fim" style="background:${p.bg}">
