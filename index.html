@@ -689,6 +689,7 @@ section[id]{scroll-margin-top:calc(var(--brand-header-height) + 16px)}
 @media(max-width:480px){.product-search{padding:16px}.product-search-row{flex-direction:column}.product-search .btn{width:100%}}
 
 /* Selected products are visible previews while merchandising data is pending. */
+.btn.preview-unavailable{font-size:18px;line-height:1.5;min-height:52px;white-space:normal;overflow-wrap:anywhere}
 .pending-price{font-size:13px;font-weight:400;letter-spacing:.02em;color:#806a46}.selection-note{padding:18px;border:1px solid #e3d7c4;border-radius:8px;background:#f8f4ec;margin:18px 0;color:#685a45;font-size:13px;line-height:1.8}.selection-note p{margin:7px 0 0}.selection-entry{text-align:center;margin:28px 0 0}.selection-entry p{font-size:12px;color:#817461;margin:10px 0}.selection-image img{object-fit:contain}.style-edit{padding:64px 0;background:#f7f4ee;border-top:1px solid #e5ddcf}.style-edit h2{font-size:clamp(28px,3vw,40px);font-weight:400;margin:0}.style-note{color:#796e5f;font-size:13px;line-height:1.8;max-width:720px;margin:14px 0 24px}.style-grid{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 40px)/3);gap:20px;overflow-x:auto;scroll-snap-type:x proximity;padding:4px 4px 18px}.style-grid figure{margin:0;min-width:0;scroll-snap-align:start}.style-grid img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:contain;background:#f0ede7}.style-grid figcaption{font-size:13px;line-height:1.7;margin-top:12px}.style-reference{margin-top:28px;border-top:1px solid #d9cebb;padding-top:20px}.style-reference summary{cursor:pointer;font-size:15px;padding:10px 0}.btn[disabled]{opacity:.65;cursor:not-allowed}
 @media(max-width:700px){.style-grid{grid-auto-columns:72%;gap:14px}.style-edit{padding:44px 0}}
 
@@ -1040,7 +1041,7 @@ function restoreDetailFocus(key,value){Array.from($("#detail").querySelectorAll(
 function previewNotice(){return `<div class="selection-note"><strong>Mẫu tuyển chọn</strong><p>Size và chất liệu đang chờ xác nhận. Mẫu này hiện chỉ để xem, chưa nhận đặt hàng.</p></div>`}
 function previewDetail(p){
  const related=P.filter(x=>x.selected&&x.gender===p.gender&&x.id!==p.id).slice(0,4);
- $('#detail').innerHTML=`<a class="back" href="#/bo-suu-tap/the-famstyle-selection">← The FamStyle Selection</a><div class="dg"><div class="dim selection-image" style="background:${p.bg}">${media(p,true)}</div><div class="di"><span class="eyebrow">THE FAMSTYLE / SELECTION</span><h1>${p.n}</h1><div class="dpr">${priceHTML(p)}</div>${photoNote(p,true)}${previewNotice()}<button class="btn" style="width:100%;margin:18px 0" disabled>Chưa mở bán</button><button type="button" class="support-product-link" data-support-open data-support-product="${p.id}">Tư vấn sản phẩm này</button><a class="size-help" href="#/bo-suu-tap/the-famstyle-selection">Xem bộ sưu tập tuyển chọn →</a></div></div><div class="more"><div class="sh"><h2>Có thể bạn cũng thích</h2></div><div class="row">${related.map(card).join('')}</div></div>`;
+ $('#detail').innerHTML=`<a class="back" href="#/bo-suu-tap/the-famstyle-selection">← The FamStyle Selection</a><div class="dg"><div class="dim selection-image" style="background:${p.bg}">${media(p,true)}</div><div class="di"><span class="eyebrow">THE FAMSTYLE / SELECTION</span><h1>${p.n}</h1><div class="dpr">${priceHTML(p)}</div>${photoNote(p,true)}${previewNotice()}<button class="btn preview-unavailable" style="width:100%;margin:18px 0" disabled>Chưa mở bán</button><button type="button" class="support-product-link" data-support-open data-support-product="${p.id}">Tư vấn sản phẩm này</button><a class="size-help" href="#/bo-suu-tap/the-famstyle-selection">Xem bộ sưu tập tuyển chọn →</a></div></div><div class="more"><div class="sh"><h2>Có thể bạn cũng thích</h2></div><div class="row">${related.map(card).join('')}</div></div>`;
 }
 function renderStyleSelection(){
  const figure=x=>`<figure tabindex="0"><img src="${x.img}" alt="${esc(x.title)}" width="1000" height="1250" loading="lazy" decoding="async"><figcaption>${esc(x.title)}</figcaption></figure>`;
@@ -1497,7 +1498,7 @@ function qvSlide(i){
 }
 function qvInfo(){
  const p=qvp,a=avg(p);
- if(isPreview(p)){$('#qvi').innerHTML=`<h2>${p.n}</h2><div class="dpr">${priceHTML(p)}</div>${photoNote(p,true)}${previewNotice()}<button class="btn" disabled>Chưa mở bán</button><a class="qvl" href="#/san-pham/${p.id}">Xem chi tiết sản phẩm →</a>`;return}
+ if(isPreview(p)){$('#qvi').innerHTML=`<h2>${p.n}</h2><div class="dpr">${priceHTML(p)}</div>${photoNote(p,true)}${previewNotice()}<button class="btn preview-unavailable" disabled>Chưa mở bán</button><a class="qvl" href="#/san-pham/${p.id}">Xem chi tiết sản phẩm →</a>`;return}
  $("#qvi").innerHTML=`<h2>${p.n}</h2>
  <div class="st">${a.n?stars(Math.round(a.avg))+" "+a.avg.toFixed(1)+"/5 ("+a.n+" đánh giá)":"Chưa có đánh giá"}</div>
  <div class="dpr">${priceHTML(p)}</div>
