@@ -105,7 +105,6 @@ aside.on{transform:none;visibility:visible;transition-delay:0s}
 .im{text-decoration:none;color:inherit}
 .nm a{text-decoration:none}.nm a:hover{text-decoration:underline}
 .sz{min-width:42px;padding:8px 12px;border:1px solid var(--line);background:#fff;cursor:pointer}
-.sz[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
 .back{display:inline-block;margin:20px 0;text-decoration:none;font-weight:500}
 .dg{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:start}
 .dim{aspect-ratio:3/4;display:grid;place-items:center;font-size:160px;overflow:hidden}
@@ -725,6 +724,14 @@ body.home.ov .dd:hover>a,body.home.ov .dd:focus-within>a,body.home.ov .nl:hover{
 .hero .btn.hero-learn:active{background:#e9ddca;box-shadow:none;scale:.99}
 @media(max-width:700px){.hero .btn.hero-learn{gap:18px;padding-left:20px;margin-top:24px}}
 @media(prefers-reduced-motion:reduce){.hero .btn.hero-learn,.hero-learn-arrow,.hero-learn-arrow svg{transition:none!important}.hero-learn-arrow svg{transform:none!important}}
+.collection-visual .editorial-photo,.banner .bi img{object-position:var(--collection-focus,50% 50%)}
+
+.size-picker{border:0;padding:0;margin:18px 0}.size-picker legend{font-size:13px;font-weight:500;padding:0;margin-bottom:10px}.size-options{display:flex;gap:8px;flex-wrap:wrap}.size-choice{position:relative;display:inline-flex;cursor:pointer}.size-choice input{position:absolute;opacity:0;width:1px;height:1px}.size-choice .sz{display:grid;place-items:center;min-width:44px;min-height:44px;font-size:13px}.size-choice input:checked+.sz{background:#302b23;color:#fffaf2;border-color:#302b23}.size-choice input:focus-visible+.sz{outline:2px solid #96764b;outline-offset:3px}.size-help-text,.size-status{font-size:12px;line-height:1.7;margin:9px 0;color:#756b5b}.size-status{color:#493c2a}.size-error{font-size:12px;line-height:1.7;color:#a73427;margin:8px 0}.size-error[hidden]{display:none}.size-picker[aria-invalid="true"] .sz{border-color:#b85c4c}.cart-size-label{display:flex;align-items:center;gap:8px;font-size:12px;margin:5px 0}.cart-size-label select{min-height:40px;max-width:110px;border:1px solid #d9cfbd;border-radius:3px;padding:4px 8px;background:#fffdf7;color:#302b23;font:inherit}
+
+/* Reference packshots stay fully visible, with a quiet explanatory caption. */
+.reference-photo,.qvg.reference-gallery img,.pv.reference-gallery img{object-fit:contain!important;background:#fff}.photo-note{font-size:10px;line-height:1.6;color:#7b6d58;margin:6px 0}.di .photo-note{font-size:12px;margin:12px 0}
+.winter-strip{position:relative;isolation:isolate;overflow:hidden}.winter-strip .winter-strip-art{position:absolute;inset:0 0 0 38%;z-index:-1;pointer-events:none}.winter-strip-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:43% 38%;opacity:.7}.winter-strip-art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#29443a 0%,rgba(36,61,51,.74) 38%,rgba(36,61,51,.74) 100%)}
+@media(max-width:700px){.winter-strip .winter-strip-art{left:10%}.winter-strip-art::after{background:rgba(36,61,51,.84)}}
 </style>
 <link rel="stylesheet" href="assets/support-chat.css?v=1">
 </head>
@@ -759,11 +766,11 @@ body.home.ov .dd:hover>a,body.home.ov .dd:focus-within>a,body.home.ov .nl:hover{
 <section id="featured"><div class="wrap">
   <div class="sh editorial-heading"><div><span class="eyebrow">FAMSTYLE SELECTION</span><h2>Sản phẩm nổi bật<span class="heading-dot">.</span></h2></div><p>Những thiết kế được chọn lọc,<br>cho phong cách riêng của bạn.</p></div>
   <div class="fgrid" id="fgrid"></div>
-  <div class="selection-entry"><a class="editorial-link" href="#/bo-suu-tap/the-famstyle-selection">Xem 24 mẫu tuyển chọn <span aria-hidden="true">↗</span></a><p>Giá và size của các mẫu mới đang cập nhật.</p></div>
+  <div class="selection-entry"><a class="editorial-link" href="#/bo-suu-tap/the-famstyle-selection">Xem bộ sưu tập tuyển chọn <span aria-hidden="true">↗</span></a><p>Thông tin size của các mẫu mới đang cập nhật.</p></div>
   <div class="fmore"><a class="editorial-link" href="#/danh-muc/tat-ca">Khám phá tất cả sản phẩm <span aria-hidden="true">↗</span></a></div>
 </div></section>
 
-<div class="wrap"><a class="offers-strip winter-strip" href="#/uu-dai/mua-dong"><div><span class="eyebrow">FAMSTYLE / WINTER EDIT</span><strong>Ưu đãi mùa đông</strong><p>Giữ ấm đầy phong cách · Giảm đến <span id="winter-max"></span>%</p></div><span class="offers-strip-cta">Khám phá ưu đãi mùa đông <span aria-hidden="true">↗</span></span></a></div>
+<div class="wrap"><a class="offers-strip winter-strip" href="#/uu-dai/mua-dong"><div class="winter-strip-art" aria-hidden="true"><img src="images/collections/winter-2026.webp" alt="" loading="lazy" decoding="async"></div><div><span class="eyebrow">FAMSTYLE / WINTER EDIT</span><strong>Ưu đãi mùa đông</strong><p>Giữ ấm đầy phong cách · Giảm đến <span id="winter-max"></span>%</p></div><span class="offers-strip-cta">Khám phá ưu đãi mùa đông <span aria-hidden="true">↗</span></span></a></div>
 
 <div class="feat"><div class="wrap">
   <div class="ph" id="featM"></div>
@@ -857,7 +864,15 @@ const P=[
 /* Curated selection: price, size and colour availability await confirmation. */
 const CURATED_PRODUCTS=[{"id":41,"n":"Quần dài màu kem","cat":"quan","sub":"quan-tay","col":"the-famstyle-selection","gender":"nam","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/mp-01.webp","source":{"file":"Anh quan ao nam khong nguoi.pdf","page":1},"selected":true,"desc":"Quần dài màu kem"},{"id":42,"n":"Polo nâu cổ bẻ","cat":"ao","sub":"ao-polo","col":"the-famstyle-selection","gender":"nam","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/mp-05.webp","source":{"file":"Anh quan ao nam khong nguoi.pdf","page":5},"selected":true,"desc":"Polo nâu cổ bẻ"},{"id":43,"n":"Polo kem viền cổ","cat":"ao","sub":"ao-polo","col":"the-famstyle-selection","gender":"nam","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/mp-06.webp","source":{"file":"Anh quan ao nam khong nguoi.pdf","page":6},"selected":true,"desc":"Polo kem viền cổ"},{"id":44,"n":"Sơ mi trắng","cat":"ao","sub":"ao-so-mi","col":"the-famstyle-selection","gender":"nam","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/mp-17.webp","source":{"file":"Anh quan ao nam khong nguoi.pdf","page":17},"selected":true,"desc":"Sơ mi trắng"},{"id":45,"n":"Polo đen viền sáng","cat":"ao","sub":"ao-polo","col":"the-famstyle-selection","gender":"nam","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/mp-07.webp","source":{"file":"Anh quan ao nam khong nguoi.pdf","page":7},"selected":true,"desc":"Polo đen viền sáng"},{"id":46,"n":"Sơ mi xanh nhạt","cat":"ao","sub":"ao-so-mi","col":"the-famstyle-selection","gender":"nam","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/mp-16.webp","source":{"file":"Anh quan ao nam khong nguoi.pdf","page":16},"selected":true,"desc":"Sơ mi xanh nhạt"},{"id":47,"n":"Jeans xanh nhạt ống rộng","cat":"quan","sub":"quan-jeans","col":"the-famstyle-selection","gender":"nam","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/mp-02.webp","source":{"file":"Anh quan ao nam khong nguoi.pdf","page":2},"selected":true,"desc":"Jeans xanh nhạt ống rộng"},{"id":48,"n":"Jeans xanh vừa ống rộng","cat":"quan","sub":"quan-jeans","col":"the-famstyle-selection","gender":"nam","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/mp-04.webp","source":{"file":"Anh quan ao nam khong nguoi.pdf","page":4},"selected":true,"desc":"Jeans xanh vừa ống rộng"},{"id":49,"n":"Sơ mi be tay ngắn","cat":"ao","sub":"ao-so-mi","col":"the-famstyle-selection","gender":"nam","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/mp-11.webp","source":{"file":"Anh quan ao nam khong nguoi.pdf","page":11},"selected":true,"desc":"Sơ mi be tay ngắn"},{"id":50,"n":"Short xanh đen có ly","cat":"quan","sub":"quan-short","col":"the-famstyle-selection","gender":"nam","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/mp-14.webp","source":{"file":"Anh quan ao nam khong nguoi.pdf","page":14},"selected":true,"desc":"Short xanh đen có ly"},{"id":51,"n":"Short xám cạp chun","cat":"quan","sub":"quan-short","col":"the-famstyle-selection","gender":"nam","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/mp-15.webp","source":{"file":"Anh quan ao nam khong nguoi.pdf","page":15},"selected":true,"desc":"Short xám cạp chun"},{"id":52,"n":"Áo thun đen trơn","cat":"ao","sub":"ao-thun","col":"the-famstyle-selection","gender":"nam","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/mp-18.webp","source":{"file":"Anh quan ao nam khong nguoi.pdf","page":18},"selected":true,"desc":"Áo thun đen trơn"},{"id":53,"n":"Quần đen ống rộng","cat":"quan","sub":"quan-tay","col":"the-famstyle-selection","gender":"nu","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/wp-05.webp","source":{"file":"Anh quan ao nu khong nguoi.pdf","page":5},"selected":true,"desc":"Quần đen ống rộng"},{"id":54,"n":"Sơ mi trắng dáng rộng","cat":"ao","sub":"ao-so-mi","col":"the-famstyle-selection","gender":"nu","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/wp-06.webp","source":{"file":"Anh quan ao nu khong nguoi.pdf","page":6},"selected":true,"desc":"Sơ mi trắng dáng rộng"},{"id":55,"n":"Áo kem viền đen","cat":"ao","sub":"ao-ngan-tay","col":"the-famstyle-selection","gender":"nu","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/wp-12.webp","source":{"file":"Anh quan ao nu khong nguoi.pdf","page":12},"selected":true,"desc":"Áo kem viền đen"},{"id":56,"n":"Chân váy dài màu kem","cat":"vay","sub":"chan-vay","col":"the-famstyle-selection","gender":"nu","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/wp-14.webp","source":{"file":"Anh quan ao nu khong nguoi.pdf","page":14},"selected":true,"desc":"Chân váy dài màu kem"},{"id":57,"n":"Khoác denim xanh đậm","cat":"ao-khoac","sub":"jacket","col":"the-famstyle-selection","gender":"nu","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/wp-01.webp","source":{"file":"Anh quan ao nu khong nguoi.pdf","page":1},"selected":true,"desc":"Khoác denim xanh đậm"},{"id":58,"n":"Quần be ống rộng","cat":"quan","sub":"quan-tay","col":"the-famstyle-selection","gender":"nu","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/wp-03.webp","source":{"file":"Anh quan ao nu khong nguoi.pdf","page":3},"selected":true,"desc":"Quần be ống rộng"},{"id":59,"n":"Áo đen tay dài dáng xòe","cat":"ao","sub":"ao-dai-tay","col":"the-famstyle-selection","gender":"nu","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/wp-02.webp","source":{"file":"Anh quan ao nu khong nguoi.pdf","page":2},"selected":true,"desc":"Áo đen tay dài dáng xòe"},{"id":60,"n":"Jeans xanh nhạt ống rộng","cat":"quan","sub":"quan-jeans","col":"the-famstyle-selection","gender":"nu","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/wp-04.webp","source":{"file":"Anh quan ao nu khong nguoi.pdf","page":4},"selected":true,"desc":"Jeans xanh nhạt ống rộng"},{"id":61,"n":"Váy hai dây màu kem","cat":"vay","sub":"vay-dai","col":"the-famstyle-selection","gender":"nu","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/wp-11.webp","source":{"file":"Anh quan ao nu khong nguoi.pdf","page":11},"selected":true,"desc":"Váy hai dây màu kem"},{"id":62,"n":"Sơ mi be sáng","cat":"ao","sub":"ao-so-mi","col":"the-famstyle-selection","gender":"nu","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/wp-13.webp","source":{"file":"Anh quan ao nu khong nguoi.pdf","page":13},"selected":true,"desc":"Sơ mi be sáng"},{"id":63,"n":"Chân váy xếp ly màu taupe","cat":"vay","sub":"chan-vay","col":"the-famstyle-selection","gender":"nu","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/wp-15.webp","source":{"file":"Anh quan ao nu khong nguoi.pdf","page":15},"selected":true,"desc":"Chân váy xếp ly màu taupe"},{"id":64,"n":"Áo thun nâu trơn","cat":"ao","sub":"ao-thun","col":"the-famstyle-selection","gender":"nu","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f4f3ef","e":"👕","img":"images/selection-2026/wp-17.webp","source":{"file":"Anh quan ao nu khong nguoi.pdf","page":17},"selected":true,"desc":"Áo thun nâu trơn"}];
 const STYLE_SELECTION=[{"img":"images/selection-2026/mm-04.webp","title":"Sơ mi xanh: dáng mặc gọn","group":"model","source":{"file":"Anh quan ao nam co nguoi.pdf","page":4}},{"img":"images/selection-2026/mm-06.webp","title":"Jeans rộng: thấy phom quần","group":"model","source":{"file":"Anh quan ao nam co nguoi.pdf","page":6}},{"img":"images/selection-2026/mm-08.webp","title":"Quần kem: phối cùng áo nâu","group":"model","source":{"file":"Anh quan ao nam co nguoi.pdf","page":8}},{"img":"images/selection-2026/wm-05.webp","title":"Sơ mi trắng: phối tối giản","group":"model","source":{"file":"Anh quan ao nu co nguoi.pdf","page":5}},{"img":"images/selection-2026/wm-07.webp","title":"Jeans sáng: phom ống rộng","group":"model","source":{"file":"Anh quan ao nu co nguoi.pdf","page":7}},{"img":"images/selection-2026/wm-02.webp","title":"Áo nâu: phối cùng jeans","group":"model","source":{"file":"Anh quan ao nu co nguoi.pdf","page":2}},{"img":"images/selection-2026/ref-02.webp","title":"Blazer be, áo đen cổ cao","group":"reference","source":{"file":"Mau anh.pdf","page":2}},{"img":"images/selection-2026/ref-05.webp","title":"Áo dài tay xanh trầm","group":"reference","source":{"file":"Mau anh.pdf","page":5}},{"img":"images/selection-2026/ref-06.webp","title":"Áo thun đen tối giản","group":"reference","source":{"file":"Mau anh.pdf","page":6}},{"img":"images/selection-2026/ref-08.webp","title":"Áo dài tay màu kem","group":"reference","source":{"file":"Mau anh.pdf","page":8}},{"img":"images/selection-2026/ref-09.webp","title":"Khoác denim, quần tối màu","group":"reference","source":{"file":"Mau anh.pdf","page":9}},{"img":"images/selection-2026/ref-10.webp","title":"Áo khoác xanh, phom rộng","group":"reference","source":{"file":"Mau anh.pdf","page":10}}];
+/* Reference photographs fill legacy placeholders only; they do not confirm a SKU. */
+const ADDITIONAL_DESIGNS=[{"id":65,"n":"Áo polo dài tay màu nâu","cat":"ao","sub":"ao-polo","col":"the-famstyle-selection","gender":"nam","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f6f4ef","e":"","img":"images/new-designs/polo-brown.webp","selected":true,"referenceImage":true,"desc":"Áo polo dài tay màu nâu"},{"id":66,"n":"Áo khoác dáng dài màu camel","cat":"ao-khoac","sub":"ao-khoac-dai","col":"the-famstyle-selection","gender":"nam","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f6f4ef","e":"","img":"images/new-designs/coat-camel.webp","selected":true,"referenceImage":true,"desc":"Áo khoác dáng dài màu camel"},{"id":67,"n":"Chân váy midi màu đen","cat":"vay","sub":"chan-vay","col":"the-famstyle-selection","gender":"nu","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f6f4ef","e":"","img":"images/new-designs/skirt-black.webp","selected":true,"referenceImage":true,"desc":"Chân váy midi màu đen"},{"id":68,"n":"Áo len cổ lọ màu kem","cat":"ao","sub":"ao-len","col":"the-famstyle-selection","gender":"nu","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f6f4ef","e":"","img":"images/new-designs/knit-cream.webp","selected":true,"referenceImage":true,"desc":"Áo len cổ lọ màu kem"},{"id":69,"n":"Áo cardigan dài màu be","cat":"ao-khoac","sub":"cardigan","col":"the-famstyle-selection","gender":"nu","price":null,"status":"preview","sizes":[],"colors":[],"r":0,"bg":"#f6f4ef","e":"","img":"images/new-designs/cardigan-beige.webp","selected":true,"referenceImage":true,"desc":"Áo cardigan dài màu be"}];
+CURATED_PRODUCTS.push(...ADDITIONAL_DESIGNS);
 P.unshift(...CURATED_PRODUCTS);
+/* Display prices set at the owner's request; existing product prices stay intact. */
+const SELECTION_PRICES={"41":449000,"42":349000,"43":369000,"44":399000,"45":349000,"46":399000,"47":479000,"48":499000,"49":369000,"50":329000,"51":299000,"52":199000,"53":449000,"54":399000,"55":349000,"56":429000,"57":649000,"58":429000,"59":349000,"60":479000,"61":549000,"62":399000,"63":459000,"64":229000,"65":449000,"66":899000,"67":399000,"68":449000,"69":599000};
+P.forEach(p=>{if(p.status==="preview"&&Number.isInteger(SELECTION_PRICES[p.id]))p.price=SELECTION_PRICES[p.id]});
+const PRODUCT_REFERENCE_IMAGES={"1":"images/references/product-01.webp","2":"images/references/product-02.webp","3":"images/references/product-03.webp","4":"images/references/product-04.webp","5":"images/references/product-05.webp","6":"images/references/product-06.webp","7":"images/references/product-07.webp","8":"images/references/product-08.webp","9":"images/references/product-09.webp","10":"images/references/product-10.webp","11":"images/references/product-11.webp","12":"images/references/product-12.webp","13":"images/references/product-13.webp","14":"images/references/product-14.webp","15":"images/references/product-15.webp","16":"images/references/product-16.webp","17":"images/references/product-17.webp","18":"images/references/product-18.webp","19":"images/references/product-19.webp","20":"images/references/product-20.webp","21":"images/references/product-21.webp","22":"images/references/product-22.webp"};
+Object.entries(PRODUCT_REFERENCE_IMAGES).forEach(([id,img])=>{const p=P.find(p=>p.id===Number(id));if(p&&!p.img&&!p.imgs?.length){p.img=img;p.referenceImage=true}});
 const isPreview=p=>p.status==="preview";
 const compareCatalogPrice=(a,b,direction=1)=>{const av=Number.isFinite(a.price),bv=Number.isFinite(b.price);return av&&bv?direction*(a.price-b.price):av?-1:bv?1:0};
 const OFFERS={1:20,5:10,17:15,10:20,35:10,34:20};
@@ -867,7 +882,7 @@ P.forEach(p=>{const winter=WINTER_OFFERS[p.id]||0,percent=Math.max(OFFERS[p.id]|
 document.querySelector('#winter-max').textContent=Math.max(...Object.values(WINTER_OFFERS));
 const onSale=p=>Number.isFinite(p.price)&&Number.isFinite(p.old)&&p.old>p.price;
 const discountPercent=p=>Math.round((p.old-p.price)/p.old*100);
-const priceHTML=p=>isPreview(p)?'<span class="pending-price">Giá đang cập nhật</span>':`<span class="${onSale(p)?'sale-price':''}">${fmt(p.price)}</span>${onSale(p)?` <s class="old-price" aria-label="Giá gốc ${fmt(p.old)}">${fmt(p.old)}</s>`:''}`;
+const priceHTML=p=>!Number.isFinite(p.price)?'<span class="pending-price">Giá đang cập nhật</span>':`<span class="${onSale(p)?'sale-price':''}">${fmt(p.price)}</span>${onSale(p)?` <s class="old-price" aria-label="Giá gốc ${fmt(p.old)}">${fmt(p.old)}</s>`:''}`;
 const saleBadge=p=>onSale(p)?`<span class="sale-badge${p.winterOffer?' winter-badge':''}">${p.winterOffer?'Mùa đông · ':''}−${discountPercent(p)}%</span>`:'';
 /* Phân loại có thể chỉnh riêng: gender = "nam", "nu" hoặc "unisex".
    Đây là phân loại biên tập từ tên/mô tả hiện có; kiểm tra lại khi có ảnh sản phẩm. */
@@ -892,10 +907,15 @@ const CATS=[
 
 CATS.find(c=>c.slug==='ao').subs.push({slug:'ao-ngan-tay',n:'Áo ngắn tay'},{slug:'ao-dai-tay',n:'Áo dài tay'});
 CATS.find(c=>c.slug==='vay').subs.push({slug:'chan-vay',n:'Chân váy'});
+CATS.find(c=>c.slug==='ao-khoac').subs.push({slug:'ao-khoac-dai',n:'Áo khoác dài'});
 /* ===== 7. GIỚI THIỆU, BỘ SƯU TẬP ===== */
-const FEATURE={title:"Giấc mơ dịu dàng",text:"Bộ sưu tập mang tinh thần mơ mộng của thương hiệu: nhẹ nhàng, ấm áp và đáng yêu. Hãy mặc những gì bạn thích và sống đúng với màu sắc của mình.",bg:"#12161F",e:"🎞️",img:""};
+const FEATURE={title:"Giấc mơ dịu dàng",text:"Bộ sưu tập mang tinh thần mơ mộng của thương hiệu: nhẹ nhàng, ấm áp và đáng yêu. Hãy mặc những gì bạn thích và sống đúng với màu sắc của mình.",bg:"#f1ede6",e:"",img:"images/banners/dreamy-editorial.webp"};
 const COLLS=[{slug:"thu-dong-2026",desc:"Áo khoác, cardigan và khăn len cho những ngày se lạnh. Chất liệu dày dặn, màu trung tính dễ phối.",n:"Bộ sưu tập Thu Đông 2026",bg:"#E7D9D3",e:"🍂",img:""},{slug:"ky-niem-4-nam",desc:"Những thiết kế được yêu thích nhất suốt 4 năm qua, được làm lại với chi tiết mới.",n:"Kỷ niệm 4 năm thành lập",bg:"#EDEAF4",e:"🎉",img:""},{slug:"share-your-color",desc:"Bộ sưu tập về màu sắc và cá tính: mỗi món là một cách để bạn thể hiện mình.",n:"Share your color",bg:"#D9E6F2",e:"🎨",img:""},{slug:"xuan-he-2026",desc:"Váy, sơ mi và quần short nhẹ, thoáng, dành cho những ngày nắng.",n:"Bộ sưu tập Xuân Hè 2026",bg:"#E4F0E3",e:"🌿",img:""}];
-COLLS.push({"slug":"the-famstyle-selection","n":"The FamStyle Selection","desc":"Các thiết kế nam và nữ được tuyển chọn theo phong cách thanh lịch. Giá và thông tin sản phẩm đang được cập nhật.","bg":"#ede7dc","e":"✦","img":"images/selection-2026/mp-05.webp"});
+COLLS.push({"slug":"the-famstyle-selection","n":"The FamStyle Selection","desc":"Các thiết kế nam và nữ được tuyển chọn theo phong cách thanh lịch. Size và chất liệu đang được cập nhật.","bg":"#ede7dc","e":"✦","img":"images/selection-2026/mp-05.webp"});
+
+/* Editorial cover photos for collection pages; product galleries stay separate. */
+const COLLECTION_COVERS={"thu-dong-2026":{"img":"images/collections/winter-2026.webp","focus":"43% 50%"},"ky-niem-4-nam":{"img":"images/collections/anniversary-2026.webp","focus":"60% 40%"},"share-your-color":{"img":"images/collections/color-2026.webp","focus":"12% 50%"},"xuan-he-2026":{"img":"images/collections/spring-2026.webp","focus":"28% 35%"}};
+COLLS.forEach(c=>{if(COLLECTION_COVERS[c.slug])Object.assign(c,COLLECTION_COVERS[c.slug])});
 
 /* tên hiển thị của từng mã màu (dùng ở trang chi tiết và giỏ hàng) */
 const COLOR_NAMES={"#C9474B":"Đỏ","#1E2430":"Xanh đen","#fff":"Trắng","#9DB6D4":"Xanh nhạt","#4B5A3C":"Xanh rêu","#111":"Đen","#B9A98C":"Be","#8A8F98":"Xám","#3B2A24":"Nâu đậm","#9AA58A":"Xanh rêu nhạt","#8A5A32":"Nâu bò","#27324A":"Xanh denim đậm","#E4DDD2":"Be sáng","#9C8579":"Nâu tro","#8E9A86":"Xanh olive xám","#E3C67A":"Vàng hoa","#E9E4DA":"Trắng kem","#4A1E28":"Đỏ mận","#8B8546":"Xanh olive"};
@@ -905,7 +925,7 @@ const $=s=>document.querySelector(s);
 const fmt=n=>new Intl.NumberFormat("vi-VN").format(n)+" VND";
 const stars=r=>"★".repeat(r)+"☆".repeat(5-r);
 // hiện ảnh thật nếu có img, nếu không thì hiện emoji
-const media=(o,priority=false)=>o.img?`<img src="${o.img}" alt="${o.n||""}" loading="${priority?'eager':'lazy'}" decoding="async">`:o.e;
+const media=(o,priority=false)=>o.img?`<img${o.referenceImage?' class="reference-photo"':''} src="${o.img}" alt="${o.referenceImage?'Ảnh tham khảo: ':''}${o.n||""}" loading="${priority?'eager':'lazy'}" decoding="async">`:o.e;
 const KEY="hem-cart";let cart={};
 try{cart=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){}
 if(!cart||typeof cart!=='object'||Array.isArray(cart))cart={};
@@ -914,9 +934,10 @@ const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(cart))}catch(e){}};
 const lines=()=>Object.keys(cart).map(k=>{const [id,s,c]=k.split("|"),p=P.find(x=>x.id==id);return {...p,size:s,color:p.colors[+c||0],key:k,qty:cart[k]}});
 function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("on"),1800)}
 
+function photoNote(p,full=false){return p.referenceImage?`<p class="photo-note">${full?'Ảnh tham khảo kiểu dáng; chưa xác nhận hình ảnh của mẫu này.':'Ảnh tham khảo'}</p>`:''}
 const card=p=>`<article class="pc" data-pid="${p.id}">
   <a class="im" href="#/san-pham/${p.id}" style="background:${p.bg}" aria-label="Xem chi tiết ${p.n}">${media(p)}${saleBadge(p)}</a>
-  <div class="nm"><a href="#/san-pham/${p.id}">${p.n}</a></div><div class="st" aria-label="${rating(p)?rating(p)+' sao':'Chưa có đánh giá'}">${stars(rating(p))}</div><div class="pr">${priceHTML(p)}</div>
+  <div class="nm"><a href="#/san-pham/${p.id}">${p.n}</a></div>${photoNote(p)}<div class="st" aria-label="${rating(p)?rating(p)+' sao':'Chưa có đánh giá'}">${stars(rating(p))}</div><div class="pr">${priceHTML(p)}</div>
   <div class="add">${isPreview(p)?`<a class="btn light" href="#/san-pham/${p.id}">Xem chi tiết</a>`:`<button class="btn" data-add="${p.id}">Thêm vào giỏ</button>`}</div>
  </article>`;
 /* ===== SẢN PHẨM NỔI BẬT: đổi danh sách id ở đây (id nằm trong mảng P) ===== */
@@ -940,7 +961,7 @@ function products(){
   return `<article class="fp"><div class="fim" style="background:${p.bg}">
    <a class="fl" href="#/san-pham/${p.id}" aria-label="Xem ${p.n}"><div class="f1">${lay(a)}</div><div class="f2">${lay(b)}</div></a>
    ${saleBadge(p)}
-   <div class="fic">${isPreview(p)?'':`<button data-qa="${p.id}|${defSize(p)}" aria-label="Thêm nhanh vào giỏ hàng">${ICO_BAG}</button>`}<button data-qv="${p.id}" aria-label="Xem nhanh sản phẩm">${ICO_EYE}</button></div>
+   <div class="fic">${isPreview(p)?'':`<button data-qa="${p.id}" aria-label="Thêm nhanh vào giỏ hàng">${ICO_BAG}</button>`}<button data-qv="${p.id}" aria-label="Xem nhanh sản phẩm">${ICO_EYE}</button></div>
   </div>
   <div class="fn"><a href="#/san-pham/${p.id}">${p.n}</a></div>
   <div class="fpr">${priceHTML(p)}</div></article>`;
@@ -951,7 +972,7 @@ function drawer(){
  const L=lines(),total=L.reduce((t,l)=>t+l.price*l.qty,0),count=L.reduce((t,l)=>t+l.qty,0),shipping=total>=FREE_SHIP?0:SHIP_FEE;
  const focused=document.activeElement,focusKey=focused&&focused.closest('#drawer')?['inc','dec','remove'].find(k=>focused.dataset[k]):null,focusValue=focusKey?focused.dataset[focusKey]:null;
  $('#cnt').textContent=count;
- $('#drawer').innerHTML=`<div class="dh"><div><div class="bag-label">FAMSTYLE / SHOPPING BAG</div><h2 id="bag-title">Giỏ hàng của bạn</h2><div class="bag-count">${count} sản phẩm được lựa chọn</div></div><button class="bag-close" data-close aria-label="Đóng giỏ hàng">×</button></div><div class="db">${L.length?`<div class="shipping">${total>=FREE_SHIP?'<strong>Đơn hàng của bạn được miễn phí vận chuyển.</strong>':`Thêm <strong>${fmt(FREE_SHIP-total)}</strong> để được miễn phí vận chuyển.`}<div class="shipping-track"><span style="width:${Math.min(100,total/FREE_SHIP*100)}%"></span></div></div>${L.map(l=>`<div class="li"><a class="t" href="#/san-pham/${l.id}" data-cart-product style="background:${l.bg}" aria-label="Xem ${l.n}">${media(l)}</a><div class="n"><a href="#/san-pham/${l.id}" data-cart-product>${l.n}</a><small>Size ${l.size} · ${COLOR_NAMES[l.color]||'Màu đã chọn'}</small><div class="item-price">${fmt(l.price*l.qty)}</div><div class="item-controls"><div class="q"><button data-dec="${l.key}" aria-label="Giảm số lượng ${l.n}">−</button><span aria-live="polite">${l.qty}</span><button data-inc="${l.key}" aria-label="Tăng số lượng ${l.n}">+</button></div><button class="remove-item" data-remove="${l.key}" aria-label="Xóa ${l.n} khỏi giỏ hàng">Xóa</button></div></div></div>`).join('')}`:`<div class="bag-empty"><svg class="empty-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M15 23h34l-3 31H18z"/><path d="M24 23v-7a8 8 0 0 1 16 0v7"/></svg><div class="bag-label">MỘT CHÚT CẢM HỨNG MỚI</div><h3>Giỏ hàng đang trống</h3><p>Khám phá những thiết kế phù hợp<br>với phong cách của bạn.</p><button class="checkout-btn" data-close>TIẾP TỤC MUA SẮM <span>→</span></button></div>`}</div>${L.length?`<div class="df"><div class="summary-row"><span>Tạm tính</span><span>${fmt(total)}</span></div><div class="summary-row"><span>Phí vận chuyển dự kiến</span><span>${shipping?fmt(shipping):'Miễn phí'}</span></div><div class="tot"><span>Tổng dự kiến</span><strong>${fmt(total+shipping)}</strong></div><p class="summary-note">Phí vận chuyển được tính theo chính sách hiện tại của cửa hàng.</p><button class="checkout-btn" data-pay>TIẾN HÀNH THANH TOÁN <span aria-hidden="true">→</span></button><button class="continue-btn" data-close>Tiếp tục mua sắm</button></div>`:''}`;
+ $('#drawer').innerHTML=`<div class="dh"><div><div class="bag-label">FAMSTYLE / SHOPPING BAG</div><h2 id="bag-title">Giỏ hàng của bạn</h2><div class="bag-count">${count} sản phẩm được lựa chọn</div></div><button class="bag-close" data-close aria-label="Đóng giỏ hàng">×</button></div><div class="db">${L.length?`<div class="shipping">${total>=FREE_SHIP?'<strong>Đơn hàng của bạn được miễn phí vận chuyển.</strong>':`Thêm <strong>${fmt(FREE_SHIP-total)}</strong> để được miễn phí vận chuyển.`}<div class="shipping-track"><span style="width:${Math.min(100,total/FREE_SHIP*100)}%"></span></div></div>${L.map(l=>`<div class="li"><a class="t" href="#/san-pham/${l.id}" data-cart-product style="background:${l.bg}" aria-label="Xem ${l.n}">${media(l)}</a><div class="n"><a href="#/san-pham/${l.id}" data-cart-product>${l.n}</a><label class="cart-size-label">Size <select data-cart-size="${l.key}" aria-label="Kích thước của ${l.n}">${l.sizes.map(size=>`<option value="${esc(size)}" ${size===l.size?'selected':''}>${esc(size)}</option>`).join('')}</select></label><small>${COLOR_NAMES[l.color]||'Màu đã chọn'}</small><div class="item-price">${fmt(l.price*l.qty)}</div><div class="item-controls"><div class="q"><button data-dec="${l.key}" aria-label="Giảm số lượng ${l.n}">−</button><span aria-live="polite">${l.qty}</span><button data-inc="${l.key}" aria-label="Tăng số lượng ${l.n}">+</button></div><button class="remove-item" data-remove="${l.key}" aria-label="Xóa ${l.n} khỏi giỏ hàng">Xóa</button></div></div></div>`).join('')}`:`<div class="bag-empty"><svg class="empty-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M15 23h34l-3 31H18z"/><path d="M24 23v-7a8 8 0 0 1 16 0v7"/></svg><div class="bag-label">MỘT CHÚT CẢM HỨNG MỚI</div><h3>Giỏ hàng đang trống</h3><p>Khám phá những thiết kế phù hợp<br>với phong cách của bạn.</p><button class="checkout-btn" data-close>TIẾP TỤC MUA SẮM <span>→</span></button></div>`}</div>${L.length?`<div class="df"><div class="summary-row"><span>Tạm tính</span><span>${fmt(total)}</span></div><div class="summary-row"><span>Phí vận chuyển dự kiến</span><span>${shipping?fmt(shipping):'Miễn phí'}</span></div><div class="tot"><span>Tổng dự kiến</span><strong>${fmt(total+shipping)}</strong></div><p class="summary-note">Phí vận chuyển được tính theo chính sách hiện tại của cửa hàng.</p><button class="checkout-btn" data-pay>TIẾN HÀNH THANH TOÁN <span aria-hidden="true">→</span></button><button class="continue-btn" data-close>Tiếp tục mua sắm</button></div>`:''}`;
  miniCart();
  if(focusKey){const target=Array.from($('#drawer').querySelectorAll('button')).find(el=>el.dataset[focusKey]===focusValue);(target||$('#drawer .bag-close')).focus()}
 }
@@ -965,12 +986,11 @@ document.addEventListener("click",e=>{
  if(t.id==="shade"||"close" in d)close();
  else if(t.id==="cartBtn")open();
  else if(d.add){openQV(d.add,t)}
- else if(d.dsize){sel.size=d.dsize;detail();restoreDetailFocus("dsize",d.dsize)}
  else if(d.dcol!==undefined){sel.col=+d.dcol;detail();restoreDetailFocus("dcol",d.dcol)}
  else if(d.dq){sel.qty=Math.min(99,Math.max(1,sel.qty+ +d.dq));detail();restoreDetailFocus("dq",d.dq)}
  else if("dadd" in d)addCart(cur,sel.size,sel.col,sel.qty)
  else if(d.qv){openQV(d.qv,t)}
- else if(d.qa){openQV(d.qa.split("|")[0],t)}
+ else if(d.qa){openQV(d.qa,t)}
  else if("placeorder" in d)placeOrder()
  else if("editcart" in d)open()
  else if(d.rvstar){rvf.r=+d.rvstar;detail()}
@@ -991,30 +1011,36 @@ if(HERO.img){
  $("#hero").insertAdjacentHTML("afterbegin",`<picture class="hero-media"><img class="bgimg" fetchpriority="high" decoding="async" src="${HERO.img}" srcset="${HERO.srcset}" sizes="100vw" width="${HERO.width}" height="${HERO.height}" alt="${HERO.alt}"></picture><div class="scrim"></div>`);
 }
 
-$("#featM").style.background=FEATURE.bg;$("#featM").innerHTML=media(FEATURE);$("#featT").textContent=FEATURE.title;$("#featP").textContent=FEATURE.text;
+$("#featM").style.background=FEATURE.bg;$("#featM").innerHTML=media({...FEATURE,n:FEATURE.title});$("#featT").textContent=FEATURE.title;$("#featP").textContent=FEATURE.text;
+function collectionMedia(c,card=false){return c.img?`<img${card?' class="editorial-photo"':''} src="${c.img}" alt="${c.n}" loading="lazy" decoding="async">`:''}
 const collectionNotes=['Sắc trầm ấm áp, phom dáng thoải mái cho những ngày se lạnh.','Những thiết kế đánh dấu hành trình và cá tính Famstyle.','Tự do phối màu. Tự tin thể hiện chất riêng.','Chất liệu nhẹ nhàng, sắc màu tươi mới cho ngày nắng.'];
 collectionNotes.push('Những thiết kế tối giản, màu trung tính và phom dáng dễ phối.');
-$("#colls").innerHTML=COLLS.map((c,i)=>{const p=P.find(p=>p.img===c.img)||P.find(p=>p.col===c.slug&&p.img)||P.find(p=>p.col===c.slug);return `<a class="collection-card" href="#/bo-suu-tap/${c.slug}"><div class="collection-copy"><span class="collection-number">BỘ SƯU TẬP / 0${i+1}</span><h3>${c.n.replace(/^Bộ sưu tập /,'')}</h3><p>${collectionNotes[i]}</p><div class="collection-cta">Khám phá <span aria-hidden="true">↗</span></div></div><div class="collection-visual">${editorialMedia(p,c.img||p.img)}</div></a>`}).join('');
+$("#colls").innerHTML=COLLS.map((c,i)=>{const p=P.find(p=>p.img===c.img)||P.find(p=>p.col===c.slug&&p.img)||P.find(p=>p.col===c.slug);return `<a class="collection-card" href="#/bo-suu-tap/${c.slug}"><div class="collection-copy"><span class="collection-number">BỘ SƯU TẬP / 0${i+1}</span><h3>${c.n.replace(/^Bộ sưu tập /,'')}</h3><p>${collectionNotes[i]}</p><div class="collection-cta">Khám phá <span aria-hidden="true">↗</span></div></div><div class="collection-visual" style="--collection-focus:${c.focus||'50% 50%'}">${collectionMedia(c,true)}</div></a>`}).join('');
 /* ===== 9. TRANG CHI TIẾT SẢN PHẨM (địa chỉ dạng #/san-pham/1) ===== */
 let cur=null,sel={size:"",col:0,qty:1},ccur="tat-ca",csort="",colcur="",csub="";
-const defSize=p=>p.sizes.includes("M")?"M":p.sizes[0];
+const sizeErrors={detail:false,quick:false};
 function cartPlus(button,n){
  if(!button||matchMedia("(prefers-reduced-motion:reduce)").matches)return;const r=button.getBoundingClientRect(),el=document.createElement('span');el.className='cart-plus';el.textContent='+'+n;el.setAttribute('aria-hidden','true');el.style.left=(r.left+r.width/2)+'px';el.style.top=(r.top-8)+'px';document.body.appendChild(el);setTimeout(()=>el.remove(),650);
 }
 let addOrigin=null;
 document.addEventListener('click',e=>{addOrigin=e.target.closest('button[data-add],button[data-dadd],button[data-qa],button[data-qvadd]')},true);
 function addCart(p,s,c,n){
- if(p&&isPreview(p)){toast("Mẫu này chưa mở bán. Giá và size đang cập nhật.");return}
- if(!p||!p.sizes.includes(s)){toast('Vui lòng chọn kích thước trước khi thêm vào giỏ.');const scope=!qvEl.hidden?qvEl:$('#detail');scope.querySelector('.sz')?.focus();return}
+ if(p&&isPreview(p)){toast("Mẫu này chưa mở bán. Thông tin size đang cập nhật.");return}
+ if(!p||!p.sizes.includes(s)){
+  const quick=qvEl.classList.contains('on')&&qvp?.id===p?.id;sizeErrors[quick?'quick':'detail']=true;
+  if(quick)qvInfo();else if(cur?.id===p?.id)detail();
+  const scope=quick?qvEl:$('#detail');scope.querySelector('input[data-dsize],input[data-qvsize]')?.focus();
+  toast('Vui lòng chọn kích thước trước khi thêm vào giỏ.');return false;
+ }
  if(!Number.isInteger(c)||c<0||c>=p.colors.length||!Number.isInteger(n)||n<1||n>99){toast('Số lượng hợp lệ từ 1 đến 99.');return}
  const current=cart[p.id+'|'+s+'|'+c]||0;if(current+n>99){toast('Số lượng hợp lệ từ 1 đến 99.');return}
  cartPlus(addOrigin,n);const k=p.id+"|"+s+"|"+c;cart[k]=(cart[k]||0)+n;save();drawer();toast(`Đã thêm ${p.n} (size ${s})`);bump()}
-function restoreDetailFocus(key,value){Array.from($("#detail").querySelectorAll("button")).find(b=>b.dataset[key]===value)?.focus({preventScroll:true})}
+function restoreDetailFocus(key,value){Array.from($("#detail").querySelectorAll("button,input")).find(b=>b.dataset[key]===value)?.focus({preventScroll:true})}
 
-function previewNotice(){return `<div class="selection-note"><strong>Mẫu tuyển chọn</strong><p>Giá, size và chất liệu đang cập nhật. Mẫu này hiện chỉ để xem, chưa nhận đặt hàng.</p></div>`}
+function previewNotice(){return `<div class="selection-note"><strong>Mẫu tuyển chọn</strong><p>Size và chất liệu đang chờ xác nhận. Mẫu này hiện chỉ để xem, chưa nhận đặt hàng.</p></div>`}
 function previewDetail(p){
  const related=P.filter(x=>x.selected&&x.gender===p.gender&&x.id!==p.id).slice(0,4);
- $('#detail').innerHTML=`<a class="back" href="#/bo-suu-tap/the-famstyle-selection">← The FamStyle Selection</a><div class="dg"><div class="dim selection-image" style="background:${p.bg}">${media(p,true)}</div><div class="di"><span class="eyebrow">THE FAMSTYLE / SELECTION</span><h1>${p.n}</h1><div class="dpr">${priceHTML(p)}</div>${previewNotice()}<button class="btn" style="width:100%;margin:18px 0" disabled>Chưa mở bán</button><button type="button" class="support-product-link" data-support-open data-support-product="${p.id}">Tư vấn sản phẩm này</button><a class="size-help" href="#/bo-suu-tap/the-famstyle-selection">Xem bộ sưu tập tuyển chọn →</a></div></div><div class="more"><div class="sh"><h2>Có thể bạn cũng thích</h2></div><div class="row">${related.map(card).join('')}</div></div>`;
+ $('#detail').innerHTML=`<a class="back" href="#/bo-suu-tap/the-famstyle-selection">← The FamStyle Selection</a><div class="dg"><div class="dim selection-image" style="background:${p.bg}">${media(p,true)}</div><div class="di"><span class="eyebrow">THE FAMSTYLE / SELECTION</span><h1>${p.n}</h1><div class="dpr">${priceHTML(p)}</div>${photoNote(p,true)}${previewNotice()}<button class="btn" style="width:100%;margin:18px 0" disabled>Chưa mở bán</button><button type="button" class="support-product-link" data-support-open data-support-product="${p.id}">Tư vấn sản phẩm này</button><a class="size-help" href="#/bo-suu-tap/the-famstyle-selection">Xem bộ sưu tập tuyển chọn →</a></div></div><div class="more"><div class="sh"><h2>Có thể bạn cũng thích</h2></div><div class="row">${related.map(card).join('')}</div></div>`;
 }
 function renderStyleSelection(){
  const figure=x=>`<figure tabindex="0"><img src="${x.img}" alt="${esc(x.title)}" width="1000" height="1250" loading="lazy" decoding="async"><figcaption>${esc(x.title)}</figcaption></figure>`;
@@ -1022,15 +1048,32 @@ function renderStyleSelection(){
  $('#styleReferences').innerHTML=STYLE_SELECTION.filter(x=>x.group==='reference').map(figure).join('');
 }
 
+
+function sizePicker(p,value,scope){
+ const key=scope==='detail'?'dsize':'qvsize',base=scope+'-size',numeric=p.sizes.length&&p.sizes.every(x=>/^\d+$/.test(x)),error=sizeErrors[scope];
+ const hint=p.sizes.length===1?'Chỉ có một kích thước.':numeric?'Chọn size theo số; không tự quy đổi sang S/M/L.':'Chọn đúng size trước khi thêm vào giỏ.';
+ return `<fieldset class="size-picker" aria-describedby="${base}-help ${base}-error" aria-invalid="${!!error}"><legend>Chọn kích thước</legend><div class="size-options">${p.sizes.map((size,i)=>`<label class="size-choice"><input type="radio" name="${base}" id="${base}-${i}" value="${esc(size)}" data-${key}="${esc(size)}" ${value===size?'checked':''}><span class="sz">${esc(size)}</span></label>`).join('')}</div><p id="${base}-help" class="size-help-text">${hint}</p><p class="size-status" role="status">${value?`Đã chọn size: <span translate="no">${esc(value)}</span>`:'Chưa chọn kích thước'}</p><p id="${base}-error" class="size-error" role="alert" ${error?'':'hidden'}>${error?'Vui lòng chọn kích thước trước khi thêm vào giỏ.':''}</p></fieldset>`;
+}
+document.addEventListener('change',e=>{
+ const input=e.target;if(input.matches('[data-dsize]')){if(!cur?.sizes.includes(input.value))return;sel.size=input.value;sizeErrors.detail=false;detail();restoreDetailFocus('dsize',sel.size)}
+ else if(input.matches('[data-qvsize]')){if(!qvp?.sizes.includes(input.value))return;qs.size=input.value;sizeErrors.quick=false;qvInfo();Array.from(qvEl.querySelectorAll('[data-qvsize]')).find(x=>x.value===qs.size)?.focus()}
+ else if(input.matches('[data-cart-size]')){
+  const key=input.dataset.cartSize,line=lines().find(x=>x.key===key);if(!line||!line.sizes.includes(input.value))return;
+  const color=key.split('|')[2],next=line.id+'|'+input.value+'|'+color;if(next===key)return;
+  const quantity=cart[key]+(cart[next]||0);if(quantity>99){input.value=line.size;toast('Số lượng hợp lệ từ 1 đến 99.');return}
+  delete cart[key];cart[next]=quantity;save();drawer();Array.from($('#drawer').querySelectorAll('[data-cart-size]')).find(x=>x.dataset.cartSize===next)?.focus();
+ }
+});
+
 function detail(){
  if(isPreview(cur)){previewDetail(cur);return}
  const p=cur,more=P.filter(x=>x.id!==p.id).map((x,i)=>({p:x,i,score:(x.cat===p.cat?4:0)+(x.col===p.col?2:0)+(x.gender===p.gender?3:0)})).sort((a,b)=>b.score-a.score||a.i-b.i).slice(0,4).map(x=>x.p);
  $("#detail").innerHTML=`<a class="back" href="#featured">← Quay lại sản phẩm</a>
  <div class="dg"><div class="dim" style="background:${p.bg}">${media(p,true)}</div>
  <div class="di"><h1>${p.n}</h1><div class="st">${(a=>a.n?stars(Math.round(a.avg))+" "+a.avg.toFixed(1)+"/5 ("+a.n+" đánh giá)":"Chưa có đánh giá")(avg(p))}</div><div class="dpr">${priceHTML(p)}</div>${onSale(p)?`<p class="sale-saving">Ưu đãi ${discountPercent(p)}% · Tiết kiệm ${fmt(p.old-p.price)}</p>`:""}
- <p lang="vi" translate="no">${p.desc||""}</p>
+ ${photoNote(p,true)}<p lang="vi" translate="no">${p.desc||""}</p>
  ${p.colors.length>1?`<b>Màu sắc: ${COLOR_NAMES[p.colors[sel.col]]||""}</b><div class="opts">${p.colors.map((c,i)=>`<button class="col" style="background:${c}" data-dcol="${i}" aria-pressed="${i===sel.col}" aria-label="${COLOR_NAMES[c]||"Màu "+(i+1)}"></button>`).join("")}</div>`:""}
- <b>Kích thước</b><div class="opts">${p.sizes.map(s=>`<button class="sz" data-dsize="${s}" aria-pressed="${s===sel.size}">${s}</button>`).join("")}</div>
+ ${sizePicker(p,sel.size,"detail")}
  <b>Số lượng</b><div class="q"><button data-dq="-1" aria-label="Giảm">−</button>${sel.qty}<button data-dq="1" aria-label="Tăng">+</button></div>
  <button class="btn" style="width:100%;margin-top:22px;padding:14px" data-dadd>Thêm vào giỏ</button><a class="size-help" href="#/huong-dan-size">Hướng dẫn chọn size ↗</a>
  <button type="button" class="support-product-link" data-support-open data-support-product="${p.id}">Tư vấn sản phẩm này</button>
@@ -1092,7 +1135,7 @@ function colPage(){
  const c=COLLS.find(x=>x.slug===colcur),pool=P.filter(p=>p.col===c.slug),l=pool.filter(p=>matchesListing(p)&&(!productSaleOnly||onSale(p)));
  if(csort==="asc")l.sort((a,b)=>compareCatalogPrice(a,b,1));if(csort==="desc")l.sort((a,b)=>compareCatalogPrice(a,b,-1));
  $("#catpage").innerHTML=`<a class="back" href="#coll">← Tất cả bộ sưu tập</a>
- <div class="banner" style="background:${c.bg}"><div class="bi">${media(c)}</div><div><h1 class="ct">${c.n}</h1><p>${c.desc}</p><p class="sub">${l.length} sản phẩm</p></div></div>
+ <div class="banner" style="background:${c.bg};--collection-focus:${c.focus||'50% 50%'}"><div class="bi">${collectionMedia(c)}</div><div><h1 class="ct">${c.n}</h1><p>${c.desc}</p><p class="sub">${l.length} sản phẩm</p></div></div>
  <div class="tools">${COLLS.map(x=>`<a class="chip" href="#/bo-suu-tap/${x.slug}" aria-current="${x.slug===c.slug}">${x.n}</a>`).join("")}</div>
  ${productOffersHTML(pool)}${l.length?`<div class="pgrid">${l.map(card).join("")}</div>`:listingEmpty()}`;
 }
@@ -1150,7 +1193,7 @@ function route(){
  }else if(/^#\/san-pham-(nam|nu)(?:\/[\w-]+){0,2}$/.test(h)){
   v.cat.hidden=false;genderPage();window.scrollTo({top:0,behavior:"instant"});
  }else if(m&&P.some(x=>x.id==m[1])){
-  cur=P.find(x=>x.id==m[1]);sel={size:cur.sizes.length===1?cur.sizes[0]:"",col:0,qty:1};rvf={r:0,name:"",text:"",err:""};
+  cur=P.find(x=>x.id==m[1]);sel={size:cur.sizes.length===1?cur.sizes[0]:"",col:0,qty:1};sizeErrors.detail=false;rvf={r:0,name:"",text:"",err:""};
   v.det.hidden=false;detail();window.scrollTo({top:0,behavior:"instant"});document.title=cur.n+" – "+BRAND;
  }else if(isCk){
   CKE={};v.cat.hidden=false;checkoutPage();window.scrollTo({top:0,behavior:"instant"});document.title="Thanh toán – "+BRAND;
@@ -1175,7 +1218,7 @@ function route(){
  }
 }
 document.addEventListener("change",e=>{if(e.target.id==="csort"){csort=e.target.value;location.hash.startsWith("#/uu-dai")?offersPage():location.hash.startsWith("#/tim-kiem/")?searchPage():/^#\/san-pham-(nam|nu)/.test(location.hash)?genderPage():location.hash.startsWith("#/bo-suu-tap/")?colPage():catPage();$("#csort")?.focus()}});
-$("#nav").innerHTML=`<a class="nl" href="#/gioi-thieu">Giới thiệu</a><div class="dd gender-menu"><a href="#/danh-muc/tat-ca">Sản phẩm</a><div class="panel">${['nam','nu'].map(g=>`<div class="gender-entry"><a class="gender-link" href="${genderURL(g)}">Sản phẩm ${g==='nam'?'Nam':'Nữ'} <span aria-hidden="true">›</span></a><div class="gender-submenu">${genderCategories(g).map(c=>`<div><a class="gender-cat-title" href="${genderURL(g,c.slug)}">${genderCategoryName(g,c)}</a>${genderSubs(g,c).map(x=>`<a href="${genderURL(g,c.slug,x.slug)}">${x.n}</a>`).join('')}</div>`).join('')}</div></div>`).join('')}<a class="gender-all" href="#/danh-muc/tat-ca">Xem tất cả sản phẩm →</a></div></div><div class="dd"><a href="#coll">Bộ sưu tập</a><div class="panel">${COLLS.map(c=>`<a href="#/bo-suu-tap/${c.slug}"><span>${c.e}</span>${c.n}</a>`).join('')}</div></div><div class="dd"><a class="nl offers-nav" href="#/uu-dai">Ưu đãi</a><div class="panel"><a href="#/uu-dai">Tất cả ưu đãi</a><a href="#/uu-dai/mua-dong">Ưu đãi mùa đông</a></div></div>`;
+$("#nav").innerHTML=`<a class="nl" href="#/gioi-thieu">Giới thiệu</a><div class="dd gender-menu"><a href="#/danh-muc/tat-ca">Sản phẩm</a><div class="panel">${['nam','nu'].map(g=>`<div class="gender-entry"><a class="gender-link" href="${genderURL(g)}">Sản phẩm ${g==='nam'?'Nam':'Nữ'} <span aria-hidden="true">›</span></a><div class="gender-submenu">${genderCategories(g).map(c=>`<div><a class="gender-cat-title" href="${genderURL(g,c.slug)}">${genderCategoryName(g,c)}</a>${genderSubs(g,c).map(x=>`<a href="${genderURL(g,c.slug,x.slug)}">${x.n}</a>`).join('')}</div>`).join('')}</div></div>`).join('')}<a class="gender-all" href="#/danh-muc/tat-ca">Xem tất cả sản phẩm →</a></div></div><div class="dd"><a href="#coll">Bộ sưu tập</a><div class="panel">${COLLS.map(c=>`<a href="#/bo-suu-tap/${c.slug}">${c.n}</a>`).join('')}</div></div><div class="dd"><a class="nl offers-nav" href="#/uu-dai">Ưu đãi</a><div class="panel"><a href="#/uu-dai">Tất cả ưu đãi</a><a href="#/uu-dai/mua-dong">Ưu đãi mùa đông</a></div></div>`;
 document.querySelectorAll(".dd").forEach(dd=>{
  // bấm vào một mục thì đóng panel cho đến khi di chuột ra rồi vào lại
  dd.addEventListener("click",e=>{const a=e.target.closest(".panel a");if(a){a.blur();dd.classList.add("shut")}});
@@ -1191,11 +1234,12 @@ const pv=$("#pv");let pvT,pvId=null,pvTimer,pvIdx=0,pvN=1;
 function setSlide(i){pvIdx=i;pv.querySelectorAll(".sl").forEach((el,k)=>el.classList.toggle("on",k===i));pv.querySelectorAll(".pd i").forEach((el,k)=>el.classList.toggle("on",k===i))}
 function showPv(card){
  const p=P.find(x=>x.id==card.dataset.pid);if(!p)return;
+ pv.classList.toggle("reference-gallery",!!p.referenceImage);
  const names=p.colors.map(c=>COLOR_NAMES[c]).filter(Boolean).join(", ");
  const G=gallery(p);
  const slides=G.map((g,i)=>`<div class="sl${i?"":" on"}">${g.img?`<img src="${g.img}" alt="">`:`<span style="transform:${g.t}">${p.e}</span>`}</div>`).join("");
  const dots=G.length>1?`<div class="pd">${G.map((_,i)=>`<i${i?"":' class="on"'}></i>`).join("")}</div>`:"";
- pv.innerHTML=`<div class="pi" style="background:${p.bg}">${slides}${dots}</div><div class="pb"><h4>${p.n}</h4>${rating(p)?`<div class="st">${stars(rating(p))}</div>`:""}<b>${priceHTML(p)}</b><p>${p.desc||""}</p><div class="pz">${p.sizes.map(z=>`<span>${z}</span>`).join("")}</div>${names?`<p>Màu: ${names}</p>`:""}</div>`;
+ pv.innerHTML=`<div class="pi" style="background:${p.bg}">${slides}${dots}</div><div class="pb"><h4>${p.n}</h4>${photoNote(p)}${rating(p)?`<div class="st">${stars(rating(p))}</div>`:""}<b>${priceHTML(p)}</b><p>${p.desc||""}</p><div class="pz">${p.sizes.map(z=>`<span>${z}</span>`).join("")}</div>${names?`<p>Màu: ${names}</p>`:""}</div>`;
  const r=card.getBoundingClientRect(),w=300,h=pv.offsetHeight;
  let x=r.right+12;
  if(x+w>innerWidth-10)x=r.left-w-12;           // hết chỗ bên phải thì hiện bên trái
@@ -1453,22 +1497,22 @@ function qvSlide(i){
 }
 function qvInfo(){
  const p=qvp,a=avg(p);
- if(isPreview(p)){$('#qvi').innerHTML=`<h2>${p.n}</h2><div class="dpr">${priceHTML(p)}</div>${previewNotice()}<button class="btn" disabled>Chưa mở bán</button><a class="qvl" href="#/san-pham/${p.id}">Xem chi tiết sản phẩm →</a>`;return}
+ if(isPreview(p)){$('#qvi').innerHTML=`<h2>${p.n}</h2><div class="dpr">${priceHTML(p)}</div>${photoNote(p,true)}${previewNotice()}<button class="btn" disabled>Chưa mở bán</button><a class="qvl" href="#/san-pham/${p.id}">Xem chi tiết sản phẩm →</a>`;return}
  $("#qvi").innerHTML=`<h2>${p.n}</h2>
  <div class="st">${a.n?stars(Math.round(a.avg))+" "+a.avg.toFixed(1)+"/5 ("+a.n+" đánh giá)":"Chưa có đánh giá"}</div>
  <div class="dpr">${priceHTML(p)}</div>
- <p lang="vi" translate="no" style="margin:0;color:#4D505B;line-height:1.65">${p.desc||""}</p>
+ ${photoNote(p,true)}<p lang="vi" translate="no" style="margin:0;color:#4D505B;line-height:1.65">${p.desc||""}</p>
  ${p.colors.length>1?`<b>Màu sắc: ${COLOR_NAMES[p.colors[qs.col]]||""}</b><div class="opts">${p.colors.map((c,i)=>`<button class="col" style="background:${c}" data-qvcol="${i}" aria-pressed="${i===qs.col}" aria-label="${COLOR_NAMES[c]||"Màu "+(i+1)}"></button>`).join("")}</div>`:""}
- <b>Kích thước</b><div class="opts">${p.sizes.map(z=>`<button class="sz" data-qvsize="${z}" aria-pressed="${z===qs.size}">${z}</button>`).join("")}</div>
+ ${sizePicker(p,qs.size,"quick")}
  <b>Số lượng</b><div class="q"><button data-qvq="-1" aria-label="Giảm">−</button>${qs.qty}<button data-qvq="1" aria-label="Tăng">+</button></div>
  <button class="btn" style="margin-top:20px;padding:14px" data-qvadd>Thêm vào giỏ hàng</button><a class="size-help" href="#/huong-dan-size">Hướng dẫn chọn size ↗</a>
  <a class="qvl" href="#/san-pham/${p.id}">Xem chi tiết sản phẩm →</a>`;
 }
 function openQV(id,from){
  qvp=P.find(x=>x.id==id);if(!qvp)return;
- qs={size:qvp.sizes.length===1?qvp.sizes[0]:"",col:0,qty:1,idx:0};qvFrom=from||null;
+ qs={size:qvp.sizes.length===1?qvp.sizes[0]:"",col:0,qty:1,idx:0};sizeErrors.quick=false;qvFrom=from||null;
  const G=gallery(qvp);
- $("#qvg").style.background=qvp.bg;
+ $("#qvg").style.background=qvp.bg;$("#qvg").classList.toggle("reference-gallery",!!qvp.referenceImage);
  $("#qvg").innerHTML=G.map((g,i)=>`<div class="sl${i?"":" on"}">${g.img?`<img src="${g.img}" alt="">`:`<span style="transform:${g.t}">${qvp.e}</span>`}</div>`).join("")+
   (G.length>1?`<button class="qva l" data-qvprev aria-label="Ảnh trước">‹</button><button class="qva r" data-qvnext aria-label="Ảnh sau">›</button><div class="pd">${G.map((_,i)=>`<i${i?"":' class="on"'} data-qvdot="${i}"></i>`).join("")}</div>`:"");
  qvInfo();
@@ -1488,13 +1532,13 @@ qvEl.addEventListener("click",e=>{
  else if("qvprev" in d)qvSlide(qs.idx-1);
  else if("qvnext" in d)qvSlide(qs.idx+1);
  else if(d.qvdot!==undefined)qvSlide(+d.qvdot);
- else if(d.qvsize){qs.size=d.qvsize;qvInfo();Array.from(qvEl.querySelectorAll("[data-qvsize]")).find(b=>b.dataset.qvsize===d.qvsize)?.focus()}
  else if(d.qvcol!==undefined){qs.col=+d.qvcol;qvInfo();Array.from(qvEl.querySelectorAll("[data-qvcol]")).find(b=>b.dataset.qvcol===d.qvcol)?.focus()}
  else if(d.qvq){qs.qty=Math.min(99,Math.max(1,qs.qty+ +d.qvq));qvInfo();Array.from(qvEl.querySelectorAll("[data-qvq]")).find(b=>b.dataset.qvq===d.qvq)?.focus()}
  else if("qvadd" in d)addCart(qvp,qs.size,qs.col,qs.qty);
 });
 document.addEventListener("keydown",e=>{
  if(qvEl.hidden)return;
+ if((e.key==='ArrowLeft'||e.key==='ArrowRight')&&e.target.closest('.size-picker'))return;
  if(e.key==='Tab'){const nodes=[...qvEl.querySelectorAll('button:not([disabled]),a[href],input:not([disabled]),select:not([disabled])')],first=nodes[0],last=nodes[nodes.length-1];if(e.shiftKey&&(document.activeElement===first||!qvEl.contains(document.activeElement))){e.preventDefault();last?.focus()}else if(!e.shiftKey&&(document.activeElement===last||!qvEl.contains(document.activeElement))){e.preventDefault();first?.focus()}return}
  if(e.key==="Escape")closeQV();
  else if(e.key==="ArrowLeft")qvSlide(qs.idx-1);
@@ -1594,6 +1638,10 @@ Object.assign(LANGUAGE_TEXT,{
 });
 Object.assign(LANGUAGE_TEXT,{"Ba người mẫu trong trang phục tông kem và be":["Three models wearing cream and beige outfits","クリーム色とベージュの服を着た3人のモデル","Trois mannequins en tenues crème et beige","Tres modelos con conjuntos crema y beige"]});
 Object.assign(LANGUAGE_TEXT,{"Tìm hiểu thêm":["Learn more","詳しく見る","En savoir plus","Más información"],"Tìm hiểu thêm về bộ sưu tập Thu Đông 2026":["Learn more about the Autumn–Winter 2026 collection","2026年秋冬コレクションを詳しく見る","En savoir plus sur la collection Automne–Hiver 2026","Más información sobre la colección Otoño–Invierno 2026"]});
+Object.assign(LANGUAGE_TEXT,{"Chọn kích thước": ["Choose a size", "サイズを選択", "Choisir une taille", "Elegir una talla"], "Chọn đúng size trước khi thêm vào giỏ.": ["Choose your size before adding to the bag.", "カートに追加する前にサイズを選んでください。", "Choisissez votre taille avant l’ajout au panier.", "Elige tu talla antes de añadir al carrito."], "Chọn size theo số; không tự quy đổi sang S/M/L.": ["Choose a numbered size; there is no automatic S/M/L conversion.", "数字表記のサイズを選んでください。S/M/Lへの自動換算はしません。", "Choisissez une taille numérique, sans conversion automatique en S/M/L.", "Elige una talla numérica; no se convierte automáticamente a S/M/L."], "Chỉ có một kích thước.": ["One size option only.", "サイズは1種類のみです。", "Une seule taille proposée.", "Solo hay una opción de talla."], "Chưa chọn kích thước": ["No size selected", "サイズ未選択", "Aucune taille sélectionnée", "Ninguna talla seleccionada"], "Đã chọn size:": ["Selected size:", "選択したサイズ：", "Taille choisie :", "Talla elegida:"], "Kích thước của": ["Size for", "サイズ：", "Taille de", "Talla de"]});
+Object.assign(LANGUAGE_PRODUCT_NAMES,{"65": ["Brown long-sleeve polo", "ブラウンの長袖ポロシャツ", "Polo marron à manches longues", "Polo marrón de manga larga"], "66": ["Camel long coat", "キャメル色のロングコート", "Manteau long camel", "Abrigo largo camel"], "67": ["Black midi skirt", "ブラックのミディスカート", "Jupe midi noire", "Falda midi negra"], "68": ["Cream turtleneck sweater", "クリーム色のタートルネックニット", "Pull crème à col roulé", "Jersey crema de cuello alto"], "69": ["Long beige cardigan", "ベージュのロングカーディガン", "Cardigan long beige", "Cárdigan largo beige"]});
+Object.assign(LANGUAGE_TEXT,{"Ảnh tham khảo": ["Reference image", "参考画像", "Image de référence", "Imagen de referencia"], "Ảnh tham khảo:": ["Reference image:", "参考画像：", "Image de référence :", "Imagen de referencia:"], "Ảnh tham khảo kiểu dáng; chưa xác nhận hình ảnh của mẫu này.": ["Style reference photo; not a confirmed image of this design.", "スタイルの参考写真です。この商品の確認済み画像ではありません。", "Photo de référence de style ; image non confirmée pour ce modèle.", "Foto de referencia de estilo; no es una imagen confirmada de este diseño."], "Áo khoác dài": ["Long coats", "ロングコート", "Manteaux longs", "Abrigos largos"], "Giấc mơ dịu dàng": ["A gentle dream", "やさしい夢", "Un rêve tout en douceur", "Un sueño delicado"], "Bộ sưu tập mang tinh thần mơ mộng của thương hiệu: nhẹ nhàng, ấm áp và đáng yêu. Hãy mặc những gì bạn thích và sống đúng với màu sắc của mình.": ["A collection with a dreamy spirit: gentle, warm and endearing. Wear what you love and express your own colours.", "やさしく、あたたかく、愛らしい。ブランドの夢見る気持ちを込めたコレクションです。好きな服をまとい、あなたらしい色を楽しんでください。", "Une collection à l’esprit rêveur : douce, chaleureuse et attachante. Portez ce que vous aimez et exprimez vos propres couleurs.", "Una colección de espíritu soñador: delicada, cálida y entrañable. Viste lo que te gusta y expresa tus propios colores."], "Áo polo dài tay màu nâu": ["Brown long-sleeve polo", "ブラウンの長袖ポロシャツ", "Polo marron à manches longues", "Polo marrón de manga larga"], "Áo khoác dáng dài màu camel": ["Camel long coat", "キャメル色のロングコート", "Manteau long camel", "Abrigo largo camel"], "Chân váy midi màu đen": ["Black midi skirt", "ブラックのミディスカート", "Jupe midi noire", "Falda midi negra"], "Áo len cổ lọ màu kem": ["Cream turtleneck sweater", "クリーム色のタートルネックニット", "Pull crème à col roulé", "Jersey crema de cuello alto"], "Áo cardigan dài màu be": ["Long beige cardigan", "ベージュのロングカーディガン", "Cardigan long beige", "Cárdigan largo beige"]});
+Object.assign(LANGUAGE_TEXT,{"Size và chất liệu đang chờ xác nhận. Mẫu này hiện chỉ để xem, chưa nhận đặt hàng.": ["Sizes and fabric details await confirmation. This design is for viewing only; orders are not available yet.", "サイズと素材は確認中です。現在は閲覧のみで、ご注文は受け付けていません。", "Tailles et matière à confirmer. Ce modèle est présenté uniquement, sans commande possible.", "Tallas y materiales por confirmar. Este diseño es solo de muestra; aún no admite pedidos."], "Mẫu này chưa mở bán. Thông tin size đang cập nhật.": ["This design cannot be ordered yet. Size information is being confirmed.", "この商品は販売準備中です。サイズ情報は確認中です。", "Ce modèle ne peut pas encore être commandé. Tailles à confirmer.", "Este diseño aún no admite pedidos. Tallas por confirmar."], "Thông tin size của các mẫu mới đang cập nhật.": ["Sizing information for new designs is being confirmed.", "新商品のサイズ情報は確認中です。", "Les tailles des nouveautés sont à confirmer.", "Las tallas de los nuevos diseños están por confirmar."], "Các thiết kế nam và nữ được tuyển chọn theo phong cách thanh lịch. Size và chất liệu đang được cập nhật.": ["Selected designs for men and women with an elegant style. Sizes and fabric information are being confirmed.", "上品なスタイルのメンズ・レディースのセレクトです。サイズと素材は確認中です。", "Sélection élégante pour homme et femme. Tailles et matières à confirmer.", "Diseños elegantes seleccionados para hombre y mujer. Tallas y materiales por confirmar."]});
 const languageKeys=Object.keys(LANGUAGE_TEXT).sort((a,b)=>b.length-a.length);
 const languagePattern=new RegExp('(?<![\\p{L}\\p{N}])(?:'+languageKeys.map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')(?![\\p{L}\\p{N}])','gu');
 function translateUI(value){if(activeLanguage==='vi')return value;const index=languageIndex[activeLanguage];return value.replace(languagePattern,key=>LANGUAGE_TEXT[key][index])}
@@ -1662,7 +1710,7 @@ applyLanguage();
  refresh();setInterval(()=>{if(!document.hidden)refresh()},60000);
 })();
 </script>
-<script src="assets/support-chat.js?v=1" defer></script>
+<script src="assets/support-chat.js?v=2" defer></script>
 <script src="assets/easter-egg.js?v=2" defer></script>
 </body>
 </html>
